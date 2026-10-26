@@ -48,6 +48,26 @@
   .hero-art{transform:scale(.47) translate(44px,-65px)}
 }
 
+
+/* Fit first-fold on standard desktop laptop screens; leave mobile unchanged. */
+@media (min-width:821px) and (min-height:680px) and (max-height:920px) {
+.hero { min-height:0; height:100vh; height:100svh; }
+.hero-inner { min-height:0; height:100%; padding-top:clamp(86px,12.5svh,110px); padding-bottom:clamp(50px,7.5svh,72px); }
+.hero h1 { font-size:clamp(48px,min(5.3vw,8.6svh),78px);line-height:1.06;letter-spacing:-.065em;margin:20px -26px 16px 0; }
+.hero-lead {font-size:clamp(12px,1.06vw,15px);line-height:1.6;}
+.hero-actions{margin-top:23px}
+.hero-bottom{margin-top:25px}
+.hero-art {height:min(510px,calc(100svh - 160px));transform:translate(0,-5px) scale(.84);transform-origin:center center;margin-left:-36px}
+.editor-window{top:34px}
+.hero-edge{bottom:19px}
+}
+@media (min-width:821px) and (max-width:1050px) and (min-height:680px) and (max-height:920px) {
+.hero h1{font-size:clamp(46px,5.2vw,60px);letter-spacing:-.06em}
+.hero-art{transform:translate(-14px,-5px) scale(.72)}
+.hero-actions{gap:16px}
+}
+@media (min-width:821px) and (min-height:921px) {.hero-inner {min-height:100svh}}
+@media (min-width:821px) and (max-height:679px) {.hero{min-height:690px}.hero-inner{min-height:680px}}
 </style>
   <script type="module">
 const $ = (selector, parent=document) => parent.querySelector(selector);
