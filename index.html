@@ -68,6 +68,49 @@
 }
 @media (min-width:821px) and (min-height:921px) {.hero-inner {min-height:100svh}}
 @media (min-width:821px) and (max-height:679px) {.hero{min-height:690px}.hero-inner{min-height:680px}}
+/* Real laptop viewport: browser tabs, bookmarks and OS taskbar take space.
+   E.g. a 1366x768 monitor can expose only 608 CSS px to the web page.
+   The old max-height:679px rule forced 690px and hid the lower hero artwork. */
+@media (min-width:821px) and (min-height:520px) and (max-height:679px) {
+  .hero {
+    min-height:0;
+    height:100vh;
+    height:100svh;
+  }
+  .hero-inner {
+    min-height:0;
+    height:100%;
+    padding-top:76px;
+    padding-bottom:39px;
+  }
+  .site-header { padding-top:19px; padding-bottom:15px; }
+  .hero h1 {
+    font-size:clamp(44px,4.55vw,65px);
+    line-height:1.065;
+    letter-spacing:-.063em;
+    margin:15px -16px 15px 0;
+  }
+  .hero-lead { font-size:13px; line-height:1.58; max-width:480px; }
+  .hero-actions { margin-top:19px; gap:21px; }
+  .hero-actions .btn { min-height:46px; padding:11px 20px; }
+  .hero-bottom { margin-top:22px; }
+  .hero-art {
+    height:430px;
+    transform:translate(-16px,-6px) scale(.76);
+    transform-origin:center center;
+    margin-left:-47px;
+  }
+  .editor-window { top:28px; }
+  .budget-float { left:-40px; bottom:40px; }
+  .gantt-float { right:-8px; bottom:30px; }
+  .hero-edge { bottom:12px; }
+}
+@media (min-width:821px) and (max-width:1050px) and (min-height:520px) and (max-height:679px) {
+  .hero h1 { font-size:clamp(42px,4.6vw,53px); }
+  .hero-art { transform:translate(-14px,-6px) scale(.66); margin-left:-42px; }
+  .hero-actions { gap:12px; }
+}
+
 </style>
   <script type="module">
 const $ = (selector, parent=document) => parent.querySelector(selector);
