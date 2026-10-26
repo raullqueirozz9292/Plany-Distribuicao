@@ -1,0 +1,1 @@
+Ecossistema Y — prévia comercial ilustrativa e sem login. Publicada em branch isolada para revisão visual. Nenhuma API ou segredo do Y Core presentes. O canal principal de distribuição Plany permanece intacto.
