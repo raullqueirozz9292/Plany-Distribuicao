@@ -48,26 +48,59 @@
   .hero-art{transform:scale(.47) translate(44px,-65px)}
 }
 
-
-/* Fit first-fold on standard desktop laptop screens; leave mobile unchanged. */
+/* First-fold fit — a 100% browser zoom must show the entire desktop hero.
+   The earlier min-height:820px + inner min-height:800px clipped the first
+   screen on common 720/768/800/864px-high laptop displays. Compact the
+   *composition*, not the browser zoom, for ordinary desktop viewport heights.
+   Ultra-short windows still scroll normally instead of hiding legible content. */
 @media (min-width:821px) and (min-height:680px) and (max-height:920px) {
-.hero { min-height:0; height:100vh; height:100svh; }
-.hero-inner { min-height:0; height:100%; padding-top:clamp(86px,12.5svh,110px); padding-bottom:clamp(50px,7.5svh,72px); }
-.hero h1 { font-size:clamp(48px,min(5.3vw,8.6svh),78px);line-height:1.06;letter-spacing:-.065em;margin:20px -26px 16px 0; }
-.hero-lead {font-size:clamp(12px,1.06vw,15px);line-height:1.6;}
-.hero-actions{margin-top:23px}
-.hero-bottom{margin-top:25px}
-.hero-art {height:min(510px,calc(100svh - 160px));transform:translate(0,-5px) scale(.84);transform-origin:center center;margin-left:-36px}
-.editor-window{top:34px}
-.hero-edge{bottom:19px}
+  .hero {
+    min-height:0;
+    height:100vh;
+    height:100svh;
+  }
+  .hero-inner {
+    min-height:0;
+    height:100%;
+    padding-top:clamp(86px,12.5svh,110px);
+    padding-bottom:clamp(50px,7.5svh,72px);
+  }
+  .hero h1 {
+    font-size:clamp(48px,min(5.3vw,8.6svh),78px);
+    line-height:1.06;
+    letter-spacing:-.065em;
+    margin:20px -26px 16px 0;
+  }
+  .hero-lead {
+    font-size:clamp(12px,1.06vw,15px);
+    line-height:1.6;
+  }
+  .hero-actions { margin-top:23px; }
+  .hero-bottom { margin-top:25px; }
+  .hero-art {
+    height:min(510px,calc(100svh - 160px));
+    transform:translate(0,-5px) scale(.84);
+    transform-origin:center center;
+    margin-left:-36px;
+  }
+  .editor-window { top:34px; }
+  .hero-edge { bottom:19px; }
 }
 @media (min-width:821px) and (max-width:1050px) and (min-height:680px) and (max-height:920px) {
-.hero h1{font-size:clamp(46px,5.2vw,60px);letter-spacing:-.06em}
-.hero-art{transform:translate(-14px,-5px) scale(.72)}
-.hero-actions{gap:16px}
+  .hero h1 { font-size:clamp(46px,5.2vw,60px);letter-spacing:-.06em; }
+  .hero-art { transform:translate(-14px,-5px) scale(.72); }
+  .hero-actions { gap:16px; }
 }
-@media (min-width:821px) and (min-height:921px) {.hero-inner {min-height:100svh}}
-@media (min-width:821px) and (max-height:679px) {.hero{min-height:690px}.hero-inner{min-height:680px}}
+@media (min-width:821px) and (min-height:921px) {
+  .hero-inner { min-height:100svh; }
+}
+/* Preserve accessibility at magnified text/short viewports:
+   if a comfortable fit is impossible, normal scrolling beats clipping. */
+@media (min-width:821px) and (max-height:679px) {
+  .hero { min-height:690px; }
+  .hero-inner { min-height:680px; }
+}
+
 /* Real laptop viewport: browser tabs, bookmarks and OS taskbar take space.
    E.g. a 1366x768 monitor can expose only 608 CSS px to the web page.
    The old max-height:679px rule forced 690px and hid the lower hero artwork. */
@@ -111,12 +144,105 @@
   .hero-actions { gap:12px; }
 }
 
+/* Product differentiators: three genuinely different products, one visual rhythm. */
+.differences{margin-top:104px;padding-top:80px;border-top:1px solid #dce3db}
+.differences-heading{margin-bottom:37px}
+.differences-lead{margin-top:27px;display:flex;align-items:end;justify-content:space-between;gap:45px}
+.differences-lead h3{font:800 clamp(35px,4.25vw,64px)/1.13 Manrope,sans-serif;letter-spacing:-.065em;margin:0;max-width:710px}
+.differences-lead h3 em{font-style:normal;color:#738b7d}
+.differences-lead p{font-size:13px;color:#6c7a70;line-height:1.85;max-width:310px;margin:0 0 5px}
+.differences-layout{display:grid;grid-template-columns:285px minmax(0,1fr);border-radius:24px;overflow:hidden;background:#e9eeea;min-height:510px}
+.differences-sidebar{background:#111d29;color:#f6faf8;padding:43px 0 38px 34px;display:flex;flex-direction:column;min-width:0}
+.differences-overline{letter-spacing:1.8px;font-size:9px;font-weight:800;color:#8babb1;margin-bottom:28px}
+.difference-tabs{display:grid;gap:8px}
+.difference-tab{width:100%;border:0;background:transparent;color:#9dafb6;display:flex;align-items:center;gap:17px;text-align:left;padding:15px 20px 15px 14px;border-radius:12px 0 0 12px;transition:background .23s,color .23s;font-weight:800}
+.difference-tab:hover{background:rgba(255,255,255,.06);color:#fff}
+.difference-tab.is-active{background:#e9eeea;color:#1e2f28}
+.difference-tab.is-active[data-difference=mody]{background:#f0ead6}
+.difference-tab.is-active[data-difference=ganty]{background:#e5edf5}
+.difference-tab:focus-visible{outline:2px solid #9bcaa8;outline-offset:-4px}
+.difference-tab-num{font:700 10px Manrope,sans-serif;letter-spacing:1px;opacity:.66}
+.difference-tab-label{font:800 17px Manrope,sans-serif;letter-spacing:-.5px}
+.difference-tab-label small{display:block;font:600 10px "DM Sans",sans-serif;color:inherit;opacity:.56;letter-spacing:0;margin-top:4px}
+.difference-tab-arrow{margin-left:auto;font-size:19px;font-weight:400;opacity:0;transform:translateX(-5px);transition:opacity .2s,transform .2s}
+.difference-tab:hover .difference-tab-arrow,.difference-tab.is-active .difference-tab-arrow{opacity:1;transform:translateX(0)}
+.differences-sidebar-note{font-size:11px;color:#8197a0;line-height:1.8;max-width:185px;margin:auto 30px 0 8px;padding-top:30px}
+.differences-content{padding:36px clamp(30px,4vw,65px) 39px;min-width:0;transition:background .3s}
+.differences-content[data-difference-active=mody]{background:#f0ead6}
+.differences-content[data-difference-active=ganty]{background:#e5edf5}
+.difference-panel[hidden]{display:none}
+.difference-panel-title{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:0 0 24px;border-bottom:1px solid rgba(22,45,35,.15)}
+.difference-panel-counter{font-size:10px;font-weight:800;letter-spacing:1.7px;color:#547261}
+.difference-panel-mark{font:800 28px Manrope,sans-serif;letter-spacing:-1.5px;color:#a3b7aa}
+.differences-content[data-difference-active=mody] .difference-panel-counter{color:#9a7c20}
+.differences-content[data-difference-active=mody] .difference-panel-mark{color:#d3bb70}
+.differences-content[data-difference-active=ganty] .difference-panel-counter{color:#427ba9}
+.differences-content[data-difference-active=ganty] .difference-panel-mark{color:#a0b9d3}
+.difference-list{list-style:none;margin:0;padding:0;counter-reset:difference}
+.difference-list li{display:grid;grid-template-columns:39px minmax(0,1fr) 20px;align-items:center;gap:18px;border-bottom:1px solid rgba(22,45,35,.105);padding:21px 0;min-height:69px}
+.difference-list li:last-child{border-bottom:none}
+.difference-number{color:#7c9889;font:700 11px Manrope,sans-serif;letter-spacing:.7px}
+.difference-description{color:#253830;font:700 clamp(13px,1.2vw,16px)/1.5 "DM Sans",sans-serif;letter-spacing:-.17px;max-width:630px}
+.difference-symbol{font-size:18px;color:#739e83;font-weight:400;text-align:right}
+.differences-content[data-difference-active=mody] .difference-number,.differences-content[data-difference-active=mody] .difference-symbol{color:#ad8f31}
+.differences-content[data-difference-active=ganty] .difference-number,.differences-content[data-difference-active=ganty] .difference-symbol{color:#477fae}
+@media (max-width:1040px){
+ .differences{margin-top:83px;padding-top:67px}
+ .differences-layout{grid-template-columns:235px minmax(0,1fr)}
+ .differences-sidebar{padding-left:20px}
+ .difference-tab{padding:13px 12px;gap:12px}
+ .differences-content{padding:32px 29px}
+ .difference-description{font-size:13px}
+}
+@media (max-width:820px){
+ .differences-lead{display:block}
+ .differences-lead p{margin-top:17px;max-width:570px}
+ .differences-layout{grid-template-columns:1fr;min-height:0}
+ .differences-sidebar{padding:26px 26px 0}
+ .differences-overline{margin-bottom:13px}
+ .difference-tabs{grid-template-columns:repeat(3,1fr);gap:9px}
+ .difference-tab{border-radius:12px 12px 0 0;padding:14px 12px;gap:9px}
+ .difference-tab.is-active{background:#e9eeea}
+ .difference-tab-arrow{display:none}
+ .differences-sidebar-note{display:none}
+ .differences-content{padding:21px 30px 28px}
+ .difference-list li{padding:19px 0}
+}
+@media (max-width:650px){
+ .differences{margin-top:68px;padding-top:52px}
+ .differences-heading{margin-bottom:27px}
+ .differences-lead{margin-top:19px}
+ .differences-lead h3{font-size:clamp(34px,8.5vw,49px);letter-spacing:-.055em}
+ .differences-lead p{font-size:12px}
+ .differences-layout{border-radius:18px}
+ .differences-sidebar{padding:22px 16px 0}
+ .differences-overline{font-size:8px;letter-spacing:1.5px}
+ .difference-tab-num{font-size:8px}
+ .difference-tab{padding:12px 7px;gap:7px;justify-content:center}
+ .difference-tab-label{font-size:14px}
+ .difference-tab-label small{font-size:9px}
+ .differences-content{padding:21px 18px 16px}
+ .difference-panel-title{padding-bottom:15px}
+ .difference-panel-counter{font-size:9px;letter-spacing:1px}
+ .difference-panel-mark{font-size:22px}
+ .difference-list li{grid-template-columns:27px minmax(0,1fr) 14px;gap:10px;padding:17px 0}
+ .difference-number{font-size:9px}
+ .difference-description{font-size:13px;line-height:1.55}
+ .difference-symbol{font-size:13px}
+}
+@media(max-width:360px){
+ .difference-tab{padding-inline:4px}
+ .difference-tab-label{font-size:12px}
+ .difference-tab-num{font-size:7px}
+ .difference-description{font-size:12px}
+}
+
 </style>
   <script type="module">
 const $ = (selector, parent=document) => parent.querySelector(selector);
-const $ = (selector, parent=document) => [...parent.querySelectorAll(selector)];
+const $$ = (selector, parent=document) => [...parent.querySelectorAll(selector)];
 
-const productTabs = $('.showcase-tab');
+const productTabs = $$('.showcase-tab');
 const products = new Set(['plany','mody','ganty']);
 const showcase = $('#showcase');
 
@@ -138,6 +264,7 @@ function activateProduct(name, focus=false) {
     scene.classList.toggle('active', isActive);
   }
   $('.showcase-visual').dataset.active = name;
+  activateDifferential(name);
 }
 
 productTabs.forEach((tab, index) => {
@@ -154,13 +281,47 @@ productTabs.forEach((tab, index) => {
   });
 });
 
-$('[data-jump]').forEach(link => link.addEventListener('click', () => {
+$$('[data-jump]').forEach(link => link.addEventListener('click', () => {
   activateProduct(link.dataset.jump);
 }));
 
+// Each product has its own real differentiators. Navigation follows the
+// accessible keyboard pattern of the main product showcase.
+const differenceTabs = $$('.difference-tab');
+function activateDifferential(name, focus=false) {
+  if (!products.has(name)) return;
+  for (const tab of differenceTabs) {
+    const active=tab.dataset.difference===name;
+    tab.classList.toggle('is-active',active);
+    tab.setAttribute('aria-selected',String(active));
+    tab.tabIndex=active?0:-1;
+    if (active && focus) tab.focus();
+  }
+  for (const product of products) {
+    $('#difference-panel-'+product).hidden = product!==name;
+  }
+  $('.differences-content').dataset.differenceActive=name;
+}
+differenceTabs.forEach((tab,index)=>{
+  tab.addEventListener('click',()=>{
+    activateProduct(tab.dataset.difference);
+  });
+  tab.addEventListener('keydown',event=>{
+    let next=index;
+    if(event.key==='ArrowRight')next=(index+1)%differenceTabs.length;
+    else if(event.key==='ArrowLeft')next=(index+differenceTabs.length-1)%differenceTabs.length;
+    else if(event.key==='Home')next=0;
+    else if(event.key==='End')next=differenceTabs.length-1;
+    else return;
+    event.preventDefault();
+    activateProduct(differenceTabs[next].dataset.difference);
+    differenceTabs[next].focus();
+  });
+});
+
 const navWrap = $('#nav-wrap');
 const navToggle = $('#nav-toggle');
-const navLinks = $('#primary-nav a');
+const navLinks = $$('#primary-nav a');
 
 function setMenuOpen(open) {
   navToggle.setAttribute('aria-expanded', String(open));
@@ -184,7 +345,7 @@ window.matchMedia('(min-width:651px)').addEventListener('change', event => {
 $('#year').textContent = String(new Date().getFullYear());
 const revealSelectors = '.principle-main, .principle-aside, .solutions-heading, .showcase, .journey-heading, .journey-step, .philosophy-header, .philosophy-details article, .final-inner';
 if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
-  const elements = $(revealSelectors);
+  const elements = $$(revealSelectors);
   elements.forEach(node => node.setAttribute('data-reveal',''));
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
@@ -389,6 +550,54 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
         </div>
       </div>
       <div class="solutions-bottom"><span>Uma solução para cada desafio.</span><span>Três caminhos que fazem sentido juntos. <b>↗</b></span></div>
+
+      <section class="differences" id="diferenciais" aria-labelledby="differences-title">
+        <div class="differences-heading">
+          <div class="section-index dark-index">FUNCIONALIDADES <span></span> O QUE NOS MOVE</div>
+          <div class="differences-lead"><h3 id="differences-title">O diferencial está <em>nos detalhes.</em></h3><p>Mais do que dizer o que cada aplicativo faz, queremos mostrar o que muda na sua rotina.</p></div>
+        </div>
+        <div class="differences-layout">
+          <div class="differences-sidebar">
+            <span class="differences-overline">ESCOLHA UMA SOLUÇÃO</span>
+            <div class="difference-tabs" role="tablist" aria-label="Diferenciais de cada aplicativo">
+              <button class="difference-tab is-active" type="button" role="tab" id="difference-tab-plany" aria-controls="difference-panel-plany" aria-selected="true" data-difference="plany"><span class="difference-tab-num">01</span><span class="difference-tab-label">Plany<small>Projetar</small></span><span class="difference-tab-arrow" aria-hidden="true">↗</span></button>
+<button class="difference-tab" type="button" role="tab" id="difference-tab-mody" aria-controls="difference-panel-mody" aria-selected="false" data-difference="mody" tabindex="-1"><span class="difference-tab-num">02</span><span class="difference-tab-label">Mody<small>Orçar</small></span><span class="difference-tab-arrow" aria-hidden="true">↗</span></button>
+<button class="difference-tab" type="button" role="tab" id="difference-tab-ganty" aria-controls="difference-panel-ganty" aria-selected="false" data-difference="ganty" tabindex="-1"><span class="difference-tab-num">03</span><span class="difference-tab-label">Ganty<small>Planejar</small></span><span class="difference-tab-arrow" aria-hidden="true">↗</span></button>
+            </div>
+            <p class="differences-sidebar-note">Funcionalidades pensadas para o trabalho real — não apenas para uma apresentação.</p>
+          </div>
+          <div class="differences-content" data-difference-active="plany"><div class="difference-panel" id="difference-panel-plany" role="tabpanel" aria-labelledby="difference-tab-plany" >
+  <div class="difference-panel-title"><span class="difference-panel-counter">01 / 03 · O QUE FAZ A DIFERENÇA</span><span class="difference-panel-mark">PLANY</span></div>
+  <ol class="difference-list">
+    <li><span class="difference-number">01</span><span class="difference-description">Use retalhos de verdade no projeto e no corte.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">02</span><span class="difference-description">Modele por comandos, direto no teclado.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">03</span><span class="difference-description">Transforme geometria em peças e peças em módulos.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">04</span><span class="difference-description">Insira e dimensione módulos arrastando e clicando.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">05</span><span class="difference-description">Central simples de verdade, sem permissões confusas.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+  </ol>
+  </div>
+<div class="difference-panel" id="difference-panel-mody" role="tabpanel" aria-labelledby="difference-tab-mody" hidden>
+  <div class="difference-panel-title"><span class="difference-panel-counter">02 / 03 · O QUE FAZ A DIFERENÇA</span><span class="difference-panel-mark">MODY</span></div>
+  <ol class="difference-list">
+    <li><span class="difference-number">01</span><span class="difference-description">Orce por ambientes, módulos e vãos sem perder a visão do conjunto.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">02</span><span class="difference-description">Organize materiais, ferragens e serviços na composição dos custos.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">03</span><span class="difference-description">Reaproveite configurações com presets de módulos.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">04</span><span class="difference-description">Duplique ambientes e ganhe agilidade em propostas semelhantes.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">05</span><span class="difference-description">Acompanhe orçamentos em andamento, concluídos e vendas.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+  </ol>
+  </div>
+<div class="difference-panel" id="difference-panel-ganty" role="tabpanel" aria-labelledby="difference-tab-ganty" hidden>
+  <div class="difference-panel-title"><span class="difference-panel-counter">03 / 03 · O QUE FAZ A DIFERENÇA</span><span class="difference-panel-mark">GANTY</span></div>
+  <ol class="difference-list">
+    <li><span class="difference-number">01</span><span class="difference-description">Ajuste datas no Gantt arrastando períodos ou selecionando em dois cliques.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">02</span><span class="difference-description">Configure etapas, dias contabilizados e feriados conforme sua operação.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">03</span><span class="difference-description">Identifique atrasos e confirme a conclusão de cada etapa.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">04</span><span class="difference-description">Acompanhe entradas, saídas e o fluxo de caixa por obra.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+    <li><span class="difference-number">05</span><span class="difference-description">Mantenha o planejamento sincronizado entre os usuários autorizados.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
+  </ol>
+  </div></div>
+        </div>
+      </section>
       </div>
     </section>
 
