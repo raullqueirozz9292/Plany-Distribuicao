@@ -29,5 +29,15 @@ jobs:
           grep -q 'Mody' /tmp/preview.html
           grep -q 'Ganty' /tmp/preview.html
           ! grep -qi 'Joiny' /tmp/preview.html
+          # GitHub Pages: canonical address independent of third-party viewers.
+          pages_url="https://raullqueirozz9292.github.io/Plany-Distribuicao/"
+          for n in 1 2 3 4 5 6 7 8; do
+            pages_code="$(curl -L -sS --max-time 15 -o /tmp/pages.html -w "%{http_code}" "$pages_url" || true)"
+            if [[ "$pages_code" == "200" ]] && grep -q 'Seu trabalho' /tmp/pages.html; then break; fi
+            if [[ "$n" == "8" ]]; then echo "GitHub Pages unavailable: HTTP $pages_code" >&2; exit 1; fi
+            sleep 6
+          done
+          ! grep -qi 'Joiny' /tmp/pages.html
+          echo "Site público GitHub Pages validado: $pages_url" >> "$GITHUB_STEP_SUMMARY"
           echo "Prévia HTML real confirmada em HTTPS: $url" >> "$GITHUB_STEP_SUMMARY"
           echo "Somente site demonstrativo, sem autenticação ou banco de licenças." >> "$GITHUB_STEP_SUMMARY"
