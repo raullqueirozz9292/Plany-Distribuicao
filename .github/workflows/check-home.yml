@@ -1,0 +1,33 @@
+name: Validar Home Ecossistema Y online
+on:
+  push:
+    branches: [gh-pages]
+    paths:
+      - index.html
+      - .github/workflows/check-home.yml
+permissions:
+  contents: read
+jobs:
+  homepage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Testar a página pública servida por HTTPS (sem token)
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://raw.githack.com/raullqueirozz9292/Plany-Distribuicao/gh-pages/index.html"
+          for n in 1 2 3 4 5 6; do
+            code="$(curl -L -sS --max-time 14 -o /tmp/preview.html -w "%{http_code}" "$url" || true)"
+            if [[ "$code" == "200" ]] && grep -q 'Seu trabalho' /tmp/preview.html; then break; fi
+            if [[ "$n" == 6 ]]; then
+              echo "Live preview unavailable: HTTP $code" >&2; exit 1
+            fi
+            sleep 5
+          done
+          grep -q 'Plany' /tmp/preview.html
+          grep -q 'Mody' /tmp/preview.html
+          grep -q 'Ganty' /tmp/preview.html
+          ! grep -qi 'Joiny' /tmp/preview.html
+          echo "Prévia HTML real confirmada em HTTPS: $url" >> "$GITHUB_STEP_SUMMARY"
+          echo "Somente site demonstrativo, sem autenticação ou banco de licenças." >> "$GITHUB_STEP_SUMMARY"
