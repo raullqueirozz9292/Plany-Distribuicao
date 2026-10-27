@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#080d16">
-  <meta name="description" content="Ecossistema Y. Plany, Mody e Ganty: três soluções para projetar, orçar e planejar com mais clareza.">
+  <meta name="description" content="Ecossistema Y. O SketchUp desenha, o Plany prepara para fabricar; o Mody mostra o efeito real do preço; o Ganty organiza suas obras. Conheça as ferramentas.">
   <meta name="robots" content="noindex,nofollow">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Ecossistema Y — Da ideia ao próximo passo.">
+  <meta property="og:title" content="Ecossistema Y — Ferramentas que entendem o seu trabalho.">
   <meta property="og:description" content="Conheça Plany, Mody e Ganty. Três aplicativos com uma visão de trabalho mais inteligente.">
   <title>Ecossistema Y — Da ideia ao próximo passo.</title>
   <link rel="icon" href="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%230a1420%22%2F%3E%3Cpath%20d%3D%22M11%2014h14l8%2010%2010-10h12L39%2033v19H27V33L11%2014Z%22%20fill%3D%22%23f4f9f4%22%2F%3E%3Ccircle%20cx%3D%2252%22%20cy%3D%2250%22%20r%3D%225%22%20fill%3D%22%239fdeb2%22%2F%3E%3C%2Fsvg%3E" type="image/svg+xml">
@@ -237,127 +237,560 @@
  .difference-description{font-size:12px}
 }
 
+
+/* ━━━ ECOSSISTEMA Y — COMMERCIAL EXPERIENCE v2 ━━━━━━━━━━━━━━━
+   Editorial hierarchy: 1 hero + 1 concentrated product theater +
+   1 concrete workflow + 1 vision/CTA. No redundant feature sections.
+   Complex UI cards are conceptual interactive representations, not screenshots.
+   Never size an interior stage to a fixed viewport height.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root{--v2-deep:#0b1621;--v2-paper:#f4f5f1;--v2-type:#102020;--v2-teal:#358b64;--v2-gold:#d1ac35;--v2-ocean:#378bd0;--v2-out:cubic-bezier(.22,1,.36,1)}
+.v2-kicker{font:800 10px Manrope,system-ui,sans-serif;letter-spacing:2.3px;color:#afd4b8}.v2-kicker.dark{color:#49735f}
+.v2-intro{background:#f4f5f1;color:#142422;padding:99px 0 60px;overflow:hidden}
+.v2-intro-row{display:flex;align-items:flex-end;justify-content:space-between;gap:65px}
+.v2-intro-copy h2,.v2-heading h2,.v2-flow h2{font:800 clamp(40px,5vw,77px)/1.12 Manrope,system-ui,sans-serif;letter-spacing:-.067em;margin:27px 0 0}
+.v2-intro-copy h2 em,.v2-heading h2 em,.v2-flow h2 em{font-style:normal;color:#729384}
+.v2-intro-row>p{font-size:14px;line-height:1.9;max-width:370px;color:#66746f;margin:0 0 7px}
+.v2-intro-track{display:flex;align-items:center;gap:22px;margin-top:65px;border-top:1px solid #d9e0da;padding:27px 0 0}
+.v2-intro-track>div{flex:1;display:flex;align-items:center;gap:12px;min-width:0}
+.v2-track-num{font-size:9px;color:#769086;font-weight:800;letter-spacing:1px;margin-right:auto}
+.v2-intro-track img{height:28px;width:28px;object-fit:contain}
+.v2-intro-track strong{font:800 clamp(15px,1.6vw,21px) Manrope,system-ui,sans-serif;letter-spacing:-.7px}
+.v2-track-link{font-size:22px;color:#95ada0;font-weight:400;margin-inline:10px}
+.v2-solutions{background:var(--v2-paper);color:var(--v2-type);padding:74px 0 110px}
+.v2-heading{display:flex;align-items:end;justify-content:space-between;gap:75px;margin-bottom:53px}
+.v2-heading h2{font-size:clamp(39px,4.7vw,66px)}
+.v2-heading p{font-size:13px;line-height:1.9;color:#6d7972;margin:0 0 4px;max-width:296px}
+.v2-product-navigation{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:13px}
+.v2-tab{display:flex;align-items:center;gap:15px;background:#e7ebe6;border:1px solid transparent;border-bottom:3px solid transparent;color:#66776f;text-align:left;border-radius:15px 15px 7px 7px;min-height:78px;padding:16px 22px;transition:background .3s,color .3s,border-color .3s,transform .2s var(--v2-out)}
+.v2-tab:hover{background:#dae4dc;transform:translateY(-2px)}
+.v2-tab.is-current{background:#fff;color:#1a2d27;border-bottom-color:var(--v2-teal)}
+.v2-tab[data-product=mody].is-current{border-color:transparent transparent #c8a42c;color:#473b16}
+.v2-tab[data-product=ganty].is-current{border-color:transparent transparent #3588cb;color:#1b4160}
+.v2-tab img{width:31px;height:31px;object-fit:contain;flex:0 0 auto}
+.v2-tab>span:nth-child(2){font:850 18px Manrope,system-ui,sans-serif;letter-spacing:-.55px}
+.v2-tab small{font:700 10px DM Sans,system-ui,sans-serif;display:block;margin-top:3px;color:#8c9c94;letter-spacing:.2px;text-transform:uppercase}
+.v2-tab-arrow{margin-left:auto;font-size:24px;opacity:.35}
+.v2-tab.is-current .v2-tab-arrow{opacity:1}
+.v2-product-stage{border-radius:25px;overflow:hidden;box-shadow:0 27px 74px rgba(21,38,31,.10);background:var(--v2-deep)}
+.v2-product{display:grid;grid-template-columns:46% minmax(0,54%);color:white;min-height:730px}
+.v2-product[hidden]{display:none}
+.v2-product-copy{padding:clamp(31px,3.4vw,56px) clamp(26px,3.1vw,48px) 39px;display:flex;flex-direction:column;min-width:0;background:linear-gradient(145deg,#0b1824 0%,#0c1924 83%,#111f2b 100%)}
+.v2-product-eyebrow{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#91a9b0;letter-spacing:1.9px;font-size:9px;font-weight:800}
+.v2-product-eyebrow span:last-child{font-size:8px;letter-spacing:1px;color:#657a85}
+.v2-product-mark img{width:auto;height:47px;object-fit:contain;object-position:left center;max-width:145px}
+.v2-product-mark{margin-top:33px}
+.v2-product h3{font:800 clamp(29px,2.7vw,41px)/1.16 Manrope,system-ui,sans-serif;letter-spacing:-.048em;margin:17px 0 14px;max-width:525px}
+.v2-product h3 em{font-style:normal;color:#addcbb}
+.v2-mody h3 em{color:#e9d28b}
+.v2-ganty h3 em{color:#a1cef4}
+.v2-product-description{font-size:12px;line-height:1.85;max-width:460px;color:#a5b8c0;margin:0}
+.v2-feature-overline{display:flex;justify-content:space-between;gap:10px;margin-top:31px;padding-top:17px;border-top:1px solid rgba(219,239,230,.13);color:#b2d3c5;font-size:9px;letter-spacing:1.3px;font-weight:800}
+.v2-feature-overline span{color:#647983;letter-spacing:.3px;font-size:8px}
+.v2-features{list-style:none;padding:0;margin:8px 0 0}
+.v2-features li{border-bottom:1px solid rgba(223,246,239,.10)}
+.v2-features li:last-child{border:0}
+.v2-feature{width:100%;display:grid;grid-template-columns:25px minmax(0,1fr) 18px;gap:12px;align-items:center;border:0;border-radius:6px;padding:11px 3px 11px 0;text-align:left;color:#b4c3ca;background:transparent;transition:color .2s,background .2s}
+.v2-feature:hover{color:#fff;background:rgba(255,255,255,.03)}
+.v2-feature.is-current{color:#fff}
+.v2-feature-index{font:800 9px Manrope,system-ui,sans-serif;color:#607985}
+.v2-feature.is-current .v2-feature-index{color:#8fdfac}
+.v2-mody .v2-feature.is-current .v2-feature-index{color:#eed077}
+.v2-ganty .v2-feature.is-current .v2-feature-index{color:#8ac8f2}
+.v2-feature-text strong{display:block;font:760 clamp(12px,1.06vw,14px)/1.5 DM Sans,system-ui,sans-serif;letter-spacing:-.15px}
+.v2-feature-text small{display:block;color:#8095a0;font-size:11px;line-height:1.55;font-weight:500;max-width:420px;max-height:0;opacity:0;overflow:hidden;transition:max-height .35s var(--v2-out),opacity .3s}
+.v2-feature.is-current .v2-feature-text small{max-height:80px;opacity:1;margin-top:6px}
+.v2-feature-marker{color:#8fdfac;opacity:0;transform:translate(-5px,5px);font-size:16px;transition:opacity .2s,transform .25s}
+.v2-feature.is-current .v2-feature-marker,.v2-feature:hover .v2-feature-marker{opacity:1;transform:none}
+.v2-mody .v2-feature-marker{color:#e4c45a}
+.v2-ganty .v2-feature-marker{color:#79b8ef}
+.v2-product-art{position:relative;display:flex;flex-direction:column;min-width:0;background:#102231;isolation:isolate}
+.v2-showcase-canvas{position:relative;flex:1;min-height:690px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse 78% 63% at 56% 50%,#335f5b 0%,#1c3840 52%,#102533 100%)}
+.v2-showcase-canvas:before{position:absolute;content:"";inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(177,217,217,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(177,217,217,.07) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(circle at 52% 58%,black,transparent 80%);transform:perspective(500px) rotateX(22deg) scale(1.3)}
+.v2-mody-preview{background:radial-gradient(ellipse 90% 78% at 55% 50%,#7c6433,#3d3828 52%,#24292b 99%)}
+.v2-ganty-preview{background:radial-gradient(ellipse 85% 80% at 65% 49%,#26577c,#1c3f5b 48%,#152837 98%)}
+.v2-art-label{position:absolute;top:27px;left:30px;right:30px;font-size:9px;letter-spacing:1.25px;font-weight:800;color:#c6e4dc;display:flex;align-items:center;gap:13px;z-index:4}
+.v2-art-dot{width:5px;height:5px;border-radius:50%;background:#8ce6ae;box-shadow:0 0 8px #8ce6ae}
+.v2-art-label .v2-art-dot{margin-left:auto}
+.v2-art-disclaimer{margin:0;padding:13px 20px;background:#0d1d28;color:#728e94;font-size:9px;line-height:1.5;letter-spacing:.2px;text-align:center}
+.v2-windowbar{height:42px;display:flex;align-items:center;justify-content:space-between;background:#162b36;color:#b8c8d0;font-size:10px;padding:0 16px;border-bottom:1px solid rgba(222,248,237,.08)}
+.v2-windowbar b{font-size:9px;color:#83d2a2;font-weight:750}
+.v2-window-dots{display:flex;gap:5px}
+.v2-window-dots i{height:6px;width:6px;border-radius:50%;background:#7593a0}
+.v2-window-dots i:first-child{background:#ba6f6e}
+.v2-window-dots i:nth-child(2){background:#d4ac59}
+.v2-window-dots i:last-child{background:#5ca98e}
+.v2-sketchup-window{position:absolute;top:14%;left:8%;width:79%;height:56%;background:#182b36;border:1px solid rgba(222,249,238,.31);border-radius:14px;overflow:hidden;box-shadow:0 32px 68px rgba(0,0,0,.29),0 0 0 1px rgba(255,255,255,.03) inset;transform:perspective(1300px) rotateY(-5deg) rotateZ(-1.4deg);transition:transform .5s var(--v2-out)}
+.v2-model-body{display:flex;height:calc(100% - 42px)}
+.v2-toolbar{display:flex;flex-direction:column;width:45px;gap:16px;align-items:center;padding-top:20px;background:#142631;color:#6f9d91}
+.v2-toolbar i{font:normal 18px DM Sans}
+.v2-toolbar i:first-child{color:#8cd4aa;background:#294f4b;padding:3px 7px;border-radius:6px}
+.v2-model{position:relative;flex:1;overflow:hidden;background:radial-gradient(ellipse at 48% 43%,#3e5963,#263c48 64%,#243443)}
+.v2-model .showcase-cabinet{height:108%;width:98%;position:absolute;left:4%;top:-4%;filter:drop-shadow(8px 14px 13px rgba(0,0,0,.25))}
+.v2-measure{position:absolute;top:23%;right:30%;font-size:9px;font-weight:800;color:#d5ebd8;background:#27504b;border:1px solid rgba(182,241,194,.3);border-radius:5px;padding:7px 8px}
+.v2-model-tag{position:absolute;bottom:14px;left:14px;color:#9fcec0;font-size:9px;display:flex;gap:8px;align-items:center}
+.v2-model-tag:before{content:"";width:6px;height:6px;border-radius:50%;background:#98edb4}
+.v2-plany-floating{position:absolute;right:5%;bottom:15%;width:49%;max-width:365px;background:#fdfefb;color:#1d342b;border-radius:12px;padding:14px 15px 13px;border:1px solid #e6f2e7;box-shadow:0 20px 54px rgba(0,0,0,.35);transform:rotate(3deg);transition:transform .5s var(--v2-out)}
+.v2-float-title{display:flex;align-items:center;gap:9px;font-size:12px}
+.v2-float-title strong{display:block}
+.v2-float-title small{display:block;color:#83918c;font-size:8px;margin-top:4px}
+.v2-float-title i{font-style:normal;margin-left:auto;color:#83948a}
+.v2-green-mono{width:27px;height:27px;border-radius:7px;background:#2f9870;color:#fff;font-weight:900;display:grid;place-items:center;flex-shrink:0}
+.v2-sheet{position:relative;width:100%;height:113px;margin-top:13px;border:6px solid #d9d8ca;background:#f8f6f1;display:grid;grid-template-columns:1fr .8fr .8fr;grid-template-rows:50% 50%;gap:3px;padding:3px;overflow:hidden}
+.v2-sheet-item{display:grid;place-items:center;background:#cab79a;border:1px solid #e5d9c5;color:#75644c;font-size:9px;font-weight:800}
+.v2-sheet-item.sh-a{grid-row:span 2;background:#aebd9f}
+.v2-sheet-item.sh-b{background:#d6c8b6}
+.v2-sheet-item.sh-c{background:#c3ac92}
+.v2-sheet-item.sh-d{background:#b9c4b4}
+.v2-sheet-item.sh-e{background:#d6c3a7}
+.v2-sheet-meta{display:flex;justify-content:space-between;gap:5px;color:#74857a;font-size:8px;margin-top:9px}
+.v2-sheet-meta span:last-child{color:#3d9567}
+.v2-art-state{position:absolute;bottom:20px;left:25px;right:25px;display:flex;align-items:center;gap:11px;border:1px solid rgba(219,248,231,.19);background:rgba(11,26,35,.78);backdrop-filter:blur(14px);padding:11px 15px;border-radius:11px;color:#fff;max-width:410px;z-index:5}
+.v2-state-pulse{height:7px;width:7px;background:#9decb5;border-radius:50%;box-shadow:0 0 10px #7bc89c;flex:0 0 auto}
+.v2-state-copy strong{font-size:11px;display:block;letter-spacing:.1px}
+.v2-state-copy small{display:block;font-size:9px;color:#92adaf;margin-top:3px}
+.v2-product[data-feature="1"].v2-plany .v2-sketchup-window{transform:perspective(1200px) rotateY(-2deg) rotateZ(0)}
+.v2-product[data-feature="1"].v2-plany .v2-plany-floating{transform:rotate(1deg) translateY(-6px)}
+.v2-product[data-feature="4"].v2-plany .v2-plany-floating{transform:rotate(0) translate(-8px,-28px) scale(1.08)}
+.v2-quote-window{position:absolute;top:14%;left:10%;width:75%;background:#fff;color:#21342d;border-radius:15px;overflow:hidden;box-shadow:0 35px 75px rgba(0,0,0,.35);transform:perspective(1100px) rotateY(-4deg) rotateZ(-2deg)}
+.v2-quote-window .v2-windowbar{background:#f8faf7;color:#60736b;border-color:#e9ece8}
+.v2-quote-window .v2-windowbar b{color:#bf9d32}
+.v2-quote-inner{padding:26px clamp(15px,3vw,35px) 32px}
+.v2-quote-overline{font-size:8px;font-weight:900;letter-spacing:2px;color:#b99b46}
+.v2-quote-inner h4{font:850 clamp(20px,2.6vw,31px)/1.12 Manrope,system-ui,sans-serif;letter-spacing:-1.4px;margin:13px 0 24px}
+.v2-quote-line{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ebeeea;padding:10px 0;font-size:11px;gap:8px;color:#62736c}
+.v2-quote-line strong{color:#324339;font-size:11px}
+.v2-quote-line.total{font-weight:800;color:#283e32}
+.v2-quote-chart{display:flex;gap:3px;height:7px;margin:18px 0 25px}
+.v2-quote-chart i{width:var(--part);background:#d6ae3a;border-radius:12px 0 0 12px}
+.v2-quote-chart i:last-child{background:#b7c9b9;border-radius:0 12px 12px 0}
+.v2-quote-label{font-size:8px;color:#98a69d;font-weight:900;letter-spacing:1px;display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}
+.v2-quote-label span{color:#bc9d2a;letter-spacing:0}
+.v2-range-label{display:flex;justify-content:space-between;font-size:11px;font-weight:800;color:#536255}
+#v2-discount{width:100%;accent-color:#b89b34;cursor:ew-resize;margin:13px 0 0}
+.v2-price-float{position:absolute;bottom:17%;right:3%;width:44%;min-width:205px;padding:24px 23px;background:#0f1a22;border:1px solid rgba(244,215,139,.28);box-shadow:0 23px 60px rgba(0,0,0,.4);border-radius:15px;transform:rotate(4deg);z-index:2}
+.v2-price-float>span{display:block;color:#a1afb0;letter-spacing:1.3px;font-size:9px;font-weight:800}
+.v2-price-float>strong{display:block;color:#f1e4a7;font:850 clamp(22px,2.9vw,35px) Manrope,system-ui,sans-serif;letter-spacing:-1.7px;margin:9px 0 16px;white-space:nowrap}
+.v2-price-divider{height:1px;background:rgba(255,255,255,.13);margin-bottom:15px}
+.v2-price-float span b{float:right;font-size:16px;color:#b9e7c0;letter-spacing:-.5px}
+.v2-price-float small{display:block;font-size:9px;color:#78969a;margin-top:16px}
+.v2-price-float[data-alert="high"] span b{color:#f4c972}
+.v2-price-float[data-alert="loss"] span b{color:#ee8984}
+.v2-mody-preview .v2-state-pulse{background:#ebcc66;box-shadow:0 0 11px #e4bd46}
+.v2-gantt-window{position:absolute;top:16%;left:7%;width:85%;background:#fdfefd;color:#1d374b;border-radius:15px;overflow:hidden;box-shadow:0 35px 80px rgba(0,0,0,.36);transform:perspective(1000px) rotateY(-5deg) rotateZ(-1.5deg)}
+.v2-gantt-window .v2-windowbar{background:#f7fafc;color:#617e91;border-color:#e7ecef}
+.v2-gantt-window .v2-windowbar b{color:#3887c2}
+.v2-gantt-inner{padding:26px 21px 27px}
+.v2-gantt-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:24px}
+.v2-gantt-heading strong{font:850 23px Manrope,system-ui,sans-serif;letter-spacing:-.7px}
+.v2-gantt-heading span{font-size:10px;color:#7497b2}
+.v2-grid-head{display:grid;grid-template-columns:125px repeat(5,minmax(0,1fr));align-items:center;height:35px;border-top:1px solid #e6edf2;border-bottom:1px solid #e6edf2}
+.v2-grid-head>*{font-size:9px;text-align:center;color:#8da5b5;font-weight:800}
+.v2-grid-head>b{text-align:left;padding-left:10px}
+.v2-stages{display:grid}
+.v2-stage{position:relative;border:0;border-bottom:1px solid #e7eef2;background:transparent;display:grid;grid-template-columns:125px 1fr;align-items:center;gap:0;height:53px;color:#647e8f;text-align:left;transition:background .2s}
+.v2-stage:hover{background:#f0f6f9}
+.v2-stage.is-current{background:#eef6fc;color:#1c577e}
+.v2-stage>span{font-size:11px;font-weight:800;padding-left:10px}
+.v2-stage:before{content:"";position:absolute;left:125px;right:0;top:0;bottom:0;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(20% - 1px),#e5edf3 calc(20% - 1px),#e5edf3 20%);pointer-events:none}
+.v2-stage i{position:relative;z-index:1;display:block;height:17px;width:37%;margin-left:3%;background:#348fcb;border-radius:6px;box-shadow:0 2px 10px rgba(46,141,201,.2);transition:transform .25s,filter .25s}
+.v2-stage.is-current i{filter:saturate(1.4);transform:scaleY(1.2)}
+.v2-stage i.bar-b{margin-left:22%;width:55%;background:#5b99d1}
+.v2-stage i.bar-c{margin-left:45%;width:39%;background:#85b5dd}
+.v2-stage i.bar-d{margin-left:81%;width:16%;background:#3570ac}
+.v2-gantt-foot{display:flex;gap:17px;color:#8ca2b2;font-size:9px;margin-top:22px}
+.v2-gantt-foot span:first-child{color:#4085bb}
+.v2-gantt-float{position:absolute;right:5%;bottom:16%;width:45%;min-width:210px;padding:19px 22px;border-radius:14px;background:#0f2639;color:#ecf6fd;border:1px solid rgba(130,198,240,.22);box-shadow:0 26px 52px rgba(0,0,0,.32);transform:rotate(3deg);z-index:2}
+.v2-gantt-float>span:first-child{font-size:9px;letter-spacing:1.2px;color:#85b3d0;font-weight:800}
+.v2-gantt-float strong{display:block;margin:13px 0 6px;font:850 25px Manrope,system-ui,sans-serif;letter-spacing:-.8px}
+.v2-gantt-float small{font-size:10px;color:#a2c1d2}
+.v2-gantt-flag{border-top:1px solid rgba(177,217,238,.14);margin-top:18px;padding-top:13px;display:flex;justify-content:space-between;color:#92c8e8;font-size:10px}
+.v2-gantt-preview .v2-state-pulse{background:#80bce3;box-shadow:0 0 11px #60a9de}
+.v2-after-stage{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:20px 0 0;font-size:11px;color:#7c8d82}
+.v2-after-stage>span{display:flex;align-items:center;gap:9px}
+.v2-after-stage>span i{display:block;width:7px;height:7px;background:#448e60;border-radius:50%}
+.v2-after-stage a{font-weight:800;color:#326a51;border-bottom:1px solid #aac1b1;padding-bottom:7px}
+.v2-after-stage a b{font-size:17px;margin-left:12px}
+.v2-flow{background:#e8ebe5;color:#162720;padding:105px 0 103px}
+.v2-flow-top{display:flex;justify-content:space-between;align-items:end;gap:70px}
+.v2-flow h2{font-size:clamp(38px,4.5vw,64px)}
+.v2-flow-top>p{max-width:314px;font-size:13px;line-height:1.9;color:#67796f;margin:0 0 7px}
+.v2-flow-grid{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.v2-flow-grid article{background:#f8f9f6;border:1px solid #e2e6dc;border-radius:17px;overflow:hidden;padding:27px 27px 30px;transition:transform .3s var(--v2-out),box-shadow .3s}
+.v2-flow-grid article:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(26,60,43,.09)}
+.v2-flow-step{display:flex;align-items:center;justify-content:space-between;color:#7b8f83;font-size:9px;letter-spacing:1.5px;font-weight:800}
+.v2-flow-step img{width:32px;height:32px;object-fit:contain}
+.v2-flow-illustration{position:relative;margin:30px -4px 26px;height:130px;overflow:hidden;display:flex;align-items:center;justify-content:center;border-radius:10px}
+.v2-flow-illustration.one{background:linear-gradient(125deg,#d7ece0,#bfdcc8)}
+.v2-flow-illustration.two{background:linear-gradient(125deg,#f1e7b9,#e6d28c)}
+.v2-flow-illustration.three{background:linear-gradient(125deg,#dcebf7,#b7d7ed)}
+.v2-flow-letter{position:absolute;left:25px;top:12px;font:850 111px Manrope,sans-serif;color:rgba(255,255,255,.35);line-height:1}
+.v2-flow-measure-lines{position:absolute;right:20%;top:19%;display:grid;gap:8px;transform:skewY(-14deg)}
+.v2-flow-measure-lines i{display:block;height:22px;width:125px;border:1px solid #6a9b80;background:rgba(255,255,255,.43);box-shadow:11px 10px 0 rgba(73,119,83,.2)}
+.v2-flow-currency{position:absolute;right:17%;font:800 31px Manrope,sans-serif;letter-spacing:-2px;color:#856a19;white-space:nowrap}
+.v2-flow-currency b{font-size:17px;letter-spacing:4px;color:#b09237}
+.v2-flow-currency i{font-size:20px;font-style:normal}
+.v2-flow-bars{position:absolute;right:19%;top:26%;display:grid;gap:11px}
+.v2-flow-bars i{display:block;height:14px;width:130px;border-radius:10px;background:#4f93c9}
+.v2-flow-bars i:nth-child(2){width:90px;margin-left:35px;background:#8ab6dd}
+.v2-flow-bars i:nth-child(3){width:76px;margin-left:55px;background:#2876b5}
+.v2-flow-grid article h3{font:850 clamp(17px,1.65vw,22px) Manrope,sans-serif;letter-spacing:-.6px;margin:0 0 10px}
+.v2-flow-grid article p{font-size:12px;line-height:1.85;color:#66786f;margin:0;max-width:290px}
+.v2-flow-note{margin:24px 0 0;display:flex;align-items:flex-start;gap:12px;color:#7c8c83;font-size:11px;line-height:1.7}
+.v2-flow-note span{font-size:15px;color:#427f5e;flex-shrink:0}
+.v2-final{background:#0b1925;position:relative;isolation:isolate;color:#fff;overflow:hidden;padding:110px 0 74px}
+.v2-final-aura{position:absolute;inset:-40%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 55% 50%,rgba(47,121,107,.22),transparent 37%),radial-gradient(ellipse at 90% 55%,rgba(45,103,172,.16),transparent 32%)}
+.v2-final-overline{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.v2-final-brand{font-size:10px;color:#6f9a9b;font-weight:800;letter-spacing:1.6px}
+.v2-final-main{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,.75fr);align-items:end;gap:65px;margin:56px 0 96px}
+.v2-final-main h2{font:820 clamp(41px,5.1vw,71px)/1.14 Manrope,sans-serif;letter-spacing:-.069em;margin:0}
+.v2-final-main h2 em{color:#aee4bd;font-style:normal}
+.v2-final-main p{font-size:14px;line-height:1.9;color:#a8bfc0;margin:0 0 7px}
+.v2-final-line{height:1px;background:linear-gradient(90deg,rgba(179,214,204,.4),rgba(157,186,209,.12))}
+.v2-final-call{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;padding-top:55px}
+.v2-final-call>div>span{font-size:9px;font-weight:800;letter-spacing:2px;color:#83aaa5}
+.v2-final-call h3{font:820 clamp(32px,4.4vw,59px)/1.16 Manrope,sans-serif;letter-spacing:-.058em;margin:15px 0 0}
+.v2-final-call h3 span{color:#aee4bd}
+.v2-final-action{display:flex;align-items:flex-end;flex-direction:column;gap:17px}
+.v2-final-action small{font-size:10px;color:#a0b0b4;display:flex;align-items:center;gap:8px}
+.v2-final-action small i{width:7px;height:7px;border-radius:50%;background:#efc458}
+@media(max-width:1180px){
+ .v2-intro-row{gap:36px}
+ .v2-product{grid-template-columns:48% 52%}
+ .v2-product-copy{padding:34px 28px}
+ .v2-product h3{font-size:clamp(29px,2.9vw,37px)}
+ .v2-product-description{font-size:11px}
+ .v2-feature-text strong{font-size:12px}
+ .v2-feature{padding:10px 0}
+ .v2-sketchup-window{width:85%;left:6%}
+ .v2-plany-floating{right:2%;width:54%}
+ .v2-quote-window{width:82%;left:7%}
+ .v2-price-float{right:3%}
+}
+@media(max-width:880px){
+ .v2-intro-row,.v2-heading,.v2-flow-top{display:block}
+ .v2-intro-row>p,.v2-heading p,.v2-flow-top>p{max-width:640px;margin-top:20px}
+ .v2-intro{padding:82px 0 40px}
+ .v2-solutions{padding:65px 0 78px}
+ .v2-product{grid-template-columns:1fr}
+ .v2-product-copy{padding:38px 38px 24px}
+ .v2-product h3{font-size:clamp(32px,5vw,48px)}
+ .v2-product-description{font-size:13px;max-width:600px}
+ .v2-feature-text strong{font-size:14px}
+ .v2-feature{padding:13px 0}
+ .v2-features{margin-top:9px}
+ .v2-product-art{min-height:600px}
+ .v2-showcase-canvas{min-height:570px}
+ .v2-sketchup-window{top:11%;height:59%;left:8%;width:77%}
+ .v2-plany-floating{right:6%;width:45%;bottom:15%}
+ .v2-quote-window{width:70%;left:12%}
+ .v2-price-float{right:7%;width:37%}
+ .v2-gantt-window{left:9%;width:82%}
+ .v2-gantt-float{right:9%;width:37%}
+ .v2-final-main{grid-template-columns:1fr;gap:22px;margin:45px 0 65px}
+ .v2-final-main p{max-width:700px}
+}
+@media(max-width:650px){
+ .v2-intro{padding:75px 0 23px}
+ .v2-intro-copy h2,.v2-heading h2,.v2-flow h2{font-size:clamp(33px,8.3vw,49px);letter-spacing:-.06em}
+ .v2-intro-row>p,.v2-heading p,.v2-flow-top>p{font-size:12px;line-height:1.75;margin-top:17px}
+ .v2-intro-track{gap:7px;margin-top:32px;padding-top:18px}
+ .v2-intro-track>div{gap:6px}
+ .v2-track-num{display:none}
+ .v2-track-link{font-size:14px;margin-inline:2px}
+ .v2-intro-track img{width:21px;height:21px}
+ .v2-intro-track strong{font-size:11px;letter-spacing:-.3px}
+ .v2-solutions{padding:60px 0 67px}
+ .v2-heading{margin-bottom:30px}
+ .v2-product-navigation{gap:6px;margin-bottom:9px}
+ .v2-tab{min-height:70px;padding:13px 9px;gap:8px;border-radius:10px 10px 5px 5px}
+ .v2-tab>span:nth-child(2){font-size:13px}
+ .v2-tab small{font-size:8px}
+ .v2-tab img{height:23px;width:23px}
+ .v2-tab-arrow{display:none}
+ .v2-product-stage{border-radius:15px}
+ .v2-product-copy{padding:28px 19px 21px}
+ .v2-product-eyebrow{font-size:8px}
+ .v2-product-eyebrow span:last-child{font-size:7px;letter-spacing:.2px}
+ .v2-product-mark{margin-top:23px}
+ .v2-product-mark img{height:40px}
+ .v2-product h3{font-size:clamp(28px,7.2vw,43px);margin:12px 0}
+ .v2-product-description{font-size:12px;line-height:1.75}
+ .v2-feature-overline{font-size:8px;margin-top:23px}
+ .v2-feature-overline span{font-size:7px}
+ .v2-features{margin-top:6px}
+ .v2-feature{grid-template-columns:19px minmax(0,1fr) 13px;gap:8px;padding:11px 0}
+ .v2-feature-text strong{font-size:12px;line-height:1.45}
+ .v2-feature-text small{font-size:10px;line-height:1.5}
+ .v2-feature-marker{font-size:12px}
+ .v2-product-art{min-height:0}
+ .v2-showcase-canvas{min-height:415px}
+ .v2-art-label{top:14px;left:15px;right:15px;font-size:7px;letter-spacing:.55px;gap:8px}
+ .v2-windowbar{height:33px;padding-inline:10px;font-size:8px}
+ .v2-windowbar b{font-size:7px}
+ .v2-sketchup-window{top:13%;left:5%;width:88%;height:59%;transform:rotate(-1deg)}
+ .v2-model-body{height:calc(100% - 33px)}
+ .v2-toolbar{width:29px;gap:11px;padding-top:14px}
+ .v2-toolbar i{font-size:13px}
+ .v2-model .showcase-cabinet{left:1%;width:105%}
+ .v2-measure{font-size:7px;padding:4px;top:24%}
+ .v2-model-tag{font-size:7px;bottom:7px}
+ .v2-plany-floating{bottom:14%;width:60%;right:4%;max-width:250px;padding:8px 9px;transform:rotate(2deg)}
+ .v2-float-title{font-size:9px;gap:6px}
+ .v2-float-title small{font-size:6.5px}
+ .v2-green-mono{width:20px;height:20px;font-size:11px}
+ .v2-sheet{height:70px;border-width:3px;margin-top:8px;gap:2px;padding:2px}
+ .v2-sheet-item{font-size:6px}
+ .v2-sheet-meta{font-size:6px}
+ .v2-art-state{left:12px;right:12px;bottom:10px;padding:9px 11px;border-radius:8px}
+ .v2-state-copy strong{font-size:9px}
+ .v2-state-copy small{font-size:8px}
+ .v2-art-disclaimer{font-size:8px;padding:12px}
+ .v2-quote-window{top:12%;left:5%;width:91%;transform:rotate(-1deg)}
+ .v2-quote-inner{padding:17px 14px 21px}
+ .v2-quote-overline{font-size:7px}
+ .v2-quote-inner h4{font-size:22px;margin:8px 0 15px}
+ .v2-quote-line{padding:7px 0;font-size:9px}
+ .v2-quote-line strong{font-size:9px}
+ .v2-quote-chart{margin:12px 0 15px}
+ .v2-quote-label{font-size:7px;margin-bottom:9px}
+ .v2-range-label{font-size:10px}
+ .v2-price-float{width:59%;min-width:0;right:5%;bottom:15%;padding:11px 14px;border-radius:10px}
+ .v2-price-float>span{font-size:7px}
+ .v2-price-float>strong{font-size:23px;margin:6px 0 8px}
+ .v2-price-divider{margin-bottom:9px}
+ .v2-price-float span b{font-size:12px}
+ .v2-price-float small{font-size:7px;margin-top:10px}
+ .v2-gantt-window{top:12%;left:5%;width:91%;transform:rotate(-1deg)}
+ .v2-gantt-inner{padding:14px 9px 17px}
+ .v2-gantt-heading{margin-bottom:11px}
+ .v2-gantt-heading strong{font-size:15px}
+ .v2-gantt-heading span{font-size:7px}
+ .v2-grid-head{grid-template-columns:74px repeat(5,minmax(0,1fr));height:27px}
+ .v2-grid-head>*{font-size:7px}
+ .v2-stage{grid-template-columns:74px 1fr;height:37px}
+ .v2-stage:before{left:74px}
+ .v2-stage>span{font-size:9px;padding-left:6px}
+ .v2-stage i{height:11px}
+ .v2-gantt-foot{font-size:7px;margin-top:12px}
+ .v2-gantt-float{width:58%;min-width:0;bottom:16%;right:5%;padding:11px 14px}
+ .v2-gantt-float>span:first-child{font-size:7px}
+ .v2-gantt-float strong{font-size:18px;margin:7px 0 3px}
+ .v2-gantt-float small,.v2-gantt-flag{font-size:8px}
+ .v2-gantt-flag{padding-top:9px;margin-top:10px}
+ .v2-after-stage{font-size:9px;align-items:flex-start}
+ .v2-after-stage>span{max-width:50%}
+ .v2-after-stage a{text-align:right;max-width:50%}
+ .v2-flow{padding:82px 0 75px}
+ .v2-flow-grid{grid-template-columns:1fr;gap:12px;margin-top:32px}
+ .v2-flow-grid article{padding:20px 23px 23px}
+ .v2-flow-illustration{height:104px;margin:18px 0 20px}
+ .v2-flow-grid article h3{font-size:20px}
+ .v2-flow-grid article p{font-size:12px}
+ .v2-flow-note{font-size:10px}
+ .v2-final{padding:83px 0 55px}
+ .v2-final-brand{font-size:8px;letter-spacing:.6px}
+ .v2-final-main{margin:36px 0 54px}
+ .v2-final-main h2{font-size:clamp(34px,8.3vw,53px)}
+ .v2-final-main p{font-size:12px}
+ .v2-final-call{display:block;padding-top:35px}
+ .v2-final-call h3{font-size:clamp(30px,7.6vw,46px)}
+ .v2-final-action{align-items:flex-start;margin-top:29px}
+}
+@media(max-width:370px){
+ .v2-tab{gap:4px;padding:11px 5px}
+ .v2-tab img{width:19px;height:19px}
+ .v2-tab>span:nth-child(2){font-size:11px}
+ .v2-intro-track strong{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ .v2-sketchup-window,.v2-plany-floating,.v2-tab,.v2-feature,.v2-stage,.v2-flow-grid article{transition:none!important}
+}
+
+/* Visual feedback for three actual Plany interactions (illustrative). */
+.v2-concept-overlay{position:absolute;left:7%;right:7%;bottom:12%;z-index:5;display:flex;align-items:center;gap:12px;min-height:64px;background:rgba(8,21,28,.93);color:#eef8f4;border:1px solid rgba(151,216,179,.45);border-radius:11px;padding:13px 16px;box-shadow:0 17px 37px rgba(0,0,0,.38);backdrop-filter:blur(14px)}
+.v2-concept-overlay[hidden]{display:none}
+.v2-concept-overlay>span:first-child{font-size:24px;color:#a9eec0}
+.v2-concept-overlay small{display:block;font-size:8px;letter-spacing:1px;color:#91bdab}
+.v2-concept-overlay strong{display:block;font-size:13px;margin-top:7px}
+.v2-concept-overlay strong b{color:#a0e9b7;font-weight:750}
+.v2-concept-overlay strong i{font-style:normal;color:#a0e9b7;animation:v2-blink 1.15s steps(2,end) infinite}
+@keyframes v2-blink{50%{opacity:0}}
+.v2-product[data-feature="1"].v2-plany .v2-measure,
+.v2-product[data-feature="2"].v2-plany .v2-measure,
+.v2-product[data-feature="3"].v2-plany .v2-measure{opacity:0}
+.v2-product[data-feature="1"].v2-plany .v2-plany-floating,
+.v2-product[data-feature="2"].v2-plany .v2-plany-floating,
+.v2-product[data-feature="3"].v2-plany .v2-plany-floating{opacity:.45;transform:rotate(3deg) scale(.9) translate(10px,13px)}
+.v2-product[data-feature="4"].v2-plany .v2-plany-floating{opacity:1}
+.v2-reveal{opacity:0;transform:translateY(17px);transition:opacity .9s var(--v2-out),transform .9s var(--v2-out)}
+.v2-reveal.v2-visible{opacity:1;transform:none}
+@media(max-width:650px){
+ .v2-concept-overlay{min-height:46px;left:4%;right:4%;bottom:7%;padding:8px 9px;gap:7px;border-radius:7px}
+ .v2-concept-overlay>span:first-child{font-size:16px}
+ .v2-concept-overlay small{font-size:6px}
+ .v2-concept-overlay strong{font-size:8px;margin-top:4px}
+}
+@media(prefers-reduced-motion:reduce){
+ .v2-reveal{opacity:1!important;transform:none!important}
+ .v2-concept-overlay strong i{animation:none}
+}
+
+/* Floating explanatory labels must never block live simulator controls. */
+.v2-price-float,.v2-gantt-float,.v2-plany-floating{pointer-events:none}
+
 </style>
   <script type="module">
-const $ = (selector, parent=document) => parent.querySelector(selector);
-const $$ = (selector, parent=document) => [...parent.querySelectorAll(selector)];
+/* Ecossistema Y — meaningful interactive product showcase.
+   No API calls, no fabricated real product data, no licensing side effects. */
+const $=(selector,root=document)=>root.querySelector(selector);
+const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
+const ids=['plany','mody','ganty'];
+const tabs=$$('.v2-tab');
+const panels=Object.fromEntries(ids.map(id=>[id,$('#v2-panel-'+id)]));
+const featureStates={
+ plany:[
+  ['Retalhos no projeto e no corte','Da peça ao aproveitamento da chapa'],
+  ['Modo Comandos','Digite c; cai; e informe largura, altura e profundidade'],
+  ['Geometria que vira peça','Estruture partes do modelo como peças e módulos'],
+  ['Inserção direta no modelo','Posicione e dimensione módulos com o mouse'],
+  ['Central Plany','Peças → Chapas → Resultado → Materiais']
+ ],
+ mody:[
+  ['Orçamento por módulos','Monte a proposta ambiente por ambiente'],
+  ['Quantitativos organizados','Visualize materiais, chapas e ferragens estimadas'],
+  ['Do simples ao avançado','Mão de obra, impostos, frete e outros custos'],
+  ['O desconto muda sua margem','Experimente o controle de desconto nesta simulação'],
+  ['Presets que poupam trabalho','Reaproveite configurações já estruturadas']
+ ],
+ ganty:[
+  ['Datas que você pode reorganizar','Períodos visíveis, sempre ao seu alcance'],
+  ['Acompanhamento das etapas','Sinalização de pendências e atrasos'],
+  ['Calendário configurável','Defina dias úteis e feriados'],
+  ['Financeiro por obra','Entradas e saídas em um mesmo planejamento'],
+  ['Planejamento compartilhado','Informações sincronizadas entre pessoas autorizadas']
+ ]
+};
 
-const productTabs = $$('.showcase-tab');
-const products = new Set(['plany','mody','ganty']);
-const showcase = $('#showcase');
+function switchProduct(id,focus=false){
+ if(!ids.includes(id))return;
+ for(const tab of tabs){
+  const selected=tab.dataset.product===id;
+  tab.classList.toggle('is-current',selected);
+  tab.setAttribute('aria-selected',String(selected));
+  tab.tabIndex=selected?0:-1;
+  if(selected&&focus)tab.focus();
+ }
+ for(const key of ids)panels[key].hidden=key!==id;
+ // Reset to the first feature for the newly selected product.
+ selectFeature(id,0);
+}
+function selectFeature(id,number){
+ const panel=panels[id];
+ if(!panel||panel.hidden||!Number.isInteger(number)||number<0||number>4)return;
+ panel.dataset.feature=String(number);
+ for(const button of $$('.v2-feature',panel)){
+  const active=Number(button.dataset.feature)===number;
+  button.classList.toggle('is-current',active);
+  button.setAttribute('aria-pressed',String(active));
+ }
+ const state=featureStates[id][number];
+ $('[data-state-title]',panel).textContent=state[0];
+ $('[data-state-subtitle]',panel).textContent=state[1];
+ if(id==='plany'){
+  const command=$('.v2-concept-command',panel);
+  const geometry=$('.v2-concept-geometry',panel);
+  const drag=$('.v2-concept-drag',panel);
+  command.hidden=number!==1;
+  geometry.hidden=number!==2;
+  drag.hidden=number!==3;
+ }
+}
+tabs.forEach((tab,index)=>{
+ tab.addEventListener('click',()=>switchProduct(tab.dataset.product));
+ tab.addEventListener('keydown',event=>{
+  let next=index;
+  if(event.key==='ArrowRight')next=(index+1)%tabs.length;
+  else if(event.key==='ArrowLeft')next=(index+tabs.length-1)%tabs.length;
+  else if(event.key==='Home')next=0;
+  else if(event.key==='End')next=tabs.length-1;
+  else return;
+  event.preventDefault();switchProduct(tabs[next].dataset.product,true);
+ });
+});
+$$('.v2-feature').forEach(button=>button.addEventListener('click',()=>selectFeature(button.dataset.product,Number(button.dataset.feature))));
+$$('[data-jump]').forEach(link=>link.addEventListener('click',()=>switchProduct(link.dataset.jump)));
 
-function activateProduct(name, focus=false) {
-  if (!products.has(name)) return;
-  for (const tab of productTabs) {
-    const active = tab.dataset.product === name;
-    tab.classList.toggle('active', active);
-    tab.setAttribute('aria-selected', String(active));
-    tab.tabIndex = active ? 0 : -1;
-    if (active && focus) tab.focus();
-  }
-  for (const product of products) {
-    const panel = $('#panel-' + product);
-    const scene = $('#scene-' + product);
-    const isActive = product === name;
-    panel.hidden = !isActive;
-    scene.hidden = !isActive;
-    scene.classList.toggle('active', isActive);
-  }
-  $('.showcase-visual').dataset.active = name;
-  activateDifferential(name);
+// The Plany demonstration intentionally uses illustrative geometry.
+// Feature-specific overlays invite discovery without claiming a real screenshot.
+const planyModel=$('.v2-model',panels.plany);
+for(const [name,content] of [
+ ['v2-concept-command','<span class="v2-demo-command-icon">⌘</span><span><small>PLANY / MODO COMANDOS</small><strong>c; cai; <b>800;720;560</b><i>▌</i></strong></span>'],
+ ['v2-concept-geometry','<span class="v2-demo-geometry-icon">◇</span><span><small>ORGANIZAÇÃO CONSTRUTIVA</small><strong>Geometria → Peças → Módulos</strong></span>'],
+ ['v2-concept-drag','<span class="v2-demo-drag-icon">╱</span><span><small>INSERÇÃO VISUAL</small><strong>Arraste. Posicione. Dimensione.</strong></span>']
+]){
+ const div=document.createElement('div');div.className='v2-concept-overlay '+name;div.innerHTML=content;div.hidden=true;planyModel.append(div);
 }
 
-productTabs.forEach((tab, index) => {
-  tab.addEventListener('click', () => activateProduct(tab.dataset.product));
-  tab.addEventListener('keydown', (event) => {
-    let next = index;
-    if (event.key === 'ArrowRight') next = (index + 1) % productTabs.length;
-    else if (event.key === 'ArrowLeft') next = (index + productTabs.length - 1) % productTabs.length;
-    else if (event.key === 'Home') next = 0;
-    else if (event.key === 'End') next = productTabs.length - 1;
-    else return;
-    event.preventDefault();
-    activateProduct(productTabs[next].dataset.product, true);
-  });
-});
+const currency=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+const discount=$('#v2-discount');
+function updateExamplePricing(){
+ const discountPercent=Number(discount.value);
+ const cost=10000, base=16000;
+ const sale=base*(1-discountPercent/100);
+ const margin=sale?((sale-cost)/sale)*100:0;
+ $('#v2-discount-label').textContent=discountPercent+'%';
+ $('#v2-final-price').textContent=currency.format(sale);
+ $('#v2-real-margin').textContent=margin.toFixed(1).replace('.',',')+'%';
+ const alert=$('#v2-margin-alert'),float=$('.v2-price-float');
+ if(margin<0){
+  float.dataset.alert='loss';alert.textContent='Atenção: preço abaixo do custo neste exemplo';
+ }else if(margin<10){
+  float.dataset.alert='high';alert.textContent='Margem reduzida: revise o desconto';
+ }else{
+  float.dataset.alert='ok';alert.textContent='Margem calculada após desconto';
+ }
+}
+discount.addEventListener('input',updateExamplePricing);
+updateExamplePricing();
 
-$$('[data-jump]').forEach(link => link.addEventListener('click', () => {
-  activateProduct(link.dataset.jump);
+const stageNames=[['Projeto','2 dias'],['Corte','3 dias'],['Montagem','2 dias'],['Instalação','1 dia']];
+$$('.v2-stage[data-stage]').forEach(button=>button.addEventListener('click',()=>{
+ const index=Number(button.dataset.stage);
+ $$('.v2-stage[data-stage]').forEach(stage=>{
+  const active=stage===button;
+  stage.classList.toggle('is-current',active);
+  stage.setAttribute('aria-pressed',String(active));
+ });
+ $('#v2-stage-title').textContent=stageNames[index][0];
+ $('#v2-stage-subtitle').textContent=stageNames[index][1]+' · Demonstração de cronograma';
 }));
 
-// Each product has its own real differentiators. Navigation follows the
-// accessible keyboard pattern of the main product showcase.
-const differenceTabs = $$('.difference-tab');
-function activateDifferential(name, focus=false) {
-  if (!products.has(name)) return;
-  for (const tab of differenceTabs) {
-    const active=tab.dataset.difference===name;
-    tab.classList.toggle('is-active',active);
-    tab.setAttribute('aria-selected',String(active));
-    tab.tabIndex=active?0:-1;
-    if (active && focus) tab.focus();
-  }
-  for (const product of products) {
-    $('#difference-panel-'+product).hidden = product!==name;
-  }
-  $('.differences-content').dataset.differenceActive=name;
+const nav=$('#nav-wrap'),toggle=$('#nav-toggle');
+function setMenu(open){
+ toggle.setAttribute('aria-expanded',String(open));
+ toggle.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');
+ nav.classList.toggle('open',open);
 }
-differenceTabs.forEach((tab,index)=>{
-  tab.addEventListener('click',()=>{
-    activateProduct(tab.dataset.difference);
+toggle.addEventListener('click',()=>setMenu(toggle.getAttribute('aria-expanded')!=='true'));
+$$('#primary-nav a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape'&&nav.classList.contains('open')){setMenu(false);toggle.focus();}
+});
+document.addEventListener('click',event=>{if(nav.classList.contains('open')&&!nav.contains(event.target))setMenu(false);});
+window.matchMedia('(min-width:651px)').addEventListener('change',event=>{if(event.matches)setMenu(false);});
+$('#year').textContent=String(new Date().getFullYear());
+
+// Motion is progressive enhancement only; meaningful content never depends on animation.
+const revealTargets=$$('.v2-intro-row,.v2-heading,.v2-flow-top,.v2-flow-grid article,.v2-final-main');
+if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+ const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   if(entry.isIntersecting){entry.target.classList.add('v2-visible');observer.unobserve(entry.target);}
   });
-  tab.addEventListener('keydown',event=>{
-    let next=index;
-    if(event.key==='ArrowRight')next=(index+1)%differenceTabs.length;
-    else if(event.key==='ArrowLeft')next=(index+differenceTabs.length-1)%differenceTabs.length;
-    else if(event.key==='Home')next=0;
-    else if(event.key==='End')next=differenceTabs.length-1;
-    else return;
-    event.preventDefault();
-    activateProduct(differenceTabs[next].dataset.difference);
-    differenceTabs[next].focus();
-  });
-});
-
-const navWrap = $('#nav-wrap');
-const navToggle = $('#nav-toggle');
-const navLinks = $$('#primary-nav a');
-
-function setMenuOpen(open) {
-  navToggle.setAttribute('aria-expanded', String(open));
-  navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
-  navWrap.classList.toggle('open', open);
-}
-navToggle.addEventListener('click', () => setMenuOpen(navToggle.getAttribute('aria-expanded') !== 'true'));
-navLinks.forEach(link => link.addEventListener('click', () => setMenuOpen(false)));
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && navWrap.classList.contains('open')) {
-    setMenuOpen(false); navToggle.focus();
-  }
-});
-document.addEventListener('click', event => {
-  if (navWrap.classList.contains('open') && !navWrap.contains(event.target)) setMenuOpen(false);
-});
-window.matchMedia('(min-width:651px)').addEventListener('change', event => {
-  if (event.matches) setMenuOpen(false);
-});
-
-$('#year').textContent = String(new Date().getFullYear());
-const revealSelectors = '.principle-main, .principle-aside, .solutions-heading, .showcase, .journey-heading, .journey-step, .philosophy-header, .philosophy-details article, .final-inner';
-if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
-  const elements = $$(revealSelectors);
-  elements.forEach(node => node.setAttribute('data-reveal',''));
-  const observer = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      entry.target.classList.add('is-visible');
-      observer.unobserve(entry.target);
-    }
-  },{threshold:0.08,rootMargin:'0px 0px 40px 0px'});
-  elements.forEach(node => observer.observe(node));
-  // IntersectionObserver is an enhancement only; content remains accessible
-  // if the observer never receives callbacks (e.g. browser tab hidden).
-  window.setTimeout(() => elements.forEach(node => node.classList.add('is-visible')), 2600);
+ },{threshold:.06,rootMargin:'0px 0px 70px 0px'});
+ revealTargets.forEach(node=>{node.classList.add('v2-reveal');observer.observe(node);});
+ window.setTimeout(()=>revealTargets.forEach(node=>node.classList.add('v2-visible')),1700);
 }
 
 </script>
@@ -401,7 +834,7 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
           <div class="art-orbit art-orbit-two" aria-hidden="true"></div>
           <div class="art-grid" aria-hidden="true"></div>
           <div class="app-window editor-window">
-            <div class="window-top"><span class="window-dots"><i></i><i></i><i></i></span><span class="window-title">Estúdio de projeto</span><span class="window-right">↗</span></div>
+            <div class="window-top"><span class="window-dots"><i></i><i></i><i></i></span><span class="window-title">Plany · SketchUp (conceito)</span><span class="window-right">↗</span></div>
             <div class="editor-body"><div class="editor-tools"><span class="selected-tool">▣</span><span>▱</span><span>⌗</span><span>⊞</span><span>↗</span></div>
               <div class="furniture-canvas">
                 <div class="canvas-axis">EIXO 3D <span>●</span></div>
@@ -452,65 +885,38 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
             <div class="float-head"><span class="float-app-icon ganty-icon">Y</span><div><strong>Ganty</strong><small>Do orçamento ao planejamento</small></div><span class="float-mini">↗</span></div>
             <div class="gantt-mini" aria-hidden="true"><div class="gantt-axis"><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span></div><div class="gantt-track"><span></span></div><div class="gantt-track second"><span></span></div><div class="gantt-track third"><span></span></div></div>
           </div>
-          <div class="art-caption">Visualização conceitual do ecossistema — não representa telas reais</div>
+          <div class="art-caption">Composição ilustrativa — não representa telas reais</div>
         </div>
       </div>
       <div class="hero-edge" aria-hidden="true"><span>01 / 03</span><div></div><span>EXPLORE A EXPERIÊNCIA</span><span>↓</span></div>
     </section>
 
-    <section class="principle" id="ecossistema" aria-labelledby="principle-title">
-      <div class="container principle-inner"><div class="section-index">01 <span></span> A VISÃO</div>
-      <div class="principle-main"><h2 id="principle-title">Mais que aplicativos.<br><span>Um jeito melhor de avançar.</span></h2>
-        <div class="principle-aside"><p>Uma boa ideia não termina no desenho. Ela precisa virar proposta, decisão e trabalho organizado. O Ecossistema Y foi pensado para acompanhar esse caminho.</p><a class="subtle-link" href="#fluxo">Conheça a jornada <span>↗</span></a></div>
-      </div></div>
-      <div class="product-ticker container" aria-label="Plataformas do ecossistema">
-        <span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20214%2074%22%3E%0A%20%20%3Cpath%20d%3D%22M%20118%2026%20L%20115%2029%20L%20113%2034%20L%20113%2058%20L%20123%2058%20L%20123%2037%20L%20124%2035%20L%20128%2032%20L%20132%2032%20L%20134%2033%20L%20137%2037%20L%20137%2058%20L%20147%2058%20L%20147%2035%20L%20145%2030%20L%20140%2025%20L%20135%2023%20L%20129%2023%20L%20123%2026%20L%20122%2025%20Z%20M%2071%2030%20L%2068%2037%20L%2068%2045%20L%2070%2050%20L%2074%2055%20L%2082%2059%20L%2089%2059%20L%2096%2056%20L%2097%2058%20L%20106%2058%20L%20107%2057%20L%20107%2025%20L%20106%2024%20L%2097%2024%20L%2095%2026%20L%2089%2023%20L%2081%2023%20L%2075%2026%20Z%20M%2085%2032%20L%2090%2032%20L%2092%2033%20L%2096%2038%20L%2096%2044%20L%2095%2046%20L%2089%2050%20L%2085%2050%20L%2083%2049%20L%2078%2043%20L%2078%2039%20L%2079%2037%20Z%20M%2052%2011%20L%2052%2058%20L%2062%2058%20L%2062%2011%20Z%20M%2037%2012%20L%2034%2011%20L%204%2011%20L%204%2058%20L%2015%2058%20L%2016%2045%20L%2017%2044%20L%2031%2044%20L%2032%2043%20L%2035%2043%20L%2039%2041%20L%2044%2036%20L%2046%2031%20L%2046%2023%20L%2044%2018%20Z%20M%2016%2021%20L%2017%2020%20L%2030%2020%20L%2034%2024%20L%2035%2029%20L%2034%2031%20L%2029%2035%20L%2017%2035%20L%2016%2034%20Z%22%20fill%3D%22%23F7F7F4%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M%20197%2043%20L%20191%2047%20L%20189%2047%20L%20187%2049%20L%20184%2050%20L%20184%2066%20L%20196%2073%20L%20199%2073%20L%20211%2066%20L%20211%2050%20Z%20M%20208%2053%20L%20209%2054%20L%20209%2064%20L%20200%2070%20L%20198%2066%20L%20199%2059%20L%20202%2056%20Z%20M%20187%2053%20L%20193%2056%20L%20196%2059%20L%20196%2069%20L%20195%2070%20L%20189%2067%20L%20186%2064%20L%20186%2054%20Z%20M%20188%2051%20L%20196%2046%20L%20199%2046%20L%20207%2051%20L%20199%2056%20L%20196%2056%20Z%20M%20206%2014%20L%20192%2014%20L%20164%2040%20L%20163%2042%20L%20163%2073%20L%20167%2073%20L%20178%2063%20L%20178%2050%20L%20179%2047%20L%20206%2022%20Z%20M%20147%2014%20L%20147%2024%20L%20161%2037%20L%20164%2036%20L%20173%2027%20L%20161%2014%20Z%22%20fill%3D%22%2300E58A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="Plany" width="152" height="53"></span><span class="ticker-plus" aria-hidden="true">+</span>
-        <span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20226%2074%22%3E%0A%20%20%3Cpath%20d%3D%22M%2087%2022%20L%2080%2025%20L%2074%2031%20L%2072%2036%20L%2072%2046%20L%2076%2053%20L%2081%2057%20L%2087%2059%20L%2096%2059%20L%20102%2057%20L%20108%2052%20L%20111%2047%20L%20112%2038%20L%20109%2030%20L%20102%2024%20L%2096%2022%20Z%20M%2090%2031%20L%2096%2032%20L%20101%2038%20L%20101%2043%20L%20100%2045%20L%2096%2049%20L%2093%2050%20L%2090%2050%20L%2086%2048%20L%2084%2046%20L%2082%2041%20L%2084%2035%20Z%20M%20158%2011%20L%20147%2011%20L%20147%2025%20L%20146%2026%20L%20141%2023%20L%20133%2022%20L%20125%2025%20L%20120%2030%20L%20117%2038%20L%20117%2043%20L%20120%2051%20L%20125%2056%20L%20132%2059%20L%20139%2059%20L%20145%2056%20L%20148%2058%20L%20158%2058%20Z%20M%20137%2031%20L%20141%2032%20L%20147%2039%20L%20146%2045%20L%20142%2049%20L%20139%2050%20L%20135%2050%20L%20133%2049%20L%20128%2043%20L%20128%2038%20L%20129%2036%20L%20132%2033%20Z%20M%208%2011%20L%208%2058%20L%2019%2058%20L%2020%2057%20L%2020%2032%20L%2021%2031%20L%2025%2035%20L%2033%2047%20L%2040%2047%20L%2052%2031%20L%2053%2032%20L%2053%2057%20L%2054%2058%20L%2065%2058%20L%2065%2049%20L%2066%2048%20L%2065%2046%20L%2065%2041%20L%2066%2040%20L%2066%2033%20L%2065%2032%20L%2065%2029%20L%2066%2028%20L%2066%2012%20L%2065%2011%20L%2053%2011%20L%2037%2033%20L%2033%2029%20L%2021%2011%20Z%22%20fill%3D%22%23F7F7F4%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M%20205%2067%20L%20203%2067%20L%20204%2069%20Z%20M%20213%2066%20L%20212%2068%20L%20214%2069%20L%20214%2066%20Z%20M%20208%2066%20L%20208%2068%20L%20210%2068%20L%20210%2067%20Z%20M%20214%2062%20L%20213%2062%20L%20212%2064%20L%20214%2064%20Z%20M%20207%2063%20L%20210%2064%20L%20209%2062%20Z%20M%20204%2062%20L%20203%2064%20L%20205%2064%20Z%20M%20212%2058%20L%20212%2060%20L%20214%2060%20L%20214%2058%20Z%20M%20208%2058%20L%20208%2060%20L%20210%2060%20L%20210%2059%20Z%20M%20203%2058%20L%20203%2060%20L%20205%2060%20L%20205%2058%20Z%20M%20198%2048%20L%20198%2072%20L%20199%2073%20L%20218%2073%20L%20219%2072%20L%20219%2048%20L%20217%2046%20L%20201%2046%20Z%20M%20200%2057%20L%20201%2056%20L%20216%2056%20L%20217%2057%20L%20217%2070%20L%20216%2071%20L%20201%2071%20L%20200%2070%20Z%20M%20200%2050%20L%20202%2048%20L%20216%2048%20L%20217%2049%20L%20217%2053%20L%20216%2054%20L%20202%2054%20L%20200%2052%20Z%20M%20163%2015%20L%20163%2024%20L%20176%2037%20L%20188%2027%20L%20176%2015%20Z%20M%20220%2014%20L%20207%2014%20L%20179%2040%20L%20178%2042%20L%20178%2073%20L%20182%2073%20L%20193%2063%20L%20193%2048%20L%20220%2022%20Z%22%20fill%3D%22%23FFD21A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="Mody" width="152" height="53"></span><span class="ticker-plus" aria-hidden="true">+</span>
-        <span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20230%2074%22%3E%0A%20%20%3Cpath%20d%3D%22M%20110%2025%20L%20106%2029%20L%20104%2035%20L%20104%2057%20L%20105%2058%20L%20114%2058%20L%20115%2057%20L%20115%2036%20L%20120%2032%20L%20124%2032%20L%20127%2034%20L%20129%2038%20L%20129%2058%20L%20139%2058%20L%20139%2035%20L%20137%2030%20L%20132%2025%20L%20127%2023%20L%20120%2023%20L%20115%2026%20L%20114%2025%20Z%20M%2062%2030%20L%2059%2037%20L%2059%2045%20L%2062%2052%20L%2065%2055%20L%2073%2059%20L%2080%2059%20L%2085%2057%20L%2087%2055%20L%2089%2058%20L%2098%2058%20L%2098%2024%20L%2088%2024%20L%2088%2025%20L%2086%2026%20L%2081%2023%20L%2072%2023%20L%2066%2026%20Z%20M%2076%2032%20L%2081%2032%20L%2083%2033%20L%2087%2038%20L%2087%2044%20L%2086%2046%20L%2083%2049%20L%2080%2050%20L%2076%2050%20L%2074%2049%20L%2070%2045%20L%2069%2042%20L%2070%2037%20Z%20M%20147%2013%20L%20146%2014%20L%20146%2023%20L%20143%2024%20L%20143%2028%20L%20146%2031%20L%20146%2048%20L%20147%2049%20L%20147%2052%20L%20150%2056%20L%20154%2058%20L%20164%2058%20L%20164%2050%20L%20163%2049%20L%20159%2049%20L%20156%2046%20L%20156%2033%20L%20157%2032%20L%20162%2032%20L%20162%2024%20L%20157%2024%20L%20156%2023%20L%20156%2013%20Z%20M%2021%2011%20L%2015%2014%20L%208%2021%20L%206%2025%20L%205%2031%20L%204%2032%20L%204%2038%20L%208%2048%20L%2015%2055%20L%2025%2059%20L%2036%2059%20L%2046%2055%20L%2053%2047%20L%2053%2041%20L%2054%2040%20L%2054%2032%20L%2053%2031%20L%2031%2031%20L%2030%2032%20L%2030%2038%20L%2032%2040%20L%2042%2040%20L%2043%2041%20L%2043%2043%20L%2039%2047%20L%2035%2049%20L%2026%2049%20L%2021%2046%20L%2017%2041%20L%2016%2038%20L%2016%2031%20L%2017%2028%20L%2023%2022%20L%2027%2020%20L%2034%2020%20L%2043%2024%20L%2049%2018%20L%2049%2016%20L%2040%2011%20L%2037%2011%20L%2036%2010%20L%2025%2010%20L%2024%2011%20Z%22%20fill%3D%22%23F7F7F4%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M%20199%2066%20L%20199%2069%20L%20222%2069%20L%20222%2065%20L%20200%2065%20Z%20M%20199%2058%20L%20199%2062%20L%20212%2062%20L%20212%2058%20Z%20M%20205%2051%20L%20205%2055%20L%20206%2056%20L%20227%2056%20L%20227%2051%20Z%20M%20166%2022%20L%20166%2028%20L%20167%2030%20L%20178%2040%20L%20188%2032%20L%20188%2030%20L%20186%2027%20L%20185%2027%20L%20180%2021%20L%20167%2021%20Z%20M%20218%2020%20L%20206%2020%20L%20181%2043%20L%20180%2045%20L%20180%2073%20L%20184%2073%20L%20194%2064%20L%20194%2050%20L%20218%2028%20L%20219%2025%20Z%22%20fill%3D%22%23168BFF%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="Ganty" width="152" height="53"></span>
-        <span class="ticker-note">TRÊS SOLUÇÕES, UM MESMO PROPÓSITO</span>
-      </div>
-    </section>
-
-    <section class="solutions" id="solucoes" aria-labelledby="solutions-title">
-      <div class="container"><div class="section-index dark-index">02 <span></span> NOSSAS SOLUÇÕES</div>
-      <div class="solutions-heading"><h2 id="solutions-title">Sua melhor ferramenta.<br><span>Em cada etapa.</span></h2><p>Conheça os aplicativos que formam o ecossistema. Cada um com sua especialidade, todos com uma direção em comum.</p></div>
-      <div class="showcase" id="showcase">
-        <div class="showcase-info">
-          <div class="showcase-tabs" role="tablist" aria-label="Selecione um aplicativo">
-            <button class="showcase-tab active" id="tab-plany" type="button" role="tab" aria-controls="panel-plany" aria-selected="true" data-product="plany"><span class="app-logo-mini"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20104%2091%22%20width%3D%22104%22%20height%3D%2291%22%3E%0A%20%20%3Cpath%20d%3D%22M%2071%2057%20L%2060%2063%20L%2059%2078%20L%2060%2080%20L%2073%2087%20L%2087%2079%20L%2087%2064%20L%2074%2057%20Z%20M%2084%2067%20L%2085%2068%20L%2085%2078%20L%2075%2083%20L%2074%2082%20L%2074%2072%20Z%20M%2062%2067%20L%2072%2072%20L%2072%2082%20L%2071%2083%20L%2064%2080%20L%2061%2077%20Z%20M%2064%2064%20L%2074%2059%20L%2081%2063%20L%2082%2065%20L%2073%2070%20L%2065%2066%20Z%20M%2082%2026%20L%2067%2027%20L%2039%2054%20L%2039%2086%20L%2040%2087%20L%2054%2075%20L%2054%2061%20L%2083%2034%20Z%20M%2020%2027%20L%2020%2035%20L%2035%2050%20L%2038%2050%20L%2047%2041%20L%2033%2026%20L%2021%2026%20Z%22%20fill%3D%22%2300E58A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""></span> Plany <span class="tab-arrow">↗</span></button>
-            <button class="showcase-tab" id="tab-mody" type="button" role="tab" aria-controls="panel-mody" aria-selected="false" data-product="mody" tabindex="-1"><span class="app-logo-mini"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2070%2068%22%20width%3D%2270%22%20height%3D%2268%22%3E%0A%20%20%3Cpath%20d%3D%22M%2057%2057%20L%2059%2059%20L%2059%2057%20Z%20M%2052%2057%20L%2053%2059%20L%2055%2058%20L%2055%2057%20Z%20M%2048%2057%20L%2048%2059%20L%2050%2059%20L%2050%2057%20Z%20M%2057%2053%20L%2058%2055%20L%2060%2054%20Z%20M%2052%2053%20L%2053%2055%20L%2055%2054%20L%2055%2053%20Z%20M%2048%2053%20L%2048%2055%20L%2050%2055%20L%2050%2053%20Z%20M%2057%2049%20L%2058%2051%20L%2060%2050%20Z%20M%2055%2049%20L%2052%2050%20L%2054%2051%20Z%20M%2049%2048%20L%2048%2049%20L%2049%2051%20L%2050%2050%20Z%20M%2043%2038%20L%2043%2062%20L%2045%2064%20L%2063%2064%20L%2064%2063%20L%2064%2038%20L%2063%2037%20Z%20M%2045%2048%20L%2047%2046%20L%2061%2046%20L%2062%2047%20L%2062%2061%20L%2061%2062%20L%2047%2062%20L%2045%2060%20Z%20M%2045%2040%20L%2046%2039%20L%2061%2039%20L%2062%2043%20L%2061%2044%20L%2046%2044%20Z%20M%2065%203%20L%2052%203%20L%2022%2031%20L%2022%2063%20L%2023%2064%20L%2026%2063%20L%2037%2053%20L%2037%2039%20L%2066%2012%20Z%20M%203%204%20L%203%2013%20L%2019%2028%20L%2030%2019%20L%2030%2017%20L%2017%204%20L%206%204%20L%205%203%20Z%22%20fill%3D%22%23FFD21A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""></span> Mody <span class="tab-arrow">↗</span></button>
-            <button class="showcase-tab" id="tab-ganty" type="button" role="tab" aria-controls="panel-ganty" aria-selected="false" data-product="ganty" tabindex="-1"><span class="app-logo-mini"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20102%2088%22%20width%3D%22102%22%20height%3D%2288%22%3E%0A%20%20%3Cpath%20d%3D%22M%2062%2077%20L%2062%2082%20L%2087%2082%20L%2087%2076%20Z%20M%2057%2070%20L%2057%2074%20L%2071%2074%20L%2072%2073%20L%2071%2069%20L%2058%2069%20Z%20M%2063%2063%20L%2063%2067%20L%2079%2067%20L%2080%2066%20L%2079%2062%20L%2064%2062%20Z%20M%2080%2025%20L%2067%2025%20L%2037%2053%20L%2037%2084%20L%2041%2084%20L%2052%2074%20L%2052%2060%20L%2080%2034%20L%2081%2032%20Z%20M%2019%2026%20L%2019%2035%20L%2034%2049%20L%2036%2049%20L%2046%2039%20L%2032%2025%20L%2020%2025%20Z%20M%203%2048%20L%203%2018%20L%207%2010%20L%2013%205%20L%2020%203%20L%2022%204%20L%2025%203%20L%2083%203%20L%2092%207%20L%2098%2015%20L%2098%2018%20L%2098%2015%20L%2094%208%20L%2084%203%20L%2018%203%20L%2014%204%20L%206%2010%20L%203%2017%20Z%22%20fill%3D%22%23168BFF%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""></span> Ganty <span class="tab-arrow">↗</span></button>
-          </div>
-          <div class="showcase-text" id="panel-plany" role="tabpanel" aria-labelledby="tab-plany">
-            <span class="showcase-num">01 / PROJETAR</span>
-            <img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20214%2074%22%3E%0A%20%20%3Cpath%20d%3D%22M%20118%2026%20L%20115%2029%20L%20113%2034%20L%20113%2058%20L%20123%2058%20L%20123%2037%20L%20124%2035%20L%20128%2032%20L%20132%2032%20L%20134%2033%20L%20137%2037%20L%20137%2058%20L%20147%2058%20L%20147%2035%20L%20145%2030%20L%20140%2025%20L%20135%2023%20L%20129%2023%20L%20123%2026%20L%20122%2025%20Z%20M%2071%2030%20L%2068%2037%20L%2068%2045%20L%2070%2050%20L%2074%2055%20L%2082%2059%20L%2089%2059%20L%2096%2056%20L%2097%2058%20L%20106%2058%20L%20107%2057%20L%20107%2025%20L%20106%2024%20L%2097%2024%20L%2095%2026%20L%2089%2023%20L%2081%2023%20L%2075%2026%20Z%20M%2085%2032%20L%2090%2032%20L%2092%2033%20L%2096%2038%20L%2096%2044%20L%2095%2046%20L%2089%2050%20L%2085%2050%20L%2083%2049%20L%2078%2043%20L%2078%2039%20L%2079%2037%20Z%20M%2052%2011%20L%2052%2058%20L%2062%2058%20L%2062%2011%20Z%20M%2037%2012%20L%2034%2011%20L%204%2011%20L%204%2058%20L%2015%2058%20L%2016%2045%20L%2017%2044%20L%2031%2044%20L%2032%2043%20L%2035%2043%20L%2039%2041%20L%2044%2036%20L%2046%2031%20L%2046%2023%20L%2044%2018%20Z%20M%2016%2021%20L%2017%2020%20L%2030%2020%20L%2034%2024%20L%2035%2029%20L%2034%2031%20L%2029%2035%20L%2017%2035%20L%2016%2034%20Z%22%20fill%3D%22%23F7F7F4%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M%20197%2043%20L%20191%2047%20L%20189%2047%20L%20187%2049%20L%20184%2050%20L%20184%2066%20L%20196%2073%20L%20199%2073%20L%20211%2066%20L%20211%2050%20Z%20M%20208%2053%20L%20209%2054%20L%20209%2064%20L%20200%2070%20L%20198%2066%20L%20199%2059%20L%20202%2056%20Z%20M%20187%2053%20L%20193%2056%20L%20196%2059%20L%20196%2069%20L%20195%2070%20L%20189%2067%20L%20186%2064%20L%20186%2054%20Z%20M%20188%2051%20L%20196%2046%20L%20199%2046%20L%20207%2051%20L%20199%2056%20L%20196%2056%20Z%20M%20206%2014%20L%20192%2014%20L%20164%2040%20L%20163%2042%20L%20163%2073%20L%20167%2073%20L%20178%2063%20L%20178%2050%20L%20179%2047%20L%20206%2022%20Z%20M%20147%2014%20L%20147%2024%20L%20161%2037%20L%20164%2036%20L%20173%2027%20L%20161%2014%20Z%22%20fill%3D%22%2300E58A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="Plany" class="showcase-logo">
-            <h3>Da ideia ao <em>projeto.</em></h3>
-            <p>Uma nova maneira de pensar a criação de móveis: transformar medidas, materiais e soluções construtivas em projetos bem estruturados.</p>
-            <div class="feature-tags"><span>Modelagem</span><span>Materiais</span><span>Organização de peças</span></div>
-          </div>
-          <div class="showcase-text" id="panel-mody" role="tabpanel" aria-labelledby="tab-mody" hidden>
-            <span class="showcase-num">02 / ORÇAR</span>
-            <img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20226%2074%22%3E%0A%20%20%3Cpath%20d%3D%22M%2087%2022%20L%2080%2025%20L%2074%2031%20L%2072%2036%20L%2072%2046%20L%2076%2053%20L%2081%2057%20L%2087%2059%20L%2096%2059%20L%20102%2057%20L%20108%2052%20L%20111%2047%20L%20112%2038%20L%20109%2030%20L%20102%2024%20L%2096%2022%20Z%20M%2090%2031%20L%2096%2032%20L%20101%2038%20L%20101%2043%20L%20100%2045%20L%2096%2049%20L%2093%2050%20L%2090%2050%20L%2086%2048%20L%2084%2046%20L%2082%2041%20L%2084%2035%20Z%20M%20158%2011%20L%20147%2011%20L%20147%2025%20L%20146%2026%20L%20141%2023%20L%20133%2022%20L%20125%2025%20L%20120%2030%20L%20117%2038%20L%20117%2043%20L%20120%2051%20L%20125%2056%20L%20132%2059%20L%20139%2059%20L%20145%2056%20L%20148%2058%20L%20158%2058%20Z%20M%20137%2031%20L%20141%2032%20L%20147%2039%20L%20146%2045%20L%20142%2049%20L%20139%2050%20L%20135%2050%20L%20133%2049%20L%20128%2043%20L%20128%2038%20L%20129%2036%20L%20132%2033%20Z%20M%208%2011%20L%208%2058%20L%2019%2058%20L%2020%2057%20L%2020%2032%20L%2021%2031%20L%2025%2035%20L%2033%2047%20L%2040%2047%20L%2052%2031%20L%2053%2032%20L%2053%2057%20L%2054%2058%20L%2065%2058%20L%2065%2049%20L%2066%2048%20L%2065%2046%20L%2065%2041%20L%2066%2040%20L%2066%2033%20L%2065%2032%20L%2065%2029%20L%2066%2028%20L%2066%2012%20L%2065%2011%20L%2053%2011%20L%2037%2033%20L%2033%2029%20L%2021%2011%20Z%22%20fill%3D%22%23F7F7F4%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M%20205%2067%20L%20203%2067%20L%20204%2069%20Z%20M%20213%2066%20L%20212%2068%20L%20214%2069%20L%20214%2066%20Z%20M%20208%2066%20L%20208%2068%20L%20210%2068%20L%20210%2067%20Z%20M%20214%2062%20L%20213%2062%20L%20212%2064%20L%20214%2064%20Z%20M%20207%2063%20L%20210%2064%20L%20209%2062%20Z%20M%20204%2062%20L%20203%2064%20L%20205%2064%20Z%20M%20212%2058%20L%20212%2060%20L%20214%2060%20L%20214%2058%20Z%20M%20208%2058%20L%20208%2060%20L%20210%2060%20L%20210%2059%20Z%20M%20203%2058%20L%20203%2060%20L%20205%2060%20L%20205%2058%20Z%20M%20198%2048%20L%20198%2072%20L%20199%2073%20L%20218%2073%20L%20219%2072%20L%20219%2048%20L%20217%2046%20L%20201%2046%20Z%20M%20200%2057%20L%20201%2056%20L%20216%2056%20L%20217%2057%20L%20217%2070%20L%20216%2071%20L%20201%2071%20L%20200%2070%20Z%20M%20200%2050%20L%20202%2048%20L%20216%2048%20L%20217%2049%20L%20217%2053%20L%20216%2054%20L%20202%2054%20L%20200%2052%20Z%20M%20163%2015%20L%20163%2024%20L%20176%2037%20L%20188%2027%20L%20176%2015%20Z%20M%20220%2014%20L%20207%2014%20L%20179%2040%20L%20178%2042%20L%20178%2073%20L%20182%2073%20L%20193%2063%20L%20193%2048%20L%20220%2022%20Z%22%20fill%3D%22%23FFD21A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="Mody" class="showcase-logo">
-            <h3>Do projeto ao <em>orçamento.</em></h3>
-            <p>Mais clareza para estruturar custos e transformar projetos em propostas comerciais organizadas, com escolhas feitas com confiança.</p>
-            <div class="feature-tags"><span>Precificação</span><span>Ambientes</span><span>Propostas</span></div>
-          </div>
-          <div class="showcase-text" id="panel-ganty" role="tabpanel" aria-labelledby="tab-ganty" hidden>
-            <span class="showcase-num">03 / PLANEJAR</span>
-            <img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20230%2074%22%3E%0A%20%20%3Cpath%20d%3D%22M%20110%2025%20L%20106%2029%20L%20104%2035%20L%20104%2057%20L%20105%2058%20L%20114%2058%20L%20115%2057%20L%20115%2036%20L%20120%2032%20L%20124%2032%20L%20127%2034%20L%20129%2038%20L%20129%2058%20L%20139%2058%20L%20139%2035%20L%20137%2030%20L%20132%2025%20L%20127%2023%20L%20120%2023%20L%20115%2026%20L%20114%2025%20Z%20M%2062%2030%20L%2059%2037%20L%2059%2045%20L%2062%2052%20L%2065%2055%20L%2073%2059%20L%2080%2059%20L%2085%2057%20L%2087%2055%20L%2089%2058%20L%2098%2058%20L%2098%2024%20L%2088%2024%20L%2088%2025%20L%2086%2026%20L%2081%2023%20L%2072%2023%20L%2066%2026%20Z%20M%2076%2032%20L%2081%2032%20L%2083%2033%20L%2087%2038%20L%2087%2044%20L%2086%2046%20L%2083%2049%20L%2080%2050%20L%2076%2050%20L%2074%2049%20L%2070%2045%20L%2069%2042%20L%2070%2037%20Z%20M%20147%2013%20L%20146%2014%20L%20146%2023%20L%20143%2024%20L%20143%2028%20L%20146%2031%20L%20146%2048%20L%20147%2049%20L%20147%2052%20L%20150%2056%20L%20154%2058%20L%20164%2058%20L%20164%2050%20L%20163%2049%20L%20159%2049%20L%20156%2046%20L%20156%2033%20L%20157%2032%20L%20162%2032%20L%20162%2024%20L%20157%2024%20L%20156%2023%20L%20156%2013%20Z%20M%2021%2011%20L%2015%2014%20L%208%2021%20L%206%2025%20L%205%2031%20L%204%2032%20L%204%2038%20L%208%2048%20L%2015%2055%20L%2025%2059%20L%2036%2059%20L%2046%2055%20L%2053%2047%20L%2053%2041%20L%2054%2040%20L%2054%2032%20L%2053%2031%20L%2031%2031%20L%2030%2032%20L%2030%2038%20L%2032%2040%20L%2042%2040%20L%2043%2041%20L%2043%2043%20L%2039%2047%20L%2035%2049%20L%2026%2049%20L%2021%2046%20L%2017%2041%20L%2016%2038%20L%2016%2031%20L%2017%2028%20L%2023%2022%20L%2027%2020%20L%2034%2020%20L%2043%2024%20L%2049%2018%20L%2049%2016%20L%2040%2011%20L%2037%2011%20L%2036%2010%20L%2025%2010%20L%2024%2011%20Z%22%20fill%3D%22%23F7F7F4%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M%20199%2066%20L%20199%2069%20L%20222%2069%20L%20222%2065%20L%20200%2065%20Z%20M%20199%2058%20L%20199%2062%20L%20212%2062%20L%20212%2058%20Z%20M%20205%2051%20L%20205%2055%20L%20206%2056%20L%20227%2056%20L%20227%2051%20Z%20M%20166%2022%20L%20166%2028%20L%20167%2030%20L%20178%2040%20L%20188%2032%20L%20188%2030%20L%20186%2027%20L%20185%2027%20L%20180%2021%20L%20167%2021%20Z%20M%20218%2020%20L%20206%2020%20L%20181%2043%20L%20180%2045%20L%20180%2073%20L%20184%2073%20L%20194%2064%20L%20194%2050%20L%20218%2028%20L%20219%2025%20Z%22%20fill%3D%22%23168BFF%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="Ganty" class="showcase-logo">
-            <h3>Do orçamento ao <em>planejamento.</em></h3>
-            <p>Transforme compromissos em uma visão clara da execução. Organize etapas, acompanhe prazos e enxergue o andamento do trabalho.</p>
-            <div class="feature-tags"><span>Cronogramas</span><span>Etapas</span><span>Visão de obra</span></div>
-          </div>
-          <p class="showcase-disclaimer">Prévia conceitual — a interface apresentada é ilustrativa.</p>
-        </div>
-        <div class="showcase-visual" data-active="plany">
-          <div class="showcase-visual-grid" aria-hidden="true"></div><div class="showcase-aurora" aria-hidden="true"></div>
-          <div class="scene active" id="scene-plany">
-            <div class="ui-window ui-plany">
-              <div class="ui-top"><span class="window-dots"><i></i><i></i><i></i></span><span>Ambiente / Projeto 01</span><small>● Conceito</small></div>
-              <div class="ui-editor"><div class="ui-side"><span>▧</span><span>◇</span><span>▤</span><span>⌗</span></div>
-                <svg viewBox="0 0 520 360" aria-hidden="true" class="showcase-cabinet">
+    
+<section class="v2-intro" id="ecossistema" aria-labelledby="v2-intro-title">
+<div class="container v2-intro-row"><div class="v2-intro-copy"><span class="v2-kicker dark">01 / O ECOSSISTEMA</span><h2 id="v2-intro-title">Um trabalho.<br><em>Três desafios reais.</em></h2></div><p>Projetar bem é só o começo. Também é preciso saber quanto cobrar e quando entregar. Por isso cada ferramenta do Ecossistema Y tem uma especialidade — e uma razão clara para existir.</p></div>
+<div class="container v2-intro-track" aria-label="Três especialidades"><div><span class="v2-track-num">01</span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20104%2091%22%20width%3D%22104%22%20height%3D%2291%22%3E%0A%20%20%3Cpath%20d%3D%22M%2071%2057%20L%2060%2063%20L%2059%2078%20L%2060%2080%20L%2073%2087%20L%2087%2079%20L%2087%2064%20L%2074%2057%20Z%20M%2084%2067%20L%2085%2068%20L%2085%2078%20L%2075%2083%20L%2074%2082%20L%2074%2072%20Z%20M%2062%2067%20L%2072%2072%20L%2072%2082%20L%2071%2083%20L%2064%2080%20L%2061%2077%20Z%20M%2064%2064%20L%2074%2059%20L%2081%2063%20L%2082%2065%20L%2073%2070%20L%2065%2066%20Z%20M%2082%2026%20L%2067%2027%20L%2039%2054%20L%2039%2086%20L%2040%2087%20L%2054%2075%20L%2054%2061%20L%2083%2034%20Z%20M%2020%2027%20L%2020%2035%20L%2035%2050%20L%2038%2050%20L%2047%2041%20L%2033%2026%20L%2021%2026%20Z%22%20fill%3D%22%2300E58A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""><strong>Projetar</strong></div><span class="v2-track-link" aria-hidden="true">→</span><div><span class="v2-track-num">02</span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2070%2068%22%20width%3D%2270%22%20height%3D%2268%22%3E%0A%20%20%3Cpath%20d%3D%22M%2057%2057%20L%2059%2059%20L%2059%2057%20Z%20M%2052%2057%20L%2053%2059%20L%2055%2058%20L%2055%2057%20Z%20M%2048%2057%20L%2048%2059%20L%2050%2059%20L%2050%2057%20Z%20M%2057%2053%20L%2058%2055%20L%2060%2054%20Z%20M%2052%2053%20L%2053%2055%20L%2055%2054%20L%2055%2053%20Z%20M%2048%2053%20L%2048%2055%20L%2050%2055%20L%2050%2053%20Z%20M%2057%2049%20L%2058%2051%20L%2060%2050%20Z%20M%2055%2049%20L%2052%2050%20L%2054%2051%20Z%20M%2049%2048%20L%2048%2049%20L%2049%2051%20L%2050%2050%20Z%20M%2043%2038%20L%2043%2062%20L%2045%2064%20L%2063%2064%20L%2064%2063%20L%2064%2038%20L%2063%2037%20Z%20M%2045%2048%20L%2047%2046%20L%2061%2046%20L%2062%2047%20L%2062%2061%20L%2061%2062%20L%2047%2062%20L%2045%2060%20Z%20M%2045%2040%20L%2046%2039%20L%2061%2039%20L%2062%2043%20L%2061%2044%20L%2046%2044%20Z%20M%2065%203%20L%2052%203%20L%2022%2031%20L%2022%2063%20L%2023%2064%20L%2026%2063%20L%2037%2053%20L%2037%2039%20L%2066%2012%20Z%20M%203%204%20L%203%2013%20L%2019%2028%20L%2030%2019%20L%2030%2017%20L%2017%204%20L%206%204%20L%205%203%20Z%22%20fill%3D%22%23FFD21A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""><strong>Orçar</strong></div><span class="v2-track-link" aria-hidden="true">→</span><div><span class="v2-track-num">03</span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20102%2088%22%20width%3D%22102%22%20height%3D%2288%22%3E%0A%20%20%3Cpath%20d%3D%22M%2062%2077%20L%2062%2082%20L%2087%2082%20L%2087%2076%20Z%20M%2057%2070%20L%2057%2074%20L%2071%2074%20L%2072%2073%20L%2071%2069%20L%2058%2069%20Z%20M%2063%2063%20L%2063%2067%20L%2079%2067%20L%2080%2066%20L%2079%2062%20L%2064%2062%20Z%20M%2080%2025%20L%2067%2025%20L%2037%2053%20L%2037%2084%20L%2041%2084%20L%2052%2074%20L%2052%2060%20L%2080%2034%20L%2081%2032%20Z%20M%2019%2026%20L%2019%2035%20L%2034%2049%20L%2036%2049%20L%2046%2039%20L%2032%2025%20L%2020%2025%20Z%20M%203%2048%20L%203%2018%20L%207%2010%20L%2013%205%20L%2020%203%20L%2022%204%20L%2025%203%20L%2083%203%20L%2092%207%20L%2098%2015%20L%2098%2018%20L%2098%2015%20L%2094%208%20L%2084%203%20L%2018%203%20L%2014%204%20L%206%2010%20L%203%2017%20Z%22%20fill%3D%22%23168BFF%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""><strong>Planejar</strong></div></div>
+</section>
+<section class="v2-solutions" id="solucoes" aria-labelledby="v2-solutions-title">
+<div class="container">
+<div class="v2-heading"><div><span class="v2-kicker dark">02 / AS SOLUÇÕES</span><h2 id="v2-solutions-title">Não é sobre ter mais ferramentas.<br><em>É sobre ter as certas.</em></h2></div><p>Explore o que muda na prática. Selecione um aplicativo e descubra recursos que realmente fazem diferença no trabalho.</p></div>
+<div class="v2-product-navigation" role="tablist" aria-label="Explore os aplicativos do Ecossistema Y"><button type="button" role="tab" class="v2-tab is-current" id="v2-tab-plany" aria-controls="v2-panel-plany" aria-selected="true" tabindex="0" data-product="plany"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20104%2091%22%20width%3D%22104%22%20height%3D%2291%22%3E%0A%20%20%3Cpath%20d%3D%22M%2071%2057%20L%2060%2063%20L%2059%2078%20L%2060%2080%20L%2073%2087%20L%2087%2079%20L%2087%2064%20L%2074%2057%20Z%20M%2084%2067%20L%2085%2068%20L%2085%2078%20L%2075%2083%20L%2074%2082%20L%2074%2072%20Z%20M%2062%2067%20L%2072%2072%20L%2072%2082%20L%2071%2083%20L%2064%2080%20L%2061%2077%20Z%20M%2064%2064%20L%2074%2059%20L%2081%2063%20L%2082%2065%20L%2073%2070%20L%2065%2066%20Z%20M%2082%2026%20L%2067%2027%20L%2039%2054%20L%2039%2086%20L%2040%2087%20L%2054%2075%20L%2054%2061%20L%2083%2034%20Z%20M%2020%2027%20L%2020%2035%20L%2035%2050%20L%2038%2050%20L%2047%2041%20L%2033%2026%20L%2021%2026%20Z%22%20fill%3D%22%2300E58A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""><span>Plany<small>projetar</small></span><span class="v2-tab-arrow" aria-hidden="true">↗</span></button>
+<button type="button" role="tab" class="v2-tab " id="v2-tab-mody" aria-controls="v2-panel-mody" aria-selected="false" tabindex="-1" data-product="mody"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2070%2068%22%20width%3D%2270%22%20height%3D%2268%22%3E%0A%20%20%3Cpath%20d%3D%22M%2057%2057%20L%2059%2059%20L%2059%2057%20Z%20M%2052%2057%20L%2053%2059%20L%2055%2058%20L%2055%2057%20Z%20M%2048%2057%20L%2048%2059%20L%2050%2059%20L%2050%2057%20Z%20M%2057%2053%20L%2058%2055%20L%2060%2054%20Z%20M%2052%2053%20L%2053%2055%20L%2055%2054%20L%2055%2053%20Z%20M%2048%2053%20L%2048%2055%20L%2050%2055%20L%2050%2053%20Z%20M%2057%2049%20L%2058%2051%20L%2060%2050%20Z%20M%2055%2049%20L%2052%2050%20L%2054%2051%20Z%20M%2049%2048%20L%2048%2049%20L%2049%2051%20L%2050%2050%20Z%20M%2043%2038%20L%2043%2062%20L%2045%2064%20L%2063%2064%20L%2064%2063%20L%2064%2038%20L%2063%2037%20Z%20M%2045%2048%20L%2047%2046%20L%2061%2046%20L%2062%2047%20L%2062%2061%20L%2061%2062%20L%2047%2062%20L%2045%2060%20Z%20M%2045%2040%20L%2046%2039%20L%2061%2039%20L%2062%2043%20L%2061%2044%20L%2046%2044%20Z%20M%2065%203%20L%2052%203%20L%2022%2031%20L%2022%2063%20L%2023%2064%20L%2026%2063%20L%2037%2053%20L%2037%2039%20L%2066%2012%20Z%20M%203%204%20L%203%2013%20L%2019%2028%20L%2030%2019%20L%2030%2017%20L%2017%204%20L%206%204%20L%205%203%20Z%22%20fill%3D%22%23FFD21A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""><span>Mody<small>orçar</small></span><span class="v2-tab-arrow" aria-hidden="true">↗</span></button>
+<button type="button" role="tab" class="v2-tab " id="v2-tab-ganty" aria-controls="v2-panel-ganty" aria-selected="false" tabindex="-1" data-product="ganty"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20102%2088%22%20width%3D%22102%22%20height%3D%2288%22%3E%0A%20%20%3Cpath%20d%3D%22M%2062%2077%20L%2062%2082%20L%2087%2082%20L%2087%2076%20Z%20M%2057%2070%20L%2057%2074%20L%2071%2074%20L%2072%2073%20L%2071%2069%20L%2058%2069%20Z%20M%2063%2063%20L%2063%2067%20L%2079%2067%20L%2080%2066%20L%2079%2062%20L%2064%2062%20Z%20M%2080%2025%20L%2067%2025%20L%2037%2053%20L%2037%2084%20L%2041%2084%20L%2052%2074%20L%2052%2060%20L%2080%2034%20L%2081%2032%20Z%20M%2019%2026%20L%2019%2035%20L%2034%2049%20L%2036%2049%20L%2046%2039%20L%2032%2025%20L%2020%2025%20Z%20M%203%2048%20L%203%2018%20L%207%2010%20L%2013%205%20L%2020%203%20L%2022%204%20L%2025%203%20L%2083%203%20L%2092%207%20L%2098%2015%20L%2098%2018%20L%2098%2015%20L%2094%208%20L%2084%203%20L%2018%203%20L%2014%204%20L%206%2010%20L%203%2017%20Z%22%20fill%3D%22%23168BFF%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""><span>Ganty<small>planejar</small></span><span class="v2-tab-arrow" aria-hidden="true">↗</span></button></div>
+<div class="v2-product-stage"><article role="tabpanel" class="v2-product v2-plany" id="v2-panel-plany" aria-labelledby="v2-tab-plany"  data-feature="0">
+<div class="v2-product-copy">
+  <div class="v2-product-eyebrow"><span>01 / PROJETAR</span><span>PARTE DO ECOSSISTEMA Y</span></div>
+  <div class="v2-product-mark"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20214%2074%22%3E%0A%20%20%3Cpath%20d%3D%22M%20118%2026%20L%20115%2029%20L%20113%2034%20L%20113%2058%20L%20123%2058%20L%20123%2037%20L%20124%2035%20L%20128%2032%20L%20132%2032%20L%20134%2033%20L%20137%2037%20L%20137%2058%20L%20147%2058%20L%20147%2035%20L%20145%2030%20L%20140%2025%20L%20135%2023%20L%20129%2023%20L%20123%2026%20L%20122%2025%20Z%20M%2071%2030%20L%2068%2037%20L%2068%2045%20L%2070%2050%20L%2074%2055%20L%2082%2059%20L%2089%2059%20L%2096%2056%20L%2097%2058%20L%20106%2058%20L%20107%2057%20L%20107%2025%20L%20106%2024%20L%2097%2024%20L%2095%2026%20L%2089%2023%20L%2081%2023%20L%2075%2026%20Z%20M%2085%2032%20L%2090%2032%20L%2092%2033%20L%2096%2038%20L%2096%2044%20L%2095%2046%20L%2089%2050%20L%2085%2050%20L%2083%2049%20L%2078%2043%20L%2078%2039%20L%2079%2037%20Z%20M%2052%2011%20L%2052%2058%20L%2062%2058%20L%2062%2011%20Z%20M%2037%2012%20L%2034%2011%20L%204%2011%20L%204%2058%20L%2015%2058%20L%2016%2045%20L%2017%2044%20L%2031%2044%20L%2032%2043%20L%2035%2043%20L%2039%2041%20L%2044%2036%20L%2046%2031%20L%2046%2023%20L%2044%2018%20Z%20M%2016%2021%20L%2017%2020%20L%2030%2020%20L%2034%2024%20L%2035%2029%20L%2034%2031%20L%2029%2035%20L%2017%2035%20L%2016%2034%20Z%22%20fill%3D%22%23F7F7F4%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M%20197%2043%20L%20191%2047%20L%20189%2047%20L%20187%2049%20L%20184%2050%20L%20184%2066%20L%20196%2073%20L%20199%2073%20L%20211%2066%20L%20211%2050%20Z%20M%20208%2053%20L%20209%2054%20L%20209%2064%20L%20200%2070%20L%20198%2066%20L%20199%2059%20L%20202%2056%20Z%20M%20187%2053%20L%20193%2056%20L%20196%2059%20L%20196%2069%20L%20195%2070%20L%20189%2067%20L%20186%2064%20L%20186%2054%20Z%20M%20188%2051%20L%20196%2046%20L%20199%2046%20L%20207%2051%20L%20199%2056%20L%20196%2056%20Z%20M%20206%2014%20L%20192%2014%20L%20164%2040%20L%20163%2042%20L%20163%2073%20L%20167%2073%20L%20178%2063%20L%20178%2050%20L%20179%2047%20L%20206%2022%20Z%20M%20147%2014%20L%20147%2024%20L%20161%2037%20L%20164%2036%20L%20173%2027%20L%20161%2014%20Z%22%20fill%3D%22%2300E58A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="Plany" loading="lazy"></div>
+  <h3>O SketchUp desenha.<br><em>O Plany prepara para fabricar.</em></h3>
+  <p class="v2-product-description">Modelagem com lógica de marcenaria. Módulos, peças, materiais e uma Central própria para transformar o projeto em informações de produção.</p>
+  <div class="v2-feature-overline">O QUE TORNA DIFERENTE <span>ESCOLHA PARA EXPLORAR ↓</span></div>
+  <ol class="v2-features"><li><button type="button" class="v2-feature is-current" aria-pressed="true" data-feature="0" data-product="plany"><span class="v2-feature-index">01</span><span class="v2-feature-text"><strong>Use retalhos de verdade no projeto e no corte.</strong><small>Considere estoque físico e peças compatíveis no planejamento das chapas.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="1" data-product="plany"><span class="v2-feature-index">02</span><span class="v2-feature-text"><strong>Modele por comandos, direto no teclado.</strong><small>Crie estruturas e informe dimensões sem percorrer vários menus.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="2" data-product="plany"><span class="v2-feature-index">03</span><span class="v2-feature-text"><strong>Transforme geometria em peças e peças em módulos.</strong><small>Dê organização construtiva ao que já existe no seu modelo.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="3" data-product="plany"><span class="v2-feature-index">04</span><span class="v2-feature-text"><strong>Insira e dimensione módulos arrastando e clicando.</strong><small>Monte sua composição com interação direta no desenho.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="4" data-product="plany"><span class="v2-feature-index">05</span><span class="v2-feature-text"><strong>Central simples de verdade, sem permissões confusas.</strong><small>Confira peças, chapas, alternativas de corte e materiais em um só fluxo.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li></ol>
+</div>
+<div class="v2-product-art">
+<div class="v2-showcase-canvas v2-plany-preview">
+ <div class="v2-art-label">PLANY + SKETCHUP <span class="v2-art-dot"></span> PRÉVIA ILUSTRATIVA</div>
+ <div class="v2-sketchup-window">
+  <div class="v2-windowbar"><span class="v2-window-dots"><i></i><i></i><i></i></span><span>Ambiente 01 · Modelagem</span><b>Visão 3D</b></div>
+  <div class="v2-model-body"><div class="v2-toolbar"><i>▧</i><i>◇</i><i>▤</i><i>⌗</i></div><div class="v2-model"><svg viewBox="0 0 520 360" aria-hidden="true" class="showcase-cabinet">
                   <defs><linearGradient id="face2" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#e8dfd3"/><stop offset="1" stop-color="#a8957d"/></linearGradient><linearGradient id="side2" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#8f7d67"/><stop offset="1" stop-color="#53493c"/></linearGradient></defs>
                   <path d="M105 92 262 38 424 92 263 150Z" fill="#c8b9a3"/><path d="M263 150 424 92 424 286 263 345Z" fill="url(#side2)"/><path d="M105 92 263 150 263 345 105 283Z" fill="url(#face2)"/>
                   <path d="M122 115 248 161 248 321 122 271Z" fill="#bfb1a0" stroke="#eee4d4" stroke-width="3"/>
@@ -519,117 +925,76 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
                   <path d="M270 156 309 142 309 328 270 342Z M318 137 365 120 365 309 318 326Z M373 116 416 100 416 290 373 306Z" fill="#ab9983"/>
                   <path d="M270 234 416 178M270 297 416 243" stroke="#695b4b" stroke-width="3"/>
                   <path d="M75 79 260 12 453 77M83 311 262 375 449 308" stroke="#76b598" stroke-dasharray="5 8" fill="none" opacity=".75"/>
-                </svg>
-              </div>
-              <div class="ui-footer"><span class="green-dot"></span> Estrutura de mobiliário <span>Vista 3D</span></div>
-            </div>
-            <div class="scene-float plany-scene-float"><span>▱</span><div>Dimensões em projeto<small>Precisão em cada detalhe</small></div></div>
-          </div>
-          <div class="scene" id="scene-mody" hidden>
-            <div class="ui-window mody-ui">
-              <div class="ui-top"><span class="window-dots"><i></i><i></i><i></i></span><span>Orçamentos / Ambiente 01</span><small>● Proposta</small></div>
-              <div class="mody-body"><div class="mody-ui-sidebar"><span class="sidebar-selected">▦</span><span>▤</span><span>◎</span><span>◷</span></div>
-                <div class="mody-ui-content"><div class="mini-eyebrow">COMPOSIÇÃO DE CUSTOS</div><h4>Organize cada decisão.</h4><div class="mody-ui-line"><span>Materiais e acabamentos</span><b>✓</b></div><div class="mody-ui-line"><span>Processos de fabricação</span><b>✓</b></div><div class="mody-ui-line"><span>Execução e montagem</span><b>✓</b></div><div class="mody-ui-total"><small>PROPOSTA COMERCIAL</small><strong>Pronta para avançar <span>↗</span></strong></div></div>
-              </div>
-            </div>
-            <div class="scene-float mody-scene-float"><span>◈</span><div>Custos estruturados<small>Decisões mais claras</small></div></div>
-          </div>
-          <div class="scene" id="scene-ganty" hidden>
-            <div class="ui-window ganty-ui">
-              <div class="ui-top"><span class="window-dots"><i></i><i></i><i></i></span><span>Planejamento / Obra 01</span><small>● Cronograma</small></div>
-              <div class="ganty-body"><h4>Visão de execução</h4><div class="timeline-head"><b>ETAPA</b><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span></div>
-                <div class="timeline-row"><b>Preparação</b><span class="bar bar-a"></span></div>
-                <div class="timeline-row"><b>Produção</b><span class="bar bar-b"></span></div>
-                <div class="timeline-row"><b>Acabamentos</b><span class="bar bar-c"></span></div>
-                <div class="timeline-row"><b>Montagem</b><span class="bar bar-d"></span></div>
-                <div class="ganty-ui-footer"><span>● Planejamento visual</span><span>◉ Acompanhamento</span></div>
-              </div>
-            </div>
-            <div class="scene-float ganty-scene-float"><span>▥</span><div>Planejamento visível<small>Do início à entrega</small></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="solutions-bottom"><span>Uma solução para cada desafio.</span><span>Três caminhos que fazem sentido juntos. <b>↗</b></span></div>
+                </svg><span class="v2-measure">1800 mm</span><span class="v2-model-tag">Estrutura de mobiliário</span></div></div>
+ </div>
+ <div class="v2-plany-floating" aria-label="Representação conceitual da Central Plany"><div class="v2-float-title"><span class="v2-green-mono">Y</span><span><strong>Central Plany</strong><small>Plano de corte · Peças → Chapas → Resultado</small></span><i>↗</i></div><div class="v2-sheet"><div class="v2-sheet-item sh-a">01</div><div class="v2-sheet-item sh-b">02</div><div class="v2-sheet-item sh-c">03</div><div class="v2-sheet-item sh-d">04</div><div class="v2-sheet-item sh-e">05</div></div><div class="v2-sheet-meta"><span>Chapa · MDF 15 mm</span><span>Retalhos compatíveis</span></div></div>
+ <div class="v2-art-state" aria-live="polite"><span class="v2-state-pulse"></span><span class="v2-state-copy"><strong data-state-title>Retalhos no projeto e no corte</strong><small data-state-subtitle>Da peça ao aproveitamento da chapa</small></span></div>
+</div>
+<p class="v2-art-disclaimer">Visualização ilustrativa para demonstrar o conceito. Não é uma captura fiel da interface do aplicativo.</p>
+</div>
+</article>
+<article role="tabpanel" class="v2-product v2-mody" id="v2-panel-mody" aria-labelledby="v2-tab-mody" hidden data-feature="0">
+<div class="v2-product-copy">
+  <div class="v2-product-eyebrow"><span>02 / ORÇAR</span><span>PARTE DO ECOSSISTEMA Y</span></div>
+  <div class="v2-product-mark"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20226%2074%22%3E%0A%20%20%3Cpath%20d%3D%22M%2087%2022%20L%2080%2025%20L%2074%2031%20L%2072%2036%20L%2072%2046%20L%2076%2053%20L%2081%2057%20L%2087%2059%20L%2096%2059%20L%20102%2057%20L%20108%2052%20L%20111%2047%20L%20112%2038%20L%20109%2030%20L%20102%2024%20L%2096%2022%20Z%20M%2090%2031%20L%2096%2032%20L%20101%2038%20L%20101%2043%20L%20100%2045%20L%2096%2049%20L%2093%2050%20L%2090%2050%20L%2086%2048%20L%2084%2046%20L%2082%2041%20L%2084%2035%20Z%20M%20158%2011%20L%20147%2011%20L%20147%2025%20L%20146%2026%20L%20141%2023%20L%20133%2022%20L%20125%2025%20L%20120%2030%20L%20117%2038%20L%20117%2043%20L%20120%2051%20L%20125%2056%20L%20132%2059%20L%20139%2059%20L%20145%2056%20L%20148%2058%20L%20158%2058%20Z%20M%20137%2031%20L%20141%2032%20L%20147%2039%20L%20146%2045%20L%20142%2049%20L%20139%2050%20L%20135%2050%20L%20133%2049%20L%20128%2043%20L%20128%2038%20L%20129%2036%20L%20132%2033%20Z%20M%208%2011%20L%208%2058%20L%2019%2058%20L%2020%2057%20L%2020%2032%20L%2021%2031%20L%2025%2035%20L%2033%2047%20L%2040%2047%20L%2052%2031%20L%2053%2032%20L%2053%2057%20L%2054%2058%20L%2065%2058%20L%2065%2049%20L%2066%2048%20L%2065%2046%20L%2065%2041%20L%2066%2040%20L%2066%2033%20L%2065%2032%20L%2065%2029%20L%2066%2028%20L%2066%2012%20L%2065%2011%20L%2053%2011%20L%2037%2033%20L%2033%2029%20L%2021%2011%20Z%22%20fill%3D%22%23F7F7F4%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M%20205%2067%20L%20203%2067%20L%20204%2069%20Z%20M%20213%2066%20L%20212%2068%20L%20214%2069%20L%20214%2066%20Z%20M%20208%2066%20L%20208%2068%20L%20210%2068%20L%20210%2067%20Z%20M%20214%2062%20L%20213%2062%20L%20212%2064%20L%20214%2064%20Z%20M%20207%2063%20L%20210%2064%20L%20209%2062%20Z%20M%20204%2062%20L%20203%2064%20L%20205%2064%20Z%20M%20212%2058%20L%20212%2060%20L%20214%2060%20L%20214%2058%20Z%20M%20208%2058%20L%20208%2060%20L%20210%2060%20L%20210%2059%20Z%20M%20203%2058%20L%20203%2060%20L%20205%2060%20L%20205%2058%20Z%20M%20198%2048%20L%20198%2072%20L%20199%2073%20L%20218%2073%20L%20219%2072%20L%20219%2048%20L%20217%2046%20L%20201%2046%20Z%20M%20200%2057%20L%20201%2056%20L%20216%2056%20L%20217%2057%20L%20217%2070%20L%20216%2071%20L%20201%2071%20L%20200%2070%20Z%20M%20200%2050%20L%20202%2048%20L%20216%2048%20L%20217%2049%20L%20217%2053%20L%20216%2054%20L%20202%2054%20L%20200%2052%20Z%20M%20163%2015%20L%20163%2024%20L%20176%2037%20L%20188%2027%20L%20176%2015%20Z%20M%20220%2014%20L%20207%2014%20L%20179%2040%20L%20178%2042%20L%20178%2073%20L%20182%2073%20L%20193%2063%20L%20193%2048%20L%20220%2022%20Z%22%20fill%3D%22%23FFD21A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="Mody" loading="lazy"></div>
+  <h3>O cliente vê o preço.<br><em>Você precisa enxergar o lucro.</em></h3>
+  <p class="v2-product-description">O orçamento deixa de ser um palpite. Estruture os móveis, confira o consumo de materiais e decida o preço com os custos à vista.</p>
+  <div class="v2-feature-overline">O QUE TORNA DIFERENTE <span>ESCOLHA PARA EXPLORAR ↓</span></div>
+  <ol class="v2-features"><li><button type="button" class="v2-feature is-current" aria-pressed="true" data-feature="0" data-product="mody"><span class="v2-feature-index">01</span><span class="v2-feature-text"><strong>Orce por ambientes, móveis e módulos.</strong><small>Construa o orçamento a partir do que será realmente produzido.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="1" data-product="mody"><span class="v2-feature-index">02</span><span class="v2-feature-text"><strong>Enxergue materiais e ferragens.</strong><small>Consulte os quantitativos estimados, organizados por ambiente.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="2" data-product="mody"><span class="v2-feature-index">03</span><span class="v2-feature-text"><strong>Precificação simples ou avançada.</strong><small>Considere mão de obra, frete, impostos, comissão e outros custos quando necessário.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="3" data-product="mody"><span class="v2-feature-index">04</span><span class="v2-feature-text"><strong>Saiba o efeito real de cada desconto.</strong><small>Veja o resultado da proposta e os alertas de margem antes de fechar.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="4" data-product="mody"><span class="v2-feature-index">05</span><span class="v2-feature-text"><strong>Reaproveite seus padrões.</strong><small>Use presets e sua tabela de preços como ponto de partida.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li></ol>
+</div>
+<div class="v2-product-art">
+<div class="v2-showcase-canvas v2-mody-preview">
+<div class="v2-art-label">MODY · SIMULAÇÃO DE PRECIFICAÇÃO <span class="v2-art-dot"></span> DADOS ILUSTRATIVOS</div>
+<div class="v2-quote-window"><div class="v2-windowbar"><span class="v2-window-dots"><i></i><i></i><i></i></span><span>Orçamento · Cozinha planejada</span><b>Prévia</b></div>
+<div class="v2-quote-inner"><span class="v2-quote-overline">CONSTRUÇÃO DA PROPOSTA</span><h4>O preço tem<br>uma estrutura.</h4><div class="v2-quote-line"><span>Materiais</span><strong>R$ 6.000,00</strong></div><div class="v2-quote-line"><span>Mão de obra + custos</span><strong>R$ 4.000,00</strong></div><div class="v2-quote-line total"><span>Custo para produzir</span><strong>R$ 10.000,00</strong></div><div class="v2-quote-chart"><i style="--part:60%"></i><i style="--part:40%"></i></div><div class="v2-quote-label">EXEMPLO INTERATIVO <span>Arraste o desconto ↓</span></div><label class="v2-range-label" for="v2-discount">Desconto comercial <strong id="v2-discount-label">5%</strong></label><input type="range" min="0" max="35" step="1" value="5" id="v2-discount" aria-label="Desconto simulado sobre preço base de R$ 16.000"></div></div>
+<div class="v2-price-float"><span>PREÇO DE VENDA</span><strong id="v2-final-price">R$ 15.200,00</strong><div class="v2-price-divider"></div><span>MARGEM REAL <b id="v2-real-margin">34,2%</b></span><small id="v2-margin-alert">Margem calculada após desconto</small></div>
+<div class="v2-art-state" aria-live="polite"><span class="v2-state-pulse"></span><span class="v2-state-copy"><strong data-state-title>Orçamento modular</strong><small data-state-subtitle>Ambientes, móveis e módulos em uma proposta</small></span></div>
+</div>
+<p class="v2-art-disclaimer">Visualização ilustrativa para demonstrar o conceito. Não é uma captura fiel da interface do aplicativo.</p>
+</div>
+</article>
+<article role="tabpanel" class="v2-product v2-ganty" id="v2-panel-ganty" aria-labelledby="v2-tab-ganty" hidden data-feature="0">
+<div class="v2-product-copy">
+  <div class="v2-product-eyebrow"><span>03 / PLANEJAR</span><span>PARTE DO ECOSSISTEMA Y</span></div>
+  <div class="v2-product-mark"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20230%2074%22%3E%0A%20%20%3Cpath%20d%3D%22M%20110%2025%20L%20106%2029%20L%20104%2035%20L%20104%2057%20L%20105%2058%20L%20114%2058%20L%20115%2057%20L%20115%2036%20L%20120%2032%20L%20124%2032%20L%20127%2034%20L%20129%2038%20L%20129%2058%20L%20139%2058%20L%20139%2035%20L%20137%2030%20L%20132%2025%20L%20127%2023%20L%20120%2023%20L%20115%2026%20L%20114%2025%20Z%20M%2062%2030%20L%2059%2037%20L%2059%2045%20L%2062%2052%20L%2065%2055%20L%2073%2059%20L%2080%2059%20L%2085%2057%20L%2087%2055%20L%2089%2058%20L%2098%2058%20L%2098%2024%20L%2088%2024%20L%2088%2025%20L%2086%2026%20L%2081%2023%20L%2072%2023%20L%2066%2026%20Z%20M%2076%2032%20L%2081%2032%20L%2083%2033%20L%2087%2038%20L%2087%2044%20L%2086%2046%20L%2083%2049%20L%2080%2050%20L%2076%2050%20L%2074%2049%20L%2070%2045%20L%2069%2042%20L%2070%2037%20Z%20M%20147%2013%20L%20146%2014%20L%20146%2023%20L%20143%2024%20L%20143%2028%20L%20146%2031%20L%20146%2048%20L%20147%2049%20L%20147%2052%20L%20150%2056%20L%20154%2058%20L%20164%2058%20L%20164%2050%20L%20163%2049%20L%20159%2049%20L%20156%2046%20L%20156%2033%20L%20157%2032%20L%20162%2032%20L%20162%2024%20L%20157%2024%20L%20156%2023%20L%20156%2013%20Z%20M%2021%2011%20L%2015%2014%20L%208%2021%20L%206%2025%20L%205%2031%20L%204%2032%20L%204%2038%20L%208%2048%20L%2015%2055%20L%2025%2059%20L%2036%2059%20L%2046%2055%20L%2053%2047%20L%2053%2041%20L%2054%2040%20L%2054%2032%20L%2053%2031%20L%2031%2031%20L%2030%2032%20L%2030%2038%20L%2032%2040%20L%2042%2040%20L%2043%2041%20L%2043%2043%20L%2039%2047%20L%2035%2049%20L%2026%2049%20L%2021%2046%20L%2017%2041%20L%2016%2038%20L%2016%2031%20L%2017%2028%20L%2023%2022%20L%2027%2020%20L%2034%2020%20L%2043%2024%20L%2049%2018%20L%2049%2016%20L%2040%2011%20L%2037%2011%20L%2036%2010%20L%2025%2010%20L%2024%2011%20Z%22%20fill%3D%22%23F7F7F4%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M%20199%2066%20L%20199%2069%20L%20222%2069%20L%20222%2065%20L%20200%2065%20Z%20M%20199%2058%20L%20199%2062%20L%20212%2062%20L%20212%2058%20Z%20M%20205%2051%20L%20205%2055%20L%20206%2056%20L%20227%2056%20L%20227%2051%20Z%20M%20166%2022%20L%20166%2028%20L%20167%2030%20L%20178%2040%20L%20188%2032%20L%20188%2030%20L%20186%2027%20L%20185%2027%20L%20180%2021%20L%20167%2021%20Z%20M%20218%2020%20L%20206%2020%20L%20181%2043%20L%20180%2045%20L%20180%2073%20L%20184%2073%20L%20194%2064%20L%20194%2050%20L%20218%2028%20L%20219%2025%20Z%22%20fill%3D%22%23168BFF%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="Ganty" loading="lazy"></div>
+  <h3>A obra muda.<br><em>Seu planejamento acompanha.</em></h3>
+  <p class="v2-product-description">Prazos, etapas e movimentações financeiras em uma visão de trabalho. Um cronograma vivo, feito para acompanhar o que acontece na oficina.</p>
+  <div class="v2-feature-overline">O QUE TORNA DIFERENTE <span>ESCOLHA PARA EXPLORAR ↓</span></div>
+  <ol class="v2-features"><li><button type="button" class="v2-feature is-current" aria-pressed="true" data-feature="0" data-product="ganty"><span class="v2-feature-index">01</span><span class="v2-feature-text"><strong>Ajuste datas diretamente no Gantt.</strong><small>Organize períodos arrastando ou selecionando datas em dois cliques.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="1" data-product="ganty"><span class="v2-feature-index">02</span><span class="v2-feature-text"><strong>Veja atrasos antes que virem surpresas.</strong><small>Acompanhe situações pendentes e confirme etapas concluídas.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="2" data-product="ganty"><span class="v2-feature-index">03</span><span class="v2-feature-text"><strong>Configure seu calendário de trabalho.</strong><small>Defina etapas, sábados, domingos e feriados conforme sua rotina.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="3" data-product="ganty"><span class="v2-feature-index">04</span><span class="v2-feature-text"><strong>Controle entradas e saídas por obra.</strong><small>Consulte movimentações e o fluxo de caixa consolidado.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li><li><button type="button" class="v2-feature " aria-pressed="false" data-feature="4" data-product="ganty"><span class="v2-feature-index">05</span><span class="v2-feature-text"><strong>Planejamento compartilhado.</strong><small>Trabalhe com dados sincronizados entre usuários autorizados.</small></span><span class="v2-feature-marker" aria-hidden="true">↗</span></button></li></ol>
+</div>
+<div class="v2-product-art">
+<div class="v2-showcase-canvas v2-ganty-preview">
+<div class="v2-art-label">GANTY · CRONOGRAMA INTERATIVO <span class="v2-art-dot"></span> DATAS ILUSTRATIVAS</div>
+<div class="v2-gantt-window"><div class="v2-windowbar"><span class="v2-window-dots"><i></i><i></i><i></i></span><span>Planejamento · Obra 01</span><b>Semana</b></div>
+<div class="v2-gantt-inner"><div class="v2-gantt-heading"><strong>Etapas da obra</strong><span>◷ Calendário de trabalho</span></div><div class="v2-grid-head"><b>ETAPA</b><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span></div><div class="v2-stages" role="group" aria-label="Selecione uma etapa da obra">
+<button type="button" class="v2-stage is-current" data-stage="0" aria-pressed="true"><span>Projeto</span><i class="bar-a"></i></button><button type="button" class="v2-stage " data-stage="1" aria-pressed="false"><span>Corte</span><i class="bar-b"></i></button><button type="button" class="v2-stage " data-stage="2" aria-pressed="false"><span>Montagem</span><i class="bar-c"></i></button><button type="button" class="v2-stage " data-stage="3" aria-pressed="false"><span>Instalação</span><i class="bar-d"></i></button></div>
+<div class="v2-gantt-foot"><span>● Planejamento visual</span><span>◷ Acompanhamento por etapa</span></div>
+</div></div>
+<div class="v2-gantt-float" aria-live="polite"><span>ETAPA SELECIONADA</span><strong id="v2-stage-title">Projeto</strong><small id="v2-stage-subtitle">2 dias · Demonstração de cronograma</small><span class="v2-gantt-flag">Em planejamento <i>↗</i></span></div>
+<div class="v2-art-state" aria-live="polite"><span class="v2-state-pulse"></span><span class="v2-state-copy"><strong data-state-title>Datas que você pode reorganizar</strong><small data-state-subtitle>Períodos visíveis, sempre ao seu alcance</small></span></div>
+</div>
+<p class="v2-art-disclaimer">Visualização ilustrativa para demonstrar o conceito. Não é uma captura fiel da interface do aplicativo.</p>
+</div>
+</article></div>
+<div class="v2-after-stage"><span><i></i> Três especialidades. Cada uma no seu momento.</span><a href="#fluxo">Veja um exemplo de jornada <b>↘</b></a></div>
+</div></section>
+<section class="v2-flow" id="fluxo" aria-labelledby="v2-flow-title">
+<div class="container"><div class="v2-flow-top"><div><span class="v2-kicker dark">03 / COMO FUNCIONA</span><h2 id="v2-flow-title">Uma cozinha planejada.<br><em>Três decisões bem resolvidas.</em></h2></div><p>Um exemplo de como as especialidades se complementam no dia a dia — cada aplicativo atuando no que faz melhor.</p></div>
+<div class="v2-flow-grid">
+<article><div class="v2-flow-step"><span>01 / PROJETO</span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20104%2091%22%20width%3D%22104%22%20height%3D%2291%22%3E%0A%20%20%3Cpath%20d%3D%22M%2071%2057%20L%2060%2063%20L%2059%2078%20L%2060%2080%20L%2073%2087%20L%2087%2079%20L%2087%2064%20L%2074%2057%20Z%20M%2084%2067%20L%2085%2068%20L%2085%2078%20L%2075%2083%20L%2074%2082%20L%2074%2072%20Z%20M%2062%2067%20L%2072%2072%20L%2072%2082%20L%2071%2083%20L%2064%2080%20L%2061%2077%20Z%20M%2064%2064%20L%2074%2059%20L%2081%2063%20L%2082%2065%20L%2073%2070%20L%2065%2066%20Z%20M%2082%2026%20L%2067%2027%20L%2039%2054%20L%2039%2086%20L%2040%2087%20L%2054%2075%20L%2054%2061%20L%2083%2034%20Z%20M%2020%2027%20L%2020%2035%20L%2035%2050%20L%2038%2050%20L%2047%2041%20L%2033%2026%20L%2021%2026%20Z%22%20fill%3D%22%2300E58A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""></div><div class="v2-flow-illustration one"><span class="v2-flow-letter">P</span><div class="v2-flow-measure-lines"><i></i><i></i><i></i></div></div><h3>A ideia ganha estrutura.</h3><p>Você modela o móvel, define materiais e organiza peças no Plany.</p></article>
+<article><div class="v2-flow-step"><span>02 / ORÇAMENTO</span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2070%2068%22%20width%3D%2270%22%20height%3D%2268%22%3E%0A%20%20%3Cpath%20d%3D%22M%2057%2057%20L%2059%2059%20L%2059%2057%20Z%20M%2052%2057%20L%2053%2059%20L%2055%2058%20L%2055%2057%20Z%20M%2048%2057%20L%2048%2059%20L%2050%2059%20L%2050%2057%20Z%20M%2057%2053%20L%2058%2055%20L%2060%2054%20Z%20M%2052%2053%20L%2053%2055%20L%2055%2054%20L%2055%2053%20Z%20M%2048%2053%20L%2048%2055%20L%2050%2055%20L%2050%2053%20Z%20M%2057%2049%20L%2058%2051%20L%2060%2050%20Z%20M%2055%2049%20L%2052%2050%20L%2054%2051%20Z%20M%2049%2048%20L%2048%2049%20L%2049%2051%20L%2050%2050%20Z%20M%2043%2038%20L%2043%2062%20L%2045%2064%20L%2063%2064%20L%2064%2063%20L%2064%2038%20L%2063%2037%20Z%20M%2045%2048%20L%2047%2046%20L%2061%2046%20L%2062%2047%20L%2062%2061%20L%2061%2062%20L%2047%2062%20L%2045%2060%20Z%20M%2045%2040%20L%2046%2039%20L%2061%2039%20L%2062%2043%20L%2061%2044%20L%2046%2044%20Z%20M%2065%203%20L%2052%203%20L%2022%2031%20L%2022%2063%20L%2023%2064%20L%2026%2063%20L%2037%2053%20L%2037%2039%20L%2066%2012%20Z%20M%203%204%20L%203%2013%20L%2019%2028%20L%2030%2019%20L%2030%2017%20L%2017%204%20L%206%204%20L%205%203%20Z%22%20fill%3D%22%23FFD21A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""></div><div class="v2-flow-illustration two"><span class="v2-flow-letter">M</span><div class="v2-flow-currency">R$ <b>●●●</b><i>↗</i></div></div><h3>O preço ganha contexto.</h3><p>Com o Mody, você estrutura os custos e avalia a proposta antes de vender.</p></article>
+<article><div class="v2-flow-step"><span>03 / PLANEJAMENTO</span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20102%2088%22%20width%3D%22102%22%20height%3D%2288%22%3E%0A%20%20%3Cpath%20d%3D%22M%2062%2077%20L%2062%2082%20L%2087%2082%20L%2087%2076%20Z%20M%2057%2070%20L%2057%2074%20L%2071%2074%20L%2072%2073%20L%2071%2069%20L%2058%2069%20Z%20M%2063%2063%20L%2063%2067%20L%2079%2067%20L%2080%2066%20L%2079%2062%20L%2064%2062%20Z%20M%2080%2025%20L%2067%2025%20L%2037%2053%20L%2037%2084%20L%2041%2084%20L%2052%2074%20L%2052%2060%20L%2080%2034%20L%2081%2032%20Z%20M%2019%2026%20L%2019%2035%20L%2034%2049%20L%2036%2049%20L%2046%2039%20L%2032%2025%20L%2020%2025%20Z%20M%203%2048%20L%203%2018%20L%207%2010%20L%2013%205%20L%2020%203%20L%2022%204%20L%2025%203%20L%2083%203%20L%2092%207%20L%2098%2015%20L%2098%2018%20L%2098%2015%20L%2094%208%20L%2084%203%20L%2018%203%20L%2014%204%20L%206%2010%20L%203%2017%20Z%22%20fill%3D%22%23168BFF%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt=""></div><div class="v2-flow-illustration three"><span class="v2-flow-letter">G</span><div class="v2-flow-bars"><i></i><i></i><i></i></div></div><h3>O prazo ganha clareza.</h3><p>No Ganty, etapas e compromissos passam a fazer parte de um cronograma visual.</p></article>
+</div>
+<p class="v2-flow-note"><span>↗</span> Exemplo ilustrativo de jornada. Os aplicativos têm funções independentes; não estamos anunciando integração automática entre eles.</p>
+</div></section>
+<section class="v2-final" id="filosofia" aria-labelledby="v2-final-title">
+<div class="v2-final-aura"></div><div class="container v2-final-content">
+<div class="v2-final-overline"><span class="v2-kicker">04 / NOSSA VISÃO</span><span class="v2-final-brand">DESENVOLVIDO PELA Y-CORE</span></div>
+<div class="v2-final-main"><h2 id="v2-final-title">Menos soluções genéricas.<br><em>Mais ferramentas que entendem o seu trabalho.</em></h2><p>O Ecossistema Y reúne produtos especializados porque projetar, precificar e planejar exigem decisões diferentes. A proposta não é colocar tudo em um único aplicativo. É dar atenção de verdade a cada etapa.</p></div>
+<div class="v2-final-line"></div>
+<div class="v2-final-call" id="conta-y"><div><span>ECOSSISTEMA Y</span><h3>O futuro do seu trabalho<br>começa por aqui<span>.</span></h3></div><div class="v2-final-action"><a href="#solucoes" class="btn btn-lime">Conheça as soluções <span class="btn-arrow" aria-hidden="true">↗</span></a><small><i></i> Conta Y em preparação</small></div></div>
+</div></section>
 
-      <section class="differences" id="diferenciais" aria-labelledby="differences-title">
-        <div class="differences-heading">
-          <div class="section-index dark-index">FUNCIONALIDADES <span></span> O QUE NOS MOVE</div>
-          <div class="differences-lead"><h3 id="differences-title">O diferencial está <em>nos detalhes.</em></h3><p>Mais do que dizer o que cada aplicativo faz, queremos mostrar o que muda na sua rotina.</p></div>
-        </div>
-        <div class="differences-layout">
-          <div class="differences-sidebar">
-            <span class="differences-overline">ESCOLHA UMA SOLUÇÃO</span>
-            <div class="difference-tabs" role="tablist" aria-label="Diferenciais de cada aplicativo">
-              <button class="difference-tab is-active" type="button" role="tab" id="difference-tab-plany" aria-controls="difference-panel-plany" aria-selected="true" data-difference="plany"><span class="difference-tab-num">01</span><span class="difference-tab-label">Plany<small>Projetar</small></span><span class="difference-tab-arrow" aria-hidden="true">↗</span></button>
-<button class="difference-tab" type="button" role="tab" id="difference-tab-mody" aria-controls="difference-panel-mody" aria-selected="false" data-difference="mody" tabindex="-1"><span class="difference-tab-num">02</span><span class="difference-tab-label">Mody<small>Orçar</small></span><span class="difference-tab-arrow" aria-hidden="true">↗</span></button>
-<button class="difference-tab" type="button" role="tab" id="difference-tab-ganty" aria-controls="difference-panel-ganty" aria-selected="false" data-difference="ganty" tabindex="-1"><span class="difference-tab-num">03</span><span class="difference-tab-label">Ganty<small>Planejar</small></span><span class="difference-tab-arrow" aria-hidden="true">↗</span></button>
-            </div>
-            <p class="differences-sidebar-note">Funcionalidades pensadas para o trabalho real — não apenas para uma apresentação.</p>
-          </div>
-          <div class="differences-content" data-difference-active="plany"><div class="difference-panel" id="difference-panel-plany" role="tabpanel" aria-labelledby="difference-tab-plany" >
-  <div class="difference-panel-title"><span class="difference-panel-counter">01 / 03 · O QUE FAZ A DIFERENÇA</span><span class="difference-panel-mark">PLANY</span></div>
-  <ol class="difference-list">
-    <li><span class="difference-number">01</span><span class="difference-description">Use retalhos de verdade no projeto e no corte.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">02</span><span class="difference-description">Modele por comandos, direto no teclado.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">03</span><span class="difference-description">Transforme geometria em peças e peças em módulos.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">04</span><span class="difference-description">Insira e dimensione módulos arrastando e clicando.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">05</span><span class="difference-description">Central simples de verdade, sem permissões confusas.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-  </ol>
-  </div>
-<div class="difference-panel" id="difference-panel-mody" role="tabpanel" aria-labelledby="difference-tab-mody" hidden>
-  <div class="difference-panel-title"><span class="difference-panel-counter">02 / 03 · O QUE FAZ A DIFERENÇA</span><span class="difference-panel-mark">MODY</span></div>
-  <ol class="difference-list">
-    <li><span class="difference-number">01</span><span class="difference-description">Orce por ambientes, módulos e vãos sem perder a visão do conjunto.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">02</span><span class="difference-description">Organize materiais, ferragens e serviços na composição dos custos.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">03</span><span class="difference-description">Reaproveite configurações com presets de módulos.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">04</span><span class="difference-description">Duplique ambientes e ganhe agilidade em propostas semelhantes.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">05</span><span class="difference-description">Acompanhe orçamentos em andamento, concluídos e vendas.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-  </ol>
-  </div>
-<div class="difference-panel" id="difference-panel-ganty" role="tabpanel" aria-labelledby="difference-tab-ganty" hidden>
-  <div class="difference-panel-title"><span class="difference-panel-counter">03 / 03 · O QUE FAZ A DIFERENÇA</span><span class="difference-panel-mark">GANTY</span></div>
-  <ol class="difference-list">
-    <li><span class="difference-number">01</span><span class="difference-description">Ajuste datas no Gantt arrastando períodos ou selecionando em dois cliques.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">02</span><span class="difference-description">Configure etapas, dias contabilizados e feriados conforme sua operação.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">03</span><span class="difference-description">Identifique atrasos e confirme a conclusão de cada etapa.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">04</span><span class="difference-description">Acompanhe entradas, saídas e o fluxo de caixa por obra.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-    <li><span class="difference-number">05</span><span class="difference-description">Mantenha o planejamento sincronizado entre os usuários autorizados.</span><span class="difference-symbol" aria-hidden="true">↗</span></li>
-  </ol>
-  </div></div>
-        </div>
-      </section>
-      </div>
-    </section>
-
-    <section class="journey" id="fluxo" aria-labelledby="journey-title"><div class="journey-glow" aria-hidden="true"></div>
-      <div class="container journey-inner"><div class="section-index">03 <span></span> O CAMINHO</div>
-        <div class="journey-heading"><h2 id="journey-title">O próximo passo<br>começa no anterior<span>.</span></h2><p>Do pensamento à organização. Um processo em que cada etapa fica mais clara quando você tem a ferramenta certa.</p></div>
-        <div class="journey-steps">
-          <article class="journey-step"><div class="journey-step-top"><span class="step-num">01</span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20104%2091%22%20width%3D%22104%22%20height%3D%2291%22%3E%0A%20%20%3Cpath%20d%3D%22M%2071%2057%20L%2060%2063%20L%2059%2078%20L%2060%2080%20L%2073%2087%20L%2087%2079%20L%2087%2064%20L%2074%2057%20Z%20M%2084%2067%20L%2085%2068%20L%2085%2078%20L%2075%2083%20L%2074%2082%20L%2074%2072%20Z%20M%2062%2067%20L%2072%2072%20L%2072%2082%20L%2071%2083%20L%2064%2080%20L%2061%2077%20Z%20M%2064%2064%20L%2074%2059%20L%2081%2063%20L%2082%2065%20L%2073%2070%20L%2065%2066%20Z%20M%2082%2026%20L%2067%2027%20L%2039%2054%20L%2039%2086%20L%2040%2087%20L%2054%2075%20L%2054%2061%20L%2083%2034%20Z%20M%2020%2027%20L%2020%2035%20L%2035%2050%20L%2038%2050%20L%2047%2041%20L%2033%2026%20L%2021%2026%20Z%22%20fill%3D%22%2300E58A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="" loading="lazy"></div><div class="step-line"><i></i></div><h3>Projete.</h3><p>Dê forma às suas ideias com o Plany.</p><span class="step-pill plany-pill">Plany</span></article>
-          <article class="journey-step"><div class="journey-step-top"><span class="step-num">02</span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2070%2068%22%20width%3D%2270%22%20height%3D%2268%22%3E%0A%20%20%3Cpath%20d%3D%22M%2057%2057%20L%2059%2059%20L%2059%2057%20Z%20M%2052%2057%20L%2053%2059%20L%2055%2058%20L%2055%2057%20Z%20M%2048%2057%20L%2048%2059%20L%2050%2059%20L%2050%2057%20Z%20M%2057%2053%20L%2058%2055%20L%2060%2054%20Z%20M%2052%2053%20L%2053%2055%20L%2055%2054%20L%2055%2053%20Z%20M%2048%2053%20L%2048%2055%20L%2050%2055%20L%2050%2053%20Z%20M%2057%2049%20L%2058%2051%20L%2060%2050%20Z%20M%2055%2049%20L%2052%2050%20L%2054%2051%20Z%20M%2049%2048%20L%2048%2049%20L%2049%2051%20L%2050%2050%20Z%20M%2043%2038%20L%2043%2062%20L%2045%2064%20L%2063%2064%20L%2064%2063%20L%2064%2038%20L%2063%2037%20Z%20M%2045%2048%20L%2047%2046%20L%2061%2046%20L%2062%2047%20L%2062%2061%20L%2061%2062%20L%2047%2062%20L%2045%2060%20Z%20M%2045%2040%20L%2046%2039%20L%2061%2039%20L%2062%2043%20L%2061%2044%20L%2046%2044%20Z%20M%2065%203%20L%2052%203%20L%2022%2031%20L%2022%2063%20L%2023%2064%20L%2026%2063%20L%2037%2053%20L%2037%2039%20L%2066%2012%20Z%20M%203%204%20L%203%2013%20L%2019%2028%20L%2030%2019%20L%2030%2017%20L%2017%204%20L%206%204%20L%205%203%20Z%22%20fill%3D%22%23FFD21A%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="" loading="lazy"></div><div class="step-line"><i></i></div><h3>Orce.</h3><p>Estruture propostas e valores com o Mody.</p><span class="step-pill mody-pill">Mody</span></article>
-          <article class="journey-step"><div class="journey-step-top"><span class="step-num">03</span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20102%2088%22%20width%3D%22102%22%20height%3D%2288%22%3E%0A%20%20%3Cpath%20d%3D%22M%2062%2077%20L%2062%2082%20L%2087%2082%20L%2087%2076%20Z%20M%2057%2070%20L%2057%2074%20L%2071%2074%20L%2072%2073%20L%2071%2069%20L%2058%2069%20Z%20M%2063%2063%20L%2063%2067%20L%2079%2067%20L%2080%2066%20L%2079%2062%20L%2064%2062%20Z%20M%2080%2025%20L%2067%2025%20L%2037%2053%20L%2037%2084%20L%2041%2084%20L%2052%2074%20L%2052%2060%20L%2080%2034%20L%2081%2032%20Z%20M%2019%2026%20L%2019%2035%20L%2034%2049%20L%2036%2049%20L%2046%2039%20L%2032%2025%20L%2020%2025%20Z%20M%203%2048%20L%203%2018%20L%207%2010%20L%2013%205%20L%2020%203%20L%2022%204%20L%2025%203%20L%2083%203%20L%2092%207%20L%2098%2015%20L%2098%2018%20L%2098%2015%20L%2094%208%20L%2084%203%20L%2018%203%20L%2014%204%20L%206%2010%20L%203%2017%20Z%22%20fill%3D%22%23168BFF%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E" alt="" loading="lazy"></div><div class="step-line"><i></i></div><h3>Planeje.</h3><p>Organize o tempo e as etapas com o Ganty.</p><span class="step-pill ganty-pill">Ganty</span></article>
-        </div>
-        <div class="journey-bottom"><span>IDEIA</span><div class="journey-bottom-line"></div><span>PROJETO</span><div class="journey-bottom-line"></div><span>PLANEJAMENTO</span></div>
-      </div>
-    </section>
-
-    <section class="philosophy" id="filosofia" aria-labelledby="philosophy-title">
-      <div class="container philosophy-layout"><div class="philosophy-header"><div class="section-index dark-index">04 <span></span> NOSSA VISÃO</div><h2 id="philosophy-title">Tecnologia que entende <em>o trabalho real.</em></h2></div>
-      <div class="philosophy-details"><article><span class="detail-icon">01</span><div><h3>Feita para a prática</h3><p>Ferramentas pensadas a partir das necessidades de quem projeta, orça e organiza o dia a dia.</p></div></article>
-        <article><span class="detail-icon">02</span><div><h3>Clareza em cada escolha</h3><p>Mais organização para tomar decisões e acompanhar o caminho de cada trabalho.</p></div></article>
-        <article><span class="detail-icon">03</span><div><h3>Cada solução no seu ritmo</h3><p>Conheça os aplicativos individualmente e descubra como suas especialidades se complementam.</p></div></article>
-      </div></div>
-    </section>
-
-    <section class="final-cta" id="conta-y" aria-labelledby="cta-title">
-      <div class="final-cta-glow" aria-hidden="true"></div>
-      <div class="container final-inner"><div class="eyebrow"><span class="eyebrow-line"></span> ECOSSISTEMA Y</div>
-        <h2 id="cta-title">O futuro do seu trabalho<br><em>começa por aqui.</em></h2>
-        <p>Três soluções. Novas possibilidades para criar, decidir e planejar.</p>
-        <div class="final-buttons"><a href="#solucoes" class="btn btn-lime">Conhecer as soluções <span class="btn-arrow">↗</span></a>
-          <span class="account-status"><span class="status-pulse"></span> Conta Y em preparação</span></div>
-      </div>
-    </section>
   </main>
 
   <footer class="footer"><div class="container footer-inner">
