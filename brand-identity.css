@@ -3,7 +3,7 @@
 .brand-identity{display:inline-flex;flex-direction:column;align-items:flex-start;gap:5px;max-width:100%;line-height:1.2;text-align:left;color:#f5f8f3}
 .brand-identity>.identity-wordmark{display:block;width:160px;height:auto;max-width:100%;margin:0;border:0;border-radius:0;object-fit:contain}
 .brand-identity>small{display:block;font-size:10px;font-weight:500;line-height:1.5;letter-spacing:.015em;color:#c2d1d4;white-space:nowrap}
-.site-header .brand{gap:0}.site-footer .identity-wordmark{width:210px}.site-footer .brand-identity>small{font-size:11px}
+.site-header .brand{gap:0}.site-footer .identity-wordmark{width:172px}.site-footer .brand-identity>small{font-size:11px}
 .vision-line .brand-identity{margin:0 0 28px}.vision-line .identity-wordmark{width:240px}.vision-line .brand-identity>small{font-size:12px}
 .sidebar>.brand{font-size:inherit;letter-spacing:normal}.sidebar .identity-wordmark{width:190px}.sidebar .brand-identity>small{font-size:10px;letter-spacing:0;color:#c2d1d4}
 @media(max-width:600px){.site-header .identity-wordmark{width:145px}.site-header .brand-identity>small{font-size:10px}}

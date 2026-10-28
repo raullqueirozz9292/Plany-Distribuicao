@@ -1,5 +1,5 @@
-import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=7d15735e6bb6f1d11ddbad9fe831fec3b5418c50';
-import {afterLayout,alignContent,onPageReady} from './framing.js?v=7d15735e6bb6f1d11ddbad9fe831fec3b5418c50';
+import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=c5420236b52aa208cffec017a07cc454b78efe2c';
+import {afterLayout,alignContent,onPageReady} from './framing.js?v=c5420236b52aa208cffec017a07cc454b78efe2c';
 
 document.documentElement.classList.add('js');
 const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
@@ -84,10 +84,9 @@ if(scene&&slot){
  const fit=()=>{
   queued=false;
   if(innerWidth<=600){slot.style.removeProperty('--scene-height');scene.style.removeProperty('--scene-scale');return;}
-  const layout=getComputedStyle(hero),desktop=innerWidth>850;
-  const nonScene=art.offsetHeight-slot.offsetHeight;
-  const available=innerHeight-(hero.getBoundingClientRect().top+scrollY)-parseFloat(layout.paddingTop)-parseFloat(layout.paddingBottom)-nonScene;
-  const scale=Math.min(.8,slot.clientWidth/660,desktop?Math.max(610*.46,available)/610:.8);
+  // Do not miniaturize the project and cards to force a single viewport.
+  // Long pages may scroll normally on short desktop screens.
+  const scale=Math.min(.8,slot.clientWidth/660);
   const height=(610*scale).toFixed(2)+'px',value=scale.toFixed(5);
   if(slot.style.getPropertyValue('--scene-height')!==height)slot.style.setProperty('--scene-height',height);
   if(scene.style.getPropertyValue('--scene-scale')!==value)scene.style.setProperty('--scene-scale',value);
