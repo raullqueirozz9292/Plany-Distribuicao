@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
+<title id="title">Gabinete de cozinha desenhado no SketchUp</title><desc id="desc">Gabinete planejado com portas, gavetas, bancada escura, cuba e divisão em módulos, desenhado com arestas visíveis.</desc>
+<defs><linearGradient id="c" x2="0" y2="1"><stop stop-color="#f9f9f7"/><stop offset="1" stop-color="#d9d9d7"/></linearGradient><linearGradient id="g" x2="0" y2="1"><stop stop-color="#5a5a59"/><stop offset="1" stop-color="#303034"/></linearGradient></defs>
+<path d="M70 405H840M100 446H855" fill="none" stroke="#b6c8cb"/>
+<g stroke="#393938" stroke-width="2" stroke-linejoin="round">
+<path d="M104 146L169 110 803 106 750 143Z" fill="#4d4d4e"/>
+<path d="M750 143L803 106V391L750 432Z" fill="#d2d2d0"/>
+<path d="M104 146H750V432H104Z" fill="url(#c)"/>
+<path d="M100 140L167 105H814L752 149H100Z" fill="url(#g)"/>
+<path d="M103 148H753V160H103Z" fill="#353537"/>
+<path d="M110 160H744V424H110Z" fill="#f3f3f1" stroke-width="1.4"/>
+<path d="M242 162V424M395 162V424M558 162V424M712 162V424"/>
+<path d="M112 232H241M112 304H241M112 376H241"/>
+<path d="M115 231H237M115 303H237M115 375H237" stroke="#bbbbba"/>
+<path d="M130 202H223M130 276H223M130 348H223" stroke="#7c7b77"/>
+<path d="M254 175V404M406 175V404M570 175V404M724 175V404" stroke="#d1d1cd" stroke-width="1.5"/>
+<path d="M461 116H626L655 141H438Z" fill="#26282b" stroke="#222" stroke-width="1.5"/>
+<path d="M664 115L716 113 729 135 665 138Z" fill="#858589" stroke="#444"/>
+</g>
+<g fill="none" stroke="#53666b" stroke-width="1.2"><path d="M102 441V463M747 438V463M105 456H745"/></g>
+<g fill="#39484e" font-family="Arial,sans-serif" font-size="19"><text x="427" y="483" text-anchor="middle">Gabinete de cozinha — estudo de modelagem</text></g>
+</svg>

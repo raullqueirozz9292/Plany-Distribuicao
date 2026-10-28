@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 520" role="img" aria-labelledby="title desc">
+<title id="title">Painel de TV com marcenaria e LED no SketchUp</title>
+<desc id="desc">Vista técnica com painel ripado, armários superiores e inferiores, TV e vitrine de vidro; os LEDs são planos geométricos amarelos com transição até o transparente.</desc>
+<defs>
+<linearGradient id="oak" x2=".8" y2="1"><stop stop-color="#dfbc8c"/><stop offset="1" stop-color="#b58f62"/></linearGradient>
+<linearGradient id="cab" x2=".8" y2="1"><stop stop-color="#f4f3ee"/><stop offset="1" stop-color="#d5d5d1"/></linearGradient>
+<linearGradient id="gla" x2="1" y2=".25"><stop stop-color="#d5e2e5" stop-opacity=".78"/><stop offset="1" stop-color="#a9c2ce" stop-opacity=".4"/></linearGradient>
+<linearGradient id="led-down" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffd634" stop-opacity=".88"/><stop offset=".35" stop-color="#ffe56e" stop-opacity=".4"/><stop offset="1" stop-color="#fff39b" stop-opacity="0"/></linearGradient>
+<linearGradient id="led-right" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ffd02b" stop-opacity=".8"/><stop offset=".5" stop-color="#ffe76a" stop-opacity=".26"/><stop offset="1" stop-color="#fff8b7" stop-opacity="0"/></linearGradient>
+<marker id="arrow" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto-start-reverse"><path d="M0 0 5 2.5 0 5" fill="none" stroke="#5b6467" stroke-width=".8"/></marker>
+</defs>
+<path d="M35 441L610 488L692 469M10 482L655 436" fill="none" stroke="#88c5b1" stroke-width=".8" opacity=".7"/>
+<path d="M3 496L663 430" fill="none" stroke="#bf6b67" stroke-width=".6" opacity=".45"/>
+<g transform="rotate(-2.5 340 280)" stroke-linejoin="round" stroke-linecap="round">
+<path d="M93 153L118 136 645 104 621 120Z" fill="#c6a578" stroke="#3c3a35" stroke-width="1.5"/>
+<path d="M621 120L645 104 645 441 621 458Z" fill="#a47e55" stroke="#3c3a35" stroke-width="1.5"/>
+<rect x="93" y="153" width="528" height="305" fill="url(#oak)" stroke="#363634" stroke-width="1.8"/>
+<rect x="102" y="159" width="510" height="278" fill="#d3b187" stroke="#64513f"/>
+<rect x="104" y="159" width="89" height="278" fill="#aa7d4d" stroke="#46372d"/>
+<g fill="#cfaa77" stroke="#594535" stroke-width="1.1"><rect x="105.0" y="161" width="4.5" height="276"/>
+<rect x="111.2" y="161" width="4.5" height="276"/>
+<rect x="117.4" y="161" width="4.5" height="276"/>
+<rect x="123.6" y="161" width="4.5" height="276"/>
+<rect x="129.8" y="161" width="4.5" height="276"/>
+<rect x="136.0" y="161" width="4.5" height="276"/>
+<rect x="142.2" y="161" width="4.5" height="276"/>
+<rect x="148.4" y="161" width="4.5" height="276"/>
+<rect x="154.6" y="161" width="4.5" height="276"/>
+<rect x="160.8" y="161" width="4.5" height="276"/>
+<rect x="167.0" y="161" width="4.5" height="276"/>
+<rect x="173.2" y="161" width="4.5" height="276"/>
+<rect x="179.4" y="161" width="4.5" height="276"/>
+<rect x="185.6" y="161" width="4.5" height="276"/></g>
+<rect x="193" y="170" width="103" height="206" fill="url(#oak)" stroke="#68533c" stroke-width=".8"/>
+<path d="M194 203h102v7H194z M194 270h102v7H194z" fill="#ab8356" stroke="#564738" stroke-width="1.1"/>
+<path d="M200 210H291V250H200Z M200 277H291V317H200Z" fill="url(#led-down)" stroke="none"/>
+<path d="M200 210H291M200 277H291" stroke="#ffd12e" stroke-width="3"/>
+<path d="M298 135H520V222H298Z" fill="url(#cab)" stroke="#3b3b38" stroke-width="1.8"/>
+<path d="M298 135l16 -12h222l-16 12z" fill="#ded8ce" stroke="#49413b" stroke-width="1.2"/>
+<path d="M373 135V222M448 135V222" stroke="#696661" stroke-width="1.25"/>
+<path d="M297 226H520V282H297Z" fill="url(#led-down)" stroke="none"/>
+<path d="M297 225H520" stroke="#fbd13f" stroke-width="4"/>
+<path d="M313 262h200v125H313z" fill="#273238" stroke="#151e22" stroke-width="3.2"/>
+<path d="M320 270h186v110H320z" fill="#29343b" stroke="#4d5960" stroke-width=".5"/>
+<path d="M410 388h8" stroke="#c6c8bd" stroke-width="1.5"/>
+<path d="M303 399H521V429H303Z" fill="url(#led-down)"/>
+<path d="M303 398H521" stroke="#ffd02c" stroke-width="2.5"/>
+<path d="M190 414H528L543 427H190Z" fill="#b58b5d" stroke="#3c342d" stroke-width="1.5"/>
+<path d="M190 427H543V471H190Z" fill="url(#cab)" stroke="#4a4742" stroke-width="1.5"/>
+<path d="M307 428V470M425 428V470" stroke="#66625b" stroke-width="1.3"/>
+<path d="M190 471H543V480H190Z" fill="#9b7752" stroke="#5a4736"/>
+<path d="M543 126L561 112 645 107 628 122Z" fill="#d7b384" stroke="#594632" stroke-width="1.2"/>
+<rect x="528" y="122" width="100" height="345" fill="url(#oak)" stroke="#413a30" stroke-width="1.9"/>
+<rect x="541" y="137" width="74" height="315" fill="url(#gla)" stroke="#57636a" stroke-width="1.25"/>
+<path d="M544 205H613M544 269H613M544 334H613M544 400H613" stroke="#527882" stroke-width="2"/>
+<rect x="544" y="138" width="46" height="314" fill="url(#led-right)"/>
+<path d="M544 138V452" stroke="#ffd239" stroke-width="3"/>
+<path d="M616 126v340M628 122v345" stroke="#765b3c" stroke-width="1.1"/>
+<path d="M93 153V458H621M93 153H621M620 119V458" fill="none" stroke="#33332e" stroke-width="1.3"/>
+</g>
+<g fill="none" stroke="#55626a" stroke-width="1.15">
+<path d="M74 154L44 154M74 455L44 455M49 160V450" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<path d="M130 484V505M621 468V505M133 500H618" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+</g>
+<g fill="#314249" font-family="Arial,sans-serif" font-size="16"><text x="17" y="307" transform="rotate(-90 17 307)" text-anchor="middle">2500 mm</text><text x="376" y="516" text-anchor="middle">3200 mm</text></g>
+</svg>

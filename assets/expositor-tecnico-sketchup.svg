@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
+<title id="title">Expositor técnico com prateleiras e cotas</title><desc id="desc">Expositor longitudinal com painel traseiro, três níveis de prateleiras, divisões, base com armários e cotas em milímetros.</desc>
+<defs><linearGradient id="m" x2="0" y2="1"><stop stop-color="#f5f1e8"/><stop offset="1" stop-color="#dfd8c9"/></linearGradient></defs>
+<path d="M105 430L732 452 799 413L166 394Z" fill="#e8e6de" stroke="#54534f" stroke-width="2"/>
+<path d="M169 102L775 91V400L169 409Z" fill="url(#m)" stroke="#55524d" stroke-width="2"/>
+<path d="M159 118L169 102 169 409 159 423Z" fill="#cecabf" stroke="#5b5751" stroke-width="1.5"/>
+<path d="M154 372L771 366 799 381 793 440 153 423Z" fill="#e8e3d9" stroke="#58554f" stroke-width="1.8"/>
+<path d="M156 389L791 399" stroke="#5f5954" stroke-width="1.2"/>
+<path d="M248 391V427M350 393V428M456 394V431M560 395V433M665 396V436" stroke="#665f55" stroke-width="1.2"/>
+<g fill="#aeb7b4" fill-opacity=".75" stroke="#434a49" stroke-width="1.6"><path d="M143 205L777 198 809 212 168 221Z"/><path d="M143 292L777 281 809 294 168 311Z"/><path d="M143 352L777 339 809 351 168 371Z"/></g>
+<g stroke="#505654" stroke-width="1.5"><path d="M269 207V217M393 206V217M521 204V214M649 203V215"/><path d="M269 293V306M393 291V305M521 290V304M649 286V302"/><path d="M269 351V366M393 350V366M521 347V366M649 345V362"/></g>
+<g stroke="#65746f" stroke-width="1.2" fill="none"><path d="M170 82L775 70M170 75V103M775 62V88M129 110V425M124 107L158 109M124 425L151 429"/></g>
+<g font-family="Arial,sans-serif" font-size="19" fill="#3f514b"><text x="480" y="57" text-anchor="middle">2600 mm</text><text x="116" y="272" transform="rotate(-90 116 272)" text-anchor="middle">915 mm</text><text x="124" y="470">265 mm — base</text></g>
+</svg>
