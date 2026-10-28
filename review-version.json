@@ -1,51 +1,51 @@
 {
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
-  "sourceBranch": "fix/hero-legivel-imagem-20261028",
-  "sourceCommit": "3042df70a5b3d269270ec825d755f3b1ffc92e78",
-  "previousSourceCommit": "a14f126840e2c6321acc0b43c81484398a859fc0",
-  "expectedPagesParent": "8d0d00a7b2b9f192136d4c82934cd23b344121ef",
-  "preparedAt": "2026-10-28T05:34:55.789Z",
+  "sourceBranch": "fix/enquadramento-revisao-pages",
+  "sourceCommit": "7d15735e6bb6f1d11ddbad9fe831fec3b5418c50",
+  "previousSourceCommit": "128718171fbd55f3aab32ea2a90b6563d189abeb",
+  "expectedPagesParent": "4cf007bab0da0c8fd3de3ce46bd98d9a7105e976",
+  "preparedAt": "2026-10-28T03:23:01.064Z",
   "files": [
     {
       "file": "index.html",
-      "bytes": 30653,
-      "sha256": "2180a4b88d07cafde13681711e71664f62a83483d6979ec3e0913209f347e897"
+      "bytes": 33776,
+      "sha256": "28fe98eb3d5e017548fdfd29de3e75cb7652f33f8cb89a31ae47d30b7fb7aa56"
     },
     {
       "file": "plany.html",
-      "bytes": 16797,
-      "sha256": "53e7c7646a13712c21407bf91d7e951429fc5aa74a0ee25ed7b85f5c73abc4f9"
+      "bytes": 15881,
+      "sha256": "d237f26a241edbb796fe9629fe3eb9c065aa41b9baded54e1c7ed2539b6716b2"
     },
     {
       "file": "mody.html",
       "bytes": 15909,
-      "sha256": "c83d667e678cccce114c59706db776529bf392547c615adb85f6b6d2362c9b03"
+      "sha256": "d3e816b8c533ff2ca92f09b50c62b8155966452378c4a8f7753f152ebe61abfe"
     },
     {
       "file": "ganty.html",
       "bytes": 14939,
-      "sha256": "0ae4ff4756b15919cfc61dd8ac38bbf446cc45742ba4998156d141094bc8b42d"
+      "sha256": "eb1b8c601325f1b4574016be959755a0ec0e231a13d7afefc81a3b66e742a4d1"
     },
     {
       "file": "conta-y.html",
       "bytes": 8275,
-      "sha256": "8218827b909ed71b09a6d989576c4020d455100f317506f9c2cc39d5f3602d48"
+      "sha256": "680557d51e38d2d3ddb9951afae0fe8b2cbf0a8e517460401cb6ab22d367dcf1"
     },
     {
       "file": "privacidade.html",
       "bytes": 5713,
-      "sha256": "6d89b1e59144ef89b74e91c84441386c35718d4ae4adb8525f052d22fc0cf643"
+      "sha256": "57ce17958ed79805e39505bbf6f7b03df8d60547b9e59589e30ea8f6309cc933"
     },
     {
       "file": "site.css",
-      "bytes": 59317,
-      "sha256": "97567347d75869379117092aeebf47a96b23cb43bf1b039ba2d5152e3b4bcfa0"
+      "bytes": 52699,
+      "sha256": "06e6fa70f3a5c481dc8f8eee8bd1baf1f6bbe6aa711278a564eaa9bc19ab4e65"
     },
     {
       "file": "main.js",
-      "bytes": 8952,
-      "sha256": "f7a151dfe5ddc55230f6efe5b6df34e1d85bf226c0f918c240eaa29cd86eeeec"
+      "bytes": 10275,
+      "sha256": "7e6e3679970543bb57e7580b6f35e6b23cad386b006d2803b2f2f731b0c5e53c"
     },
     {
       "file": "framing.js",
@@ -65,7 +65,7 @@
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "939cdd2dfd83e05f6a0c4294d9d16499e14796870d6ac8c74131f6e9bcc43706"
+      "sha256": "8e15a8d2fc17d899a5258ada463e7bf6a02ce54509b35c13ceca2c4feffa4235"
     },
     {
       "file": "_headers",
@@ -85,7 +85,7 @@
     {
       "file": "brand-identity.css",
       "bytes": 1277,
-      "sha256": "0984e04d6bcaecc6cb730016a402d60b23f644f3f84e12d8c47c57a428ab9a8b"
+      "sha256": "27c3b9aa7b5ecc8f7182e4d05aebd9237afda131c6f33ac9f936d4d1cc39e13c"
     },
     {
       "file": "robots.txt",
@@ -151,26 +151,6 @@
       "file": "assets/cabinet-concept.svg",
       "bytes": 1340,
       "sha256": "026c0e7c74e40eca7508a2733a9f9f7eed311bc634bb687f75fa1873c40f9594"
-    },
-    {
-      "file": "assets/projeto-estante-cotas.webp",
-      "bytes": 3662,
-      "sha256": "fa652012448e67858a7db45bcede960108b4c24f9fbea32a49d7cbf79afefa2a"
-    },
-    {
-      "file": "assets/projeto-gabinete-interno.webp",
-      "bytes": 1512,
-      "sha256": "258be28bf36ddf1f537e8aa4ea9e7cfe956cc82133963f612c6ad086b3d1e5de"
-    },
-    {
-      "file": "assets/projeto-gabinete-cozinha.webp",
-      "bytes": 4094,
-      "sha256": "a507ee68945860791b7e0eef2461a47afb9a18fe28148f461c31fa8d6d316032"
-    },
-    {
-      "file": "assets/projeto-painel-led.webp",
-      "bytes": 12892,
-      "sha256": "63ce6e2cdfeb5b7b4f561d2795c061c54672032821e208fed24785aa287fddb4"
     },
     {
       "file": "assets/social-preview.svg",

@@ -1,9 +1,9 @@
 Ecossistema Y — ambiente público de revisão visual (GitHub Pages).
 
 Origem canônica: raullqueirozz9292/Y-Core
-Branch de origem: fix/hero-legivel-imagem-20261028
-Commit validado: 3042df70a5b3d269270ec825d755f3b1ffc92e78
-Origem anterior preservada no histórico: a14f126840e2c6321acc0b43c81484398a859fc0
+Branch de origem: fix/enquadramento-revisao-pages
+Commit validado: 7d15735e6bb6f1d11ddbad9fe831fec3b5418c50
+Origem anterior preservada no histórico: 128718171fbd55f3aab32ea2a90b6563d189abeb
 
 A branch gh-pages é um espelho gerado. Alterar fontes no Y-Core; não editar HTML aqui.
 review-version.json identifica o commit-fonte e os hashes públicos. A API pages/builds/latest e o workflow pages build and deployment identificam o commit deste espelho efetivamente publicado.

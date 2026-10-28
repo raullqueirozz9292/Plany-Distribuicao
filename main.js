@@ -1,5 +1,5 @@
-import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=3042df70a5b3d269270ec825d755f3b1ffc92e78';
-import {afterLayout,alignContent,onPageReady} from './framing.js?v=3042df70a5b3d269270ec825d755f3b1ffc92e78';
+import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=7d15735e6bb6f1d11ddbad9fe831fec3b5418c50';
+import {afterLayout,alignContent,onPageReady} from './framing.js?v=7d15735e6bb6f1d11ddbad9fe831fec3b5418c50';
 
 document.documentElement.classList.add('js');
 const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
@@ -75,8 +75,28 @@ window.addEventListener('hashchange',()=>followFragment());
 window.addEventListener('popstate',()=>followFragment());
 onPageReady(()=>followFragment({initial:true}));
 
-// The heritage composition uses responsive grid rows, without a fixed authoring
-// canvas or JS scaling. Cards and furniture must never shrink to fit one fold.
+// The restored scene has a fixed authoring canvas. Its occupied layout space
+// must follow its proportional scale, rather than the unscaled canvas height.
+const scene=document.querySelector('.heritage-scene'),slot=scene?.parentElement;
+if(scene&&slot){
+ const hero=slot.closest('.hero'),art=slot.closest('.hero-art');
+ let queued=false;
+ const fit=()=>{
+  queued=false;
+  if(innerWidth<=600){slot.style.removeProperty('--scene-height');scene.style.removeProperty('--scene-scale');return;}
+  const layout=getComputedStyle(hero),desktop=innerWidth>850;
+  const nonScene=art.offsetHeight-slot.offsetHeight;
+  const available=innerHeight-(hero.getBoundingClientRect().top+scrollY)-parseFloat(layout.paddingTop)-parseFloat(layout.paddingBottom)-nonScene;
+  const scale=Math.min(.8,slot.clientWidth/660,desktop?Math.max(610*.46,available)/610:.8);
+  const height=(610*scale).toFixed(2)+'px',value=scale.toFixed(5);
+  if(slot.style.getPropertyValue('--scene-height')!==height)slot.style.setProperty('--scene-height',height);
+  if(scene.style.getPropertyValue('--scene-scale')!==value)scene.style.setProperty('--scene-scale',value);
+ };
+ const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(fit);}};
+ // Establish the occupied space during module startup, before load completes.
+ // Observers then refine it for fonts and viewport changes without a late jump.
+ fit();new ResizeObserver(schedule).observe(art);window.addEventListener('resize',schedule);onPageReady(schedule);
+}
 
 for(const demo of document.querySelectorAll('[data-pricing]')){
   const input=demo.querySelector('[data-discount]'),protect=demo.querySelector('[data-protect]');
