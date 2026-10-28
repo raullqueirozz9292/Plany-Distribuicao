@@ -2,7 +2,7 @@ Ecossistema Y — ambiente público de revisão visual (GitHub Pages).
 
 Origem canônica: raullqueirozz9292/Y-Core
 Branch de origem: fix/hero-abertura-cartoes-20261028
-Commit validado: f669059158829f524e513a7f8b162b4dcb0ed378
+Commit validado: fc026939419933799967e3446056769e6bf86467
 Origem anterior preservada no histórico: 7d15735e6bb6f1d11ddbad9fe831fec3b5418c50
 
 A branch gh-pages é um espelho gerado. Alterar fontes no Y-Core; não editar HTML aqui.

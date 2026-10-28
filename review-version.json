@@ -2,15 +2,15 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/hero-abertura-cartoes-20261028",
-  "sourceCommit": "f669059158829f524e513a7f8b162b4dcb0ed378",
+  "sourceCommit": "fc026939419933799967e3446056769e6bf86467",
   "previousSourceCommit": "7d15735e6bb6f1d11ddbad9fe831fec3b5418c50",
   "expectedPagesParent": "35a1d512c2ab4764c742f4bda1bc58dcb17368e8",
-  "preparedAt": "2026-10-28T12:19:02.850Z",
+  "preparedAt": "2026-10-28T12:22:19.138Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 33776,
-      "sha256": "bb549b721b1d834d2ded776792d47e161c160fd8fb0fc85712960d8476388cdd"
+      "sha256": "2e9c85fe11ceb8240348961a8c071dc678e965164d398fc3fa6ff39052548aa8"
     },
     {
       "file": "plany.html",
