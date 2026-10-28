@@ -1,16 +1,16 @@
 {
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
-  "sourceBranch": "fix/enquadramento-revisao-pages",
-  "sourceCommit": "7d15735e6bb6f1d11ddbad9fe831fec3b5418c50",
-  "previousSourceCommit": "128718171fbd55f3aab32ea2a90b6563d189abeb",
-  "expectedPagesParent": "4cf007bab0da0c8fd3de3ce46bd98d9a7105e976",
-  "preparedAt": "2026-10-28T03:23:01.064Z",
+  "sourceBranch": "fix/hero-abertura-cartoes-20261028",
+  "sourceCommit": "f669059158829f524e513a7f8b162b4dcb0ed378",
+  "previousSourceCommit": "7d15735e6bb6f1d11ddbad9fe831fec3b5418c50",
+  "expectedPagesParent": "35a1d512c2ab4764c742f4bda1bc58dcb17368e8",
+  "preparedAt": "2026-10-28T12:19:02.850Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 33776,
-      "sha256": "28fe98eb3d5e017548fdfd29de3e75cb7652f33f8cb89a31ae47d30b7fb7aa56"
+      "sha256": "bb549b721b1d834d2ded776792d47e161c160fd8fb0fc85712960d8476388cdd"
     },
     {
       "file": "plany.html",
@@ -39,8 +39,8 @@
     },
     {
       "file": "site.css",
-      "bytes": 52699,
-      "sha256": "06e6fa70f3a5c481dc8f8eee8bd1baf1f6bbe6aa711278a564eaa9bc19ab4e65"
+      "bytes": 53312,
+      "sha256": "17c5a39768b20e07df83ad860cebb4b2b5692bcf0414d972b7ccab60e547ea03"
     },
     {
       "file": "main.js",

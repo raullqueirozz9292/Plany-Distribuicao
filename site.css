@@ -302,3 +302,24 @@ box-shadow:10px 9px 0 rgba(60,112,77,.16)}
 @media(max-width:600px){
  .pricing-outcome .metric dd{font-size:clamp(13px,3.8vw,18px)}
 }
+
+/*
+ * Revisão pontual do herói — 2026-10-28
+ * Somente DESKTOP. Abrir os cartões para fora e aproveitar a folga vertical
+ * dentro da cena já aprovada. Não alterar .heritage-wrap, .heritage-scene,
+ * .hero-grid, escala, barra inferior, .decision-strip nem .art-note.
+ * As coordenadas inferiores dos cartões continuam ancoradas pelo bottom atual.
+ */
+@media(min-width:1101px){
+ .heritage-home .heritage-scene .budget-float{
+  left:-50px;
+  width:300px;
+ }
+ .heritage-home .heritage-scene .gantt-float{
+  right:-42px;
+  width:290px;
+ }
+ .heritage-home .heritage-scene .editor-window{
+  height:475px;
+ }
+}
