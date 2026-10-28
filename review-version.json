@@ -1,16 +1,16 @@
 {
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
-  "sourceBranch": "fix/hero-modelos-sketchup-led-20261028",
-  "sourceCommit": "a15c4097b20c6157da110b23d6d13524bae3976a",
-  "previousSourceCommit": "4ff590b8e551c313799c631c9b2f1ed53ac9a0ce",
-  "expectedPagesParent": "6d107f1b6a565aebafd535690386a38a69a3e906",
-  "preparedAt": "2026-10-28T15:49:00.542Z",
+  "sourceBranch": "fix/hero-imagem-aprovada-exata-20261028",
+  "sourceCommit": "6deb07dca6c9efe7f9ec98d4bff3f5468e741939",
+  "previousSourceCommit": "a15c4097b20c6157da110b23d6d13524bae3976a",
+  "expectedPagesParent": "118dd34fd40efb3172c44a6f98ea8d7ada0ff7e1",
+  "preparedAt": "2026-10-28T16:29:22.026Z",
   "files": [
     {
       "file": "index.html",
-      "bytes": 30844,
-      "sha256": "cee4a7c23c1222a44fbac6c9d0fec6ceb837a30c6a96d40cd707eaf52060ba4f"
+      "bytes": 31369,
+      "sha256": "81a6de9278d6012cbe70058378e2a0e63690a17848145658f32c11ec8b6720dd"
     },
     {
       "file": "plany.html",
@@ -39,8 +39,8 @@
     },
     {
       "file": "site.css",
-      "bytes": 56302,
-      "sha256": "dc69ae6a56671bb39223818de73177dffe3bc77ac727f3851818de3f37f1cef4"
+      "bytes": 57678,
+      "sha256": "43a2c66ad6901de306d7328897c2119812b781cba27f67d092257ce0728d4f01"
     },
     {
       "file": "main.js",
@@ -181,6 +181,11 @@
       "file": "assets/expositor-tecnico-sketchup.svg",
       "bytes": 1890,
       "sha256": "245f156905799877bdf680421ff414fcd9c4322cae802e6c6144d50aa50104c5"
+    },
+    {
+      "file": "assets/hero-referencia-aprovada.avif",
+      "bytes": 18949,
+      "sha256": "f26e3a0a7749863a9528385b960990709ee83320038cd343270e8c36d6f43cdb"
     }
   ]
 }
