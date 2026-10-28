@@ -1,5 +1,5 @@
-import {initAccountEntry} from './account-entry.js?v=2b3c827bd05c78696da69979bbd2b68266549038';
-import {afterLayout,alignContent,onPageReady} from './framing.js?v=2b3c827bd05c78696da69979bbd2b68266549038';
+import {initAccountEntry} from './account-entry.js?v=3042df70a5b3d269270ec825d755f3b1ffc92e78';
+import {afterLayout,alignContent,onPageReady} from './framing.js?v=3042df70a5b3d269270ec825d755f3b1ffc92e78';
 const root=document.querySelector('[data-account-entry]');
 const entry=initAccountEntry(root);
 // Marketing-only framing: keep the shared portal/authentication component intact.

@@ -420,3 +420,9 @@ box-shadow:10px 9px 0 rgba(60,112,77,.16)}
  .heritage-home .heritage-scene .gantt-axis{font-size:12px}
  .heritage-home .heritage-scene .gantt-track{height:23px}
 }
+
+/* Nunca esticar a fotografia de 650 px além da resolução real. */
+.heritage-home .heritage-scene .project-canvas-photo{
+ left:50%;right:auto;width:min(100%,650px);max-width:650px;
+ transform:translateX(-50%);
+}

@@ -2,7 +2,7 @@ Ecossistema Y — ambiente público de revisão visual (GitHub Pages).
 
 Origem canônica: raullqueirozz9292/Y-Core
 Branch de origem: fix/hero-legivel-imagem-20261028
-Commit validado: 2b3c827bd05c78696da69979bbd2b68266549038
+Commit validado: 3042df70a5b3d269270ec825d755f3b1ffc92e78
 Origem anterior preservada no histórico: a14f126840e2c6321acc0b43c81484398a859fc0
 
 A branch gh-pages é um espelho gerado. Alterar fontes no Y-Core; não editar HTML aqui.

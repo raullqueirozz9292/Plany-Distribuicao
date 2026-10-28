@@ -2,50 +2,50 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/hero-legivel-imagem-20261028",
-  "sourceCommit": "2b3c827bd05c78696da69979bbd2b68266549038",
+  "sourceCommit": "3042df70a5b3d269270ec825d755f3b1ffc92e78",
   "previousSourceCommit": "a14f126840e2c6321acc0b43c81484398a859fc0",
   "expectedPagesParent": "8d0d00a7b2b9f192136d4c82934cd23b344121ef",
-  "preparedAt": "2026-10-28T05:28:52.279Z",
+  "preparedAt": "2026-10-28T05:34:55.789Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 30653,
-      "sha256": "fb7f553faf23f212800669a13cf638e576389ab3d14ce3076c5fc7bbe1f4a303"
+      "sha256": "2180a4b88d07cafde13681711e71664f62a83483d6979ec3e0913209f347e897"
     },
     {
       "file": "plany.html",
       "bytes": 16797,
-      "sha256": "c3b35f649cb1fd33bb77120603f16707625980d36d986c9d2600a8fdb2cfc445"
+      "sha256": "53e7c7646a13712c21407bf91d7e951429fc5aa74a0ee25ed7b85f5c73abc4f9"
     },
     {
       "file": "mody.html",
       "bytes": 15909,
-      "sha256": "db1268283951bafec875c6cacc596af1ac90f89f862e07fcdb3260bf70c3aa97"
+      "sha256": "c83d667e678cccce114c59706db776529bf392547c615adb85f6b6d2362c9b03"
     },
     {
       "file": "ganty.html",
       "bytes": 14939,
-      "sha256": "f0f570e449e22a91fbc73ebd29b7df5bf65c4171454048247ccd276a44305cbe"
+      "sha256": "0ae4ff4756b15919cfc61dd8ac38bbf446cc45742ba4998156d141094bc8b42d"
     },
     {
       "file": "conta-y.html",
       "bytes": 8275,
-      "sha256": "dde01f6dba173671b70e4c5bb14e905f9d9bc166fe72d469a2c0340c39351013"
+      "sha256": "8218827b909ed71b09a6d989576c4020d455100f317506f9c2cc39d5f3602d48"
     },
     {
       "file": "privacidade.html",
       "bytes": 5713,
-      "sha256": "1258f29e053d8e26f7e7bccee137abf4f071219dcd8cec49a64afd66cce18843"
+      "sha256": "6d89b1e59144ef89b74e91c84441386c35718d4ae4adb8525f052d22fc0cf643"
     },
     {
       "file": "site.css",
-      "bytes": 59101,
-      "sha256": "e716eade482bda1882fb5bddd8de530e9dd63a1282b7c818c2939231eb476604"
+      "bytes": 59317,
+      "sha256": "97567347d75869379117092aeebf47a96b23cb43bf1b039ba2d5152e3b4bcfa0"
     },
     {
       "file": "main.js",
       "bytes": 8952,
-      "sha256": "e6231ad409635ae7458d9dc80341ca8e9873027cdd2030d352f7be024f8777ea"
+      "sha256": "f7a151dfe5ddc55230f6efe5b6df34e1d85bf226c0f918c240eaa29cd86eeeec"
     },
     {
       "file": "framing.js",
@@ -65,7 +65,7 @@
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "b2e28434e392e255656cb1d55f2cf5ad83b2a24ab0665df5b730c4ffc0a26a6f"
+      "sha256": "939cdd2dfd83e05f6a0c4294d9d16499e14796870d6ac8c74131f6e9bcc43706"
     },
     {
       "file": "_headers",
