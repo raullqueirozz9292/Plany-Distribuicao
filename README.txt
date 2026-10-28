@@ -1,8 +1,8 @@
 Ecossistema Y — ambiente público de revisão visual (GitHub Pages).
 
 Origem canônica: raullqueirozz9292/Y-Core
-Branch de origem: fix/hero-sem-fundo-recorte-exato-20261028
-Commit validado: 81908ab6e15377b78b1fcc0dd47546a2b11ea9b3
+Branch de origem: fix/hero-orbitas-brancas-discretas-20261028
+Commit validado: e0468c27f1370b39a506069b616be4a1b06dcdc8
 Origem anterior preservada no histórico: 4ff590b8e551c313799c631c9b2f1ed53ac9a0ce
 
 O conteúdo nesta branch é um espelho gerado. Alterar fontes no Y-Core, não editar HTML manualmente aqui. review-version.json identifica o commit de origem e os hashes do espelho.

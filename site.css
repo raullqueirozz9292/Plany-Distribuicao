@@ -423,3 +423,47 @@ box-shadow:10px 9px 0 rgba(60,112,77,.16)}
  -webkit-mask-position:center;mask-position:center;
  -webkit-mask-size:contain;mask-size:contain;
 }
+
+/* Profundidade restaurada: reexibir SOMENTE as duas órbitas originais
+   por trás da composição aprovada; resto da cena antiga continua oculto.
+   Não altera altura, escala, cartões, recorte ou alinhamento inferior. */
+@media (min-width:601px) {
+ .heritage-home .heritage-wrap > .heritage-scene > .art-orbit {
+  visibility:visible;
+  border-width:1.2px;
+  border-style:solid;
+  pointer-events:none;
+ }
+ .heritage-home .heritage-wrap > .heritage-scene > .art-orbit-one {
+  border-color:rgba(240,248,255,.21);
+ }
+ .heritage-home .heritage-wrap > .heritage-scene > .art-orbit-two {
+  border-color:rgba(240,248,255,.14);
+ }
+}
+/* No celular a cena técnica antiga é display:none: apenas seus dois
+   contornos são reproduzidos, sem alterar o tamanho da imagem aprovada. */
+@media (max-width:600px) {
+ .heritage-home .heritage-wrap::before,
+ .heritage-home .heritage-wrap::after {
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  border:1px solid rgba(240,248,255,.17);
+  border-radius:50%;
+  transform:translate(-50%,-50%) rotate(-20deg);
+  pointer-events:none;
+  z-index:0;
+ }
+ .heritage-home .heritage-wrap::before {
+  width:119%;
+  height:102%;
+  border-color:rgba(240,248,255,.14);
+ }
+ .heritage-home .heritage-wrap::after {
+  width:96%;
+  height:78%;
+  border-color:rgba(240,248,255,.20);
+ }
+}

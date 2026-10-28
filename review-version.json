@@ -1,16 +1,16 @@
 {
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
-  "sourceBranch": "fix/hero-sem-fundo-recorte-exato-20261028",
-  "sourceCommit": "81908ab6e15377b78b1fcc0dd47546a2b11ea9b3",
-  "previousSourceCommit": "88ef7a3e7cd5302cd64e35ee0ce8d17ca4f04538",
-  "expectedPagesParent": "7c453998caaf14084aadaac549f5b1fa6584447d",
-  "preparedAt": "2026-10-28T17:03:05.804Z",
+  "sourceBranch": "fix/hero-orbitas-brancas-discretas-20261028",
+  "sourceCommit": "e0468c27f1370b39a506069b616be4a1b06dcdc8",
+  "previousSourceCommit": "81908ab6e15377b78b1fcc0dd47546a2b11ea9b3",
+  "expectedPagesParent": "55dd4cf5b6830128e558267cc22f79451df3cacb",
+  "preparedAt": "2026-10-28T17:34:44.411Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 31369,
-      "sha256": "76226f5c9c1fdf6d075b7c808c1ed22414f4be11424bb9edcf4c0dafe5614de1"
+      "sha256": "bfd6ecd75883fd3b1db24652571a56eb4d63b5e0de02556b5e82ed2cabebd453"
     },
     {
       "file": "plany.html",
@@ -39,8 +39,8 @@
     },
     {
       "file": "site.css",
-      "bytes": 58190,
-      "sha256": "57bb59ad8d26a44ebc4335099503e4c26f3f580291bb145d1211c0ab254e50a3"
+      "bytes": 59505,
+      "sha256": "201c6ee2e62f1b7b69e513370d5afad19a6328d4c706bfc2ad6cce1359f27203"
     },
     {
       "file": "main.js",
