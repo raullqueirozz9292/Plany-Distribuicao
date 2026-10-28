@@ -2,20 +2,20 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/hero-modelos-sketchup-led-20261028",
-  "sourceCommit": "02858f59bee55be2df6458fad0ef7ee8d2bc6548",
+  "sourceCommit": "a15c4097b20c6157da110b23d6d13524bae3976a",
   "previousSourceCommit": "4ff590b8e551c313799c631c9b2f1ed53ac9a0ce",
   "expectedPagesParent": "6d107f1b6a565aebafd535690386a38a69a3e906",
-  "preparedAt": "2026-10-28T15:44:10.890Z",
+  "preparedAt": "2026-10-28T15:49:00.542Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 30844,
-      "sha256": "5221b7750e55a8eb9d39e2a7822f104148749e4815eca704240c94fd3b47e1a3"
+      "sha256": "cee4a7c23c1222a44fbac6c9d0fec6ceb837a30c6a96d40cd707eaf52060ba4f"
     },
     {
       "file": "plany.html",
       "bytes": 16353,
-      "sha256": "4e312177fab46d1116a414ecf05dd2bff2f51a76045806943437aaa237e54456"
+      "sha256": "57eb67b93fb4b1490cc4fa1731416983cac61cc18a74c88b5efbc22337c61445"
     },
     {
       "file": "mody.html",
@@ -169,18 +169,18 @@
     },
     {
       "file": "assets/painel-led-sketchup.svg",
-      "bytes": 5561,
-      "sha256": "7413aa02a27783569a4e95eb3232ddee6b98cd65ec81f49036b299fe8e31f664"
+      "bytes": 5586,
+      "sha256": "ee65382f659e87d5812b3e988d00a74b96269b3d7087eeb5ebbe3c076da97b79"
     },
     {
       "file": "assets/gabinete-cozinha-sketchup.svg",
-      "bytes": 1816,
-      "sha256": "52ae6555573dbd7a584dccde5bae5c49f0e944d8dbd47682e5a1fea7df4e838d"
+      "bytes": 1841,
+      "sha256": "96e3dd7cf204928e8a90c7c32ccb27b3486f66ca224890f09d30d0ea832dd619"
     },
     {
       "file": "assets/expositor-tecnico-sketchup.svg",
-      "bytes": 1865,
-      "sha256": "bdafbb88cbccfb6357c76c64f6cdc01f0dc386f3525bf977fb16d57b49e11137"
+      "bytes": 1890,
+      "sha256": "245f156905799877bdf680421ff414fcd9c4322cae802e6c6144d50aa50104c5"
     }
   ]
 }

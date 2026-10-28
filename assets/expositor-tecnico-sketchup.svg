@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
 <title id="title">Expositor técnico com prateleiras e cotas</title><desc id="desc">Expositor longitudinal com painel traseiro, três níveis de prateleiras, divisões, base com armários e cotas em milímetros.</desc>
 <defs><linearGradient id="m" x2="0" y2="1"><stop stop-color="#f5f1e8"/><stop offset="1" stop-color="#dfd8c9"/></linearGradient></defs>
 <path d="M105 430L732 452 799 413L166 394Z" fill="#e8e6de" stroke="#54534f" stroke-width="2"/>
