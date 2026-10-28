@@ -1,5 +1,5 @@
-import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=a14f126840e2c6321acc0b43c81484398a859fc0';
-import {afterLayout,alignContent,onPageReady} from './framing.js?v=a14f126840e2c6321acc0b43c81484398a859fc0';
+import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=2b3c827bd05c78696da69979bbd2b68266549038';
+import {afterLayout,alignContent,onPageReady} from './framing.js?v=2b3c827bd05c78696da69979bbd2b68266549038';
 
 document.documentElement.classList.add('js');
 const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
@@ -75,27 +75,8 @@ window.addEventListener('hashchange',()=>followFragment());
 window.addEventListener('popstate',()=>followFragment());
 onPageReady(()=>followFragment({initial:true}));
 
-// The restored scene has a fixed authoring canvas. Its occupied layout space
-// must follow its proportional scale, rather than the unscaled canvas height.
-const scene=document.querySelector('.heritage-scene'),slot=scene?.parentElement;
-if(scene&&slot){
- const hero=slot.closest('.hero'),art=slot.closest('.hero-art');
- let queued=false;
- const fit=()=>{
-  queued=false;
-  if(innerWidth<=600){slot.style.removeProperty('--scene-height');scene.style.removeProperty('--scene-scale');return;}
-  // Do not miniaturize the project and cards to force a single viewport.
-  // Long pages may scroll normally on short desktop screens.
-  const scale=Math.min(.8,slot.clientWidth/660);
-  const height=(610*scale).toFixed(2)+'px',value=scale.toFixed(5);
-  if(slot.style.getPropertyValue('--scene-height')!==height)slot.style.setProperty('--scene-height',height);
-  if(scene.style.getPropertyValue('--scene-scale')!==value)scene.style.setProperty('--scene-scale',value);
- };
- const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(fit);}};
- // Establish the occupied space during module startup, before load completes.
- // Observers then refine it for fonts and viewport changes without a late jump.
- fit();new ResizeObserver(schedule).observe(art);window.addEventListener('resize',schedule);onPageReady(schedule);
-}
+// The heritage composition uses responsive grid rows, without a fixed authoring
+// canvas or JS scaling. Cards and furniture must never shrink to fit one fold.
 
 for(const demo of document.querySelectorAll('[data-pricing]')){
   const input=demo.querySelector('[data-discount]'),protect=demo.querySelector('[data-protect]');

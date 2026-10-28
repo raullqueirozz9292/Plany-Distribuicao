@@ -340,3 +340,83 @@ box-shadow:10px 9px 0 rgba(60,112,77,.16)}
  .heritage-scene .float-head strong{font-size:14px}
  .heritage-scene .float-head small{font-size:12px}
 }
+
+/* Correção da composição do herói: cada informação tem área própria.
+   Evita ampliação por perspectiva, cartões sobre o projeto e textos miniaturizados. */
+@media(min-width:601px){
+ .heritage-home .heritage-wrap,.heritage-home .heritage-wrap[style]{
+  display:block;height:auto!important;min-height:0;overflow:visible;
+ }
+ .heritage-home .heritage-scene,.heritage-home .heritage-scene[style]{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;
+  gap:12px;width:100%;height:auto;min-width:0;
+  flex:initial;transform:none!important;transform-origin:initial;
+ }
+ .heritage-home .heritage-scene .heritage-central{
+  position:relative;inset:auto;order:-1;grid-column:1/-1;
+  justify-self:start;z-index:2;align-self:center;
+  padding:10px 14px;box-shadow:0 10px 30px rgba(0,0,0,.24);
+ }
+ .heritage-home .heritage-central b{font-size:15px}
+ .heritage-home .heritage-central span{font-size:12px}
+ .heritage-home .heritage-scene .editor-window{
+  position:relative;inset:auto;grid-column:1/-1;
+  width:100%;height:clamp(280px,28vw,345px);
+  min-width:0;transform:none;animation:none;
+ }
+ .heritage-home .heritage-scene .float-card{
+  position:relative;inset:auto;width:auto;min-width:0;max-width:none;
+  padding:15px 17px;transform:none;animation:none;
+  backdrop-filter:none;
+ }
+ .heritage-home .heritage-scene .budget-float{grid-column:1}
+ .heritage-home .heritage-scene .gantt-float{grid-column:2}
+ .heritage-home .heritage-scene .float-head strong{font-size:15px}
+ .heritage-home .heritage-scene .float-head small{font-size:12px;color:#526368}
+ .heritage-home .heritage-scene .float-bottom,
+ .heritage-home .heritage-scene .budget-lines,
+ .heritage-home .heritage-scene .gantt-axis{font-size:11px}
+ .heritage-home .heritage-scene .art-caption{display:none}
+ .heritage-home .heritage-scene .window-top{font-size:12px}
+ .heritage-home .heritage-scene .canvas-axis{font-size:11px}
+ .heritage-home .heritage-scene .canvas-status{font-size:11px}
+ .heritage-home .heritage-scene .project-canvas-photo{
+  inset:0;width:100%;height:100%;padding:5px;object-fit:contain;
+ }
+}
+@media(min-width:601px) and (max-width:900px){
+ .heritage-home .heritage-scene .editor-window{height:clamp(280px,43vw,410px)}
+}
+@media(max-width:600px){
+ .heritage-home .heritage-scene .editor-window{height:clamp(255px,80vw,370px)}
+ .heritage-home .heritage-scene .float-card{transform:none}
+ .heritage-home .heritage-scene .float-head strong{font-size:14px}
+ .heritage-home .heritage-scene .float-head small{font-size:12px}
+ .heritage-home .heritage-scene .project-canvas-photo{padding:4px}
+ .heritage-home .heritage-central b{font-size:15px}
+ .heritage-home .heritage-central span{font-size:12px}
+}
+
+/* Ajuste de composição após revisão visual: manter a chamada e os botões
+   na primeira dobra, mesmo quando as provas visuais exigem rolagem natural. */
+@media(min-width:851px){
+ .heritage-home .hero-grid{align-items:start}
+ .heritage-home .hero-grid>div:first-child{padding-top:clamp(0px,5svh,40px)}
+}
+@media(min-width:601px) and (max-width:850px){
+ .heritage-home .hero-grid{align-items:start}
+}
+@media(max-width:600px){
+ .heritage-home .heritage-scene{grid-template-columns:minmax(0,1fr)}
+ .heritage-home .heritage-scene .editor-window{grid-column:1;grid-row:1}
+ .heritage-home .heritage-scene .heritage-central{grid-column:1;grid-row:2}
+ .heritage-home .heritage-scene .budget-float{grid-column:1;grid-row:3}
+ .heritage-home .heritage-scene .gantt-float{grid-column:1;grid-row:4}
+ .heritage-home .heritage-scene .float-card{padding:15px 16px}
+ .heritage-home .heritage-scene .float-head strong{font-size:15px}
+ .heritage-home .heritage-scene .float-head small{font-size:12px}
+ .heritage-home .heritage-scene .budget-lines,
+ .heritage-home .heritage-scene .float-bottom,
+ .heritage-home .heritage-scene .gantt-axis{font-size:12px}
+ .heritage-home .heritage-scene .gantt-track{height:23px}
+}

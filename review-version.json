@@ -1,51 +1,51 @@
 {
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
-  "sourceBranch": "fix/marketing-projetos-reais-20261028",
-  "sourceCommit": "a14f126840e2c6321acc0b43c81484398a859fc0",
-  "previousSourceCommit": "7d15735e6bb6f1d11ddbad9fe831fec3b5418c50",
-  "expectedPagesParent": "dca8035a53c00f9428fc34c9cd619de2bf04affb",
-  "preparedAt": "2026-10-28T05:00:55.976Z",
+  "sourceBranch": "fix/hero-legivel-imagem-20261028",
+  "sourceCommit": "2b3c827bd05c78696da69979bbd2b68266549038",
+  "previousSourceCommit": "a14f126840e2c6321acc0b43c81484398a859fc0",
+  "expectedPagesParent": "8d0d00a7b2b9f192136d4c82934cd23b344121ef",
+  "preparedAt": "2026-10-28T05:28:52.279Z",
   "files": [
     {
       "file": "index.html",
-      "bytes": 30610,
-      "sha256": "45b5405c6822822f1fee469d6a7f913e0774dfde308ac12816a9faa0f239f0d3"
+      "bytes": 30653,
+      "sha256": "fb7f553faf23f212800669a13cf638e576389ab3d14ce3076c5fc7bbe1f4a303"
     },
     {
       "file": "plany.html",
       "bytes": 16797,
-      "sha256": "c191e79535995b485f94dbfe39236a27ac9ce0f61cf4e7b943e5d787d8d062bd"
+      "sha256": "c3b35f649cb1fd33bb77120603f16707625980d36d986c9d2600a8fdb2cfc445"
     },
     {
       "file": "mody.html",
       "bytes": 15909,
-      "sha256": "acded1b893bb424ae9ef87d400505d89ba7421c9f3d3263c680ac721cced84da"
+      "sha256": "db1268283951bafec875c6cacc596af1ac90f89f862e07fcdb3260bf70c3aa97"
     },
     {
       "file": "ganty.html",
       "bytes": 14939,
-      "sha256": "e2fd9bef8aeeec45edd17a2cbde8e3fa7dc6dd3ce196eda0597c62737e13c2a2"
+      "sha256": "f0f570e449e22a91fbc73ebd29b7df5bf65c4171454048247ccd276a44305cbe"
     },
     {
       "file": "conta-y.html",
       "bytes": 8275,
-      "sha256": "c37c526a185b9c53ee1cd31cfddda6c9159b0d2ef2d6277f0eda997312d74876"
+      "sha256": "dde01f6dba173671b70e4c5bb14e905f9d9bc166fe72d469a2c0340c39351013"
     },
     {
       "file": "privacidade.html",
       "bytes": 5713,
-      "sha256": "da0339c23ae05070acbc005f01647486ef285099967406afdf61520ab87c630f"
+      "sha256": "1258f29e053d8e26f7e7bccee137abf4f071219dcd8cec49a64afd66cce18843"
     },
     {
       "file": "site.css",
-      "bytes": 55191,
-      "sha256": "168e8e9698b74e2ec4c4e8af9d803ace238a6d43ac98bcc7034779559dede1e0"
+      "bytes": 59101,
+      "sha256": "e716eade482bda1882fb5bddd8de530e9dd63a1282b7c818c2939231eb476604"
     },
     {
       "file": "main.js",
-      "bytes": 10107,
-      "sha256": "a3bf5bc8b9390040e8cc0ce6cd9168cb9242ef2dd350414ddf458f61e4765328"
+      "bytes": 8952,
+      "sha256": "e6231ad409635ae7458d9dc80341ca8e9873027cdd2030d352f7be024f8777ea"
     },
     {
       "file": "framing.js",
@@ -65,7 +65,7 @@
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "378864252b52db80f1b8fae3f3edb27735df0879158844e0a90d78b56e7c4db3"
+      "sha256": "b2e28434e392e255656cb1d55f2cf5ad83b2a24ab0665df5b730c4ffc0a26a6f"
     },
     {
       "file": "_headers",
@@ -169,8 +169,8 @@
     },
     {
       "file": "assets/projeto-painel-led.webp",
-      "bytes": 3042,
-      "sha256": "689652be88e14ce32f188b24ecba664bf826c1d9b60ae88b8a9d8aa7f0015aec"
+      "bytes": 12892,
+      "sha256": "63ce6e2cdfeb5b7b4f561d2795c061c54672032821e208fed24785aa287fddb4"
     },
     {
       "file": "assets/social-preview.svg",
