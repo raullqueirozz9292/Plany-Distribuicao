@@ -1,0 +1,171 @@
+{
+  "environment": "review",
+  "sourceRepository": "raullqueirozz9292/Y-Core",
+  "sourceBranch": "fix/enquadramento-revisao-pages",
+  "sourceCommit": "128718171fbd55f3aab32ea2a90b6563d189abeb",
+  "previousSourceCommit": "0367ed5199dd275b2c1a70b6027e914d82bd3800",
+  "expectedPagesParent": "cb406b309fac5113bbd8e06c39903ef0d940593e",
+  "preparedAt": "2026-10-28T03:06:07.261Z",
+  "files": [
+    {
+      "file": "index.html",
+      "bytes": 33776,
+      "sha256": "ef5a5d8e1367436a14af7ae1d09b02eb86a1ffe7f2ca4dd6275494a865368496"
+    },
+    {
+      "file": "plany.html",
+      "bytes": 15881,
+      "sha256": "b615000bfa2500b4b111231584b19cb0112d0cb586fccb130190730c9dc45374"
+    },
+    {
+      "file": "mody.html",
+      "bytes": 15909,
+      "sha256": "e5195f499c3d21463d400941f0d101330b3a6833f07c36d7c3facb7829b5f2e2"
+    },
+    {
+      "file": "ganty.html",
+      "bytes": 14939,
+      "sha256": "1a11cd751476f23f81e90d5082e85543cc66ab8ea72671bf885f7700a8d747eb"
+    },
+    {
+      "file": "conta-y.html",
+      "bytes": 8275,
+      "sha256": "a2d742b069947499b996c25d63156f09bafc426b609867fe0dbb90d631724d57"
+    },
+    {
+      "file": "privacidade.html",
+      "bytes": 5713,
+      "sha256": "7a95c8143d5dbea17da82a74c851de19b57092ef0b27c5de834be74e580c4f5e"
+    },
+    {
+      "file": "site.css",
+      "bytes": 52694,
+      "sha256": "84c91db5516841eade8323d43be3204bc9c2f4e066167907929f53411f47bcf8"
+    },
+    {
+      "file": "main.js",
+      "bytes": 10109,
+      "sha256": "4ef0f6d677d1ae0e95e65def24885076a525bc73eef998ee17ad2df140ae7913"
+    },
+    {
+      "file": "framing.js",
+      "bytes": 948,
+      "sha256": "2bee9b426676d7cd2d0b629f1ffd86ee6f2940ae241ff7a373c7484d6b2699b7"
+    },
+    {
+      "file": "demo-models.js",
+      "bytes": 1803,
+      "sha256": "2fc476830afb9f6bae57165fa63728ba01ce3c3de80ddbcc1cbe37cfcc02c49c"
+    },
+    {
+      "file": "product.js",
+      "bytes": 2289,
+      "sha256": "e53558bb47efeb7d952b7e6e0587dcd3412c38c8b7c3f4af2f4aded4acacfbeb"
+    },
+    {
+      "file": "account.js",
+      "bytes": 1912,
+      "sha256": "3406ace5d481b180b404280f3c1d1fdc328eebdc4c41709688cc880b836ded2e"
+    },
+    {
+      "file": "_headers",
+      "bytes": 377,
+      "sha256": "0ed9ceb18e7bda05af9212d0dfc8bb69c9162a23462602ddcf66e3ed8accfd4b"
+    },
+    {
+      "file": "account-entry.css",
+      "bytes": 5897,
+      "sha256": "a47d087807b2fe154b3a05025c8be7f941600f08908a36372102d9c3a8e0b241"
+    },
+    {
+      "file": "account-entry.js",
+      "bytes": 3663,
+      "sha256": "680fc7f74a33e3adca966ed7311f96406bf72eba518ecc2c5ca1c4cd0d72c6c7"
+    },
+    {
+      "file": "brand-identity.css",
+      "bytes": 1277,
+      "sha256": "27c3b9aa7b5ecc8f7182e4d05aebd9237afda131c6f33ac9f936d4d1cc39e13c"
+    },
+    {
+      "file": "robots.txt",
+      "bytes": 26,
+      "sha256": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1"
+    },
+    {
+      "file": "health",
+      "bytes": 76,
+      "sha256": "b016727e11685975b8bf16f72a09f2e036a1d5d067c4b25033e43f5c9cd613fa"
+    },
+    {
+      "file": "v1/account/access",
+      "bytes": 20,
+      "sha256": "31bac4a3a86fe0ac346b1097a425ff68bdf0b0675cb028fd6b402ba646bc6aad"
+    },
+    {
+      "file": "assets/plany-logo.svg",
+      "bytes": 1259,
+      "sha256": "dbe9f05a54bd21a1217c744dd1f3285e2c9f7117ba435840dbaee3fe4c03f8d5"
+    },
+    {
+      "file": "assets/plany-symbol.svg",
+      "bytes": 481,
+      "sha256": "54e31096eda4520e036a510debaa2c7c4d16b403c4d3d46b6b0317bc6581c404"
+    },
+    {
+      "file": "assets/mody-logo.svg",
+      "bytes": 1567,
+      "sha256": "dd3620f2c199817746070a2a7b7e9ed98d65b5af5a305516a417fbf4937af5a9"
+    },
+    {
+      "file": "assets/mody-symbol.svg",
+      "bytes": 717,
+      "sha256": "a2ca9a7e6727b03cf412cd4ce2fabcae8ae6f1387e8c3076e6d63a07d32ddb28"
+    },
+    {
+      "file": "assets/ganty-logo.svg",
+      "bytes": 1474,
+      "sha256": "583ae9134468f6d28fdd8d1fbad22232f0155bd9f8a8a06a5e930d2b12b67295"
+    },
+    {
+      "file": "assets/ganty-symbol.svg",
+      "bytes": 538,
+      "sha256": "92515686705bd2270b41cab99c85ec2ee446664536da33f07a4f2138e1af0245"
+    },
+    {
+      "file": "assets/ycore-reference-board.png",
+      "bytes": 1969737,
+      "sha256": "d72cd21010209266ff5c61370a3abdebaa294d7bae73ca856d905602e066e9aa"
+    },
+    {
+      "file": "assets/ycore-reference-wordmark.svg",
+      "bytes": 2626610,
+      "sha256": "c4d988105263b27da6d8570e3eae612b84c215e3aa16f6cf78ae130c756d993b"
+    },
+    {
+      "file": "assets/ycore-reference-frame.svg",
+      "bytes": 2626640,
+      "sha256": "fe80a47a542b641c2ed61651f49b83543b9d6476a32c0c9cf861da591f1e2cd1"
+    },
+    {
+      "file": "assets/cabinet-concept.svg",
+      "bytes": 1340,
+      "sha256": "026c0e7c74e40eca7508a2733a9f9f7eed311bc634bb687f75fa1873c40f9594"
+    },
+    {
+      "file": "assets/social-preview.svg",
+      "bytes": 2627310,
+      "sha256": "5502edd73abecc090a62e279717661ddb6e92e85da50a55dbc5940b8eb0524d4"
+    },
+    {
+      "file": "assets/manrope-latin.woff2",
+      "bytes": 24836,
+      "sha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972"
+    },
+    {
+      "file": "assets/MANROPE-OFL.txt",
+      "bytes": 4387,
+      "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+    }
+  ]
+}

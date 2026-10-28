@@ -1,4 +1,5 @@
-import {priceExample,scheduleExample,dayOffset} from './demo-models.js';
+import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=128718171fbd55f3aab32ea2a90b6563d189abeb';
+import {afterLayout,alignContent,onPageReady} from './framing.js?v=128718171fbd55f3aab32ea2a90b6563d189abeb';
 
 document.documentElement.classList.add('js');
 const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
@@ -17,6 +18,7 @@ if(nav&&toggle){
 }
 
 const tablist=document.querySelector('[data-product-tabs]');
+let selectProduct=null;
 if(tablist){
   const tabs=[...tablist.querySelectorAll('button')];
   const panels=[...document.querySelectorAll('.product-panel')];
@@ -27,6 +29,7 @@ if(tablist){
     for(const panel of panels){panel.hidden=panel.id!==id;panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby','tab-'+panel.id);}
     if(writeHash)history.replaceState(null,'','#'+id);
   };
+  selectProduct=id=>select(id);
   tabs.forEach((tab,index)=>{
     tab.addEventListener('click',()=>select(tab.dataset.product,false,true));
     tab.addEventListener('keydown',event=>{
@@ -42,6 +45,55 @@ if(tablist){
   const fromHash=()=>{const id=location.hash.slice(1);if(panels.some(p=>p.id===id))select(id);};
   select(panels.some(p=>p.id===location.hash.slice(1))?location.hash.slice(1):'plany');
   window.addEventListener('hashchange',fromHash);
+}
+
+// Reveal the requested product before positioning. Native anchors cannot scroll
+// to a panel that was hidden when the link was followed.
+let navigation=0;
+async function followFragment({initial=false}={}){
+ const generation=++navigation;
+ let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}
+ const target=document.getElementById(id);
+ if(!target||target.matches('.account-pane'))return;
+ const product=target.matches('.product-panel');
+ if(product)selectProduct?.(id);
+ await afterLayout();if(generation!==navigation)return;
+ alignContent(product?tablist:target,{initial});
+}
+const documentPath=path=>path.endsWith('/')?path+'index.html':path;
+document.addEventListener('click',event=>{
+ if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+ const link=event.target.closest('a[href]');if(!link||link.target||link.hasAttribute('download'))return;
+ const url=new URL(link.href,location.href);
+ if(url.origin!==location.origin||documentPath(url.pathname)!==documentPath(location.pathname)||!url.hash)return;
+ let target;try{target=document.getElementById(decodeURIComponent(url.hash.slice(1)));}catch{return;}
+ if(!target||target.matches('.account-pane'))return;
+ event.preventDefault();if(location.hash!==url.hash)history.pushState(null,'',url.pathname+url.search+url.hash);
+ followFragment();
+});
+window.addEventListener('hashchange',()=>followFragment());
+window.addEventListener('popstate',()=>followFragment());
+onPageReady(()=>followFragment({initial:true}));
+
+// The restored scene has a fixed authoring canvas. Its occupied layout space
+// must follow its proportional scale, rather than the unscaled canvas height.
+const scene=document.querySelector('.heritage-scene'),slot=scene?.parentElement;
+if(scene&&slot){
+ const hero=slot.closest('.hero'),art=slot.closest('.hero-art');
+ let queued=false;
+ const fit=()=>{
+  queued=false;
+  if(innerWidth<=600){slot.style.removeProperty('--scene-height');scene.style.removeProperty('--scene-scale');return;}
+  const layout=getComputedStyle(hero),desktop=innerWidth>850;
+  const nonScene=art.offsetHeight-slot.offsetHeight;
+  const available=innerHeight-(hero.getBoundingClientRect().top+scrollY)-parseFloat(layout.paddingTop)-parseFloat(layout.paddingBottom)-nonScene;
+  const scale=Math.min(.8,slot.clientWidth/660,desktop?Math.max(610*.46,available)/610:.8);
+  const height=(610*scale).toFixed(2)+'px',value=scale.toFixed(5);
+  if(slot.style.getPropertyValue('--scene-height')!==height)slot.style.setProperty('--scene-height',height);
+  if(scene.style.getPropertyValue('--scene-scale')!==value)scene.style.setProperty('--scene-scale',value);
+ };
+ const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(fit);}};
+ new ResizeObserver(schedule).observe(art);window.addEventListener('resize',schedule);onPageReady(schedule);
 }
 
 for(const demo of document.querySelectorAll('[data-pricing]')){

@@ -3,41 +3,48 @@ on:
   push:
     branches: [gh-pages]
     paths:
-      - index.html
+      - '*.html'
+      - '*.css'
+      - '*.js'
+      - assets/**
+      - review-version.json
       - .github/workflows/check-home.yml
 permissions:
   contents: read
+concurrency:
+  group: verificar-pages-revisao
+  cancel-in-progress: true
 jobs:
   homepage:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
-      - name: Testar a página pública servida por HTTPS (sem token)
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Conferir a versão e os arquivos realmente servidos pelo GitHub Pages
         shell: bash
         run: |
-          set -euo pipefail
-          url="https://raw.githack.com/raullqueirozz9292/Plany-Distribuicao/gh-pages/index.html"
-          for n in 1 2 3 4 5 6; do
-            code="$(curl -L -sS --max-time 14 -o /tmp/preview.html -w "%{http_code}" "$url" || true)"
-            if [[ "$code" == "200" ]] && grep -q 'Seu trabalho' /tmp/preview.html; then break; fi
-            if [[ "$n" == 6 ]]; then
-              echo "Live preview unavailable: HTTP $code" >&2; exit 1
-            fi
-            sleep 5
-          done
-          grep -q 'Plany' /tmp/preview.html
-          grep -q 'Mody' /tmp/preview.html
-          grep -q 'Ganty' /tmp/preview.html
-          ! grep -qi 'Joiny' /tmp/preview.html
-          # GitHub Pages: canonical address independent of third-party viewers.
-          pages_url="https://raullqueirozz9292.github.io/Plany-Distribuicao/"
-          for n in 1 2 3 4 5 6 7 8; do
-            pages_code="$(curl -L -sS --max-time 15 -o /tmp/pages.html -w "%{http_code}" "$pages_url" || true)"
-            if [[ "$pages_code" == "200" ]] && grep -q 'Seu trabalho' /tmp/pages.html; then break; fi
-            if [[ "$n" == "8" ]]; then echo "GitHub Pages unavailable: HTTP $pages_code" >&2; exit 1; fi
-            sleep 6
-          done
-          ! grep -qi 'Joiny' /tmp/pages.html
-          echo "Site público GitHub Pages validado: $pages_url" >> "$GITHUB_STEP_SUMMARY"
-          echo "Prévia HTML real confirmada em HTTPS: $url" >> "$GITHUB_STEP_SUMMARY"
-          echo "Somente site demonstrativo, sem autenticação ou banco de licenças." >> "$GITHUB_STEP_SUMMARY"
+          node --input-type=module <<'NODE'
+          import {readFileSync,appendFileSync} from 'node:fs';
+          import {createHash} from 'node:crypto';
+          const expected=JSON.parse(readFileSync('review-version.json'));
+          const base='https://raullqueirozz9292.github.io/Plany-Distribuicao/';
+          let served;
+          for(let attempt=0;attempt<24;attempt++){
+            try{
+              const r=await fetch(base+'review-version.json?v='+expected.sourceCommit,{cache:'no-store',signal:AbortSignal.timeout(15000)});
+              if(r.ok){const data=await r.json();if(data.sourceCommit===expected.sourceCommit){served=data;break;}}
+            }catch{}
+            await new Promise(resolve=>setTimeout(resolve,5000));
+          }
+          if(!served)throw Error('O GitHub Pages ainda não está servindo o commit-fonte esperado');
+          for(let n=0;n<expected.files.length;n+=5)await Promise.all(expected.files.slice(n,n+5).map(async file=>{
+            const response=await fetch(base+file.file+'?v='+expected.sourceCommit,{cache:'no-store',signal:AbortSignal.timeout(15000)});
+            if(!response.ok)throw Error(file.file+' HTTP '+response.status);
+            const bytes=Buffer.from(await response.arrayBuffer());
+            if(createHash('sha256').update(bytes).digest('hex')!==file.sha256)throw Error('Conteúdo publicado difere do candidato: '+file.file);
+          }));
+          appendFileSync(process.env.GITHUB_STEP_SUMMARY,`GitHub Pages: ${base}\n\nFonte Y-Core: ${expected.sourceCommit}\n\nCommit do espelho: ${process.env.GITHUB_SHA}\n\n${expected.files.length} arquivos servidos coincidem com o candidato. A inspeção visual no navegador permanece necessária. Produção Cloudflare não é alterada por este workflow.\n`);
+          NODE
