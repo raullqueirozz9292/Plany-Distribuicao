@@ -2,40 +2,40 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/marketing-projetos-reais-20261028",
-  "sourceCommit": "c5420236b52aa208cffec017a07cc454b78efe2c",
+  "sourceCommit": "a14f126840e2c6321acc0b43c81484398a859fc0",
   "previousSourceCommit": "7d15735e6bb6f1d11ddbad9fe831fec3b5418c50",
   "expectedPagesParent": "dca8035a53c00f9428fc34c9cd619de2bf04affb",
-  "preparedAt": "2026-10-28T04:56:12.794Z",
+  "preparedAt": "2026-10-28T05:00:55.976Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 30610,
-      "sha256": "b192f5bd8b636df0d527a1a20c549682dd226f06645e4425ac405ca62854394b"
+      "sha256": "45b5405c6822822f1fee469d6a7f913e0774dfde308ac12816a9faa0f239f0d3"
     },
     {
       "file": "plany.html",
-      "bytes": 16827,
-      "sha256": "f8f3f56d0054c24e32c5a2fad501f10f5a46f9f89a48405d828cfcb7a070154e"
+      "bytes": 16797,
+      "sha256": "c191e79535995b485f94dbfe39236a27ac9ce0f61cf4e7b943e5d787d8d062bd"
     },
     {
       "file": "mody.html",
       "bytes": 15909,
-      "sha256": "1edfde612779f454634b54d88d601e112d555f07e9950c8723a26908a6ab166f"
+      "sha256": "acded1b893bb424ae9ef87d400505d89ba7421c9f3d3263c680ac721cced84da"
     },
     {
       "file": "ganty.html",
       "bytes": 14939,
-      "sha256": "1090664cc394d51c083ec87bcbdeeb4bd20ab6c30bfdfbfa45c29118a0dc5335"
+      "sha256": "e2fd9bef8aeeec45edd17a2cbde8e3fa7dc6dd3ce196eda0597c62737e13c2a2"
     },
     {
       "file": "conta-y.html",
       "bytes": 8275,
-      "sha256": "82704272186ef869563bb4d1209f68a7d387ff062685647e1ac06df684bc7d2b"
+      "sha256": "c37c526a185b9c53ee1cd31cfddda6c9159b0d2ef2d6277f0eda997312d74876"
     },
     {
       "file": "privacidade.html",
       "bytes": 5713,
-      "sha256": "a8bd0f5eb931356181ab9ad26f271834b9a8d36f4e84b1ef56f480260cd5cd90"
+      "sha256": "da0339c23ae05070acbc005f01647486ef285099967406afdf61520ab87c630f"
     },
     {
       "file": "site.css",
@@ -45,7 +45,7 @@
     {
       "file": "main.js",
       "bytes": 10107,
-      "sha256": "b3b63f3e7a17aded6b627c4fd83b4d8edd41cff180679661f13f8d067d23166d"
+      "sha256": "a3bf5bc8b9390040e8cc0ce6cd9168cb9242ef2dd350414ddf458f61e4765328"
     },
     {
       "file": "framing.js",
@@ -65,7 +65,7 @@
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "e92476f8e330ec15f83af323d035363a1216bfc1b0d75716ce691e3a171f4226"
+      "sha256": "378864252b52db80f1b8fae3f3edb27735df0879158844e0a90d78b56e7c4db3"
     },
     {
       "file": "_headers",
