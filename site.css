@@ -267,8 +267,8 @@ box-shadow:10px 9px 0 rgba(60,112,77,.16)}
 
 /* Framing follows the available viewport; long content keeps normal page flow. */
 @media(min-width:601px){
- .heritage-home .heritage-wrap{height:var(--scene-height,505px)}
- .heritage-home .heritage-scene{transform:scale(var(--scene-scale,.8))}
+ .heritage-home .heritage-wrap[style]{height:var(--scene-height)}
+ .heritage-home .heritage-scene[style]{transform:scale(var(--scene-scale))}
 }
 @media(min-width:851px){
  .hero,.product-page .hero{padding-block:clamp(24px,calc(18svh - 80px),78px)}

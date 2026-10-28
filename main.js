@@ -1,5 +1,5 @@
-import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=128718171fbd55f3aab32ea2a90b6563d189abeb';
-import {afterLayout,alignContent,onPageReady} from './framing.js?v=128718171fbd55f3aab32ea2a90b6563d189abeb';
+import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=7d15735e6bb6f1d11ddbad9fe831fec3b5418c50';
+import {afterLayout,alignContent,onPageReady} from './framing.js?v=7d15735e6bb6f1d11ddbad9fe831fec3b5418c50';
 
 document.documentElement.classList.add('js');
 const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
@@ -93,7 +93,9 @@ if(scene&&slot){
   if(scene.style.getPropertyValue('--scene-scale')!==value)scene.style.setProperty('--scene-scale',value);
  };
  const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(fit);}};
- new ResizeObserver(schedule).observe(art);window.addEventListener('resize',schedule);onPageReady(schedule);
+ // Establish the occupied space during module startup, before load completes.
+ // Observers then refine it for fonts and viewport changes without a late jump.
+ fit();new ResizeObserver(schedule).observe(art);window.addEventListener('resize',schedule);onPageReady(schedule);
 }
 
 for(const demo of document.querySelectorAll('[data-pricing]')){

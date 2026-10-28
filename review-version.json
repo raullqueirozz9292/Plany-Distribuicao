@@ -2,50 +2,50 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/enquadramento-revisao-pages",
-  "sourceCommit": "128718171fbd55f3aab32ea2a90b6563d189abeb",
-  "previousSourceCommit": "0367ed5199dd275b2c1a70b6027e914d82bd3800",
-  "expectedPagesParent": "cb406b309fac5113bbd8e06c39903ef0d940593e",
-  "preparedAt": "2026-10-28T03:06:07.261Z",
+  "sourceCommit": "7d15735e6bb6f1d11ddbad9fe831fec3b5418c50",
+  "previousSourceCommit": "128718171fbd55f3aab32ea2a90b6563d189abeb",
+  "expectedPagesParent": "4cf007bab0da0c8fd3de3ce46bd98d9a7105e976",
+  "preparedAt": "2026-10-28T03:23:01.064Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 33776,
-      "sha256": "ef5a5d8e1367436a14af7ae1d09b02eb86a1ffe7f2ca4dd6275494a865368496"
+      "sha256": "28fe98eb3d5e017548fdfd29de3e75cb7652f33f8cb89a31ae47d30b7fb7aa56"
     },
     {
       "file": "plany.html",
       "bytes": 15881,
-      "sha256": "b615000bfa2500b4b111231584b19cb0112d0cb586fccb130190730c9dc45374"
+      "sha256": "d237f26a241edbb796fe9629fe3eb9c065aa41b9baded54e1c7ed2539b6716b2"
     },
     {
       "file": "mody.html",
       "bytes": 15909,
-      "sha256": "e5195f499c3d21463d400941f0d101330b3a6833f07c36d7c3facb7829b5f2e2"
+      "sha256": "d3e816b8c533ff2ca92f09b50c62b8155966452378c4a8f7753f152ebe61abfe"
     },
     {
       "file": "ganty.html",
       "bytes": 14939,
-      "sha256": "1a11cd751476f23f81e90d5082e85543cc66ab8ea72671bf885f7700a8d747eb"
+      "sha256": "eb1b8c601325f1b4574016be959755a0ec0e231a13d7afefc81a3b66e742a4d1"
     },
     {
       "file": "conta-y.html",
       "bytes": 8275,
-      "sha256": "a2d742b069947499b996c25d63156f09bafc426b609867fe0dbb90d631724d57"
+      "sha256": "680557d51e38d2d3ddb9951afae0fe8b2cbf0a8e517460401cb6ab22d367dcf1"
     },
     {
       "file": "privacidade.html",
       "bytes": 5713,
-      "sha256": "7a95c8143d5dbea17da82a74c851de19b57092ef0b27c5de834be74e580c4f5e"
+      "sha256": "57ce17958ed79805e39505bbf6f7b03df8d60547b9e59589e30ea8f6309cc933"
     },
     {
       "file": "site.css",
-      "bytes": 52694,
-      "sha256": "84c91db5516841eade8323d43be3204bc9c2f4e066167907929f53411f47bcf8"
+      "bytes": 52699,
+      "sha256": "06e6fa70f3a5c481dc8f8eee8bd1baf1f6bbe6aa711278a564eaa9bc19ab4e65"
     },
     {
       "file": "main.js",
-      "bytes": 10109,
-      "sha256": "4ef0f6d677d1ae0e95e65def24885076a525bc73eef998ee17ad2df140ae7913"
+      "bytes": 10275,
+      "sha256": "7e6e3679970543bb57e7580b6f35e6b23cad386b006d2803b2f2f731b0c5e53c"
     },
     {
       "file": "framing.js",
@@ -65,7 +65,7 @@
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "3406ace5d481b180b404280f3c1d1fdc328eebdc4c41709688cc880b836ded2e"
+      "sha256": "8e15a8d2fc17d899a5258ada463e7bf6a02ce54509b35c13ceca2c4feffa4235"
     },
     {
       "file": "_headers",
