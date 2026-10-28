@@ -2,7 +2,7 @@ Ecossistema Y — ambiente público de revisão visual (GitHub Pages).
 
 Origem canônica: raullqueirozz9292/Y-Core
 Branch de origem: fix/hero-imagem-aprovada-exata-20261028
-Commit validado: 6deb07dca6c9efe7f9ec98d4bff3f5468e741939
+Commit validado: 88ef7a3e7cd5302cd64e35ee0ce8d17ca4f04538
 Origem anterior preservada no histórico: 4ff590b8e551c313799c631c9b2f1ed53ac9a0ce
 
 O conteúdo nesta branch é um espelho gerado. Alterar fontes no Y-Core, não editar HTML manualmente aqui. review-version.json identifica o commit de origem e os hashes do espelho.

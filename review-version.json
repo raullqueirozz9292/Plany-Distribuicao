@@ -2,15 +2,15 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/hero-imagem-aprovada-exata-20261028",
-  "sourceCommit": "6deb07dca6c9efe7f9ec98d4bff3f5468e741939",
+  "sourceCommit": "88ef7a3e7cd5302cd64e35ee0ce8d17ca4f04538",
   "previousSourceCommit": "a15c4097b20c6157da110b23d6d13524bae3976a",
   "expectedPagesParent": "118dd34fd40efb3172c44a6f98ea8d7ada0ff7e1",
-  "preparedAt": "2026-10-28T16:29:22.026Z",
+  "preparedAt": "2026-10-28T16:33:51.192Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 31369,
-      "sha256": "81a6de9278d6012cbe70058378e2a0e63690a17848145658f32c11ec8b6720dd"
+      "sha256": "704a97231fb3b6521b6bb3977f39343982e9ec7a3080e9c8ca6b23572d00c73a"
     },
     {
       "file": "plany.html",
