@@ -1,16 +1,16 @@
 {
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
-  "sourceBranch": "fix/hero-abertura-cartoes-20261028",
-  "sourceCommit": "fc026939419933799967e3446056769e6bf86467",
-  "previousSourceCommit": "7d15735e6bb6f1d11ddbad9fe831fec3b5418c50",
-  "expectedPagesParent": "35a1d512c2ab4764c742f4bda1bc58dcb17368e8",
-  "preparedAt": "2026-10-28T12:22:19.138Z",
+  "sourceBranch": "fix/hero-tipografia-cartoes-20261028",
+  "sourceCommit": "4ff590b8e551c313799c631c9b2f1ed53ac9a0ce",
+  "previousSourceCommit": "fc026939419933799967e3446056769e6bf86467",
+  "expectedPagesParent": "5b8697b8142f1c3c5cb113e97faeade35de65026",
+  "preparedAt": "2026-10-28T12:46:51.407Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 33776,
-      "sha256": "2e9c85fe11ceb8240348961a8c071dc678e965164d398fc3fa6ff39052548aa8"
+      "sha256": "95b9bbec8fe81284183c825fee442678ead91cab38b1441ff2a11b78fc11e0e5"
     },
     {
       "file": "plany.html",
@@ -39,8 +39,8 @@
     },
     {
       "file": "site.css",
-      "bytes": 53312,
-      "sha256": "17c5a39768b20e07df83ad860cebb4b2b5692bcf0414d972b7ccab60e547ea03"
+      "bytes": 55237,
+      "sha256": "a4551ff19efc564158ce613061a446ebb2a202706da93a6628b19e6f7ca156a0"
     },
     {
       "file": "main.js",

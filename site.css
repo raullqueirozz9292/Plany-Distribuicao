@@ -323,3 +323,52 @@ box-shadow:10px 9px 0 rgba(60,112,77,.16)}
   height:475px;
  }
 }
+
+/* Legibilidade real dos cartões — preserva dimensões externas da cena (2026-10-28). */
+/* O JS reduz a cena inteira a ~0,46 em notebooks baixos. Crescer só width
+   mantinha a fonte de 9px em ~4px visíveis. Contraescalar os CARTÕES,
+   aumentar seu corpo tipográfico e ancorá-los pelos cantos externos. */
+@media(min-width:1101px){
+ .heritage-home .heritage-scene .budget-float{
+  left:-68px;
+  bottom:78px;
+  width:310px;
+  padding:17px 19px 15px;
+  transform-origin:right bottom;
+  transform:rotate(-5deg) scale(1.28);
+ }
+ .heritage-home .heritage-scene .gantt-float{
+  right:-70px;
+  bottom:53px;
+  width:300px;
+  padding:17px 19px;
+  transform-origin:left bottom;
+  transform:rotate(4deg) scale(1.28);
+ }
+ /* Só a janela do Plany cresce dentro dos 610px já reservados para a cena.
+    Mantemos topo, largura, perspectiva e posição da faixa inferior. */
+ .heritage-home .heritage-scene .editor-window{height:510px}
+ .heritage-home .heritage-scene .float-head{gap:11px}
+ .heritage-home .heritage-scene .float-head strong{font-size:21px;line-height:1.2}
+ .heritage-home .heritage-scene .float-head small{
+  font-size:18px;line-height:1.25;color:#586b70
+ }
+ .heritage-home .heritage-scene .float-app-icon{
+  width:35px;height:35px;flex-basis:35px
+ }
+ .heritage-home .heritage-scene .float-divider{margin:12px 0}
+ .heritage-home .heritage-scene .budget-lines{
+  font-size:18px;line-height:1.25;color:#425957
+ }
+ .heritage-home .heritage-scene .float-bottom{
+  font-size:17px;line-height:1.3;color:#596e72
+ }
+ .heritage-home .heritage-scene .budget-bars{gap:9px;margin:11px 0}
+ .heritage-home .heritage-scene .budget-bars i{height:9px}
+ .heritage-home .heritage-scene .gantt-mini{margin-top:13px}
+ .heritage-home .heritage-scene .gantt-axis{
+  font-size:18px;line-height:1.25;color:#62767c
+ }
+ .heritage-home .heritage-scene .gantt-track{height:22px}
+ .heritage-home .heritage-scene .gantt-track>span{top:6px}
+}
