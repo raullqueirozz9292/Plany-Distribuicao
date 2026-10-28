@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360"  >
+                  <defs><linearGradient id="face2" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#e8dfd3"/><stop offset="1" stop-color="#a8957d"/></linearGradient><linearGradient id="side2" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#8f7d67"/><stop offset="1" stop-color="#53493c"/></linearGradient></defs>
+                  <path d="M105 92 262 38 424 92 263 150Z" fill="#c8b9a3"/><path d="M263 150 424 92 424 286 263 345Z" fill="url(#side2)"/><path d="M105 92 263 150 263 345 105 283Z" fill="url(#face2)"/>
+                  <path d="M122 115 248 161 248 321 122 271Z" fill="#bfb1a0" stroke="#eee4d4" stroke-width="3"/>
+                  <path d="M136 126 185 146 185 283 136 264Z M194 149 236 165 236 304 194 287Z" fill="#3a4545" stroke="#e6dccc" stroke-width="3"/>
+                  <path d="M138 200 238 239M138 245 238 283" stroke="#9c8871" stroke-width="5"/>
+                  <path d="M270 156 309 142 309 328 270 342Z M318 137 365 120 365 309 318 326Z M373 116 416 100 416 290 373 306Z" fill="#ab9983"/>
+                  <path d="M270 234 416 178M270 297 416 243" stroke="#695b4b" stroke-width="3"/>
+                  <path d="M75 79 260 12 453 77M83 311 262 375 449 308" stroke="#76b598" stroke-dasharray="5 8" fill="none" opacity=".75"/>
+                </svg>
