@@ -1,16 +1,16 @@
 {
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
-  "sourceBranch": "fix/hero-imagem-aprovada-exata-20261028",
-  "sourceCommit": "88ef7a3e7cd5302cd64e35ee0ce8d17ca4f04538",
-  "previousSourceCommit": "a15c4097b20c6157da110b23d6d13524bae3976a",
-  "expectedPagesParent": "118dd34fd40efb3172c44a6f98ea8d7ada0ff7e1",
-  "preparedAt": "2026-10-28T16:33:51.192Z",
+  "sourceBranch": "fix/hero-sem-fundo-recorte-exato-20261028",
+  "sourceCommit": "81908ab6e15377b78b1fcc0dd47546a2b11ea9b3",
+  "previousSourceCommit": "88ef7a3e7cd5302cd64e35ee0ce8d17ca4f04538",
+  "expectedPagesParent": "7c453998caaf14084aadaac549f5b1fa6584447d",
+  "preparedAt": "2026-10-28T17:03:05.804Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 31369,
-      "sha256": "704a97231fb3b6521b6bb3977f39343982e9ec7a3080e9c8ca6b23572d00c73a"
+      "sha256": "76226f5c9c1fdf6d075b7c808c1ed22414f4be11424bb9edcf4c0dafe5614de1"
     },
     {
       "file": "plany.html",
@@ -39,8 +39,8 @@
     },
     {
       "file": "site.css",
-      "bytes": 57678,
-      "sha256": "43a2c66ad6901de306d7328897c2119812b781cba27f67d092257ce0728d4f01"
+      "bytes": 58190,
+      "sha256": "57bb59ad8d26a44ebc4335099503e4c26f3f580291bb145d1211c0ab254e50a3"
     },
     {
       "file": "main.js",
@@ -186,6 +186,11 @@
       "file": "assets/hero-referencia-aprovada.avif",
       "bytes": 18949,
       "sha256": "f26e3a0a7749863a9528385b960990709ee83320038cd343270e8c36d6f43cdb"
+    },
+    {
+      "file": "assets/hero-recorte-sem-fundo.svg",
+      "bytes": 1123,
+      "sha256": "a1809dc7a2a8e3b9be62b9c1b4ff1c37258e0084809500accfb5ded76f692db0"
     }
   ]
 }

@@ -412,3 +412,14 @@ box-shadow:10px 9px 0 rgba(60,112,77,.16)}
  }
  .heritage-home .approved-hero-art img{width:100%;height:auto;max-height:none}
 }
+
+/* Recorte não destrutivo: somente o azul externo da arte aprovada some.
+   O AVIF original e todos os elementos da composição permanecem idênticos. */
+.heritage-home .approved-hero-art img{
+ -webkit-mask-image:url("./assets/hero-recorte-sem-fundo.svg");
+ mask-image:url("./assets/hero-recorte-sem-fundo.svg");
+ -webkit-mask-mode:alpha;mask-mode:alpha;
+ -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+ -webkit-mask-position:center;mask-position:center;
+ -webkit-mask-size:contain;mask-size:contain;
+}
