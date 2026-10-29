@@ -2,40 +2,40 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/hero-orbitas-brancas-discretas-20261028",
-  "sourceCommit": "5a05189c0c947381e97018f78de514e8e1379378",
-  "previousSourceCommit": "cc6198478a93bf373056f75fec9f224b6ff019a3",
-  "expectedPagesParent": "9928da73caa5e615a7448e2e1dd06a3d694d6402",
-  "preparedAt": "2026-10-29T04:22:16.992Z",
+  "sourceCommit": "a1173ed7f7703365435b3dc1b2f58e70f8bcd07f",
+  "previousSourceCommit": "5a05189c0c947381e97018f78de514e8e1379378",
+  "expectedPagesParent": "fffa5753afb76bd637521ccca6d62ce4411095a9",
+  "preparedAt": "2026-10-29T04:35:32.326Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 31370,
-      "sha256": "4d9bee35f716f10a3d45fe32ae4a9c87906eb6bd71276d37b9f95a0482c6f011"
+      "sha256": "2c22ce69d9d11957dd71e965a47b0b77aeec6f2a3330a28607093cdc9af69820"
     },
     {
       "file": "plany.html",
-      "bytes": 17233,
-      "sha256": "5942c2d5799a47c15c51b16fdd2b99ff45313b55898bd5c1a1bae98ac1a73371"
+      "bytes": 17251,
+      "sha256": "96f00ca0142138b0c302e3b8210e9f1e69df71315a17e6d860cd9cda3796112d"
     },
     {
       "file": "mody.html",
       "bytes": 15909,
-      "sha256": "e48ec64211eff75a345481728a95c245d33f5bcc301328a91cc67e38fcf1cdad"
+      "sha256": "ffbdcf5b10afeba87a3f1f7d7eac8c8dbe8f467203dae2be1394f1ab64a794ed"
     },
     {
       "file": "ganty.html",
       "bytes": 14939,
-      "sha256": "d85b24588f2c8e772471a407ac36a581a79550cfceb21cc7c233c74fcd9748e2"
+      "sha256": "a4440735f4649943895209f9137ca2c0c274d6f4e4ff82bc8f4d45dd22239a97"
     },
     {
       "file": "conta-y.html",
       "bytes": 8275,
-      "sha256": "366be5d3e591a7166045e51eb738bfeae5bbe1a42a4c6ac000139030dd553457"
+      "sha256": "921912b7126fd146ba110c15b5225fad34ebb530ae2a3150e2ffc23db427dafa"
     },
     {
       "file": "privacidade.html",
       "bytes": 5713,
-      "sha256": "bc3e00cf4c50cef0d8d600017aad57cb5afd32cede74fc920491d92c54957317"
+      "sha256": "2afb3c1ea21af5584ef0e7558a63178afeaf3521998b34d2a43047542521de4c"
     },
     {
       "file": "site.css",
@@ -45,7 +45,7 @@
     {
       "file": "main.js",
       "bytes": 10275,
-      "sha256": "bcc46702c29969926e9ac466488ef50d110a1d5a215ff42adb6f2eafef8f196f"
+      "sha256": "b7ba3e9152fdb2b88325132f8402f74307287b6b26e55aa4fbcfa049f9f81d3c"
     },
     {
       "file": "framing.js",
@@ -65,7 +65,7 @@
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "eb582e9a5f74ac4ff4098a48505f93ad06fec2572bd6a444e665b084b29ef81b"
+      "sha256": "e3173289a37753a3a9bfc85018afb91e7df50a9eae6fcacdbd535d1433529a76"
     },
     {
       "file": "_headers",
@@ -186,6 +186,11 @@
       "file": "assets/expositor-projeto.png",
       "bytes": 2704713,
       "sha256": "ea92101ac1fe3d48b8bde47afe94a4ff36d057ad6b20b0c9b4366f65f9f01246"
+    },
+    {
+      "file": "assets/expositor-plany-interface.png",
+      "bytes": 277365,
+      "sha256": "e800cfe57170fa1a7061c706ebfeeca89640996607ca4fa890d4d451d08f1c53"
     },
     {
       "file": "assets/roupeiro-projeto.png",
