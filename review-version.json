@@ -1,51 +1,51 @@
 {
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
-  "sourceBranch": "fix/hero-orbitas-brancas-discretas-20261028",
-  "sourceCommit": "c95ffcc7f916ddeb9d1fd4ffa68ff3b47b20c3d2",
-  "previousSourceCommit": "bc533b806fcccabdccae3879411d239c145e0cdb",
-  "expectedPagesParent": "95c63cdec567166d41c5e9ca1ac2d24e70f8203a",
-  "preparedAt": "2026-10-29T05:32:38.308Z",
+  "sourceBranch": "fix/revisao-integral-site-20261029",
+  "sourceCommit": "16e6652c92d5fa05c714def7d5d0f73278cf683a",
+  "previousSourceCommit": "c95ffcc7f916ddeb9d1fd4ffa68ff3b47b20c3d2",
+  "expectedPagesParent": "284f37df86c4faa088f6d8fca5253cf8463575ff",
+  "preparedAt": "2026-10-29T06:38:01.006Z",
   "files": [
     {
       "file": "index.html",
-      "bytes": 33093,
-      "sha256": "c3a29bd5e0d83c905c40d2ab037961043b2aac63abfcc977ed6793225cd9c042"
+      "bytes": 33718,
+      "sha256": "866bee33a3b0fb15f3b09968bc7099a93b7726719ee232da46e86f7bfdc67fc5"
     },
     {
       "file": "plany.html",
-      "bytes": 17462,
-      "sha256": "2ef86875225247d8c2b73a30d2cfc70f770d72723ed63ed02ff2f6855ef51db7"
+      "bytes": 17742,
+      "sha256": "72f8f3e45edf0b6cdfd4d6cdd7303d2e7c3741e5c0f210c539651f54fdb7fac9"
     },
     {
       "file": "mody.html",
-      "bytes": 16085,
-      "sha256": "5dfffa775e6a7bca04af508489179664e59d3818a6cb14aa041efd39ad5e36b9"
+      "bytes": 16139,
+      "sha256": "3d25a40238ac4984be7f6bfcde68dee9c1a0196f50624ba57a8aa3840044a60e"
     },
     {
       "file": "ganty.html",
-      "bytes": 15146,
-      "sha256": "7af40e2285e6885aaad16330c291b5c35fd63470a458d56d17a4d8e877ecddd3"
+      "bytes": 15200,
+      "sha256": "3bd47325623048111ad11401a03383b895ceebfe7514486e9d7fb09b6ef10b19"
     },
     {
       "file": "conta-y.html",
-      "bytes": 8275,
-      "sha256": "6a7df0004ccc54b49661f581c027ef980a0739b96b6b77900c23347b5c1dee06"
+      "bytes": 8255,
+      "sha256": "4253ce8e503107dc2910372f108e4016a428f5f2fe4607c19839449921ec5f19"
     },
     {
       "file": "privacidade.html",
-      "bytes": 5713,
-      "sha256": "2cfa621b55ab45492f6d1c37f6e6e0d54765ead6780fa0d00d313595d57fd667"
+      "bytes": 5693,
+      "sha256": "27b7d4ce3f265ce0986cc4f15ee2c15c58e3c1d89c1f3c2b1438c5a5599cf8a7"
     },
     {
       "file": "site.css",
-      "bytes": 61945,
-      "sha256": "e28faa317ed79a3cf4bd6f9f110bd0e84f285be5b12c5668ea9027b48f2e2f3c"
+      "bytes": 62315,
+      "sha256": "8ef61fac590fd740acccd952fc4c80cc5d53b9a345082bc91fef08015aca8902"
     },
     {
       "file": "main.js",
-      "bytes": 10275,
-      "sha256": "165367bd32e85bc35a59266b7c4ef1fe0d4b747e2063748f57ba3a346e8f4bab"
+      "bytes": 10606,
+      "sha256": "b67d272dea9f79644d87b7f77ed9194db257828c8f67971dcc167cbdfeb704a9"
     },
     {
       "file": "framing.js",
@@ -59,13 +59,13 @@
     },
     {
       "file": "product.js",
-      "bytes": 2289,
-      "sha256": "e53558bb47efeb7d952b7e6e0587dcd3412c38c8b7c3f4af2f4aded4acacfbeb"
+      "bytes": 2291,
+      "sha256": "3e64008ac3aa483f9f67322db4409ede2887d07237b1fbeb77b6ddb1590bd267"
     },
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "7bffa6c3fe25e8b6aaa25fb17d09c737eed715ba5e5c9cdf3ad6d3b3b08884dd"
+      "sha256": "912651a2cda21fd939a624e72f9a626a913f253225336bfc0e2cebc5116bd7dd"
     },
     {
       "file": "_headers",

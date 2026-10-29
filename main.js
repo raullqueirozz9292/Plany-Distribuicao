@@ -1,5 +1,5 @@
-import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=bc533b806fcccabdccae3879411d239c145e0cdb';
-import {afterLayout,alignContent,onPageReady} from './framing.js?v=bc533b806fcccabdccae3879411d239c145e0cdb';
+import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=16e6652c92d5fa05c714def7d5d0f73278cf683a';
+import {afterLayout,alignContent,onPageReady} from './framing.js?v=16e6652c92d5fa05c714def7d5d0f73278cf683a';
 
 document.documentElement.classList.add('js');
 const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
@@ -59,6 +59,11 @@ async function followFragment({initial=false}={}){
  if(product)selectProduct?.(id);
  await afterLayout();if(generation!==navigation)return;
  alignContent(product?tablist:target,{initial});
+ if(!initial){
+  const focusTarget=product?document.getElementById('tab-'+id):target;
+  if(!focusTarget.matches('a[href],button,input,select,textarea,[tabindex]'))focusTarget.tabIndex=-1;
+  focusTarget.focus({preventScroll:true});
+ }
 }
 const documentPath=path=>path.endsWith('/')?path+'index.html':path;
 document.addEventListener('click',event=>{
@@ -73,7 +78,8 @@ document.addEventListener('click',event=>{
 });
 window.addEventListener('hashchange',()=>followFragment());
 window.addEventListener('popstate',()=>followFragment());
-onPageReady(()=>followFragment({initial:true}));
+// A late load callback must not override an interaction already requested.
+onPageReady(()=>{if(navigation===0)followFragment({initial:true});});
 
 // The restored scene has a fixed authoring canvas. Its occupied layout space
 // must follow its proportional scale, rather than the unscaled canvas height.
