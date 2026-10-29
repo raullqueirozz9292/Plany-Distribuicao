@@ -2,30 +2,30 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/hero-orbitas-brancas-discretas-20261028",
-  "sourceCommit": "bc533b806fcccabdccae3879411d239c145e0cdb",
-  "previousSourceCommit": "e360382ebe6c9a573e182e196b7fd5acb5529662",
-  "expectedPagesParent": "e70440f8eb31e21ad63cad7a143940fc119cf323",
-  "preparedAt": "2026-10-29T05:10:19.418Z",
+  "sourceCommit": "c95ffcc7f916ddeb9d1fd4ffa68ff3b47b20c3d2",
+  "previousSourceCommit": "bc533b806fcccabdccae3879411d239c145e0cdb",
+  "expectedPagesParent": "95c63cdec567166d41c5e9ca1ac2d24e70f8203a",
+  "preparedAt": "2026-10-29T05:32:38.308Z",
   "files": [
     {
       "file": "index.html",
-      "bytes": 31370,
-      "sha256": "9165bdb3e8bdb450ae0b0b32bfed1795f11b6c91212eacf6225aa4b370f7cf9a"
+      "bytes": 33093,
+      "sha256": "c3a29bd5e0d83c905c40d2ab037961043b2aac63abfcc977ed6793225cd9c042"
     },
     {
       "file": "plany.html",
-      "bytes": 17287,
-      "sha256": "c986f905e8b0374a4a8bfd2610e74705a1e3ca3ef27f1fad70d01d31c94a6fbf"
+      "bytes": 17462,
+      "sha256": "2ef86875225247d8c2b73a30d2cfc70f770d72723ed63ed02ff2f6855ef51db7"
     },
     {
       "file": "mody.html",
-      "bytes": 15909,
-      "sha256": "e63e60320b66fcad9864679f94a52a4499e33530e869f0379a4a7b2baa7dfe1d"
+      "bytes": 16085,
+      "sha256": "5dfffa775e6a7bca04af508489179664e59d3818a6cb14aa041efd39ad5e36b9"
     },
     {
       "file": "ganty.html",
-      "bytes": 14939,
-      "sha256": "8fc127ddc5c846add7f2457c14c4128bbc70f4a92fb0efe85ad4351b87b5132d"
+      "bytes": 15146,
+      "sha256": "7af40e2285e6885aaad16330c291b5c35fd63470a458d56d17a4d8e877ecddd3"
     },
     {
       "file": "conta-y.html",
@@ -39,8 +39,8 @@
     },
     {
       "file": "site.css",
-      "bytes": 60353,
-      "sha256": "49a0ec28ba6e849ee28f4b2a34693afff6ed9826606a5340f7de1c1297233d68"
+      "bytes": 61945,
+      "sha256": "e28faa317ed79a3cf4bd6f9f110bd0e84f285be5b12c5668ea9027b48f2e2f3c"
     },
     {
       "file": "main.js",

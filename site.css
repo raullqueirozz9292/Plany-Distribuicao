@@ -481,3 +481,20 @@ box-shadow:10px 9px 0 rgba(60,112,77,.16)}
  66.666667%,93.333333%{transform:translateX(-200%)}
  100%{transform:translateX(-300%)}
 }
+
+/* Precificação Y-Core | 2026-10-29. Somente apresentação, sem checkout. */
+.offers-price-grid .offer-option{min-height:0;padding:23px 21px 21px}
+.offers-price-grid .offer-option h3{font-size:clamp(20px,1.8vw,26px);margin:13px 0 6px}
+.offers-price-grid .offer-option>p{margin:0 0 18px;line-height:1.55;min-height:40px}
+.offers-price-grid .offer-rate{border-top:1px solid #50616b;padding:14px 0 10px;display:flex;flex-direction:column;gap:1px}
+.offers-price-grid .offer-rate>span{color:#b7ded0;font-size:11px;font-weight:800;letter-spacing:.04em}
+.offers-price-grid .offer-rate strong{font-size:clamp(27px,2.5vw,39px);line-height:1.25;color:#fff;letter-spacing:-.045em;font-weight:800}
+.offers-price-grid .offer-rate small{font-size:12px;letter-spacing:0;font-weight:600;color:#d3dee0;margin-left:5px}
+.offers-price-grid .offer-standard{display:flex;flex-wrap:wrap;gap:3px 8px;align-items:baseline;margin-bottom:17px;color:#c9d5d8;font-size:11px}
+.offers-price-grid .offer-standard strong{color:#eff4f4;font-size:13px;white-space:nowrap}
+.offers-price-grid .offer-bottom{padding-top:12px;gap:9px}
+.offers-price-grid .offer-bottom>span{font-size:10px}
+.offers-price-grid .offer-option[data-plan="completo"]{border-color:#b18cba;background:linear-gradient(160deg,#3c2d47,#142936)}
+.offers-disclaimer{font-size:11px!important;line-height:1.7!important;color:#aabfc6!important;margin-top:20px}
+.availability .availability-list strong{white-space:nowrap}
+@media(max-width:600px){.offers-price-grid .offer-option>p{min-height:0}.availability .availability-list li{flex-wrap:wrap;gap:5px 15px}}

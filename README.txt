@@ -2,8 +2,8 @@ Ecossistema Y — ambiente público de revisão visual (GitHub Pages).
 
 Origem canônica: raullqueirozz9292/Y-Core
 Branch de origem: fix/hero-orbitas-brancas-discretas-20261028
-Commit validado: bc533b806fcccabdccae3879411d239c145e0cdb
-Origem anterior preservada no histórico: e360382ebe6c9a573e182e196b7fd5acb5529662
+Commit validado: c95ffcc7f916ddeb9d1fd4ffa68ff3b47b20c3d2
+Origem anterior preservada no histórico: bc533b806fcccabdccae3879411d239c145e0cdb
 
 A branch gh-pages é um espelho gerado. Alterar fontes no Y-Core; não editar HTML aqui.
 review-version.json identifica o commit-fonte e os hashes públicos. A API pages/builds/latest e o workflow pages build and deployment identificam o commit deste espelho efetivamente publicado.
