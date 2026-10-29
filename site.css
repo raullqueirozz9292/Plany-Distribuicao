@@ -120,8 +120,8 @@ fieldset{min-inline-size:0;margin-inline:0;padding-inline:0;border-inline:0}.sch
 .ecosystem-brand strong span{color:#a2dfb3}
 .account-button{background:#0b0e14;color:#fff;border-radius:999px}
 .auth-enter{border-color:#738592;background:#111923}
-.auth-create{background:#080b11;color:#fff;border-color:#e7574b;box-shadow:inset 0 0 0 1px #e7574b}
-.auth-create:hover{background:#191119;border-color:#ff7567;color:#fff}
+.auth-create{background:var(--paper);color:var(--ink);border-color:var(--paper);box-shadow:none}
+.auth-create:hover{background:#fff;border-color:#fff;color:var(--ink)}
 .hero-home:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.45;background:
   linear-gradient(116deg,transparent 28%,rgba(95,174,238,.10) 29%,transparent 30%) 0 0/390px 100%,
   linear-gradient(114deg,transparent 59%,rgba(115,204,245,.09) 59.3%,transparent 59.9%) 0 0/640px 100%;
