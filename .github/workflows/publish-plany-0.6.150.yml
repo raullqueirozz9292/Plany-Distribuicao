@@ -1,0 +1,56 @@
+name: Publicar Plany 0.6.150 no canal oficial
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-plany-0.6.150.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: plany-release-0.6.150
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'raullqueirozz9292/Plany-Distribuicao'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout do repositório oficial
+        uses: actions/checkout@v4
+      - name: Confirmar que a versão ainda não existe
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v0.6.150 --repo raullqueirozz9292/Plany-Distribuicao >/dev/null 2>&1; then
+            echo "A release oficial v0.6.150 já foi publicada. Não sobrescrever."
+            exit 1
+          fi
+      - name: Gerar RBZ incremental com integridade de origem
+        run: python3 tools/build-release-0.6.150.py
+      - name: Publicar versão oficial para o atualizador do Plany
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v0.6.150 dist/Plany-0.6.150.rbz \
+            --repo raullqueirozz9292/Plany-Distribuicao \
+            --target main \
+            --title 'Plany 0.6.150 — canal oficial único' \
+            --notes 'Atualização pontual da Central Plany: as explicações de Serra, Refilo e Veio agora iniciam com *, ** e ***, respectivamente, em linhas separadas. Mantidos o ícone amarelo ao lado de Incluir Retalhos e os outros ajustes existentes. A versão 0.6.150 também conserva a identificação da Central por HTML/CSS para impedir o carregamento de interface antiga. Versão incremental para o botão Recarregar Plany; para uma instalação nova, utilizar o RBZ completo 0.6.45, que baixa as atualizações oficiais. Código-fonte: raullqueirozz9292/Plany, versão 0.6.150.' \
+            --latest
+      - name: Conferir release, arquivo e SHA-256 publicados
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,subprocess
+          from pathlib import Path
+          r=json.loads(subprocess.check_output(['gh','api','repos/raullqueirozz9292/Plany-Distribuicao/releases/latest'],text=True))
+          assert r['tag_name']=='v0.6.150' and not r['draft'] and not r['prerelease']
+          a=[a for a in r['assets'] if a['name']=='Plany-0.6.150.rbz']
+          assert len(a)==1
+          path=Path('dist/Plany-0.6.150.rbz')
+          digest=hashlib.sha256(path.read_bytes()).hexdigest()
+          assert a[0]['size']==path.stat().st_size and a[0]['digest']=='sha256:'+digest
+          print('PUBLICADO E VERIFICADO:',r['html_url'],digest)
+          PY
