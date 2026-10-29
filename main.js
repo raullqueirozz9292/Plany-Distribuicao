@@ -1,5 +1,5 @@
-import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=cc6198478a93bf373056f75fec9f224b6ff019a3';
-import {afterLayout,alignContent,onPageReady} from './framing.js?v=cc6198478a93bf373056f75fec9f224b6ff019a3';
+import {priceExample,scheduleExample,dayOffset} from './demo-models.js?v=5a05189c0c947381e97018f78de514e8e1379378';
+import {afterLayout,alignContent,onPageReady} from './framing.js?v=5a05189c0c947381e97018f78de514e8e1379378';
 
 document.documentElement.classList.add('js');
 const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);

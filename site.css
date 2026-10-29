@@ -468,16 +468,16 @@ box-shadow:10px 9px 0 rgba(60,112,77,.16)}
  }
 }
 
-/* Projetos fornecidos pelo usuário: mesma janela, imagens inteiras. */
-.hero-summary .project-slideshow{display:grid;grid-template-rows:minmax(0,1fr) 24px;gap:7px;min-width:0}
-.project-slideshow-stage{position:relative;min-height:0;overflow:hidden;border-radius:6px;background:#f4f5f3}
-.project-slide{position:absolute;inset:0;display:block;border-radius:6px}
-.project-slide[hidden]{display:none}
+/* Projetos originais: quadro na proporção das imagens e arraste automático. */
+.hero-summary .concept-cabinet.project-slideshow{display:block;height:auto;max-height:none;min-width:0}
+.project-slideshow-stage{aspect-ratio:3/2;overflow:hidden;border-radius:6px}
+.project-slideshow-track{display:flex;width:100%;height:100%;animation:project-drag 9s cubic-bezier(.4,0,.2,1) infinite}
+.project-slide{flex:0 0 100%;min-width:0;height:100%}
 .project-slide img{display:block;width:100%;height:100%;object-fit:contain}
-.project-slide:focus-visible{outline:2px solid var(--plany);outline-offset:-2px}
-.project-slideshow-controls{display:flex;align-items:center;justify-content:center;gap:9px;min-width:0;color:#c4d2d3}
-.project-slideshow-controls[hidden]{display:none}
-.project-slideshow-controls button{display:grid;place-items:center;width:26px;height:24px;padding:0;border:1px solid #46606b;border-radius:5px;background:transparent;color:inherit;font:inherit;font-size:18px;line-height:1;cursor:pointer}
-.project-slideshow-controls button[data-project-pause]{font-size:10px}
-.project-slideshow-controls button:hover,.project-slideshow-controls button:focus-visible{color:#fff;border-color:var(--plany);outline:2px solid transparent}
-.project-slideshow-controls [data-project-counter]{min-width:0;flex:1;text-align:center;font-size:11px;line-height:1.3}
+.project-slideshow:hover .project-slideshow-track,.project-slideshow:focus-within .project-slideshow-track{animation-play-state:paused}
+@keyframes project-drag{
+ 0%,26.666667%{transform:translateX(0)}
+ 33.333333%,60%{transform:translateX(-100%)}
+ 66.666667%,93.333333%{transform:translateX(-200%)}
+ 100%{transform:translateX(-300%)}
+}

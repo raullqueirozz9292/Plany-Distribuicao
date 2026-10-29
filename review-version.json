@@ -2,50 +2,50 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/hero-orbitas-brancas-discretas-20261028",
-  "sourceCommit": "cc6198478a93bf373056f75fec9f224b6ff019a3",
-  "previousSourceCommit": "2e82c73633224fec6039cb7ea06fc3a3d4ecd359",
-  "expectedPagesParent": "7bd969780b237962cb37a7b27128095dda6f3c41",
-  "preparedAt": "2026-10-29T04:10:21.760Z",
+  "sourceCommit": "5a05189c0c947381e97018f78de514e8e1379378",
+  "previousSourceCommit": "cc6198478a93bf373056f75fec9f224b6ff019a3",
+  "expectedPagesParent": "9928da73caa5e615a7448e2e1dd06a3d694d6402",
+  "preparedAt": "2026-10-29T04:22:16.992Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 31370,
-      "sha256": "57e00abbc1fcb5e770d9ddf15c43cc3b72743461b04f41e768d53e515b5658e1"
+      "sha256": "4d9bee35f716f10a3d45fe32ae4a9c87906eb6bd71276d37b9f95a0482c6f011"
     },
     {
       "file": "plany.html",
-      "bytes": 17906,
-      "sha256": "46c470c19792f4c3ec457e821cc0ff0895c8879bb3c3f229bf99d057d543e280"
+      "bytes": 17233,
+      "sha256": "5942c2d5799a47c15c51b16fdd2b99ff45313b55898bd5c1a1bae98ac1a73371"
     },
     {
       "file": "mody.html",
       "bytes": 15909,
-      "sha256": "a5b07309aaa3d092616d14b2212e3fd2a8f9810cd2ef6d48b6c82e088aadbb60"
+      "sha256": "e48ec64211eff75a345481728a95c245d33f5bcc301328a91cc67e38fcf1cdad"
     },
     {
       "file": "ganty.html",
       "bytes": 14939,
-      "sha256": "55f7ff8327a5e91672f664373ec7c968d98afe7cc1862676dbd6c6f243a7f501"
+      "sha256": "d85b24588f2c8e772471a407ac36a581a79550cfceb21cc7c233c74fcd9748e2"
     },
     {
       "file": "conta-y.html",
       "bytes": 8275,
-      "sha256": "5b4f0db7bdce0a975af75ce9a9fa468fd25a536db905548f494d2e35dd4365de"
+      "sha256": "366be5d3e591a7166045e51eb738bfeae5bbe1a42a4c6ac000139030dd553457"
     },
     {
       "file": "privacidade.html",
       "bytes": 5713,
-      "sha256": "844c75f1090eb587a33451a8e797bf60d2a8fcea075a7da9016527596c5e9e76"
+      "sha256": "bc3e00cf4c50cef0d8d600017aad57cb5afd32cede74fc920491d92c54957317"
     },
     {
       "file": "site.css",
-      "bytes": 60817,
-      "sha256": "106ae060ed19c6735d1b57d31a7a40217dd1274dab9cda40f3ede9d926cac5f1"
+      "bytes": 60356,
+      "sha256": "e6f9509fa608b69112601e008b515d2db14e71322a37c3d6568e6a5fbaadd9e0"
     },
     {
       "file": "main.js",
       "bytes": 10275,
-      "sha256": "7c5818b24a21fdb8eca2a24ec3857e84a3452e0a7af7038d9d980472e25b1b67"
+      "sha256": "bcc46702c29969926e9ac466488ef50d110a1d5a215ff42adb6f2eafef8f196f"
     },
     {
       "file": "framing.js",
@@ -59,13 +59,13 @@
     },
     {
       "file": "product.js",
-      "bytes": 4582,
-      "sha256": "a5986890ef04c40432fe734305ba5f11b4eee43d876a1f46e9b7570e8850f2d1"
+      "bytes": 2289,
+      "sha256": "e53558bb47efeb7d952b7e6e0587dcd3412c38c8b7c3f4af2f4aded4acacfbeb"
     },
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "077e3091811d2512011c37498f6007d5579e8b01b9de139e8dffe9ed00c6274c"
+      "sha256": "eb582e9a5f74ac4ff4098a48505f93ad06fec2572bd6a444e665b084b29ef81b"
     },
     {
       "file": "_headers",
