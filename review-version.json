@@ -2,40 +2,40 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/hero-orbitas-brancas-discretas-20261028",
-  "sourceCommit": "a1173ed7f7703365435b3dc1b2f58e70f8bcd07f",
-  "previousSourceCommit": "5a05189c0c947381e97018f78de514e8e1379378",
-  "expectedPagesParent": "fffa5753afb76bd637521ccca6d62ce4411095a9",
-  "preparedAt": "2026-10-29T04:35:32.326Z",
+  "sourceCommit": "e360382ebe6c9a573e182e196b7fd5acb5529662",
+  "previousSourceCommit": "a1173ed7f7703365435b3dc1b2f58e70f8bcd07f",
+  "expectedPagesParent": "7d9c8b5bd1cd23f65b379abdcbecd40b25693e4b",
+  "preparedAt": "2026-10-29T04:44:18.858Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 31370,
-      "sha256": "2c22ce69d9d11957dd71e965a47b0b77aeec6f2a3330a28607093cdc9af69820"
+      "sha256": "7bb4117df2c6c8e8fd9636c97a96d11379ab335065bcecc763b73a31ce83a219"
     },
     {
       "file": "plany.html",
-      "bytes": 17251,
-      "sha256": "96f00ca0142138b0c302e3b8210e9f1e69df71315a17e6d860cd9cda3796112d"
+      "bytes": 17287,
+      "sha256": "ac0bff71a637052df5a95ce8c566ed6f152c35b30021cb96561f73decc9d6739"
     },
     {
       "file": "mody.html",
       "bytes": 15909,
-      "sha256": "ffbdcf5b10afeba87a3f1f7d7eac8c8dbe8f467203dae2be1394f1ab64a794ed"
+      "sha256": "723c3f1b3d60a0d3d50bd7a652608a5b5c6e835af5b2246c6113771bcc21976c"
     },
     {
       "file": "ganty.html",
       "bytes": 14939,
-      "sha256": "a4440735f4649943895209f9137ca2c0c274d6f4e4ff82bc8f4d45dd22239a97"
+      "sha256": "cf833a7c2afe508cb5533c0661970181a9ce6ddebdcf986a817a2c088d1c9500"
     },
     {
       "file": "conta-y.html",
       "bytes": 8275,
-      "sha256": "921912b7126fd146ba110c15b5225fad34ebb530ae2a3150e2ffc23db427dafa"
+      "sha256": "b36160fcac9336d496b532ffa090a29d37167bfdf0acb0cc7e0eab4307bf8f4d"
     },
     {
       "file": "privacidade.html",
       "bytes": 5713,
-      "sha256": "2afb3c1ea21af5584ef0e7558a63178afeaf3521998b34d2a43047542521de4c"
+      "sha256": "85e5abe6e7f890a386d6c52b1028b9f78d5fd43b89c3e81895f35ea24762823d"
     },
     {
       "file": "site.css",
@@ -45,7 +45,7 @@
     {
       "file": "main.js",
       "bytes": 10275,
-      "sha256": "b7ba3e9152fdb2b88325132f8402f74307287b6b26e55aa4fbcfa049f9f81d3c"
+      "sha256": "340b807cf89de52e0d26f9f7abcfdb5e1f24948316aa9871c9cf32b93cd8f124"
     },
     {
       "file": "framing.js",
@@ -65,7 +65,7 @@
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "e3173289a37753a3a9bfc85018afb91e7df50a9eae6fcacdbd535d1433529a76"
+      "sha256": "5f0671895b2e1bcacb143b9339eb1722348457b1e63da5d1cef82e590e7ff59c"
     },
     {
       "file": "_headers",
@@ -186,6 +186,11 @@
       "file": "assets/expositor-projeto.png",
       "bytes": 2704713,
       "sha256": "ea92101ac1fe3d48b8bde47afe94a4ff36d057ad6b20b0c9b4366f65f9f01246"
+    },
+    {
+      "file": "assets/gabinete-banheiro-projeto.png",
+      "bytes": 2090281,
+      "sha256": "09f6652e9f416d49eed02be7b260bc548c3ff983371e74be0fb5271e9608b858"
     },
     {
       "file": "assets/expositor-plany-interface.png",
