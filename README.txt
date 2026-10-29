@@ -2,11 +2,12 @@ Ecossistema Y — ambiente público de revisão visual (GitHub Pages).
 
 Origem canônica: raullqueirozz9292/Y-Core
 Branch de origem: fix/hero-orbitas-brancas-discretas-20261028
-Commit validado: e0468c27f1370b39a506069b616be4a1b06dcdc8
-Origem anterior preservada no histórico: 4ff590b8e551c313799c631c9b2f1ed53ac9a0ce
+Commit validado: cc6198478a93bf373056f75fec9f224b6ff019a3
+Origem anterior preservada no histórico: 2e82c73633224fec6039cb7ea06fc3a3d4ecd359
 
-O conteúdo nesta branch é um espelho gerado. Alterar fontes no Y-Core, não editar HTML manualmente aqui. review-version.json identifica o commit de origem e os hashes do espelho.
+A branch gh-pages é um espelho gerado. Alterar fontes no Y-Core; não editar HTML aqui.
+review-version.json identifica o commit-fonte e os hashes públicos. A API pages/builds/latest e o workflow pages build and deployment identificam o commit deste espelho efetivamente publicado.
 
-A atualização deve ser fast-forward, sem force. Se gh-pages mudar desde a preparação, parar e comparar antes de gerar novamente.
+A atualização deve ser fast-forward, sem force. Se gh-pages mudar desde a preparação, parar e comparar antes de gerar novamente. Não reaplicar automaticamente um candidato antigo.
 
-Produção definitiva: https://ecossistema-y.pages.dev/ — somente após aprovação explícita. Esta revisão não altera Cloudflare, DNS, segredos, bancos, permissões, pagamentos, licenças, Plany-Distribuicao/main ou distribuição RBZ.
+Produção definitiva: https://ecossistema-y.pages.dev/ — somente após aprovação explícita. Esta preparação não usa Cloudflare, DNS, segredos, bancos, permissões, pagamentos ou licenças. Plany-Distribuicao/main e a distribuição RBZ não são alterados.

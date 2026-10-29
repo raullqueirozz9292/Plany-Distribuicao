@@ -1,3 +1,44 @@
+for(const slideshow of document.querySelectorAll('[data-project-slideshow]')){
+  const slides=[...slideshow.querySelectorAll('[data-project-slide]')];
+  if(slides.length<2)continue;
+  const controls=slideshow.querySelector('[data-project-controls]');
+  const counter=slideshow.querySelector('[data-project-counter]');
+  const pause=slideshow.querySelector('[data-project-pause]');
+  const motion=matchMedia('(prefers-reduced-motion: reduce)');
+  let current=0,timer=null,paused=motion.matches,hovered=false,focused=false;
+  function schedule(){
+    clearInterval(timer);timer=null;
+    if(!paused&&!hovered&&!focused&&!document.hidden)timer=setInterval(()=>show(current+1),6000);
+  }
+  function show(index){
+    current=(index+slides.length)%slides.length;
+    slides.forEach((slide,n)=>{slide.hidden=n!==current;});
+    counter.textContent=`${slides[current].dataset.projectName} · ${current+1}/${slides.length}`;
+  }
+  function updatePause(){
+    pause.setAttribute('aria-pressed',String(paused));
+    pause.setAttribute('aria-label',paused?'Retomar apresentação':'Pausar apresentação');
+    pause.textContent=paused?'▶':'❚❚';
+    schedule();
+  }
+  controls.hidden=false;show(0);updatePause();
+  slideshow.querySelector('[data-project-previous]').addEventListener('click',()=>{show(current-1);schedule();});
+  slideshow.querySelector('[data-project-next]').addEventListener('click',()=>{show(current+1);schedule();});
+  pause.addEventListener('click',()=>{paused=!paused;updatePause();});
+  slideshow.addEventListener('mouseenter',()=>{hovered=true;schedule();});
+  slideshow.addEventListener('mouseleave',()=>{hovered=false;schedule();});
+  slideshow.addEventListener('focusin',()=>{focused=true;schedule();});
+  slideshow.addEventListener('focusout',event=>{focused=slideshow.contains(event.relatedTarget);schedule();});
+  slideshow.addEventListener('keydown',event=>{
+    if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;
+    event.preventDefault();show(current+(event.key==='ArrowRight'?1:-1));schedule();
+  });
+  motion.addEventListener('change',()=>{paused=motion.matches;updatePause();});
+  document.addEventListener('visibilitychange',schedule);
+  window.addEventListener('pagehide',()=>clearInterval(timer));
+  window.addEventListener('pageshow',schedule);
+}
+
 // O formulário só é mostrado após confirmação explícita do serviço no mesmo domínio.
 const form=document.querySelector('#interest-form');
 const status=document.querySelector('#form-status');

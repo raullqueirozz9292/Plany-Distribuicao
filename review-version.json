@@ -2,50 +2,50 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/hero-orbitas-brancas-discretas-20261028",
-  "sourceCommit": "2e82c73633224fec6039cb7ea06fc3a3d4ecd359",
-  "previousSourceCommit": "e0468c27f1370b39a506069b616be4a1b06dcdc8",
-  "expectedPagesParent": "55dd4cf5b6830128e558267cc22f79451df3cacb",
-  "preparedAt": "2026-10-29T02:35:00.000Z",
+  "sourceCommit": "cc6198478a93bf373056f75fec9f224b6ff019a3",
+  "previousSourceCommit": "2e82c73633224fec6039cb7ea06fc3a3d4ecd359",
+  "expectedPagesParent": "7bd969780b237962cb37a7b27128095dda6f3c41",
+  "preparedAt": "2026-10-29T04:10:21.760Z",
   "files": [
     {
       "file": "index.html",
-      "bytes": 31398,
-      "sha256": "90be926729fd9d3868c7d791c36f42d43087fd5592e3d6d3aadaade1cd9c8637"
+      "bytes": 31370,
+      "sha256": "57e00abbc1fcb5e770d9ddf15c43cc3b72743461b04f41e768d53e515b5658e1"
     },
     {
       "file": "plany.html",
-      "bytes": 16411,
-      "sha256": "967d50ad3b0850c19ea1788332e018d79453f7d28851276232793a681eeb8e83"
+      "bytes": 17906,
+      "sha256": "46c470c19792f4c3ec457e821cc0ff0895c8879bb3c3f229bf99d057d543e280"
     },
     {
       "file": "mody.html",
       "bytes": 15909,
-      "sha256": "d3e816b8c533ff2ca92f09b50c62b8155966452378c4a8f7753f152ebe61abfe"
+      "sha256": "a5b07309aaa3d092616d14b2212e3fd2a8f9810cd2ef6d48b6c82e088aadbb60"
     },
     {
       "file": "ganty.html",
       "bytes": 14939,
-      "sha256": "eb1b8c601325f1b4574016be959755a0ec0e231a13d7afefc81a3b66e742a4d1"
+      "sha256": "55f7ff8327a5e91672f664373ec7c968d98afe7cc1862676dbd6c6f243a7f501"
     },
     {
       "file": "conta-y.html",
       "bytes": 8275,
-      "sha256": "680557d51e38d2d3ddb9951afae0fe8b2cbf0a8e517460401cb6ab22d367dcf1"
+      "sha256": "5b4f0db7bdce0a975af75ce9a9fa468fd25a536db905548f494d2e35dd4365de"
     },
     {
       "file": "privacidade.html",
       "bytes": 5713,
-      "sha256": "57ce17958ed79805e39505bbf6f7b03df8d60547b9e59589e30ea8f6309cc933"
+      "sha256": "844c75f1090eb587a33451a8e797bf60d2a8fcea075a7da9016527596c5e9e76"
     },
     {
       "file": "site.css",
-      "bytes": 59505,
-      "sha256": "201c6ee2e62f1b7b69e513370d5afad19a6328d4c706bfc2ad6cce1359f27203"
+      "bytes": 60817,
+      "sha256": "106ae060ed19c6735d1b57d31a7a40217dd1274dab9cda40f3ede9d926cac5f1"
     },
     {
       "file": "main.js",
       "bytes": 10275,
-      "sha256": "7e6e3679970543bb57e7580b6f35e6b23cad386b006d2803b2f2f731b0c5e53c"
+      "sha256": "7c5818b24a21fdb8eca2a24ec3857e84a3452e0a7af7038d9d980472e25b1b67"
     },
     {
       "file": "framing.js",
@@ -59,13 +59,13 @@
     },
     {
       "file": "product.js",
-      "bytes": 2289,
-      "sha256": "e53558bb47efeb7d952b7e6e0587dcd3412c38c8b7c3f4af2f4aded4acacfbeb"
+      "bytes": 4582,
+      "sha256": "a5986890ef04c40432fe734305ba5f11b4eee43d876a1f46e9b7570e8850f2d1"
     },
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "8e15a8d2fc17d899a5258ada463e7bf6a02ce54509b35c13ceca2c4feffa4235"
+      "sha256": "077e3091811d2512011c37498f6007d5579e8b01b9de139e8dffe9ed00c6274c"
     },
     {
       "file": "_headers",
@@ -153,6 +153,51 @@
       "sha256": "026c0e7c74e40eca7508a2733a9f9f7eed311bc634bb687f75fa1873c40f9594"
     },
     {
+      "file": "assets/painel-led-sketchup.svg",
+      "bytes": 5586,
+      "sha256": "ee65382f659e87d5812b3e988d00a74b96269b3d7087eeb5ebbe3c076da97b79"
+    },
+    {
+      "file": "assets/hero-referencia-aprovada.avif",
+      "bytes": 18949,
+      "sha256": "f26e3a0a7749863a9528385b960990709ee83320038cd343270e8c36d6f43cdb"
+    },
+    {
+      "file": "assets/hero-recorte-sem-fundo.svg",
+      "bytes": 1123,
+      "sha256": "a1809dc7a2a8e3b9be62b9c1b4ff1c37258e0084809500accfb5ded76f692db0"
+    },
+    {
+      "file": "assets/gabinete-cozinha-sketchup.svg",
+      "bytes": 139713,
+      "sha256": "1037eb948fb92dbc1463fa3a86648f3b955768596afa2a7af12b166431fb58c0"
+    },
+    {
+      "file": "assets/expositor-tecnico-sketchup.svg",
+      "bytes": 1890,
+      "sha256": "245f156905799877bdf680421ff414fcd9c4322cae802e6c6144d50aa50104c5"
+    },
+    {
+      "file": "assets/gabinete-cozinha-cotas.png",
+      "bytes": 2038883,
+      "sha256": "5eba84cfb7b3f0df09d40568e297d22885f10cbcf154c9d3f98aeadc90b18b86"
+    },
+    {
+      "file": "assets/expositor-projeto.png",
+      "bytes": 2704713,
+      "sha256": "ea92101ac1fe3d48b8bde47afe94a4ff36d057ad6b20b0c9b4366f65f9f01246"
+    },
+    {
+      "file": "assets/roupeiro-projeto.png",
+      "bytes": 1779695,
+      "sha256": "5c70195cab87e776cf5123104bec30f3326790ecdb5db9b63d54dc34b5d57cd8"
+    },
+    {
+      "file": "assets/mesa-escritorio-projeto.png",
+      "bytes": 1771396,
+      "sha256": "117c7060c72e4dac8eb5c76179cd1f7543ee92c45063d67b11a62fea96b05af4"
+    },
+    {
       "file": "assets/social-preview.svg",
       "bytes": 2627310,
       "sha256": "5502edd73abecc090a62e279717661ddb6e92e85da50a55dbc5940b8eb0524d4"
@@ -166,32 +211,6 @@
       "file": "assets/MANROPE-OFL.txt",
       "bytes": 4387,
       "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
-    },
-    {
-      "file": "assets/painel-led-sketchup.svg",
-      "bytes": 5586,
-      "sha256": "ee65382f659e87d5812b3e988d00a74b96269b3d7087eeb5ebbe3c076da97b79"
-    },
-    {
-      "file": "assets/gabinete-cozinha-sketchup.svg",
-      "bytes": 139713,
-      "sha256": "1037eb948fb92dbc1463fa3a86648f3b955768596afa2a7af12b166431fb58c0"
-    },
-    {
-      "file": "assets/expositor-tecnico-sketchup.svg",
-      "bytes": 1890,
-      "sha256": "245f156905799877bdf680421ff414fcd9c4322cae802e6c6144d50aa50104c5"
-    },
-    {
-      "file": "assets/hero-referencia-aprovada.avif",
-      "bytes": 18949,
-      "sha256": "f26e3a0a7749863a9528385b960990709ee83320038cd343270e8c36d6f43cdb"
-    },
-    {
-      "file": "assets/hero-recorte-sem-fundo.svg",
-      "bytes": 1123,
-      "sha256": "a1809dc7a2a8e3b9be62b9c1b4ff1c37258e0084809500accfb5ded76f692db0"
     }
-  ],
-  "note": "Imagem original do SketchUp publicada diretamente no GitHub Pages; parâmetros de versão evitam cache antigo."
+  ]
 }
