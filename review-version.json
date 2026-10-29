@@ -2,20 +2,20 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/hero-orbitas-brancas-discretas-20261028",
-  "sourceCommit": "e0468c27f1370b39a506069b616be4a1b06dcdc8",
-  "previousSourceCommit": "81908ab6e15377b78b1fcc0dd47546a2b11ea9b3",
+  "sourceCommit": "2e82c73633224fec6039cb7ea06fc3a3d4ecd359",
+  "previousSourceCommit": "e0468c27f1370b39a506069b616be4a1b06dcdc8",
   "expectedPagesParent": "55dd4cf5b6830128e558267cc22f79451df3cacb",
-  "preparedAt": "2026-10-28T17:34:44.411Z",
+  "preparedAt": "2026-10-29T02:35:00.000Z",
   "files": [
     {
       "file": "index.html",
-      "bytes": 31369,
-      "sha256": "bfd6ecd75883fd3b1db24652571a56eb4d63b5e0de02556b5e82ed2cabebd453"
+      "bytes": 31398,
+      "sha256": "90be926729fd9d3868c7d791c36f42d43087fd5592e3d6d3aadaade1cd9c8637"
     },
     {
       "file": "plany.html",
-      "bytes": 16353,
-      "sha256": "57eb67b93fb4b1490cc4fa1731416983cac61cc18a74c88b5efbc22337c61445"
+      "bytes": 16411,
+      "sha256": "967d50ad3b0850c19ea1788332e018d79453f7d28851276232793a681eeb8e83"
     },
     {
       "file": "mody.html",
@@ -174,8 +174,8 @@
     },
     {
       "file": "assets/gabinete-cozinha-sketchup.svg",
-      "bytes": 1841,
-      "sha256": "96e3dd7cf204928e8a90c7c32ccb27b3486f66ca224890f09d30d0ea832dd619"
+      "bytes": 139713,
+      "sha256": "1037eb948fb92dbc1463fa3a86648f3b955768596afa2a7af12b166431fb58c0"
     },
     {
       "file": "assets/expositor-tecnico-sketchup.svg",
@@ -192,5 +192,6 @@
       "bytes": 1123,
       "sha256": "a1809dc7a2a8e3b9be62b9c1b4ff1c37258e0084809500accfb5ded76f692db0"
     }
-  ]
+  ],
+  "note": "Imagem original do SketchUp publicada diretamente no GitHub Pages; parâmetros de versão evitam cache antigo."
 }
