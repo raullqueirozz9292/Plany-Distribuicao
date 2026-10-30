@@ -397,6 +397,7 @@ box-shadow:10px 9px 0 rgba(60,112,77,.16)}
  justify-content:center;align-items:center;
  min-width:0;width:100%;height:100%;text-decoration:none;
 }
+.heritage-home .approved-hero-art picture{display:contents}
 .heritage-home .approved-hero-art img{
  display:block;width:100%;height:100%;max-width:100%;max-height:100%;
  object-fit:contain;object-position:center;
@@ -470,11 +471,13 @@ box-shadow:10px 9px 0 rgba(60,112,77,.16)}
 
 /* Projetos originais: quadro na proporção das imagens e arraste automático. */
 .hero-summary .concept-cabinet.project-slideshow{display:block;height:auto;max-height:none;min-width:0}
-.project-slideshow-stage{aspect-ratio:3/2;overflow:hidden;border-radius:6px}
+.project-slideshow-stage{position:relative;aspect-ratio:3/2;overflow:hidden;border-radius:6px}
+.project-motion-toggle{position:absolute;inset:0;z-index:1;appearance:none;-webkit-appearance:none;display:block;width:100%;height:100%;margin:0;padding:0;border:0;border-radius:6px;background:transparent;cursor:pointer}
+.project-motion-toggle:focus-visible{outline-offset:-4px}
 .project-slideshow-track{display:flex;width:100%;height:100%;animation:project-drag 9s cubic-bezier(.4,0,.2,1) infinite}
 .project-slide{flex:0 0 100%;min-width:0;height:100%}
 .project-slide img{display:block;width:100%;height:100%;object-fit:contain}
-.project-slideshow:hover .project-slideshow-track,.project-slideshow:focus-within .project-slideshow-track{animation-play-state:paused}
+.project-slideshow:hover .project-slideshow-track,.project-slideshow:focus-within .project-slideshow-track,.project-motion-toggle:checked ~ .project-slideshow-track{animation-play-state:paused}
 @keyframes project-drag{
  0%,26.666667%{transform:translateX(0)}
  33.333333%,60%{transform:translateX(-100%)}

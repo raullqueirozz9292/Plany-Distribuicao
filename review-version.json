@@ -2,50 +2,50 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/revisao-integral-site-20261029",
-  "sourceCommit": "16e6652c92d5fa05c714def7d5d0f73278cf683a",
-  "previousSourceCommit": "c95ffcc7f916ddeb9d1fd4ffa68ff3b47b20c3d2",
-  "expectedPagesParent": "284f37df86c4faa088f6d8fca5253cf8463575ff",
-  "preparedAt": "2026-10-29T06:38:01.006Z",
+  "sourceCommit": "bc1eb497b7861de1461249d4f5d810529f1f93dd",
+  "previousSourceCommit": "16e6652c92d5fa05c714def7d5d0f73278cf683a",
+  "expectedPagesParent": "5cc6e42c2ad0069911b4a1142a9e1abbf983d06c",
+  "preparedAt": "2026-10-30T04:44:45.459Z",
   "files": [
     {
       "file": "index.html",
-      "bytes": 33718,
-      "sha256": "866bee33a3b0fb15f3b09968bc7099a93b7726719ee232da46e86f7bfdc67fc5"
+      "bytes": 33809,
+      "sha256": "968b66551f682b57c8a4f25781423b030f6ae2dfe3b10f2beb334b0d5ab09136"
     },
     {
       "file": "plany.html",
-      "bytes": 17742,
-      "sha256": "72f8f3e45edf0b6cdfd4d6cdd7303d2e7c3741e5c0f210c539651f54fdb7fac9"
+      "bytes": 18004,
+      "sha256": "2f9f4c0140f571e0c59d3cdecf6e49330ee56ddb626c09d0be18950a34e6f51f"
     },
     {
       "file": "mody.html",
       "bytes": 16139,
-      "sha256": "3d25a40238ac4984be7f6bfcde68dee9c1a0196f50624ba57a8aa3840044a60e"
+      "sha256": "f8ba58b601359d7c36baa92954c990a0ad7c10f40b71fa30b4ed74377c97b3f4"
     },
     {
       "file": "ganty.html",
       "bytes": 15200,
-      "sha256": "3bd47325623048111ad11401a03383b895ceebfe7514486e9d7fb09b6ef10b19"
+      "sha256": "2b6e0249704863d67e2e7ae9a0fe587807fab345b4d891c068adb624a608063e"
     },
     {
       "file": "conta-y.html",
       "bytes": 8255,
-      "sha256": "4253ce8e503107dc2910372f108e4016a428f5f2fe4607c19839449921ec5f19"
+      "sha256": "dc4b0d80872a1d215fe465bf0ec299a3ef8cdd544367d2ef79ffe91978a0bdab"
     },
     {
       "file": "privacidade.html",
       "bytes": 5693,
-      "sha256": "27b7d4ce3f265ce0986cc4f15ee2c15c58e3c1d89c1f3c2b1438c5a5599cf8a7"
+      "sha256": "74b732e3affe39af019df4c5e9ba6b67e59bbff1be27c770d5686962e6d7e0d8"
     },
     {
       "file": "site.css",
-      "bytes": 62315,
-      "sha256": "8ef61fac590fd740acccd952fc4c80cc5d53b9a345082bc91fef08015aca8902"
+      "bytes": 62730,
+      "sha256": "7ae514336d6f3f5f90b40825999b7c4025e56094a2d16c01f257df40a859143e"
     },
     {
       "file": "main.js",
       "bytes": 10606,
-      "sha256": "b67d272dea9f79644d87b7f77ed9194db257828c8f67971dcc167cbdfeb704a9"
+      "sha256": "35b5f767070870b59fd97686f9a797b3e65279b31fdd5f3cf46606cc1ec47083"
     },
     {
       "file": "framing.js",
@@ -65,7 +65,7 @@
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "912651a2cda21fd939a624e72f9a626a913f253225336bfc0e2cebc5116bd7dd"
+      "sha256": "353177d892ab40ac53be852eed0e6844569c2f7aaf63a622b9c981ae57c3b4e7"
     },
     {
       "file": "_headers",
@@ -161,6 +161,11 @@
       "file": "assets/hero-referencia-aprovada.avif",
       "bytes": 18949,
       "sha256": "f26e3a0a7749863a9528385b960990709ee83320038cd343270e8c36d6f43cdb"
+    },
+    {
+      "file": "assets/hero-referencia-aprovada.png",
+      "bytes": 333359,
+      "sha256": "905dafa7dd45575b63996354b1e6522a6b62842573d9d9b7ddc3a66047d78564"
     },
     {
       "file": "assets/hero-recorte-sem-fundo.svg",
