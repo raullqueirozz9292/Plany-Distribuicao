@@ -1,0 +1,101 @@
+name: Publicar Plany 0.6.156 — Clientes na Central
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-plany-0.6.156.yml'
+      - 'tools/build-release-0.6.156.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: plany-official-release-0.6.156
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'raullqueirozz9292/Plany-Distribuicao'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Obter arquivos da distribuição oficial
+        uses: actions/checkout@v4
+      - name: Impedir sobrescrita de release existente
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v0.6.156 --repo raullqueirozz9292/Plany-Distribuicao >/dev/null 2>&1; then
+            echo "Release 0.6.156 já existe; nunca sobrescrever."
+            exit 1
+          fi
+      - name: Construir RBZ incremental a partir da release oficial verificada
+        run: python3 tools/build-release-0.6.156.py
+      - name: Verificar sintaxe JavaScript, contrato da Base Y e conteúdo do pacote
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/plany-release-validation
+          python3 - <<'PY'
+          import zipfile,pathlib
+          p=pathlib.Path('/tmp/plany-release-validation')
+          with zipfile.ZipFile('dist/Plany-0.6.156.rbz') as package:
+              for f in ('plany/central/app.js','plany/central/server.cjs','plany/central/base-y-clients.cjs'):
+                  (p/pathlib.Path(f).name).write_bytes(package.read(f))
+          PY
+          node --check /tmp/plany-release-validation/app.js
+          node --check /tmp/plany-release-validation/server.cjs
+          node --check /tmp/plany-release-validation/base-y-clients.cjs
+          node - <<'JS'
+          const assert=require('node:assert/strict');
+          const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
+          const {createClientStore}=require('/tmp/plany-release-validation/base-y-clients.cjs');
+          const dir=fs.mkdtempSync(path.join(os.tmpdir(),'base-y-release-'));
+          try{
+            const s=createClientStore(dir);
+            assert.deepEqual(s.list(),[]);
+            const a=s.save({nome:'  Cliente TESTE  ',cidade:'Brasília'});
+            assert.equal(a.nome,'Cliente TESTE');
+            const b=s.save({id:a.id,nome:'Cliente TESTE',cidade:'Recife'},a.version);
+            assert.equal(b.version,2);
+            assert.equal(s.list()[0].cidade,'Recife');
+            assert.throws(()=>s.save({id:a.id,nome:'TESTE'},a.version),/alterado em outra janela/);
+            assert.ok(fs.existsSync(path.join(dir,'clients.json.bak')));
+            const archived=s.setArchived(b.id,true,b.version);
+            assert.ok(archived.archivedAt);
+            const restored=s.setArchived(b.id,false,archived.version);
+            assert.equal(restored.archivedAt,null);
+            assert.equal(restored.id,b.id);
+            const file=path.join(dir,'clients.json');
+            fs.writeFileSync(file,'{corrupt');
+            assert.throws(()=>s.save({nome:'Outro'}),/ilegível/);
+            assert.equal(fs.readFileSync(file,'utf8'),'{corrupt');
+            console.log('PASS: Base Y local e integridade');
+          } finally {fs.rmSync(dir,{recursive:true,force:true});}
+          JS
+      - name: Publicar somente a release validada no canal oficial
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v0.6.156 dist/Plany-0.6.156.rbz \
+            --repo raullqueirozz9292/Plany-Distribuicao \
+            --target main \
+            --title 'Plany 0.6.156 — Clientes na Central Plany' \
+            --notes 'Inclui Clientes na navegação da Central Plany, com cadastro local, edição, busca, arquivamento, backup e controle de revisão. O painel de modelagem SketchUp permanece intocado. O compartilhamento entre aplicativos e a sincronização entre computadores ainda não estão ativos. Atualização oficial via Recarregar Plany.'
+      - name: Conferir publicação e SHA-256 do arquivo oficial
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,subprocess
+          from pathlib import Path
+          release=json.loads(subprocess.check_output([
+             'gh','api','repos/raullqueirozz9292/Plany-Distribuicao/releases/tags/v0.6.156'
+          ],text=True))
+          assert release['tag_name']=='v0.6.156'
+          assert not release['draft'] and not release['prerelease']
+          asset=[a for a in release['assets'] if a['name']=='Plany-0.6.156.rbz']
+          assert len(asset)==1
+          file=Path('dist/Plany-0.6.156.rbz')
+          digest=hashlib.sha256(file.read_bytes()).hexdigest()
+          assert asset[0]['size']==file.stat().st_size
+          assert asset[0]['digest']=='sha256:'+digest
+          print('RELEASE OFICIAL VERIFICADA:',release['html_url'],'SHA-256:',digest)
+          PY
