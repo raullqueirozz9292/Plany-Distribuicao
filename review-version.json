@@ -2,50 +2,50 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/revisao-integral-site-20261029",
-  "sourceCommit": "bc1eb497b7861de1461249d4f5d810529f1f93dd",
-  "previousSourceCommit": "16e6652c92d5fa05c714def7d5d0f73278cf683a",
-  "expectedPagesParent": "5cc6e42c2ad0069911b4a1142a9e1abbf983d06c",
-  "preparedAt": "2026-10-30T04:44:45.459Z",
+  "sourceCommit": "19f5c31821673db34e902ad80e3f8fc37b457bcd",
+  "previousSourceCommit": "bc1eb497b7861de1461249d4f5d810529f1f93dd",
+  "expectedPagesParent": "c114a2345ba74aca37866c14a8e5a2a6aa50c0cc",
+  "preparedAt": "2026-10-31T05:51:05.045Z",
   "files": [
     {
       "file": "index.html",
-      "bytes": 33809,
-      "sha256": "968b66551f682b57c8a4f25781423b030f6ae2dfe3b10f2beb334b0d5ab09136"
+      "bytes": 32911,
+      "sha256": "cc1335e697f654753ea6287e01370be733d6c407297a025ae73c22607f8d9d42"
     },
     {
       "file": "plany.html",
-      "bytes": 18004,
-      "sha256": "2f9f4c0140f571e0c59d3cdecf6e49330ee56ddb626c09d0be18950a34e6f51f"
+      "bytes": 17493,
+      "sha256": "86b18b7b9033b0f17d4b48f0224f60c6a590f3cb230e1c8acbf33a6c3932db6c"
     },
     {
       "file": "mody.html",
-      "bytes": 16139,
-      "sha256": "f8ba58b601359d7c36baa92954c990a0ad7c10f40b71fa30b4ed74377c97b3f4"
+      "bytes": 15628,
+      "sha256": "e0b65b3fb116ce99e0ca15c438c3dc9c9db02c895362b81030c73c9517bc9f85"
     },
     {
       "file": "ganty.html",
-      "bytes": 15200,
-      "sha256": "2b6e0249704863d67e2e7ae9a0fe587807fab345b4d891c068adb624a608063e"
+      "bytes": 14689,
+      "sha256": "09ad03b26dd802e935cd1f4f705d68813e262ab1af8100316751c130df89e0bd"
     },
     {
       "file": "conta-y.html",
-      "bytes": 8255,
-      "sha256": "dc4b0d80872a1d215fe465bf0ec299a3ef8cdd544367d2ef79ffe91978a0bdab"
+      "bytes": 7695,
+      "sha256": "9dada938eaa94d093a2c3c1e6a97f0395d93dece164cf579f355ce1f5b4756cf"
     },
     {
       "file": "privacidade.html",
-      "bytes": 5693,
-      "sha256": "74b732e3affe39af019df4c5e9ba6b67e59bbff1be27c770d5686962e6d7e0d8"
+      "bytes": 5133,
+      "sha256": "cdd1ca9417f4a1b5cb6b4ca1140e886630ec8302740b0d36a0168b582a1266d4"
     },
     {
       "file": "site.css",
-      "bytes": 62730,
-      "sha256": "7ae514336d6f3f5f90b40825999b7c4025e56094a2d16c01f257df40a859143e"
+      "bytes": 62491,
+      "sha256": "250bfa6ce56130cee933401cdddf6e1fd8d949979a18ede9b7224da2660a6473"
     },
     {
       "file": "main.js",
       "bytes": 10606,
-      "sha256": "35b5f767070870b59fd97686f9a797b3e65279b31fdd5f3cf46606cc1ec47083"
+      "sha256": "4d170b468cbb31360c7175f3359e32ed89b85f64624094a968b1c68fb6db94df"
     },
     {
       "file": "framing.js",
@@ -65,7 +65,7 @@
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "353177d892ab40ac53be852eed0e6844569c2f7aaf63a622b9c981ae57c3b4e7"
+      "sha256": "4275a7c25d9b1f1266a1faca71f5694ef5e8bb3a123431dec16c87f46d4e6325"
     },
     {
       "file": "_headers",
@@ -81,11 +81,6 @@
       "file": "account-entry.js",
       "bytes": 3663,
       "sha256": "680fc7f74a33e3adca966ed7311f96406bf72eba518ecc2c5ca1c4cd0d72c6c7"
-    },
-    {
-      "file": "brand-identity.css",
-      "bytes": 1277,
-      "sha256": "27c3b9aa7b5ecc8f7182e4d05aebd9237afda131c6f33ac9f936d4d1cc39e13c"
     },
     {
       "file": "robots.txt",
@@ -131,21 +126,6 @@
       "file": "assets/ganty-symbol.svg",
       "bytes": 538,
       "sha256": "92515686705bd2270b41cab99c85ec2ee446664536da33f07a4f2138e1af0245"
-    },
-    {
-      "file": "assets/ycore-reference-board.png",
-      "bytes": 1969737,
-      "sha256": "d72cd21010209266ff5c61370a3abdebaa294d7bae73ca856d905602e066e9aa"
-    },
-    {
-      "file": "assets/ycore-reference-wordmark.svg",
-      "bytes": 2626610,
-      "sha256": "c4d988105263b27da6d8570e3eae612b84c215e3aa16f6cf78ae130c756d993b"
-    },
-    {
-      "file": "assets/ycore-reference-frame.svg",
-      "bytes": 2626640,
-      "sha256": "fe80a47a542b641c2ed61651f49b83543b9d6476a32c0c9cf861da591f1e2cd1"
     },
     {
       "file": "assets/cabinet-concept.svg",
@@ -214,8 +194,8 @@
     },
     {
       "file": "assets/social-preview.svg",
-      "bytes": 2627310,
-      "sha256": "5502edd73abecc090a62e279717661ddb6e92e85da50a55dbc5940b8eb0524d4"
+      "bytes": 836,
+      "sha256": "e414fff835124696b64b2ff3db7f023550c236effc445261af8115e33a63793a"
     },
     {
       "file": "assets/manrope-latin.woff2",
