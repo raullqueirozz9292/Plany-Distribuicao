@@ -60,7 +60,7 @@ with zipfile.ZipFile(io.BytesIO(original_bytes)) as package, zipfile.ZipFile(DES
     for info in members:
         data = package.read(info)
         if info.filename in PATCHES:
-            text = data.decode("utf-8-sig")
+            text = data.decode("utf-8-sig").replace("\r\n", "\n")
             for ordinal, (before, after) in enumerate(PATCHES[info.filename], 1):
                 if text.count(before) != 1:
                     raise SystemExit(f"RBZ anterior difere da fonte aprovada em {info.filename}, trecho {ordinal}. Abortado.")
