@@ -2,40 +2,40 @@
   "environment": "review",
   "sourceRepository": "raullqueirozz9292/Y-Core",
   "sourceBranch": "fix/revisao-integral-site-20261029",
-  "sourceCommit": "19f5c31821673db34e902ad80e3f8fc37b457bcd",
+  "sourceCommit": "4590cb06e7dc49abdf20dc588be9a28096240bda",
   "previousSourceCommit": "bc1eb497b7861de1461249d4f5d810529f1f93dd",
   "expectedPagesParent": "c114a2345ba74aca37866c14a8e5a2a6aa50c0cc",
-  "preparedAt": "2026-10-31T05:51:05.045Z",
+  "preparedAt": "2026-10-31T06:01:07.621Z",
   "files": [
     {
       "file": "index.html",
       "bytes": 32911,
-      "sha256": "cc1335e697f654753ea6287e01370be733d6c407297a025ae73c22607f8d9d42"
+      "sha256": "d8a22a7066f1e8934fab4494a865ae455f527ba25577d336ba81ed01c52406e8"
     },
     {
       "file": "plany.html",
       "bytes": 17493,
-      "sha256": "86b18b7b9033b0f17d4b48f0224f60c6a590f3cb230e1c8acbf33a6c3932db6c"
+      "sha256": "a138f2a751dd4769566c091de9cd35e620b7c369348d53f457db8cbb06f028b4"
     },
     {
       "file": "mody.html",
       "bytes": 15628,
-      "sha256": "e0b65b3fb116ce99e0ca15c438c3dc9c9db02c895362b81030c73c9517bc9f85"
+      "sha256": "251e3dffc568becef82fe1d12b4007dbefb55a08ef0f45bb6c8d864c76d5949e"
     },
     {
       "file": "ganty.html",
       "bytes": 14689,
-      "sha256": "09ad03b26dd802e935cd1f4f705d68813e262ab1af8100316751c130df89e0bd"
+      "sha256": "57313b0a76a036beb58880aba73b0e36b898e90d6c3bc00b0dea882441680eff"
     },
     {
       "file": "conta-y.html",
       "bytes": 7695,
-      "sha256": "9dada938eaa94d093a2c3c1e6a97f0395d93dece164cf579f355ce1f5b4756cf"
+      "sha256": "08048eb41a67d3d21fc1b8ddee38a0686cb55f500725a3155d358d7eddd8251f"
     },
     {
       "file": "privacidade.html",
       "bytes": 5133,
-      "sha256": "cdd1ca9417f4a1b5cb6b4ca1140e886630ec8302740b0d36a0168b582a1266d4"
+      "sha256": "99cbe17027e7a9086f291efaab32827ac4f0980216e3595bf79099a2f1917c7b"
     },
     {
       "file": "site.css",
@@ -45,7 +45,7 @@
     {
       "file": "main.js",
       "bytes": 10606,
-      "sha256": "4d170b468cbb31360c7175f3359e32ed89b85f64624094a968b1c68fb6db94df"
+      "sha256": "4a77ec29f79315b60e46577b6f623e35f8b54c0aeb7b32f51463a59f0f1afb99"
     },
     {
       "file": "framing.js",
@@ -65,7 +65,7 @@
     {
       "file": "account.js",
       "bytes": 1912,
-      "sha256": "4275a7c25d9b1f1266a1faca71f5694ef5e8bb3a123431dec16c87f46d4e6325"
+      "sha256": "3a7142e5b2b75f544accc94ed21720c7dcfcbfa7d960f8de84fbec2d3d482893"
     },
     {
       "file": "_headers",
