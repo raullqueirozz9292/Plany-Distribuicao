@@ -93,7 +93,7 @@ with zipfile.ZipFile(DEST) as result:
         raise SystemExit("Endpoint local de Clientes não foi incluído.")
     if "async function loadClientsY" not in central_js or "clientesDraftDirty" in central_js:
         raise SystemExit("Controlador de Clientes ausente ou inesperado.")
-    build = re.search(r"const build=\\[([^]]+)\\]", server)
+    build = re.search(r"const build=\[([^]]+)\]", server)
     if not build:
         raise SystemExit("Identificação de build ausente.")
     values = re.findall(r"'([^']+)'", build.group(1))
