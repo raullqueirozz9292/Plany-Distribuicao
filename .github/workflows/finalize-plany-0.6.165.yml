@@ -1,0 +1,43 @@
+name: Finalizar versão 0.6.165 já verificada em rascunho
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/finalize-plany-0.6.165.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: plany-v0.6.165-official
+  cancel-in-progress: false
+jobs:
+  finalize:
+    if: github.repository == 'raullqueirozz9292/Plany-Distribuicao'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Validar pacote imutável e publicar o rascunho existente
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,subprocess
+          rid=433481123
+          r=json.loads(subprocess.check_output(['gh','api',f'repos/raullqueirozz9292/Plany-Distribuicao/releases/{rid}'],text=True))
+          assert r['tag_name']=='v0.6.165' and r['draft'] and not r['prerelease'], 'Rascunho não corresponde à publicação autorizada'
+          assets=[a for a in r['assets'] if a['name']=='Plany-0.6.165.rbz']
+          assert len(assets)==1
+          a=assets[0]
+          assert a['size']==2741268 and a['digest']=='sha256:1d24d74c78ed32bea2fb27ea48f39feeb3495b50c4d4e14ee54a9a360475b375', 'Arquivo não corresponde ao pacote verificado pela Action'
+          print('RASCUNHO INTACTO E CONFERIDO',a['name'],a['digest'])
+          PY
+          gh api --method PATCH repos/raullqueirozz9292/Plany-Distribuicao/releases/433481123 \
+            -F draft=false -f make_latest=true >/tmp/result-165.json
+          python3 - <<'PY'
+          import json,subprocess
+          r=json.loads(subprocess.check_output(['gh','api','repos/raullqueirozz9292/Plany-Distribuicao/releases/latest'],text=True))
+          assert r['tag_name']=='v0.6.165' and not r['draft'] and not r['prerelease']
+          a=[a for a in r['assets'] if a['name']=='Plany-0.6.165.rbz']
+          assert len(a)==1 and a[0]['digest']=='sha256:1d24d74c78ed32bea2fb27ea48f39feeb3495b50c4d4e14ee54a9a360475b375'
+          print('PUBLICAÇÃO OFICIAL 0.6.165 CONFIRMADA',r['html_url'])
+          PY
