@@ -1,0 +1,152 @@
+{
+  "version": "0.6.166",
+  "base_release": "v0.6.165",
+  "expected_base_blobs": {
+    "plany.rb": "df37b0d544eafc65ea58c55d5d393decf49593a9",
+    "plany/ui/index.html": "73eb6771c384bb9b347ef3e41451c885910865ce",
+    "plany/ui/styles.css": "9af099384e1602ed47b6a817b86275f084e68f97",
+    "plany/ui/editor-policy.js": "53fd77d830ee5dfe60abc4f610278f659aa2b915",
+    "plany/ui/app.js": "60e80bfc776b78b43dcd862cff97680b4819ab65",
+    "plany/geometry.rb": "976d061823b084cbeb2b1a972752956206c8b108",
+    "plany/workbench.rb": "e6805aba4f1f0cc01ff7f841056ed892d52d390d",
+    "plany/production.rb": "664126a249d994c0d7eaeea7f0a35ea709ac2eb8"
+  },
+  "expected_target_blobs": {
+    "plany.rb": "d75eaaee03e4fa46ae12e00c9832246b0da9c186",
+    "plany/ui/index.html": "66110e38e060c80eb6f6ad10d02625bcf4ec3c94",
+    "plany/ui/styles.css": "dbcc9b9391b7f9ecf341d9219f2b40c9d113aacf",
+    "plany/ui/editor-policy.js": "78fdc559ffb4839cabaf5f9e8e98516e2fc5c5bc",
+    "plany/ui/app.js": "bc98ac48b1a464d79e10e42373e27ee6757b9808",
+    "plany/geometry.rb": "db6cc00683955d37c751175110f90317b507d97f",
+    "plany/workbench.rb": "be920676ff29c1658d26c6f868c01930cf9e993e",
+    "plany/production.rb": "14d580a483824295570aa0b7d22cdcde42aafaf0"
+  },
+  "patches": {
+    "plany.rb": [
+      {
+        "label": "edit_1_60",
+        "before": "  unless file_loaded?(__FILE__)\n    extension = SketchupExtension.new('Plany — Módulos', 'plany/main')\n    extension.description = 'Caixarias, portas, gavetas, biblioteca, lista de peças e plano de corte.'\n    extension.version = '0.6.165'\n    extension.creator = 'Plany'\n    extension.copyright = '2026 Plany'\n    missing = %w[main.rb reloader.rb release_updater.rb trial_access.rb trial_check.ps1].reject do |name|",
+        "after": "  unless file_loaded?(__FILE__)\n    extension = SketchupExtension.new('Plany — Módulos', 'plany/main')\n    extension.description = 'Caixarias, portas, gavetas, biblioteca, lista de peças e plano de corte.'\n    extension.version = '0.6.166'\n    extension.creator = 'Plany'\n    extension.copyright = '2026 Plany'\n    missing = %w[main.rb reloader.rb release_updater.rb trial_access.rb trial_check.ps1].reject do |name|"
+      }
+    ],
+    "plany/ui/index.html": [
+      {
+        "label": "edit_1_14",
+        "before": "<body data-plany-surface=\"panel\">\n  <div class=\"app\">\n    <header class=\"header\">\n      <div class=\"brand\"><img src=\"icon.svg\" alt=\"\" width=\"34\" height=\"34\"><div><strong>Plany<span class=\"version\">0.6.165</span></strong><small title=\"Plany 0.6.165\">Extensão para marcenaria</small></div></div>\n      <div class=\"header-actions\"><span id=\"mode\" class=\"pill\">Selecione no projeto</span></div>\n    </header>\n    <div id=\"demo-banner\" class=\"demo-banner\" hidden>Prévia interativa · o desenho no SketchUp funciona após instalar o plugin.</div>",
+        "after": "<body data-plany-surface=\"panel\">\n  <div class=\"app\">\n    <header class=\"header\">\n      <div class=\"brand\"><img src=\"icon.svg\" alt=\"\" width=\"34\" height=\"34\"><div><strong>Plany<span class=\"version\">0.6.166</span></strong><small title=\"Plany 0.6.166\">Extensão para marcenaria</small></div></div>\n      <div class=\"header-actions\"><span id=\"mode\" class=\"pill\">Selecione no projeto</span></div>\n    </header>\n    <div id=\"demo-banner\" class=\"demo-banner\" hidden>Prévia interativa · o desenho no SketchUp funciona após instalar o plugin.</div>"
+      }
+    ],
+    "plany/ui/styles.css": [
+      {
+        "label": "edit_1_588",
+        "before": "#trim-editor .trim-config-family h4{font-size:11px;font-weight:700;margin:0 0 10px}\n#trim-editor .trim-option-row input[type=checkbox]{width:14px;height:14px;min-height:0;padding:0;margin:0;justify-self:start}\n",
+        "after": "#trim-editor .trim-config-family h4{font-size:11px;font-weight:700;margin:0 0 10px}\n#trim-editor .trim-option-row input[type=checkbox]{width:14px;height:14px;min-height:0;padding:0;margin:0;justify-self:start}\n\n\n/* Plany 0.6.166 — responsive navigation starts at the narrowest SketchUp pane.\n   Never require horizontal scrolling to reach a menu action. */\n.tabs{flex-wrap:wrap;overflow-x:visible;gap:0 10px}\n.tabs .tab+.tab{margin-left:0}\n.tabs .tab{flex:0 1 auto;min-width:0;white-space:normal}\n.library-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;overflow:visible;white-space:normal;min-width:0}\n.library-filters .small-button{width:100%;min-width:0;max-width:100%;padding:7px 5px;white-space:normal;overflow-wrap:anywhere}\n.library-filters .small-button+.small-button{margin-left:0}\n.selection-step-tabs{display:flex;flex-wrap:wrap;overflow:visible;white-space:normal;gap:2px}\n.selection-step-tab{flex:1 1 auto;min-width:0;white-space:normal}\n@media(min-width:560px){.library-filters{grid-template-columns:repeat(4,minmax(0,1fr))}}\n@media(max-width:330px){.tabs .tab{flex:1 1 44%;text-align:center}.selection-step-tab{flex:1 1 44%}}\n"
+      }
+    ],
+    "plany/ui/editor-policy.js": [
+      {
+        "label": "edit_1_6",
+        "before": "  // Presentation policy only. The existing operation/session contracts retain\n  // ownership of model revisions, transactions, targets and selective rollback.\n  root.PlanyEditorPolicy=function(env){\n    var U=root.PlanyUi,doc=root.document,frame=null,pending=null,armed=null,errorSerial=0,passive=null;\n    function $(id){return doc.getElementById(id);}\n    function visible(node){return node&&!node.hidden&&node.getClientRects().length>0;}\n    function makeButton(id){var b=$(id);if(!b){b=doc.createElement('button');b.id=id;b.type='button';}return b;}",
+        "after": "  // Presentation policy only. The existing operation/session contracts retain\n  // ownership of model revisions, transactions, targets and selective rollback.\n  root.PlanyEditorPolicy=function(env){\n    var U=root.PlanyUi,doc=root.document,frame=null,pending=null,armed=null,errorSerial=0;\n    function $(id){return doc.getElementById(id);}\n    function visible(node){return node&&!node.hidden&&node.getClientRects().length>0;}\n    function makeButton(id){var b=$(id);if(!b){b=doc.createElement('button');b.id=id;b.type='button';}return b;}"
+      },
+      {
+        "label": "edit_2_33",
+        "before": "      var p=pending;pending=null;if(!p)return;\n      (p.fields||[]).forEach(function(entry){entry.node.disabled=entry.disabled;});p.frame.root.removeAttribute('aria-busy');\n    }\n    function showPassive(f){\n      passive={key:f.key,root:f.root,footer:f.footer};\n      var box=$('plany-editor-summary');if(!box){box=doc.createElement('section');box.id='plany-editor-summary';box.className='plany-passive-summary';}\n      box.textContent='';var title=doc.createElement('h3');title.textContent=f.title||'Configuração do módulo';box.appendChild(title);\n      var p=doc.createElement('p');p.textContent='Escolha Editar para alterar esta configuração.';box.appendChild(p);\n      var edit=doc.createElement('button');edit.type='button';edit.className='small-button';edit.textContent='Editar';\n      edit.onclick=function(){passive=null;box.hidden=true;env.refresh();var control=f.root.querySelector('input,select,button');if(control)U.reveal(control);};box.appendChild(edit);\n      if(f.management)f.management(box);\n      f.root.parentNode.insertBefore(box,f.root);box.hidden=false;f.root.hidden=true;f.footer.hidden=true;frame=null;env.footer();edit.focus();\n    }\n    function finish(f){\n      clearErrors(f);\n      if(f.kind==='module'||f.kind==='bulk'||f.kind==='solo')showPassive(f);\n      else env.close(f.kind,false);\n    }\n    function cancel(f){",
+        "after": "      var p=pending;pending=null;if(!p)return;\n      (p.fields||[]).forEach(function(entry){entry.node.disabled=entry.disabled;});p.frame.root.removeAttribute('aria-busy');\n    }\n    function finish(f){\n      clearErrors(f);\n      // Successful saves never hide the active configuration behind an Edit\n      // intermediary. Keep the approved direct-edit workflow.\n      if(f.kind==='module'||f.kind==='bulk'||f.kind==='solo')env.refresh();\n      else env.close(f.kind,false);\n    }\n    function cancel(f){"
+      },
+      {
+        "label": "edit_3_53",
+        "before": "      clearErrors(f);\n      env.cancel(f.kind,frame&&frame.baseline);\n      (frame&&frame.texts||[]).forEach(function(handle){handle.cancel();});\n      if(f.kind==='module'||f.kind==='bulk'||f.kind==='solo')showPassive(f);\n    }\n    function sync(){\n      var f=frameFor();\n      if(!f){frame=null;if($('plany-editor-summary'))$('plany-editor-summary').hidden=true;passive=null;return;}\n      if(pending&&pending.frame.key!==f.key){var previous=pending;root.setTimeout(function(){if(pending===previous&&!pending.proven){releasePending();env.refresh();}},0);}\n      if(passive&&passive.key!==f.key){passive=null;if($('plany-editor-summary'))$('plany-editor-summary').hidden=true;}\n      if(!same(f)){clearErrors(frame);clearErrors(f);frame={key:f.key,root:f.root,baseline:controls(f)};}\n      frame.texts=U.confirmationFields(f.root,f.key,env.persisted?env.persisted(f):false);\n      U.actions(f.footer,f.cancel,f.finish);",
+        "after": "      clearErrors(f);\n      env.cancel(f.kind,frame&&frame.baseline);\n      (frame&&frame.texts||[]).forEach(function(handle){handle.cancel();});\n\n    }\n    function sync(){\n      var f=frameFor();\n      if(!f){frame=null;return;}\n      if(pending&&pending.frame.key!==f.key){var previous=pending;root.setTimeout(function(){if(pending===previous&&!pending.proven){releasePending();env.refresh();}},0);}\n      if(!same(f)){clearErrors(frame);clearErrors(f);frame={key:f.key,root:f.root,baseline:controls(f)};}\n      frame.texts=U.confirmationFields(f.root,f.key,env.persisted?env.persisted(f):false);\n      U.actions(f.footer,f.cancel,f.finish);"
+      },
+      {
+        "label": "edit_4_67",
+        "before": "      f.cancel.disabled=!!pending;f.finish.disabled=f.finish.disabled||!!pending;\n      lockFields(pending);\n      f.root.setAttribute('data-active-editor',f.kind);\n      f.root.querySelectorAll('.piece-editor-toolbar,.piece-name-row,.panel-detach-action').forEach(function(n){n.hidden=true;});\n      if(passive){f.root.hidden=true;f.footer.hidden=true;env.footer();}\n      else {f.footer.hidden=false;f.footer.parentNode.hidden=false;}\n    }\n    function requested(op,action){\n      if(['update_module','update_piece','set_extra_data','save_settings','save_model_behavior','bulk_update','create_volume_component','insert_independent_component'].indexOf(action)<0)return;",
+        "after": "      f.cancel.disabled=!!pending;f.finish.disabled=f.finish.disabled||!!pending;\n      lockFields(pending);\n      f.root.setAttribute('data-active-editor',f.kind);\n      f.footer.hidden=false;f.footer.parentNode.hidden=false;\n    }\n    function requested(op,action){\n      if(['update_module','update_piece','set_extra_data','save_settings','save_model_behavior','bulk_update','create_volume_component','insert_independent_component'].indexOf(action)<0)return;"
+      },
+      {
+        "label": "edit_5_114",
+        "before": "    }\n    function detail(text){var f=frameFor(),container=f&&f.root.querySelector('.plany-operation-feedback')||$('status').parentNode,old=$('plany-error-detail');if(old)old.parentNode.removeChild(old);var d=doc.createElement('details'),s=doc.createElement('summary'),p=doc.createElement('pre');d.id='plany-error-detail';s.textContent='Ver detalhes';p.textContent=U.diagnostic(text);d.appendChild(s);d.appendChild(p);container.appendChild(d);}\n    function observe(op,changed){if(pending&&changed&&op.event&&op.caused_by!==pending.operation)releasePending();}\n    return {sync:sync,setup:setup,requested:requested,received:received,observe:observe,error:error,detail:detail,activate:function(){passive=null;if($('plany-editor-summary'))$('plany-editor-summary').hidden=true;}};\n  };\n})(window);\n",
+        "after": "    }\n    function detail(text){var f=frameFor(),container=f&&f.root.querySelector('.plany-operation-feedback')||$('status').parentNode,old=$('plany-error-detail');if(old)old.parentNode.removeChild(old);var d=doc.createElement('details'),s=doc.createElement('summary'),p=doc.createElement('pre');d.id='plany-error-detail';s.textContent='Ver detalhes';p.textContent=U.diagnostic(text);d.appendChild(s);d.appendChild(p);container.appendChild(d);}\n    function observe(op,changed){if(pending&&changed&&op.event&&op.caused_by!==pending.operation)releasePending();}\n    return {sync:sync,setup:setup,requested:requested,received:received,observe:observe,error:error,detail:detail,activate:function(){}};\n  };\n})(window);\n"
+      }
+    ],
+    "plany/ui/app.js": [
+      {
+        "label": "edit_1_3276",
+        "before": "          if(!(selectionKind==='module'&&pieceEditorOpen))return;\n          mapped=mappedPieceEdge(e[0]);edges=pieceEdges;render=renderEdges;\n        }else return;\n        var previous=edges.slice(),at=edges.indexOf(mapped);if(at<0)edges.push(mapped);else edges.splice(at,1);\n        render();edgeHover(mapped,prefix);\n        // Stage edges with the other fields. Concluir persists them in one\n        // existing piece transaction; Cancelar does not touch the model.\n        message('Fita pendente. Clique em Concluir para salvar.');\n      }\n      rect.addEventListener('click',toggle);\n      rect.addEventListener('keydown',function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle();}});",
+        "after": "          if(!(selectionKind==='module'&&pieceEditorOpen))return;\n          mapped=mappedPieceEdge(e[0]);edges=pieceEdges;render=renderEdges;\n        }else return;\n        // Banding is an immediate and independently undoable piece operation.\n        // Save only the clicked edge; other unconfirmed form fields are untouched.\n        if(edgePending){message('Aguarde a confirmação da fita anterior.');return;}\n        var previous=edges.slice(),at=edges.indexOf(mapped),enabled=at<0;\n        if(enabled)edges.push(mapped);else edges.splice(at,1);\n        render();edgeHover(mapped,prefix);\n        edgePending={prefix:prefix,previous:previous,current:edges.slice(),selectionKey:selectionKey};\n        if(state.dirty)rememberDraft();\n        var target=prefix==='solo'?selectionPayload.pieces[0].path:state.target;\n        var role=prefix==='solo'?'':state.pieceRole;\n        if(!request('set_piece_edge',[target,role,mapped,enabled])){\n          if(prefix==='solo'){soloEdges=previous;renderSoloPreview();}\n          else{pieceEdges=previous;renderEdges();}\n          edgePending=null;\n        }\n      }\n      rect.addEventListener('click',toggle);\n      rect.addEventListener('keydown',function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle();}});"
+      },
+      {
+        "label": "edit_2_3571",
+        "before": "          if(batchReturn&&payload.retargeted_from===operation.target_id)batchReturn.key=selectionIdentity(payload)||batchReturn.key;\n          if(batchReturn&&ownPieceSave)Object.assign(batchReturn,returnStamp());\n          if(batchReturn)Object.assign(batchReturn,returnStamp());\n        }else {batchReturn=null;contextInvalidated=invalidateEditContext();}\n      }\n      if(payload.operation_complete){\n        if(deleting&&deleting.meta.action==='delete_piece'&&operation.operation_id===deleting.meta.operation_id&&!deleting.removalProven)message(deleting.removalError||'A remoção não foi confirmada. Confira o estado atualizado do modelo antes de tentar novamente.','error');",
+        "after": "          if(batchReturn&&payload.retargeted_from===operation.target_id)batchReturn.key=selectionIdentity(payload)||batchReturn.key;\n          if(batchReturn&&ownPieceSave)Object.assign(batchReturn,returnStamp());\n          if(batchReturn)Object.assign(batchReturn,returnStamp());\n        }else {\n          // A routine SketchUp geometry/model notification invalidates the\n          // revision stamp, but is not proof that the selected piece changed.\n          // Refresh silently when no unsaved edit exists; do not flood the\n          // user with a false stale-target error on every normal transaction.\n          var unconfirmedEdit=!!(state.dirty||(flow.current&&flow.current.pending));\n          batchReturn=null;\n          contextInvalidated=invalidateEditContext();\n          if(operation.event&&!unconfirmedEdit)contextInvalidated=false;\n        }\n      }\n      if(payload.operation_complete){\n        if(deleting&&deleting.meta.action==='delete_piece'&&operation.operation_id===deleting.meta.operation_id&&!deleting.removalProven)message(deleting.removalError||'A remoção não foi confirmada. Confira o estado atualizado do modelo antes de tentar novamente.','error');"
+      }
+    ],
+    "plany/geometry.rb": [
+      {
+        "label": "edit_1_355",
+        "before": "          existing[role] = path\n        end\n      end\n      if rebuild\n        existing.each_value do |path|\n          group = Graph.unique(path).last",
+        "after": "          existing[role] = path\n        end\n      end\n      if rebuild && existing.values.any? { |path| manual_machining?(path.last) }\n        raise ArgumentError, 'Este módulo contém peças com furos, curvas ou recortes. A alteração estrutural reconstruiria a geometria; preserve as peças personalizadas antes de mudar a montagem.'\n      end\n      custom_roles = []\n      if rebuild\n        existing.each_value do |path|\n          group = Graph.unique(path).last"
+      },
+      {
+        "label": "edit_2_374",
+        "before": "          unless old_size.is_a?(Array) && old_size.length == 3 && old_size.all? { |v| v.is_a?(Numeric) && v > 0 }\n            raise ArgumentError, 'Uma peça da caixaria perdeu suas medidas originais.'\n          end\n          if piece['grooves'] || group.get_attribute(DICTIONARY,'panel_shape')\n            build_panel_geometry(group,piece,clear:true)\n          else\n            bounds=group.definition.bounds",
+        "after": "          unless old_size.is_a?(Array) && old_size.length == 3 && old_size.all? { |v| v.is_a?(Numeric) && v > 0 }\n            raise ArgumentError, 'Uma peça da caixaria perdeu suas medidas originais.'\n          end\n          if manual_machining?(group)\n            original_size = group.get_attribute(DICTIONARY, 'size_mm')\n            same_plan = original_size.is_a?(Array) && original_size.length == 3 &&\n              original_size.zip(piece['size']).all? { |a,b| a.is_a?(Numeric) && (a-b).abs <= 0.05 }\n            unless same_plan\n              raise ArgumentError, \"A peça #{group.name} tem geometria personalizada. Alterar suas dimensões destruiria curvas, furos ou recortes; ajuste-a diretamente no SketchUp.\"\n            end\n            custom_roles << piece['role']\n          elsif piece['grooves'] || group.get_attribute(DICTIONARY,'panel_shape')\n            build_panel_geometry(group,piece,clear:true)\n          else\n            bounds=group.definition.bounds"
+      },
+      {
+        "label": "edit_3_405",
+        "before": "        end\n        group.set_attribute(DICTIONARY, 'role', piece['role'])\n        group.set_attribute(DICTIONARY, 'logical_owner', piece['logical_owner']) if piece['logical_owner']\n        group.set_attribute(DICTIONARY, 'size_mm', piece['size'])\n        group.set_attribute(DICTIONARY, 'thickness_axis', piece['thickness_axis'])\n        group.set_attribute(DICTIONARY, 'cut_material', piece['material'])\n        group.set_attribute(DICTIONARY, 'piece_data', JSON.generate(settings))",
+        "after": "        end\n        group.set_attribute(DICTIONARY, 'role', piece['role'])\n        group.set_attribute(DICTIONARY, 'logical_owner', piece['logical_owner']) if piece['logical_owner']\n        group.set_attribute(DICTIONARY, 'size_mm', piece['size']) unless custom_roles.include?(piece['role'])\n        group.set_attribute(DICTIONARY, 'thickness_axis', piece['thickness_axis'])\n        group.set_attribute(DICTIONARY, 'cut_material', piece['material'])\n        group.set_attribute(DICTIONARY, 'piece_data', JSON.generate(settings))"
+      },
+      {
+        "label": "edit_4_418",
+        "before": "        group.erase!\n      end\n      begin\n        verify_synced_panels!(definition, wanted)\n      rescue KeyError, RuntimeError\n        return sync_panels(model, definition, params, true) unless rebuild\n        raise\n      end",
+        "after": "        group.erase!\n      end\n      begin\n        verify_synced_panels!(definition, wanted, custom_roles)\n      rescue KeyError, RuntimeError\n        raise if custom_roles.any?\n        return sync_panels(model, definition, params, true) unless rebuild\n        raise\n      end"
+      },
+      {
+        "label": "edit_5_961",
+        "before": "      plans.length\n    end\n\n    def self.verify_synced_panels!(definition, wanted)\n      actual = {}\n      Graph.boards(definition.entities, true).each do |path|\n        role = path.last.get_attribute(DICTIONARY, 'role')",
+        "after": "      plans.length\n    end\n\n    def self.verify_synced_panels!(definition, wanted, custom_roles = [])\n      actual = {}\n      Graph.boards(definition.entities, true).each do |path|\n        role = path.last.get_attribute(DICTIONARY, 'role')"
+      },
+      {
+        "label": "edit_6_973",
+        "before": "        raise 'A montagem do módulo não corresponde mais à receita das peças.'\n      end\n      wanted.each do |piece|\n        box = panel_box(actual.fetch(piece['role']))\n        values = box['origin'].zip(piece['origin']) + box['size'].zip(piece['size'])\n        unless values.all? { |a,b| (a-b).abs <= 0.05 }",
+        "after": "        raise 'A montagem do módulo não corresponde mais à receita das peças.'\n      end\n      wanted.each do |piece|\n        next if custom_roles.include?(piece['role'])\n        box = panel_box(actual.fetch(piece['role']))\n        values = box['origin'].zip(piece['origin']) + box['size'].zip(piece['size'])\n        unless values.all? { |a,b| (a-b).abs <= 0.05 }"
+      },
+      {
+        "label": "edit_7_1238",
+        "before": "      raise ArgumentError, \"A ficha de #{part.name} está ilegível.\"\n    end\n\n    def self.piece_size(part)\n      size = part.get_attribute(DICTIONARY, 'size_mm')\n      if part.definition.respond_to?(:bounds)",
+        "after": "      raise ArgumentError, \"A ficha de #{part.name} está ilegível.\"\n    end\n\n    # An already-registered Plany panel may be drilled, curved or notched.\n    # Appearance.box! is intentionally strict about a solid rectangular board;\n    # use it only as a read-only classifier. A manual geometry change is NOT\n    # a reason to lose the piece identity or its rectangular cutting envelope.\n    def self.manual_machining?(part)\n      return false unless Graph.registered?(part)\n      Appearance.box!(part)\n      false\n    rescue ArgumentError\n      true\n    end\n\n    def self.piece_size(part)\n      size = part.get_attribute(DICTIONARY, 'size_mm')\n      if part.definition.respond_to?(:bounds)"
+      },
+      {
+        "label": "edit_8_1301",
+        "before": "      axis = Finishing.axis(part)\n      data['thickness'] = Parameters.number(sizes[axis], 'Espessura da peça', 3, 40)\n      data = validate_piece!(part, data, sizes)\n      local_sizes = sizes.zip(Graph.scales(Graph.transform(path))).map { |a,b| a/b }\n      bounds = Appearance.box!(part)\n      factors = dimension_factors(local_sizes,[bounds.width,bounds.height,bounds.depth])",
+        "after": "      axis = Finishing.axis(part)\n      data['thickness'] = Parameters.number(sizes[axis], 'Espessura da peça', 3, 40)\n      data = validate_piece!(part, data, sizes)\n      current = physical_size(part, Graph.transform(path))\n      if sizes.zip(current).all? { |desired,actual| (desired-actual).abs <= 0.05 }\n        # Renaming, material and banding updates may not ever reshape a\n        # hand-modified solid. Avoid even a 1:1 geometry rewrite.\n        return data\n      end\n      if manual_machining?(part)\n        raise ArgumentError, 'Esta peça tem curvas, furos ou recortes. Para preservar a geometria, altere suas medidas diretamente no SketchUp.'\n      end\n      local_sizes = sizes.zip(Graph.scales(Graph.transform(path))).map { |a,b| a/b }\n      bounds = Appearance.box!(part)\n      factors = dimension_factors(local_sizes,[bounds.width,bounds.height,bounds.depth])"
+      }
+    ],
+    "plany/workbench.rb": [
+      {
+        "label": "edit_1_541",
+        "before": "      selected.each { |e| validate_rule(e, rules[e.persistent_id.to_s]) }\n      bounds = Geom::BoundingBox.new\n      selected.each do |e|\n        Appearance.box!(e)\n        8.times { |i| bounds.add(e.definition.bounds.corner(i).transform(Graph.local_transform(e))) }\n      end\n      params = Parameters.normalize({'name' => name, 'width' => Geometry.measure_mm(bounds.width),",
+        "after": "      selected.each { |e| validate_rule(e, rules[e.persistent_id.to_s]) }\n      bounds = Geom::BoundingBox.new\n      selected.each do |e|\n        # Already-registered boards may contain cut-outs and curves; grouping\n        # is an administrative operation and must not demand a solid box.\n        Geometry.validate_piece!(e, nil, nil, Graph.transform((model.active_path || []) + [e]))\n        8.times { |i| bounds.add(e.definition.bounds.corner(i).transform(Graph.local_transform(e))) }\n      end\n      params = Parameters.normalize({'name' => name, 'width' => Geometry.measure_mm(bounds.width),"
+      },
+      {
+        "label": "edit_2_602",
+        "before": "      if modules.length == 1\n        return include_in_module(model, modules.first, paths.reject { |path| path.last == modules.first }, paths.find { |path| path.last == modules.first })\n      end\n      paths.reject { |path| Geometry.module?(path.last) }.each { |path| Appearance.box!(path.last) }\n      bounds = Geom::BoundingBox.new\n      roots.each { |root| 8.times { |i| bounds.add(root.definition.bounds.corner(i).transform(Graph.local_transform(root))) } }\n      params = Parameters.normalize({'name'=>Parameters::DEFAULTS['name'],",
+        "after": "      if modules.length == 1\n        return include_in_module(model, modules.first, paths.reject { |path| path.last == modules.first }, paths.find { |path| path.last == modules.first })\n      end\n      paths.reject { |path| Geometry.module?(path.last) }.each { |path| Geometry.validate_piece!(path.last, nil, nil, Graph.transform(path)) }\n      bounds = Geom::BoundingBox.new\n      roots.each { |root| 8.times { |i| bounds.add(root.definition.bounds.corner(i).transform(Graph.local_transform(root))) } }\n      params = Parameters.normalize({'name'=>Parameters::DEFAULTS['name'],"
+      }
+    ],
+    "plany/production.rb": [
+      {
+        "label": "edit_1_67",
+        "before": "            root_index = owner && owner.index { |item| Geometry.module?(item) }\n            root_owner = root_index && owner[0..root_index]\n            modules[Graph.key(root_owner)] ||= modules.length + 1 if root_owner\n            Appearance.box!(entity)\n            tr = Graph.transform(path); Graph.unit(tr)\n            sizes = Geometry.physical_size(entity, tr)\n            axis = entity.get_attribute(Geometry::DICTIONARY, 'thickness_axis') || sizes.each_index.min_by { |i| sizes[i] }",
+        "after": "            root_index = owner && owner.index { |item| Geometry.module?(item) }\n            root_owner = root_index && owner[0..root_index]\n            modules[Graph.key(root_owner)] ||= modules.length + 1 if root_owner\n            # Hand-machined Plany boards are still valid inventory. Their\n            # cutting blank is the enclosing rectangle, NOT a CNC contour.\n            manual_shape = Graph.registered?(entity) && Geometry.manual_machining?(entity)\n            Appearance.box!(entity) unless manual_shape\n            tr = Graph.transform(path); Graph.unit(tr)\n            sizes = Geometry.physical_size(entity, tr)\n            axis = entity.get_attribute(Geometry::DICTIONARY, 'thickness_axis') || sizes.each_index.min_by { |i| sizes[i] }"
+      },
+      {
+        "label": "edit_2_83",
+        "before": "            label = MaterialCatalog.canonical_name(material || label) if data.fetch('construction_type', 'mdf') == 'mdf' && (data['material'].nil? || data['material'] == material&.display_name)\n            label = MaterialCatalog.canonical_name(label) if data.fetch('construction_type', 'mdf') == 'mdf'\n            rows << cut_dimensions(uv, data).merge('id' => \"P#{rows.length+1}\",\n              'name' => entity.name.empty? ? 'Peça avulsa' : entity.name,\n              'module' => root_owner ? recipe_for.call(root_owner.last)['name'] + ' #' + modules[Graph.key(root_owner)].to_s : 'Peças avulsas',\n              'material' => label, 'thickness' => Geometry.clean_mm(thickness),\n              'module_id' => owner && Graph.key(owner), 'part_id' => Graph.key(path),",
+        "after": "            label = MaterialCatalog.canonical_name(material || label) if data.fetch('construction_type', 'mdf') == 'mdf' && (data['material'].nil? || data['material'] == material&.display_name)\n            label = MaterialCatalog.canonical_name(label) if data.fetch('construction_type', 'mdf') == 'mdf'\n            rows << cut_dimensions(uv, data).merge('id' => \"P#{rows.length+1}\",\n              'name' => (entity.name.empty? ? 'Peça avulsa' : entity.name) + (manual_shape ? ' · USINAGEM MANUAL (retângulo de corte)' : ''),\n              'manual_machining' => manual_shape,\n              'module' => root_owner ? recipe_for.call(root_owner.last)['name'] + ' #' + modules[Graph.key(root_owner)].to_s : 'Peças avulsas',\n              'material' => label, 'thickness' => Geometry.clean_mm(thickness),\n              'module_id' => owner && Graph.key(owner), 'part_id' => Graph.key(path),"
+      }
+    ]
+  }
+}
