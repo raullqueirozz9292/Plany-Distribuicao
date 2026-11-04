@@ -58,7 +58,7 @@ def marker_for(href):
 def inlined_for(href,raw):
     css=href.endswith('.css')
     tag='style' if css else 'script'
-    content=re.sub(r'</'+tag,lambda _:'<\\/'+tag,raw.decode('utf-8'),flags=re.I)
+    content=re.sub(r'</'+tag,lambda _:'<\\/'+tag,normalize(raw).decode('utf-8'),flags=re.I)
     return '<'+tag+'>'+content+'</'+tag+'>'
 
 def reverse_embed(archive,html):
