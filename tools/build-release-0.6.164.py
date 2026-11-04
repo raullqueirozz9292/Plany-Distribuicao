@@ -50,7 +50,7 @@ def git_blob(content):
 def check_blob(name, raw):
     # Source Git blobs use LF via .gitattributes text=auto; the verified
     # original RBZ was packaged on Windows and may retain CRLF on disk.
-    digest = git_blob(raw.replace(b"\\r\\n", b"\\n"))
+    digest = git_blob(raw.replace(b"\r\n", b"\n"))
     if digest != GIT_BLOBS[name]:
         raise RuntimeError(f"Source mismatch: {name}, normalized Git blob {digest} != {GIT_BLOBS[name]}")
 
@@ -119,8 +119,8 @@ def patch_files(archive):
         reloader = package.read("plany/reloader.rb").decode("utf-8")
         # Run the pinpoint source patch in LF, then preserve the original
         # archive's newline convention for the official update.
-        original_crlf = "\\r\\n" in reloader
-        reloader = reloader.replace("\\r\\n", "\\n")
+        original_crlf = "\r\n" in reloader
+        reloader = reloader.replace("\r\n", "\n")
         anchor = "      html = html.sub('<script src=\"../glass.js\"></script>') { script(File.join(directory, 'glass.js')) }\n"
         addition = (
             "      html = html.sub('<script src=\"standards.js\"></script>') { script(File.join(ui, 'standards.js')) }\n"
@@ -134,7 +134,7 @@ def patch_files(archive):
             "        '<script src=\"editor-policy.js\"></script>' => script(File.join(ui, 'editor-policy.js')),\n",
         ):
             reloader = once(reloader, old, "", "reloader obsolete mappings")
-        modified_reloader = reloader.replace("\\n", "\\r\\n").encode("utf-8") if original_crlf else reloader.encode("utf-8")
+        modified_reloader = reloader.replace("\n", "\r\n").encode("utf-8") if original_crlf else reloader.encode("utf-8")
         check_blob("plany/reloader.rb", modified_reloader)
 
         # The withdrawn package already inlines glass.js. Undo only this
