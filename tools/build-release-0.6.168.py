@@ -18,7 +18,7 @@ BASE = DIST / 'Plany-0.6.167.rbz'
 OUT = DIST / 'Plany-0.6.168.rbz'
 PATCH_FILE = ROOT / 'tools/patch-0.6.168.json'
 BASE_HASH = 'c771df22b169ea02c341e659558708987f40c6fdb8cb2799d2cdbc45ba43c9dd'
-SOURCE_COMMIT = 'PENDING_SOURCE_MERGE'
+SOURCE_COMMIT = '086766cab4849620bcc7713dabf9c36ecdc8c089'
 DEPS = [
     ('../glass.js','plany/glass.js'),
     ('../dimensions.js','plany/dimensions.js'),
