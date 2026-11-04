@@ -1,0 +1,113 @@
+name: Publicar Plany 0.6.165 — correções de interface
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-plany-0.6.165.yml'
+      - 'tools/build-release-0.6.165.py'
+      - 'tools/patch-0.6.165.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: plany-v0.6.165-official
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'raullqueirozz9292/Plany-Distribuicao'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Obter canal de distribuição
+        uses: actions/checkout@v4
+      - name: Bloquear reutilização de versão publicada
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if gh release view v0.6.165 --repo raullqueirozz9292/Plany-Distribuicao >/dev/null 2>&1; then
+            echo "A versão 0.6.165 já existe. Nunca sobrescrever."
+            exit 1
+          fi
+      - name: Verificar sintaxe do empacotador e obter pacote base oficial
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/build-release-0.6.165.py
+          mkdir -p dist
+          gh release download v0.6.164 --repo raullqueirozz9292/Plany-Distribuicao --pattern 'Plany-0.6.164.rbz' --dir dist
+      - name: Gerar pacote novo e verificar correspondência com a fonte
+        run: python3 tools/build-release-0.6.165.py
+      - name: Testes focais — interface e integridade
+        run: |
+          python3 - <<'PY'
+          import json,subprocess,zipfile,hashlib
+          from pathlib import Path
+          p=Path('dist/Plany-0.6.165.rbz')
+          m=json.loads(Path('dist/manifest-0.6.165.json').read_text())
+          assert m['sha256']==hashlib.sha256(p.read_bytes()).hexdigest()
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              assert all(name=='plany.rb' or name.startswith('plany/') for name in z.namelist())
+              for name,program in [('plany/ui/app.js','node'),('plany/material-choice.js','node'),('plany/ui/standards.js','node')]:
+                  subprocess.run([program,'--check'],input=z.read(name),check=True)
+              for name in ('plany.rb','plany/reloader.rb'):
+                  subprocess.run(['ruby','-c'],input=z.read(name),check=True)
+              app=z.read('plany/ui/app.js').decode()
+              css=z.read('plany/ui/standards.css').decode()
+              html=z.read('plany/ui/index.html').decode()
+              material=z.read('plany/material-choice.js').decode()
+              assert "0.6.165" in html and "0.6.164" not in html
+              assert '.plany-managed-item{display:flex' in css
+              assert 'plany-piece-action' in app and 'aria-label' in app
+              assert "row.hidden=!known" in app
+              assert "groupChildren(body,[{title:'Essenciais'" in app
+              assert 'planyGroupEditor=function(){}' in app
+              assert '<span class="material-arrow">▾</span>' not in html
+              assert "span.textContent='▾'" not in material
+              assert 'id="piece-elevation"' in html and 'id="elevation"' in html
+              for src in ('src="standards.js"','src="editor-policy.js"','href="standards.css"','src="../dimensions.js"'):
+                  assert src not in html,src
+              assert html.count('<span class="version">0.6.165</span>')==1
+          print('TESTES FOCAIS E INTEGRIDADE APROVADOS',m['sha256'])
+          PY
+      - name: Publicar release oficial após verificar rascunho
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create v0.6.165 dist/Plany-0.6.165.rbz \
+            --repo raullqueirozz9292/Plany-Distribuicao \
+            --target main --draft \
+            --title 'Plany 0.6.165 — interface otimizada' \
+            --notes 'Títulos recolhíveis apenas quando necessários; Elevação junto às dimensões e oculta quando não editável; uma seta nos seletores de MDF; lista de peças compacta com ícones padronizados de desvincular e excluir. Identidade visual e fluxo funcional do Plany preservados. Fonte: Plany PR #51, merge bd01463118f6f79fdde2fd74060ae920c154b75d.'
+          python3 - <<'PY'
+          import json,hashlib,subprocess
+          from pathlib import Path
+          data=json.loads(subprocess.check_output(['gh','api','repos/raullqueirozz9292/Plany-Distribuicao/releases?per_page=100'],text=True))
+          found=[r for r in data if r['tag_name']=='v0.6.165']
+          assert len(found)==1 and found[0]['draft']
+          assets=[a for a in found[0]['assets'] if a['name']=='Plany-0.6.165.rbz']
+          assert len(assets)==1
+          p=Path('dist/Plany-0.6.165.rbz')
+          digest=hashlib.sha256(p.read_bytes()).hexdigest()
+          assert assets[0]['size']==p.stat().st_size
+          assert assets[0]['digest']=='sha256:'+digest
+          Path('dist/release-id.txt').write_text(str(found[0]['id']))
+          print('RASCUNHO COM INTEGRIDADE CONFIRMADA',digest)
+          PY
+          id="$(cat dist/release-id.txt)"
+          gh api --method PATCH "repos/raullqueirozz9292/Plany-Distribuicao/releases/$id" \
+            -F draft=false -f make_latest=true > /tmp/plany-release-165.json
+          python3 - <<'PY'
+          import json,subprocess,hashlib
+          from pathlib import Path
+          r=json.loads(subprocess.check_output(['gh','api','repos/raullqueirozz9292/Plany-Distribuicao/releases/latest'],text=True))
+          assert r['tag_name']=='v0.6.165' and not r['draft'] and not r['prerelease']
+          p=Path('dist/Plany-0.6.165.rbz')
+          digest=hashlib.sha256(p.read_bytes()).hexdigest()
+          a=[a for a in r['assets'] if a['name']==p.name]
+          assert len(a)==1 and a[0]['digest']=='sha256:'+digest
+          print('VERSÃO OFICIAL PUBLICADA',r['html_url'],'SHA256',digest)
+          PY
