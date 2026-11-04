@@ -1,0 +1,98 @@
+name: Publicar Plany 0.6.164 — atualização oficial verificada
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/build-release-0.6.164.py'
+      - '.github/workflows/publish-plany-0.6.164.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: plany-official-release-0.6.164
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'raullqueirozz9292/Plany-Distribuicao'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Obter canal oficial
+        uses: actions/checkout@v4
+      - name: Conferir o script de empacotamento
+        run: python3 -m py_compile tools/build-release-0.6.164.py
+      - name: Construir pacote a partir da 0.6.163 recolhida, com hash imutável
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/build-release-0.6.164.py
+      - name: Verificar sintaxe, versão e compatibilidade do bootstrap legado
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,subprocess,zipfile
+          from pathlib import Path
+          p=Path('dist/Plany-0.6.164.rbz')
+          m=json.loads(Path('dist/manifest-0.6.164.json').read_text())
+          with zipfile.ZipFile(p) as z:
+              names=z.namelist()
+              assert len(names)==len(set(names)) and z.testzip() is None
+              assert all(n=='plany.rb' or n.startswith('plany/') for n in names)
+              html=z.read('plany/ui/index.html').decode('utf-8')
+              loader=z.read('plany.rb').decode('utf-8')
+              assert "extension.version = '0.6.164'" in loader
+              assert '<span class="version">0.6.164</span>' in html
+              assert all(x not in html for x in (
+                  'src="../dimensions.js"', 'src="standards.js"',
+                  'src="editor-policy.js"', 'href="standards.css"'))
+              for name,cmd in (
+                  ('plany.rb',['ruby','-c']),
+                  ('plany/reloader.rb',['ruby','-c']),
+                  ('plany/ui/standards.js',['node','--check'])):
+                  subprocess.run(cmd, input=z.read(name),check=True)
+          digest=hashlib.sha256(p.read_bytes()).hexdigest()
+          assert digest==m['sha256']
+          print('VERIFICADO',p.name,p.stat().st_size,'SHA-256',digest)
+          PY
+      - name: Criar somente rascunho e validar o arquivo recebido
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create v0.6.164 dist/Plany-0.6.164.rbz \
+            --repo raullqueirozz9292/Plany-Distribuicao \
+            --target main \
+            --draft \
+            --title 'Plany 0.6.164 — atualização oficial' \
+            --notes 'Integra as correções da RC4 e indicadores de salvamento do Plany. Corrige especificamente a compatibilidade do bootstrap legado da 0.6.162, que havia bloqueado a 0.6.163. A publicação 0.6.163 foi recolhida e não é reutilizada. Pacote incremental para Recarregar Plany, mantendo o padrão visual aprovado. Fonte: raullqueirozz9292/Plany, merge f76d24d8dff462747a96187cab7f41f1a8d1e276.'
+          python3 - <<'PY'
+          import hashlib,json,subprocess
+          from pathlib import Path
+          rs=json.loads(subprocess.check_output(['gh','api','repos/raullqueirozz9292/Plany-Distribuicao/releases?per_page=100'],text=True))
+          releases=[r for r in rs if r['tag_name']=='v0.6.164']
+          assert len(releases)==1 and releases[0]['draft'], 'release missing or not draft'
+          a=[a for a in releases[0]['assets'] if a['name']=='Plany-0.6.164.rbz']
+          assert len(a)==1
+          p=Path('dist/Plany-0.6.164.rbz')
+          digest=hashlib.sha256(p.read_bytes()).hexdigest()
+          assert a[0]['size']==p.stat().st_size and a[0]['digest']=='sha256:'+digest
+          Path('dist/release-0.6.164-id.txt').write_text(str(releases[0]['id']))
+          print('DRAFT VERIFIED: GitHub asset matches the locally verified RBZ')
+          PY
+      - name: Publicar versão oficial 0.6.164
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          id="$(cat dist/release-0.6.164-id.txt)"
+          gh api --method PATCH "repos/raullqueirozz9292/Plany-Distribuicao/releases/$id" \
+            -F draft=false -f make_latest=true > /tmp/plany-publish-result.json
+          python3 - <<'PY'
+          import hashlib,json,subprocess
+          from pathlib import Path
+          r=json.loads(subprocess.check_output(['gh','api','repos/raullqueirozz9292/Plany-Distribuicao/releases/latest'],text=True))
+          assert r['tag_name']=='v0.6.164' and not r['draft'] and not r['prerelease']
+          a=[a for a in r['assets'] if a['name']=='Plany-0.6.164.rbz']
+          assert len(a)==1
+          digest=hashlib.sha256(Path('dist/Plany-0.6.164.rbz').read_bytes()).hexdigest()
+          assert a[0]['digest']=='sha256:'+digest
+          print('PUBLICADO E VERIFICADO:',r['html_url'],digest)
+          PY
