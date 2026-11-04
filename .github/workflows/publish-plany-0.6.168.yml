@@ -1,0 +1,139 @@
+name: Publicar Plany 0.6.168 — portas basculantes
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-plany-0.6.168.yml'
+      - 'tools/build-release-0.6.168.py'
+      - 'tools/patch-0.6.168.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: plany-official-v0.6.168
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'raullqueirozz9292/Plany-Distribuicao'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Obter canal oficial
+        uses: actions/checkout@v4
+      - name: Bloquear reuso de versão
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if gh release view v0.6.168 --repo raullqueirozz9292/Plany-Distribuicao >/dev/null 2>&1; then
+            echo "v0.6.168 já existe. Publicação não será sobrescrita."
+            exit 1
+          fi
+          tag="$(gh release view --repo raullqueirozz9292/Plany-Distribuicao --json tagName -q .tagName)"
+          test "$tag" = "v0.6.167"
+      - name: Construir novo pacote incremental com fonte auditada
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/build-release-0.6.168.py
+          mkdir -p dist
+          gh release download v0.6.167 --repo raullqueirozz9292/Plany-Distribuicao --pattern 'Plany-0.6.167.rbz' --dir dist
+          python3 tools/build-release-0.6.168.py
+      - name: Verificar arquivo, interfaces, sintaxe e integridade
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,subprocess,zipfile
+          from pathlib import Path
+          p=Path('dist/Plany-0.6.168.rbz')
+          m=json.loads(Path('dist/manifest-0.6.168.json').read_text(encoding='utf-8'))
+          digest=hashlib.sha256(p.read_bytes()).hexdigest()
+          assert digest==m['sha256']
+          assert m['source_commit']=='086766cab4849620bcc7713dabf9c36ecdc8c089'
+          with zipfile.ZipFile(p) as z:
+            names=z.namelist()
+            assert z.testzip() is None and len(names)==len(set(names))
+            assert all(x=='plany.rb' or x.startswith('plany/') for x in names)
+            for name in ('plany.rb','plany/geometry.rb','plany/workbench.rb','plany/production.rb','plany/reloader.rb'):
+              subprocess.run(['ruby','-c'],input=z.read(name),check=True,stdout=subprocess.DEVNULL)
+            for name in ('plany/ui/app.js','plany/ui/editor-policy.js','plany/ui/standards.js'):
+              subprocess.run(['node','--check'],input=z.read(name),check=True)
+            app=z.read('plany/ui/app.js').decode()
+            policy=z.read('plany/ui/editor-policy.js').decode()
+            css=z.read('plany/ui/styles.css').decode()
+            html=z.read('plany/ui/index.html').decode()
+            geometry=z.read('plany/geometry.rb').decode()
+            production=z.read('plany/production.rb').decode()
+            assert "extension.version = '0.6.168'" in z.read('plany.rb').decode()
+            assert '<span class="version">0.6.168</span>' in html
+            assert 'showPassive' not in policy and 'showPassive' not in html
+            assert "request('set_piece_edge',[target,role,mapped,enabled])" in app
+            assert 'Fita pendente. Clique em Concluir' not in app
+            assert 'manual_machining?' in geometry and 'custom_roles' in geometry
+            assert 'USINAGEM MANUAL (retângulo de corte)' in production
+            assert '.library-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))' in css
+            assert 'overflow-x:visible' in css
+            standards=z.read('plany/ui/standards.css').decode()
+            assert '#solo-piece .field.module-name-field' in standards
+            assert '#module-piece-editor .field.module-name-field' in standards
+            assert 'draftHasUncommittedChanges(outgoing)' in app
+            assert 'if(lostUserChanges){' in app
+            assert 'plany-discarded-draft-warning' in app
+            lift=z.read('plany/hardware.rb').decode()
+            model=z.read('plany/ui/model.js').decode()
+            production=z.read('plany/production.rb').decode()
+            assert 'id="door-lift-opening"' in html and 'id="door-lift-system"' in html
+            assert 'door-lift-count' not in html and 'door-lift-count' not in app
+            assert "f['lift_system']" in z.read('plany/parameters.rb').decode()
+            assert 'f.lift_system' in model and "door-lift-system" in app
+            assert "def self.lift_assessment" in lift and "ANIMATE(\"#{axis}\"" in lift
+            assert "lift_support" in production and "pré-seleção" in production
+            assert "Pistão a gás" in html and "Articulador mecânico" in html
+            assert "ROTX" in lift and "hardware" in production
+
+            for old in ('src="standards.js"','src="editor-policy.js"','src="../dimensions.js"','href="standards.css"'):
+              assert old not in html, old
+          print('VERSÃO 0.6.168: VERIFICADA',p.stat().st_size,'bytes',digest)
+          PY
+      - name: Publicar pacote verificado
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create v0.6.168 dist/Plany-0.6.168.rbz \
+            --repo raullqueirozz9292/Plany-Distribuicao \
+            --target main --draft \
+            --title 'Plany 0.6.168 — basculantes superiores e inferiores' \
+            --notes 'Portas basculantes com sentido superior/inferior e seleção pistão a gás/articulador mecânico. Interagir com pivô horizontal e rotação ROTX de 90°, dobradiças e mecanismos esquemáticos e lista técnica de ferragens. Massa e momento estimados; forças de pistão são pré-seleções NÃO HOMOLOGADAS sem gabarito do fabricante. Receitas antigas de duas folhas preservadas. Sem alteração no sistema de giro/gavetas. Fonte PR #54 merge 086766cab4849620bcc7713dabf9c36ecdc8c089.'
+          python3 - <<'PY'
+          import hashlib,json,subprocess,time
+          from pathlib import Path
+          expected='sha256:'+hashlib.sha256(Path('dist/Plany-0.6.168.rbz').read_bytes()).hexdigest()
+          rid=None
+          for _ in range(12):
+            releases=json.loads(subprocess.check_output(['gh','api','repos/raullqueirozz9292/Plany-Distribuicao/releases?per_page=100'],text=True))
+            found=[r for r in releases if r['tag_name']=='v0.6.168']
+            if len(found)==1:
+              r=found[0]
+              if r['draft'] and len([a for a in r['assets'] if a['name']=='Plany-0.6.168.rbz'])==1:
+                a=[a for a in r['assets'] if a['name']=='Plany-0.6.168.rbz'][0]
+                if a['digest']==expected and a['size']==Path('dist/Plany-0.6.168.rbz').stat().st_size:
+                  rid=r['id'];break
+            time.sleep(2)
+          assert rid is not None, 'Rascunho ainda não verificado: não ativar release'
+          Path('dist/release-id-166.txt').write_text(str(rid))
+          print('RASCUNHO INTEGRIDADE CONFIRMADA',expected)
+          PY
+          id="$(cat dist/release-id-166.txt)"
+          gh api --method PATCH "repos/raullqueirozz9292/Plany-Distribuicao/releases/$id" \
+            -F draft=false -f make_latest=true >/tmp/release-166.json
+          python3 - <<'PY'
+          import json,subprocess,hashlib
+          from pathlib import Path
+          r=json.loads(subprocess.check_output(['gh','api','repos/raullqueirozz9292/Plany-Distribuicao/releases/latest'],text=True))
+          assert r['tag_name']=='v0.6.168' and not r['draft'] and not r['prerelease']
+          a=[x for x in r['assets'] if x['name']=='Plany-0.6.168.rbz']
+          expected='sha256:'+hashlib.sha256(Path('dist/Plany-0.6.168.rbz').read_bytes()).hexdigest()
+          assert len(a)==1 and a[0]['digest']==expected
+          print('PLANY 0.6.168 OFICIALMENTE PUBLICADO:',r['html_url'])
+          PY
