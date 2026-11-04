@@ -43,7 +43,7 @@ def sha256(path):
 
 
 def git_blob(content):
-    value = b"blob " + str(len(content)).encode() + b"\\0" + content
+    value = b"blob " + str(len(content)).encode() + b"\0" + content
     return hashlib.sha1(value).hexdigest()
 
 
@@ -61,7 +61,7 @@ def once(text, before, after, name):
 
 
 def inline_script(raw):
-    content = re.sub(r"</script", lambda match: r"<\\/script", raw.decode("utf-8"), flags=re.I)
+    content = re.sub(r"</script", lambda match: r"<\/script", raw.decode("utf-8"), flags=re.I)
     return "<script>" + content + "</script>"
 
 
@@ -115,17 +115,17 @@ def patch_files(archive):
         check_blob("plany/ui/standards.js", modified_standards)
 
         reloader = package.read("plany/reloader.rb").decode("utf-8")
-        anchor = "      html = html.sub('<script src=\\"../glass.js\\"></script>') { script(File.join(directory, 'glass.js')) }\\n"
+        anchor = "      html = html.sub('<script src=\"../glass.js\"></script>') { script(File.join(directory, 'glass.js')) }\n"
         addition = (
-            "      html = html.sub('<script src=\\"standards.js\\"></script>') { script(File.join(ui, 'standards.js')) }\\n"
-            "      html = html.sub('<script src=\\"editor-policy.js\\"></script>') { script(File.join(ui, 'editor-policy.js')) }\\n"
-            "      html = html.sub('<link rel=\\"stylesheet\\" href=\\"standards.css\\">') { '<style>' + File.read(File.join(ui, 'standards.css'), encoding: 'UTF-8') + '</style>' }\\n"
+            "      html = html.sub('<script src=\"standards.js\"></script>') { script(File.join(ui, 'standards.js')) }\n"
+            "      html = html.sub('<script src=\"editor-policy.js\"></script>') { script(File.join(ui, 'editor-policy.js')) }\n"
+            "      html = html.sub('<link rel=\"stylesheet\" href=\"standards.css\">') { '<style>' + File.read(File.join(ui, 'standards.css'), encoding: 'UTF-8') + '</style>' }\n"
         )
         reloader = once(reloader, anchor, anchor + addition, "reloader bootstrap")
         for old in (
-            "        '<link rel=\\"stylesheet\\" href=\\"standards.css\\">' => '<style>' + File.read(File.join(ui, 'standards.css'), encoding: 'UTF-8') + '</style>',\\n",
-            "        '<script src=\\"standards.js\\"></script>' => script(File.join(ui, 'standards.js')),\\n",
-            "        '<script src=\\"editor-policy.js\\"></script>' => script(File.join(ui, 'editor-policy.js')),\\n",
+            "        '<link rel=\"stylesheet\" href=\"standards.css\">' => '<style>' + File.read(File.join(ui, 'standards.css'), encoding: 'UTF-8') + '</style>',\n",
+            "        '<script src=\"standards.js\"></script>' => script(File.join(ui, 'standards.js')),\n",
+            "        '<script src=\"editor-policy.js\"></script>' => script(File.join(ui, 'editor-policy.js')),\n",
         ):
             reloader = once(reloader, old, "", "reloader obsolete mappings")
         modified_reloader = reloader.encode("utf-8")
@@ -158,7 +158,7 @@ def patch_files(archive):
                       else f'<script src="{href}"></script>')
             source = modified_standards if name == "plany/ui/standards.js" else package.read(name)
             tag = "style" if css else "script"
-            content = re.sub(r"</" + tag, lambda match: r"<\\/" + tag,
+            content = re.sub(r"</" + tag, lambda match: r"<\/" + tag,
                              source.decode("utf-8"), flags=re.I)
             new_html = once(new_html, marker, "<" + tag + ">" + content +
                             "</" + tag + ">", "inline " + href)
@@ -176,7 +176,7 @@ def patch_files(archive):
         }
         # In the standard update package, render textures are inherited from
         # installed/cached resources, just as prior small official releases.
-        rendered = re.compile(r"^plany/catalog/.*-render\\.(?:jpe?g|png)$", re.I)
+        rendered = re.compile(r"^plany/catalog/.*-render\.(?:jpe?g|png)$", re.I)
         kept = []
         with ZipFile(TARGET, "w", ZIP_DEFLATED) as destination:
             for entry in package.infolist():
@@ -208,5 +208,5 @@ if __name__ == "__main__":
         "source_blobs_verified": GIT_BLOBS,
         "base_verified_release_sha256": ORIGINAL_SHA,
     }
-    (DIST / "manifest-0.6.164.json").write_text(json.dumps(manifest, indent=2) + "\\n")
+    (DIST / "manifest-0.6.164.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(json.dumps(manifest, indent=2), flush=True)
