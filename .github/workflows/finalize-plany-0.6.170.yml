@@ -1,0 +1,42 @@
+name: Finalizar Plany 0.6.170 - pacote verificado
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/finalize-plany-0.6.170.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: plany-official-0.6.170
+  cancel-in-progress: false
+jobs:
+  finalize:
+    if: github.repository == 'raullqueirozz9292/Plany-Distribuicao'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Verificar rascunho e publicar somente o pacote imutavel
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, subprocess
+          repo='raullqueirozz9292/Plany-Distribuicao'
+          release_id=434674015
+          expected='sha256:94bd9391c4167143c769c70f2fe1175be3734446b75a6ab11c3660b85d0109f3'
+          old=json.loads(subprocess.check_output(['gh','api','repos/'+repo+'/releases/latest'],text=True))
+          assert old['tag_name']=='v0.6.169', 'Unexpected latest release; do not change'
+          release=json.loads(subprocess.check_output(['gh','api','repos/'+repo+'/releases/'+str(release_id)],text=True))
+          assert release['tag_name']=='v0.6.170' and release['draft'] and not release['prerelease']
+          assert '31d3e82a83e990adc776cf79e04fc3a2f40a5887' in release['body'], 'Unexpected source commit in release'
+          assets=[a for a in release['assets'] if a['name']=='Plany-0.6.170.rbz']
+          assert len(assets)==1 and assets[0]['size']==2770527 and assets[0]['digest']==expected, 'Draft RBZ does not match verified SHA'
+          print('DRAFT VERIFIED, SHA pinned:',expected)
+          subprocess.run(['gh','api','--method','PATCH','repos/'+repo+'/releases/'+str(release_id),'-F','draft=false','-f','make_latest=true'],check=True,stdout=subprocess.DEVNULL)
+          latest=json.loads(subprocess.check_output(['gh','api','repos/'+repo+'/releases/latest'],text=True))
+          assert latest['tag_name']=='v0.6.170' and not latest['draft']
+          got=[a for a in latest['assets'] if a['name']=='Plany-0.6.170.rbz']
+          assert len(got)==1 and got[0]['digest']==expected and got[0]['size']==2770527
+          print('OFFICIAL RELEASE CONFIRMED:',latest['html_url'],expected)
+          PY
