@@ -952,6 +952,9 @@
     var envelope=externalSliding();
     flow.openings=[];flow.opening=null;
     flow.current.doorTargetEnvelope=envelope;
+    // Opening selection is a long-lived native tool. Switching its mode must
+    // supersede that operation before requesting the replacement tool.
+    if(operations.pending('opening_selection'))operations.cancel('opening_selection');
     request('select_openings',['door',!(v.cabinet&&v.linked),v.context?v.context.targets:null,envelope]);
   }
   function externalSliding(){return $('front-kind').value==='door'&&$('door-type').value==='sliding'&&$('front-fit').value==='overlay';}
@@ -963,6 +966,7 @@
     if(flow.current.doorTargetEnvelope===envelope)return;
     if(flow.volume){requestVolumeOpenings();return;}
     flow.openings=[];flow.current.doorTargetEnvelope=envelope;
+    if(operations.pending('opening_selection'))operations.cancel('opening_selection');
     request('select_openings',['door',false,null,envelope]);
   }
   function commitVolumeComponent(p){
