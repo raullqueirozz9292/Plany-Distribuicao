@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plany — Módulos</title>
+  <link rel="stylesheet" href="../material-choice.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="standards.css">
+</head>
+<body data-plany-surface="panel">
+  <div class="app">
+    <header class="header">
+      <div class="brand"><img src="icon.svg" alt="" width="34" height="34"><div><strong>Plany<span class="version">0.6.171</span></strong><small title="Plany 0.6.171">Extensão para marcenaria</small></div></div>
+      <div class="header-actions"><span id="mode" class="pill">Selecione no projeto</span></div>
+    </header>
+    <div id="demo-banner" class="demo-banner" hidden>Prévia interativa · o desenho no SketchUp funciona após instalar o plugin.</div>
+    <nav class="tabs" aria-label="Ferramentas">
+      <button class="tab active" data-tab="module" aria-selected="true">Seleção</button>
+      <button class="tab" data-tab="library" aria-selected="false">Biblioteca</button>
+      <button class="tab" data-tab="materials" aria-selected="false">Materiais</button>
+      <button class="tab" data-tab="production" aria-selected="false">Plano de corte</button>
+    </nav>
+    <main>
+      <section id="tab-module" class="tab-panel">
+        <div id="empty-selection" class="empty-selection"><h1>Sua seleção</h1><p>Selecione um módulo ou uma peça Plany para visualizar e editar suas informações.</p><p class="hint">Para adicionar uma caixaria, abra a Biblioteca.</p></div>
+        <div id="group-piece-list" hidden></div>
+        <div id="bulk-selection" hidden><h1 id="bulk-title"></h1>
+        <section id="assemble-selection" hidden>
+          <button id="assemble-pieces" class="primary full">Criar módulo com as peças</button>
+          <div id="combine-warning" class="item-editor" hidden><strong>Criar módulo composto?</strong><p>Os módulos selecionados ficarão separados dentro dele, com suas configurações e movimentos preservados. Ctrl+Z desfaz a união.</p><button id="cancel-combine" class="text-button">Cancelar</button><button id="confirm-combine" class="primary">Criar módulo composto</button></div>
+        </section>
+<label class="field">MDF das peças<input id="bulk-material" type="hidden"><button class="material-choice" data-material-field="bulk-material"><span class="material-swatch"></span><span class="material-name"></span><span class="material-arrow" aria-hidden="true"></span></button></label>
+          <div id="bulk-front-fields" hidden><label class="field">MDF das frentes<input id="bulk-front_material" type="hidden"><button type="button" class="material-choice" data-material-field="bulk-front_material" data-empty-label="Diferentes"><span class="material-swatch"></span><span class="material-name"></span><span class="material-arrow" aria-hidden="true"></span></button></label><label class="field">Espessura das frentes (mm)<select id="bulk-front_thickness"><option value="">Diferentes</option><option value="6">6 mm</option><option value="15">15 mm</option><option value="18">18 mm</option><option value="25">25 mm</option></select></label></div>
+          <label class="field" id="bulk-piece-thickness-field">Espessura das peças (mm)<select id="bulk-thickness"><option value="">Diferentes</option><option value="6">6 mm</option><option value="15">15 mm</option><option value="18">18 mm</option><option value="25">25 mm</option></select></label>
+<input type="hidden" id="bulk-grain" value="free">
+          <p id="bulk-changes" class="hint" hidden></p><button id="apply-bulk" class="primary" disabled>Aplicar à seleção</button>
+        </div>
+        <div id="solo-piece" hidden>
+          <div class="piece-editor-toolbar"><button id="solo-back-to-pieces" type="button" class="text-button">Ver peças avulsas do projeto</button><button id="solo-delete-piece" type="button" class="text-button danger">Excluir peça</button></div>
+          <div class="piece-name-row"><button title="Retira a peça do grupo e a coloca na raiz do modelo, mantendo posição, medidas e acabamentos." id="solo-detach-piece" type="button" class="text-button" hidden>Tornar peça avulsa</button></div>
+          <label for="solo-name" class="field module-name-field">Nome da peça<input id="solo-name" aria-label="Nome da peça" maxlength="60"></label>
+          <div class="dimensions">
+            <label class="field">Comprimento<div class="unit-input"><input id="solo-u" inputmode="decimal" aria-label="Comprimento da peça em milímetros"><span>mm</span></div></label>
+            <label class="field">Largura<div class="unit-input"><input id="solo-v" inputmode="decimal" aria-label="Largura da peça em milímetros"><span>mm</span></div></label>
+            <label class="field">Espessura da peça (mm)<select id="solo-thickness" aria-label="Espessura da peça em milímetros"><option value="6">6 mm</option><option value="15">15 mm</option><option value="18">18 mm</option><option value="25">25 mm</option></select></label>
+            <label class="field">Elevação<div class="unit-input"><input id="solo-elevation" inputmode="decimal" aria-label="Elevação da base da peça em milímetros"><span>mm</span></div></label>
+          </div>
+<label class="field">MDF da peça<input id="solo-material" type="hidden"><button class="material-choice" data-material-field="solo-material"><span class="material-swatch"></span><span class="material-name"></span><span class="material-arrow" aria-hidden="true"></span></button></label><input type="hidden" id="solo-grain" value="free">
+          <p class="hint">Clique nas bordas para colocar ou retirar a fita.</p>
+          <svg id="solo-preview" viewBox="0 0 280 160" aria-label="Fitas da peça selecionada"></svg><p id="solo-edge-summary" class="hint"></p>
+        </div>
+        <div id="mixed-selection" class="empty-selection" hidden><h1>Seleção mista</h1><p>Use Peças avulsas para incluir as peças na caixaria. O comando Agrupar do SketchUp continua disponível para organizar o conjunto.</p></div>
+        <div id="module-editor" hidden>
+
+        <span id="selection-label" hidden></span>
+        <details id="general-settings" class="selection-category" open=""><summary>Geral</summary><div class="category-body"><label class="field module-name-field">Nome do módulo<input id="name" maxlength="60" value="Caixaria" autocomplete="off"></label>
+            <div class="dimensions">
+              <label class="field">Largura<div class="unit-input"><input id="width" inputmode="decimal" value="800" aria-label="Largura em milímetros"><span>mm</span></div></label>
+              <label class="field">Altura<div class="unit-input"><input id="height" inputmode="decimal" value="720" aria-label="Altura em milímetros"><span>mm</span></div></label>
+              <label class="field">Profundidade<div class="unit-input"><input id="depth" inputmode="decimal" value="450" aria-label="Profundidade em milímetros"><span>mm</span></div></label>
+            </div>
+            <label class="field">Elevação<div class="unit-input"><input id="elevation" inputmode="decimal" value="0" aria-label="Elevação da base em milímetros"><span>mm</span></div></label></div></details><details class="selection-category" id="construction-settings"><summary><span id="construction-title">Peças e materiais</span> <span id="construction-summary">MDF 15 mm · Fundo 6 mm</span></summary>
+            <div class="category-body"><div id="cabinet-construction"><label class="field">MDF da caixaria<input id="material" maxlength="128" value="MDF" type="hidden"><button type="button" class="material-choice" data-material-field="material"><span class="material-swatch"></span><span class="material-name">Escolher MDF</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+              <section id="mdf-settings" class="compact-materials"><div class="construction-row">
+              <label class="field">Espessura do MDF (mm)<select id="thickness"><option value="6">6 mm</option><option value="15">15 mm</option><option value="18">18 mm</option><option value="25">25 mm</option></select></label>
+            </div>
+            </section><div id="construction-geometry"><datalist id="mdf-options"><option value="6"></option><option value="15"></option><option value="18"></option><option value="25"></option></datalist>
+            <div class="construction-row">
+              <label class="field construction-family-start">Parte superior<select id="top_type"><option value="full">Tampo inteiro</option><option value="rails">Duas réguas deitadas</option></select></label>
+              <label class="field">Encontro superior<select id="top_join"><option value="over">Por cima das laterais</option><option value="between">Entre as laterais</option></select></label>
+            </div>
+            <label class="field" id="rail-field" hidden>Largura de cada régua superior (mm)<input id="rail_width" inputmode="decimal" value="70"></label>
+            <div class="construction-row">
+              <label class="field construction-family-start">Base<select id="bottom_type"><option value="full">Base inteira</option><option value="rails">Duas réguas deitadas</option></select></label>
+              <label class="field">Encontro da base<select id="base_type"><option value="under">Por baixo das laterais</option><option value="between">Entre as laterais</option></select></label>
+            </div>
+            <label class="field" id="bottom-rail-field" hidden>Largura de cada régua da base (mm)<input id="bottom_rail_width" inputmode="decimal" value="70"></label>
+            <label class="field checkbox-row construction-checkbox construction-family-start"><span>Incluir fundo</span><input id="back" type="checkbox" checked></label>
+            <div id="back-configuration">
+            <div class="construction-row">
+              <label class="field">Fundo<select id="back_panel_type"><option value="full">Fundo inteiro</option><option value="rails">Duas réguas internas</option></select></label>
+              <label class="field" id="back-thickness-field">Espessura do fundo (mm)<select id="back_thickness"><option value="6">6 mm</option><option value="15">15 mm</option><option value="18">18 mm</option><option value="25">25 mm</option></select></label>
+              <label class="field" id="back-material-field">MDF do fundo<input id="back_material" maxlength="128" value="MDF" type="hidden"><button type="button" class="material-choice" data-material-field="back_material"><span class="material-swatch"></span><span class="material-name">Escolher MDF</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+              <label class="field" id="back-mount-field">Montagem do fundo<select id="back_type"><option value="applied">Sobreposto por trás</option><option value="inset">Interno, entre as peças</option><option value="groove">Rasgo para embutir</option></select></label>
+              <label class="field" id="back-groove-field" hidden>Profundidade do rasgo (mm)<input id="back_groove_depth" inputmode="decimal" value="5"></label>
+              <label class="field" id="setback-field" hidden>Recuo da traseira (mm)<input id="back_setback" inputmode="decimal" value="10"></label>
+              </div>
+            <label class="field" id="back-rail-field" hidden>Largura de cada régua do fundo (mm)<input id="back_rail_width" inputmode="decimal" value="70"><small>Internas, uma em cima e outra embaixo. A espessura da caixaria é o padrão; cada régua pode ser configurada na ficha da peça.</small></label>
+            </div>
+            </div>
+            </div><div id="custom-materials" hidden></div>
+            <label class="field checkbox-row construction-checkbox construction-family-start"><span>Fita única nos duplados</span><input id="joint_banding" type="checkbox"><small>Uma só fita cobre a espessura total das peças unidas.</small></label>
+            <div id="panel-controls" hidden>
+              <details class="construction-details" id="panel-main-section" open><summary>Painel</summary>
+                <label class="field">Tipo de painel<select id="panel-surface" data-panel-field="surface"><option value="smooth">Liso</option><option value="ribbed">Ripado</option><option value="grooved">Frisado</option><option value="mirror">Espelho</option></select></label>
+                <label class="field" id="panel-thickness-field"><span id="panel-thickness-label">Espessura do painel (mm)</span><select id="panel-thickness"></select></label>
+                <div id="panel-continuous-field">
+                  <div class="continuous-option"><label id="panel-continuous-label" class="checkbox-row"><input id="panel-continuous" data-panel-field="continuous" type="checkbox" checked><span>Contínuo</span></label><span id="panel-continuous-warning" class="hint" hidden>Excede a chapa. Reduza as medidas para desativar.</span></div>
+                  <p id="panel-composition-summary" class="hint" hidden></p>
+                  <label class="field" id="panel-gap-field" hidden>Fresto entre painéis (mm)<input id="panel-gap" data-panel-field="gap" inputmode="decimal"></label>
+                </div>
+                <label class="field" id="panel-surface-material"><span id="panel-material-label">Material do painel</span><input id="panel-main-material" type="hidden"><button type="button" class="material-choice" data-material-field="panel-main-material"><span class="material-swatch"></span><span class="material-name">Escolher MDF</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+                <div id="panel-groove-fields" hidden>
+                  <label class="field">Direção<select data-panel-field="groove_direction"><option value="vertical">Vertical</option><option value="horizontal">Horizontal</option></select></label>
+                  <label class="field">Largura do friso (mm)<input data-panel-field="groove_width" inputmode="decimal"></label>
+                  <label class="field">Profundidade do friso (mm)<input data-panel-field="groove_depth" inputmode="decimal"></label>
+                  <label class="field">Passo entre frisos (mm)<input data-panel-field="groove_pitch" inputmode="decimal"></label>
+                  <label class="field">Início da modulação (mm)<input data-panel-field="groove_start" inputmode="decimal"></label>
+                </div>
+              </details>
+              <details class="construction-details" id="panel-rib-section" hidden><summary>Réguas</summary>
+                <div id="panel-rib-fields" hidden>
+                  <label class="field">Direção<select data-panel-field="rib_direction"><option value="vertical">Vertical</option><option value="horizontal">Horizontal</option></select></label>
+                  <label class="field">Largura da régua (mm)<input data-panel-field="rib_width" inputmode="decimal"></label>
+                  <label class="field">Espaço entre réguas (mm)<input data-panel-field="rib_gap" inputmode="decimal"></label>
+                  <label class="field">Espessura da régua (mm)<select id="panel-rib-thickness" data-panel-field="rib_thickness"></select></label>
+                  <label class="field">Início da modulação (mm)<input data-panel-field="rib_start" inputmode="decimal"></label>
+                  <label class="checkbox-row"><input id="panel-rib-partial-last" data-panel-field="rib_partial_last" type="checkbox"><span>Incluir última ripa cortada</span></label>
+                  <label class="field">Material das réguas<input id="panel-rib-material" data-panel-field="rib_material" type="hidden"><button type="button" class="material-choice" data-material-field="panel-rib-material"><span class="material-swatch"></span><span class="material-name">Escolher MDF</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+                  <p class="hint">As duas bordas longas de cada régua recebem fita por padrão.</p>
+                  <label class="checkbox-row"><input id="panel-rib-tape-bottom" data-panel-field="rib_tape_bottom" type="checkbox"><span id="panel-tape-bottom-label">Fitar base das réguas</span></label>
+                  <label class="checkbox-row"><input id="panel-rib-tape-top" data-panel-field="rib_tape_top" type="checkbox"><span id="panel-tape-top-label">Fitar topo das réguas</span></label>
+                </div>
+              </details>
+              <details class="construction-details" id="panel-base-section"><summary>Base</summary>
+                  <label class="checkbox-row" id="panel-base-toggle"><input id="panel-base" data-panel-field="base" type="checkbox"><span>Incluir base traseira</span></label>
+                  <div id="panel-base-fields">
+                    <label class="field">Espessura da base (mm)<select id="panel-base-thickness" data-panel-field="base_thickness"></select></label>
+                    <label class="field">Material da base<input id="panel-base-material" data-panel-field="base_material" type="hidden"><button type="button" class="material-choice" data-material-field="panel-base-material"><span class="material-swatch"></span><span class="material-name">Escolher MDF</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+                  </div>
+                  <div id="panel-feet-field">
+                    <label class="checkbox-row"><input id="panel-feet" data-panel-field="feet" type="checkbox"><span>Incluir sapatas</span></label>
+                    <div id="panel-feet-settings" hidden>
+                      <label class="field">Altura da sapata (mm)<input id="panel-foot-height" data-panel-field="foot_height" inputmode="decimal"></label>
+                      <p class="hint">Duas por folha, a 50 mm das pontas e no centro da espessura.</p>
+                    </div>
+                  </div>
+              </details>
+              <details class="construction-details" id="panel-mirror-section" hidden><summary>Espelho</summary>
+                <label class="checkbox-row"><input id="panel-mirror-retalho" data-panel-field="mirror_base_retalho" type="checkbox"><span>Usar retalho na base do espelho</span></label>
+                <label class="field" id="panel-mirror-base-material-field">Material específico da base<input id="panel-mirror-base-material" data-panel-field="mirror_base_material" type="hidden"><button type="button" class="material-choice" data-material-field="panel-mirror-base-material" data-empty-label="Herdar material principal"><span class="material-swatch"></span><span class="material-name">Herdar material principal</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+                <button id="panel-mirror-base-inherit" type="button" class="text-button" hidden>Usar material principal na base</button>
+                <label class="field">Cobertura<select id="panel-mirror" data-panel-field="mirror"><option value="full">Integral</option><option value="inset">Com recuos</option></select></label>
+                <div id="panel-mirror-fields" hidden>
+                  <label class="field">Espessura do espelho (mm)<select id="panel-mirror-thickness" data-panel-field="mirror_thickness"></select></label>
+                  <div id="panel-mirror-insets" hidden>
+                    <label class="field">Recuo esquerdo (mm)<input data-panel-field="mirror_left" inputmode="decimal"></label>
+                    <label class="field">Recuo direito (mm)<input data-panel-field="mirror_right" inputmode="decimal"></label>
+                    <label class="field">Recuo superior (mm)<input data-panel-field="mirror_top" inputmode="decimal"></label>
+                    <label class="field">Recuo inferior (mm)<input data-panel-field="mirror_bottom" inputmode="decimal"></label>
+                  </div>
+                </div>
+              </details>
+              <details id="panel-fixation-section" class="construction-details"><summary>Fixação</summary>
+                <label class="field">Sistema<select id="panel-fixation" data-panel-field="fixation"><option value="none">Nenhuma</option><option value="channel">Canaleta</option></select></label>
+                <label class="field">Distância à parede (mm)<input id="panel-wall-distance" data-panel-field="wall_distance" inputmode="decimal" aria-describedby="panel-wall-distance-warning"></label>
+                <p id="panel-wall-distance-warning" class="hint validation-warning" role="alert" hidden>Distância mínima: 30 mm.</p>
+                <div id="panel-channel-fields" hidden>
+                  <label class="field">Sentido de montagem<select id="panel-installation-direction" data-panel-field="installation_direction"><option value="left_to_right">Esquerda para direita</option><option value="right_to_left">Direita para esquerda</option></select></label>
+                  <label class="field">Posição na montagem<select id="panel-installation-position" data-panel-field="installation_position"><option value="start">Início</option><option value="continuation">Continuação</option><option value="final">Final</option><option value="isolated">Isolado</option></select></label>
+                  <label class="field">Desconto superior (mm)<input data-panel-field="discount_top" inputmode="decimal"></label>
+                  <label class="field">Desconto inferior (mm)<input data-panel-field="discount_bottom" inputmode="decimal"></label>
+                  <div class="panel-side-finishes" role="group" aria-label="Acabamentos laterais">
+                    <label class="checkbox-row"><input id="panel-finish-left" data-panel-field="finish_left" type="checkbox"><span>Incluir acabamento lateral esquerdo</span></label>
+                    <label class="checkbox-row"><input id="panel-finish-right" data-panel-field="finish_right" type="checkbox"><span>Incluir acabamento lateral direito</span></label>
+                  </div>
+                  <p id="panel-installation-hint" class="hint">Instale o conjunto inicial de três peças na parede. Encaixe cada painel pela esquerda e parafuse na parede pela direita.</p>
+                  <p id="panel-final-warning" class="hint">Instale o conjunto final na parede antes do último painel. Apoio painel de 60 mm, recuado 15 mm da borda.</p>
+                  <p id="panel-joint-hint" class="hint">Nas emendas: Fix painel e Fix parede de 60 mm. Desconto no encontro de 20 mm. Avanço da Trava de 15 mm, com folga de 5 mm.</p>
+                </div>
+              </details>
+              <div class="panel-detach-action"><button id="detach-panel-units" type="button" class="small-button">Desassociar painéis</button></div>
+            </div></div></details>
+          <details class="selection-category" id="front-details"><summary>Inserções <span id="front-summary"></span></summary>
+              <div class="category-body"><div id="selected-opening" class="selected-opening" hidden><strong id="selected-opening-title"></strong><p id="selected-opening-measures"></p><button id="clear-opening" class="text-button">Cancelar seleção</button></div><button id="select-openings" class="small-button full" hidden>Selecionar vão no SketchUp</button><div class="preview-card" hidden>
+              <div class="preview-top"><span>VISTA FRONTAL</span><span id="opening-count">1 vão</span></div>
+              <svg id="preview" viewbox="0 0 400 260" role="group" aria-label="Prévia dos vãos da caixaria"></svg>
+              <div class="preview-caption"><span class="dot"></span><span id="opening-info"></span></div>
+            </div>
+            <div class="insert-actions" aria-label="Ferramentas de inserção">
+              <div class="insert-tool"><button id="choose-door" class="insert-tool-main" aria-pressed="false">+ Porta</button><button id="config-door" class="insert-tool-config" title="Configurar porta" aria-label="Configurar porta" hidden>⚙</button></div>
+              <div class="insert-tool"><button id="choose-spice" class="insert-tool-main" aria-pressed="false">+ Tempereiro</button></div>
+              <div class="insert-tool"><button id="choose-drawer" class="insert-tool-main" aria-pressed="false">+ Gaveta</button><button id="config-drawer" class="insert-tool-config" title="Configurar gaveta" aria-label="Configurar gaveta" hidden>⚙</button></div>
+              <div class="insert-tool"><button id="add-shelf" class="insert-tool-main" aria-pressed="false">+ Prateleira</button><button id="config-shelf" class="insert-tool-config" title="Configurar prateleira" aria-label="Configurar prateleira" hidden>⚙</button></div>
+              <div class="insert-tool"><button id="add-divider" class="insert-tool-main" aria-pressed="false">+ Divisória</button><button id="config-divider" class="insert-tool-config" title="Configurar divisória" aria-label="Configurar divisória" hidden>⚙</button></div>
+              <div class="insert-tool"><button id="add-crown" class="insert-tool-main" aria-pressed="false">+ Rodateto</button></div>
+              <div class="insert-tool"><button id="add-baseboard" class="insert-tool-main" aria-pressed="false">+ Rodapé</button></div>
+              <div class="insert-tool"><button id="add-cladding-tool" class="insert-tool-main" aria-pressed="false">+ Tamponamento</button></div>
+              <div class="insert-tool"><button id="add-accessory" class="insert-tool-main" aria-pressed="false">+ Acessórios</button></div>
+            </div>
+            <p id="insert-tool-hint" class="hint insert-tool-hint">Escolha uma ferramenta. Portas, gavetas, prateleiras e divisórias são aplicadas diretamente nos vãos do SketchUp.</p>
+            <div id="insert-guidance" class="insert-guidance" hidden>
+              <strong>Próximo passo</strong>
+              <span id="insert-guidance-text"></span>
+            </div>
+            <section id="division-editor" class="item-editor" hidden>
+              <h3 id="division-title"></h3><p id="division-target-count" class="insert-target-count"></p>
+              <div class="division-distribution-fields">
+                <label id="division-quantity-field" class="field">Quantidade<select id="division-quantity"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></label>
+                <label id="division-distribution-field" class="field" hidden>Distribuição<select id="division-distribution"><option value="uniform">Uniforme</option></select></label>
+                <label id="division-proportions-field" class="field" title="Reajusta os vãos proporcionalmente quando o módulo muda."><span>Reajuste automático</span><span class="division-proportions-control"><input id="division-proportions" type="checkbox" aria-label="Reajuste automático" checked></span></label>
+              </div>
+              <div id="division-position-fields">
+                <label class="field">Referência da posição<select id="division-mode"><option value="ratio">Proporção do vão (%)</option><option value="start">Distância da base / esquerda (mm)</option><option value="end">Distância do topo / direita (mm)</option></select></label>
+                <label class="field"><span id="division-position-label">Posição (%)</span><input id="division-position" inputmode="decimal"></label>
+              </div>
+              <div id="divider-mode-fields" hidden><label class="field">Divisória<select id="divider-mode"><option value="internal">Divisória interna</option><option value="batente">Batente frontal</option></select></label><label id="batente-depth-field" class="field" hidden>Profundidade do batente (mm)<input id="batente-depth" inputmode="decimal" value="70"></label></div><label id="division-type-field" class="field">Tipo<select id="division-type"><option value="mdf">MDF</option><option value="glass">Vidro</option></select></label>
+              <label id="division-thickness-field" class="field">Espessura da peça (mm)<select id="division-thickness"></select></label>
+              <label id="division-fixation-field" class="field">Tipo de fixação<select id="division-fixation"></select></label>
+              <label id="division-front-recess-field" class="field">Recuo frontal (mm)<input id="division-front-recess" inputmode="decimal" value="0"></label>
+              <label id="division-material-field" class="field">MDF da peça<input id="division-material" maxlength="128" type="hidden"><button type="button" class="material-choice" data-material-field="division-material"><span class="material-swatch"></span><span class="material-name">Escolher MDF</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+              <label id="division-glass-color-field" class="field" hidden>Cor do vidro<select id="division-glass-color"><option value="clear">Incolor</option><option value="smoke">Fumê</option><option value="bronze">Bronze</option><option value="green">Verde</option></select></label>
+              <details id="division-measures" class="item-config"><summary>Medidas e posição</summary></details>
+              <details id="division-advanced" class="item-config"><summary id="division-advanced-title">Iluminação</summary>
+                <label id="division-span-field" class="field"><span id="division-span-label">Largura (mm)</span><input id="division-span" inputmode="decimal"></label>
+                <label id="division-depth-field" class="field">Profundidade (mm)<input id="division-depth" inputmode="decimal"></label>
+                <div id="division-led-options" hidden>
+                  <label class="field">LED<select id="division-led"><option value="none">Sem LED</option><option value="led">Com LED</option></select></label>
+                  <label id="division-led-position-field" class="field" hidden>Posição do LED<select id="division-led-position"><option value="front">Frente</option><option value="center">Centralizado</option><option value="rear">Fundo</option></select></label>
+                </div>
+              </details>
+              <div id="division-actions"><button id="apply-division" class="primary full">Inserir no módulo</button>
+              <button id="remove-split" class="text-button danger" hidden></button>
+              <button id="cancel-division" class="text-button">Fechar</button></div>
+            </section>
+            <section id="front-editor" class="item-editor" hidden>
+            <h3 id="front-editor-title">Configurar porta</h3><p id="insert-target-count" class="insert-target-count"></p><input type="hidden" id="front-kind" value="door">
+            <button id="edit-in-model" class="small-button" disabled title="Carregue um módulo com divisões e aplique as alterações. Arraste no modelo, digite uma medida ou use o botão direito para escolher a referência." hidden="">Arrastar divisões no SketchUp</button>
+            <div id="front-target-row" class="front-target-row" hidden><span id="front-target-text"></span><button id="change-front-target" type="button" class="small-button">Alterar vão no SketchUp</button></div>
+              <div id="door-settings">
+                <label class="field">Tipo de porta<select id="door-type"><option value="hinged">Giro</option><option value="lift">Basculante</option><option value="sliding">Correr</option></select></label>
+                <label id="door-hinged-field" class="field">Composição<select id="door-hinged-mode"><option value="left">1 porta · abre para esquerda</option><option value="right">1 porta · abre para direita</option><option value="double">2 portas</option></select></label>
+                <div id="door-lift-field" hidden><label class="field">Tipo de abertura<select id="door-lift-opening"><option value="top">Superior · abre para cima</option><option value="bottom">Inferior · abre para baixo</option></select></label><label class="field">Sistema de abertura<select id="door-lift-system"><option value="gas">Pistão a gás</option><option value="mechanical">Articulador mecânico</option></select></label></div>
+                <label id="door-sliding-field" class="field" hidden>Folhas<select id="door-sliding-count"><option value="1">1 folha</option><option value="2">2 folhas</option><option value="3">3 folhas</option><option value="4">4 folhas</option></select></label>
+              </div>
+              <section id="sliding-settings" hidden>
+                <label class="field">Quantidade de vias<input id="sliding-tracks" inputmode="numeric" value="2"></label>
+                <label class="field">Transpasse (mm)<input id="sliding-overlap" inputmode="decimal" value="30"></label>
+                <details class="item-config"><summary>Trilhos e limites</summary>
+                  <label class="field">Altura do trilho (mm)<input id="sliding-rail-height" inputmode="decimal" value="15"></label>
+                  <label class="field">Limite esquerdo (mm)<input id="sliding-limit-left" inputmode="decimal" value="0"></label>
+                  <label class="field">Limite direito (mm)<input id="sliding-limit-right" inputmode="decimal" placeholder="Largura do conjunto"></label>
+                </details><div id="sliding-leaves"></div>
+              </section>
+              <div id="door-main-fronts" hidden></div>
+              <input type="hidden" id="front-side" value="front">
+              <div class="construction-row" id="front-count-row">
+                <label class="field">Quantidade<input id="front-count" inputmode="numeric" value="1"></label>
+              </div>
+              <div id="drawer-options" hidden>
+                <label class="field">Modelo<select id="drawer-type"><option value="standard">Gaveta</option><option value="spice">Tempereiro</option></select></label>
+                <section id="spice-settings" hidden>
+                  <label class="field">Níveis<select id="spice-levels"><option value="1">1 nível</option><option value="2" selected>2 níveis</option></select></label>
+                  <label class="field">Corrediças<select id="spice-runners"><option value="per_level">Um par por nível</option><option value="diagonal">Um par em diagonal</option><option value="left">Um par do lado esquerdo</option><option value="right">Um par do lado direito</option></select></label>
+                  <label class="field">Espessura da estrutura (mm)<input id="spice-thickness" inputmode="decimal" value="15"></label>
+                  <label class="field">Altura da contrafrente (mm)<input id="spice-front-height" inputmode="decimal" placeholder="Automática: 20 mm abaixo do vão"></label>
+                  <label class="field">Altura do segundo nível (mm)<input id="spice-second-height" inputmode="decimal" placeholder="Automática"></label>
+                </section>
+                <section id="loose-drawer-settings" hidden>
+                  <label class="field">Largura externa da caixa (mm)<input id="loose-drawer-width" inputmode="decimal" value="500"></label>
+                  <label class="checkbox-row"><input id="loose-drawer-front" type="checkbox" checked><span>Incluir frente</span></label>
+                  <label class="checkbox-row"><input id="loose-drawer-runners" type="checkbox" checked><span>Incluir corrediças</span></label>
+                  <details class="item-config"><summary>Avanços da frente</summary>
+                    <label class="field">Avanço esquerdo (mm)<input id="drawer-advance-left" inputmode="decimal" value="0"></label>
+                    <label class="field">Avanço direito (mm)<input id="drawer-advance-right" inputmode="decimal" value="0"></label>
+                    <label class="field">Avanço superior (mm)<input id="drawer-advance-top" inputmode="decimal" value="0"></label>
+                    <label class="field">Avanço inferior (mm)<input id="drawer-advance-bottom" inputmode="decimal" value="0"></label>
+                  </details>
+                </section>
+                <label class="field">Corrediça<select id="drawer-runner"><option value="telescopic">Telescópica</option><option value="concealed">Oculta — medidas manuais</option><option value="custom">Outra — medidas manuais</option></select></label>
+              </div>
+              <div id="drawer-main-fronts" hidden></div>
+              <label id="drawer-face-recess-field" class="field" hidden>Recuo frontal (mm)<input id="drawer-face-recess" inputmode="decimal" value="5"></label>
+              <details id="drawer-settings" class="item-config" hidden><summary>Caixa da gaveta</summary>
+                <label class="field">Caixa: profundidade (mm)<input id="drawer-depth" inputmode="decimal" placeholder="Selecione um vão"></label>
+                <label id="drawer-box-material-field" class="field">MDF da caixa<input id="drawer-box-material" maxlength="128" type="hidden"><button type="button" class="material-choice" data-material-field="drawer-box-material" data-empty-label="Herdar MDF interno"><span class="material-swatch"></span><span class="material-name">Herdar MDF interno</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+                <button id="drawer-box-material-inherit" type="button" class="text-button">Herdar MDF interno</button>
+                <label class="field">Folga traseira (mm)<input id="drawer-rear-clearance" inputmode="decimal" value="10"><small>Mínimo de 10 mm.</small></label>
+                <label class="field">Caixa: altura por gaveta (mm)<input id="drawer-height" inputmode="decimal" placeholder="Selecione um vão"></label>
+                <label class="field">Laterais mais altas (mm)<input id="drawer-height-difference" inputmode="decimal" value="5"></label>
+                <label id="drawer-visibility-field" class="field" hidden>Apresentação da gaveta existente<select id="drawer-visibility"><option value="external">Com frente aparente</option><option value="internal">Interna, atrás de uma porta</option></select></label>
+                <label id="drawer-recess-field" class="field" hidden>Recuo da caixa no vão (mm)<input id="drawer-recess" inputmode="decimal" value="22"></label>
+              </details>
+              <details id="drawer-hardware-settings" class="item-config" hidden><summary>Personalizar corrediça</summary>
+                <label class="field">Folga por lado (mm)<input id="drawer-clearance" inputmode="decimal" value="14"></label>
+                <div id="drawer-telescopic-settings">
+                  <label class="field">Altura da corrediça (mm)<input id="drawer-runner-height" inputmode="decimal" value="44"></label>
+                  <label class="field">Base abaixo do fundo (mm)<input id="drawer-runner-drop" inputmode="decimal" value="10"></label>
+                  <label class="field">Primeira caixa acima da base (mm)<input id="drawer-base-clearance" inputmode="decimal" value="10"></label>
+                  <label class="field">Frente abaixo do fundo (mm)<input id="drawer-front-projection" inputmode="decimal" value="15"></label>
+                </div>
+              </details>
+              <details id="front-config" class="item-config"><summary id="front-config-title">Medidas e folgas</summary>
+              <div id="visible-front-options">
+                <label id="front-fit-field" class="field">Encaixe da frente<select id="front-fit"><option value="overlay">Sobreposta</option><option value="inset">Embutida no vão</option></select></label>
+                <label class="field">Folga entre frentes (mm)<input id="front-gap" inputmode="decimal" value="3"></label>
+                <div id="drawer-front-margins" hidden>
+                  <label class="field">Folga superior (mm)<input id="front-gap-top" inputmode="decimal" value="3"></label>
+                  <label class="field">Folga inferior (mm)<input id="front-gap-bottom" inputmode="decimal" value="3"></label>
+                  <label class="field front-group-start">Folga esquerda (mm)<input id="front-gap-left" inputmode="decimal" value="3"></label>
+                  <label class="field">Folga direita (mm)<input id="front-gap-right" inputmode="decimal" value="3"></label>
+                </div>
+                <label class="field front-group-start">Espessura das frentes (mm)<select id="front-thickness"><option value="6">6 mm</option><option value="15">15 mm</option><option value="18">18 mm</option><option value="25">25 mm</option></select></label>
+                <label id="front-material-field" class="field">MDF das frentes<input id="front-material" maxlength="128" placeholder="Mesmo da estrutura" type="hidden"><button type="button" class="material-choice" data-material-field="front-material"><span class="material-swatch"></span><span class="material-name">Escolher MDF</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+              </div>
+              </details>
+              </section>
+
+              <section id="cladding-editor" class="item-editor" hidden>
+                <h3 id="cladding-editor-title">Configurar tamponamento</h3>
+                <div class="cladding-position-section">
+                  <div class="cladding-section-heading">Posições</div>
+                  <div class="cladding-position-grid">
+                    <label class="cladding-position" data-cladding-side="left"><input type="checkbox" id="cladding-left"><span>Lateral esquerda</span></label>
+                    <label class="cladding-position" data-cladding-side="right"><input type="checkbox" id="cladding-right"><span>Lateral direita</span></label>
+                    <label class="cladding-position" data-cladding-side="top"><input type="checkbox" id="cladding-top"><span>Tampo superior</span></label>
+                    <label class="cladding-position" data-cladding-side="bottom"><input type="checkbox" id="cladding-bottom"><span>Tampo inferior</span></label>
+                  </div>
+                  <p id="cladding-edit-hint" class="hint" hidden>Para remover uma posição, use Gerenciar posições na lista de inserções. Valores diferentes entre lados serão mantidos se você não alterar os campos comuns.</p>
+                </div>
+                <div id="cladding-build-section" class="cladding-build-section">
+                  <div class="cladding-section-heading">Montagem dos lados selecionados</div>
+                  <div class="cladding-build-row" data-cladding-settings="left" hidden><div class="cladding-build-top"><span>Lateral esquerda</span><select id="cladding-mode-left" aria-label="Montagem da lateral esquerda"><option value="panel">Painel inteiro</option><option value="rail">Só régua frontal</option><option value="thickened">Engrosso + painel</option></select></div></div>
+                  <div class="cladding-build-row" data-cladding-settings="right" hidden><div class="cladding-build-top"><span>Lateral direita</span><select id="cladding-mode-right" aria-label="Montagem da lateral direita"><option value="panel">Painel inteiro</option><option value="rail">Só régua frontal</option><option value="thickened">Engrosso + painel</option></select></div></div>
+                  <div class="cladding-build-row" data-cladding-settings="top" hidden><div class="cladding-build-top"><span>Tampo superior</span><select id="cladding-mode-top" aria-label="Montagem do tampo superior"><option value="panel">Painel inteiro</option><option value="rail">Só régua frontal</option><option value="thickened">Engrosso + painel</option></select></div></div>
+                  <div class="cladding-build-row" data-cladding-settings="bottom" hidden><div class="cladding-build-top"><span>Tampo inferior</span><select id="cladding-mode-bottom" aria-label="Montagem do tampo inferior"><option value="panel">Painel inteiro</option><option value="rail">Só régua frontal</option><option value="thickened">Engrosso + painel</option></select></div></div>
+                </div>
+                <label class="field">Espessura do MDF por peça (mm)<select id="cladding-thickness"><option value="15">15 mm</option><option value="18">18 mm</option><option value="25">25 mm</option></select></label>
+                <label class="field">MDF do tamponamento<input type="hidden" id="cladding-material"><button type="button" class="material-choice" data-material-field="cladding-material"><span class="material-swatch"></span><span class="material-name">Escolher MDF</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+                <label id="cladding-layers-field" class="field" hidden>Camadas de réguas<select id="cladding-layers"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></label>
+                <label id="cladding-rail-depth-field" class="field" hidden>Profundidade das réguas (mm)<input id="cladding-rail-depth" inputmode="decimal" value="70"></label>
+                <details class="item-config"><summary>Encontro das peças</summary>
+                  <label class="field">No topo<select id="cladding-overlap-top"><option value="horizontal">Tampo cobre as laterais</option><option value="sides">Laterais cobrem o tampo</option></select></label>
+                  <label class="field">Na base<select id="cladding-overlap-bottom"><option value="horizontal">Tampo cobre as laterais</option><option value="sides">Laterais cobrem o tampo</option></select></label>
+                </details>
+                <details class="item-config"><summary>Opções avançadas</summary>
+                  <label class="field">Avanço na frente (mm)<input id="cladding-front" inputmode="decimal" value="20"></label>
+                  <div id="cladding-vertical-extensions"><label class="field">Ajuste das laterais no topo (mm)<input data-number-policy="signed-absolute" id="cladding-extend-top" inputmode="decimal" value="0"></label><label class="field">Ajuste das laterais na base (mm)<input data-number-policy="signed-absolute" id="cladding-extend-bottom" inputmode="decimal" value="0"><small>Positivo aumenta; negativo diminui.</small></label></div><label id="cladding-rear-field" class="field">Avanço atrás (mm)<input id="cladding-rear" inputmode="decimal" value="0"></label>
+                </details>
+              </section>
+
+              <section id="trim-editor" class="item-editor" hidden>
+                <h3 id="trim-editor-title">Configurar rodapé</h3>
+                <input id="trim-kind" type="hidden" value="baseboard">
+                <div class="trim-config-family">
+                  <h4>Medidas</h4>
+                  <label class="field">Altura (mm)<input id="trim-height" inputmode="decimal" value="100"></label>
+                  <label class="field trim-baseboard-field">Altura da sapata (mm)<input id="trim-foot-height" inputmode="decimal" value="15"></label>
+                  <div id="trim-dimensions" hidden>
+                    <label class="field"><span id="trim-width-label">Largura do rodapé (mm)</span><input id="trim-width" inputmode="decimal" value="800"></label>
+                    <label class="field"><span id="trim-depth-label">Profundidade do rodapé (mm)</span><input id="trim-depth" inputmode="decimal" value="450"></label>
+                  </div>
+                </div>
+                <div id="trim-recesses" class="trim-config-family">
+                  <h4>Recuos</h4>
+                  <label class="field">Recuo da frente (mm)<input id="trim-setback" inputmode="decimal" value="50"></label>
+                  <div class="trim-baseboard-field">
+                    <label class="field">Recuo traseiro (mm)<input id="trim-setback-back" inputmode="decimal" value="0"></label>
+                    <div id="trim-side-setbacks">
+                      <label class="field">Recuo esquerdo (mm)<input id="trim-setback-left" inputmode="decimal" value="0"></label>
+                      <label class="field">Recuo direito (mm)<input id="trim-setback-right" inputmode="decimal" value="0"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="trim-config-family">
+                  <h4 id="trim-construction-title">Estrutura oculta</h4>
+                  <div class="trim-baseboard-field">
+                    <label class="field">Largura máxima entre vãos (mm)<input id="trim-max-opening" inputmode="decimal" value="600"></label>
+                    <label class="field">Peças estruturais ocultas<input id="trim-frame-material" type="hidden" value="Retalho"><button type="button" class="material-choice" data-material-field="trim-frame-material"><span class="material-swatch"></span><span class="material-name">Retalho</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+                  </div>
+                  <label class="field">Espessura da peça (mm)<select id="trim-thickness"><option value="6">6 mm</option><option value="15">15 mm</option><option value="18">18 mm</option><option value="25">25 mm</option></select></label>
+                </div>
+                <div class="trim-config-family">
+                  <h4>Acabamentos</h4>
+                  <label class="field"><span id="trim-material-label">MDF do acabamento</span><input id="trim-material" type="hidden"><button type="button" class="material-choice" data-material-field="trim-material"><span class="material-swatch"></span><span class="material-name">Escolher MDF</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+                  <div class="trim-baseboard-field">
+                    <label class="field trim-option-row"><span>Lateral esquerda</span><input id="trim-finish-left" type="checkbox"></label>
+                    <label class="field trim-option-row"><span>Lateral direita</span><input id="trim-finish-right" type="checkbox"></label>
+                    <label class="field trim-option-row"><span>Traseira</span><input id="trim-finish-back" type="checkbox"></label>
+                  </div>
+                  <div class="trim-crown-field" hidden>
+                    <label class="field trim-option-row"><span>Acabamento esquerdo</span><input id="trim-crown-left" type="checkbox"></label>
+                    <label id="trim-crown-setback-left-field" class="field" hidden>Recuo esquerdo (mm)<input id="trim-crown-setback-left" inputmode="decimal" value="0"></label>
+                    <label class="field trim-option-row"><span>Acabamento direito</span><input id="trim-crown-right" type="checkbox"></label>
+                    <label id="trim-crown-setback-right-field" class="field" hidden>Recuo direito (mm)<input id="trim-crown-setback-right" inputmode="decimal" value="0"></label>
+                    <label class="field trim-option-row"><span>Acabamento traseiro</span><input id="trim-crown-back" type="checkbox"></label>
+                    <label id="trim-crown-setback-back-field" class="field" hidden>Recuo traseiro (mm)<input id="trim-crown-setback-back" inputmode="decimal" value="0"></label>
+                  </div>
+                </div>
+                <div id="trim-coverage-family" class="trim-config-family">
+                  <h4>Tamponamento</h4>
+                  <label id="trim-coverage" class="field trim-option-row"><span id="trim-cover-cladding-label">Tamponamento cobre o rodapé</span><input id="trim-cover-cladding" type="checkbox" checked></label>
+                </div>
+              </section>
+
+              <section id="accessory-editor" class="item-editor" hidden>
+                <h3>Adicionar acessório</h3>
+                <label class="field">Categoria<select id="accessory-family">
+                  <option value="wirework">Aramados</option>
+                  <option value="outlets">Tomadas</option>
+                  <option value="cable_grommet">Passa-fios</option>
+                  <option value="hardware">Ferragens avulsas</option>
+                  <option value="casters">Rodízios</option>
+                  <option value="glides">Sapatas</option>
+                  <option value="feet">Pés / pezinhos</option>
+                  <option value="hangers">Cabideiros</option>
+                  <option value="supports">Suportes</option>
+                  <option value="other">Outros</option>
+                </select></label>
+                <label class="field">Descrição<input id="accessory-name" maxlength="80" placeholder="Ex.: tomada dupla, rodízio 50 mm"></label>
+                <label class="field">Quantidade<input id="accessory-quantity" inputmode="numeric" value="1"></label>
+              </section>
+
+              <details id="insertions-history" class="insertions-history">
+                <summary>Inserções do módulo <span id="insertions-history-count">0</span></summary>
+                <div class="insertions-history-body">
+                  <div id="division-list" class="front-list"></div>
+                  <div id="front-list" class="front-list"></div>
+                  <div id="cladding-list" class="front-list"></div>
+                  <div id="trim-list" class="front-list"></div>
+                  <div id="accessory-list" class="front-list"></div>
+                </div>
+              </details>
+            </div></details>
+<details id="pieces-category" class="selection-category"><summary>Peças <span id="module-piece-count"></span></summary><div class="category-body"><div id="module-pieces"></div></div></details>
+<section id="module-piece-editor" class="module-piece-editor" hidden>
+  <div class="piece-editor-toolbar"><button id="back-to-pieces" type="button" class="text-button">← Voltar para peças do módulo</button><button id="delete-piece" type="button" class="text-button danger">Excluir peça</button></div>
+  <input id="piece-role" type="hidden">
+  <div class="piece-name-row"><button title="Retira a peça do grupo e a coloca na raiz do modelo, mantendo posição, medidas e acabamentos." id="detach-piece" type="button" class="text-button">Tornar peça avulsa</button></div>
+  <label for="piece-name" class="field module-name-field">Nome da peça<input id="piece-name" aria-label="Nome da peça" maxlength="60"></label>
+  <div class="dimensions">
+    <label class="field">Comprimento<div class="unit-input"><input id="piece-u" inputmode="decimal" aria-label="Comprimento da peça em milímetros"><span>mm</span></div></label>
+    <label class="field">Largura<div class="unit-input"><input id="piece-v" inputmode="decimal" aria-label="Largura da peça em milímetros"><span>mm</span></div></label>
+    <label class="field">Espessura da peça (mm)<select id="piece-thickness" aria-label="Espessura da peça em milímetros"><option value="">Herdar da caixaria</option><option value="6">6 mm</option><option value="15">15 mm</option><option value="18">18 mm</option><option value="25">25 mm</option></select></label>
+    <label class="field">Elevação<div class="unit-input"><input id="piece-elevation" inputmode="decimal" aria-label="Elevação da base da peça em milímetros"><span>mm</span></div></label>
+  </div>
+  <label class="field">MDF da peça<input id="piece-material" type="hidden"><button type="button" class="material-choice" data-material-field="piece-material"><span class="material-swatch"></span><span class="material-name">Escolher MDF</span><span class="material-arrow" aria-hidden="true"></span></button></label>
+  <input type="hidden" id="piece-grain" value="free">
+  <div id="position-fields" class="piece-position" hidden>
+    <div class="construction-row">
+      <label class="field">Ao redimensionar<select id="position-mode"><option value="ratio">Manter proporção do vão</option><option value="start">Manter distância da base / esquerda</option><option value="end">Manter distância do topo / direita</option></select></label>
+      <label class="field"><span id="position-unit">Proporção (%)</span><input id="position-value" inputmode="decimal" value="50"></label>
+    </div>
+  </div>
+  <label class="field" hidden>Espessura da fita (mm)<input id="piece-tape" inputmode="decimal" value="0,4"></label>
+  <label class="checkbox-row" hidden><input id="piece-decrement" type="checkbox"><span>Descontar a fita da medida de corte</span></label>
+  <p class="hint">Clique nas bordas para colocar ou retirar a fita.</p>
+  <svg id="piece-preview" viewBox="0 0 280 160" aria-label="Fitas da peça do módulo"></svg>
+  <p id="piece-edge-summary" class="hint"></p>
+  <p id="piece-cut-preview" class="hint" hidden></p>
+</section>
+</div>
+        <div id="register-selection" hidden><button id="register-pieces" class="small-button">Cadastrar como peça Plany</button><p class="hint">Aceita grupos ou componentes que representem uma chapa retangular maciça. Outras geometrias não entram na lista de corte.</p></div>
+        <div id="selection-piece-actions" hidden><button id="include-parts" class="primary full">Adicionar peças ao módulo<span>↗</span></button></div>
+      </section>
+      <section id="tab-library" class="tab-panel" hidden>
+        <div id="library-config" hidden>
+          <button id="library-config-back" type="button" class="text-button">← Voltar para Meus Modelos</button>
+          <h2 id="library-config-title">Configurar modelo</h2>
+          <details class="construction-details" open><summary>Comportamento</summary>
+          <p class="hint">Defina como as peças avulsas deste modelo acompanham suas medidas ao reutilizá-lo.</p>
+          <div id="model-behavior-parts" class="extras-list"></div>
+          <div id="piece-rule-editor" hidden><label class="field">Comportamento da peça<select id="rule-preset"><option value="fixed">Manter medidas e posição</option><option value="side">Tamponamento lateral direito</option><option value="rail">Régua horizontal no topo</option><option value="custom">Personalizado</option></select></label>
+        <div class="rule-table">
+          <div class="rule-head"><span>Medida</span><span>Acompanha</span><span>Referência</span></div>
+          <div class="rule-row"><span>Largura</span><label><input type="checkbox" id="follow-width" aria-label="Acompanhar largura"></label><select id="anchor-width" aria-label="Referência na largura"><option value="start">Esquerda</option><option value="center">Centro</option><option value="end">Direita</option></select></div>
+          <div class="rule-row"><span>Altura</span><label><input type="checkbox" id="follow-height" aria-label="Acompanhar altura"></label><select id="anchor-height" aria-label="Referência na altura"><option value="start">Base</option><option value="center">Centro</option><option value="end">Topo</option></select></div>
+          <div class="rule-row"><span>Profundidade</span><label><input type="checkbox" id="follow-depth" aria-label="Acompanhar profundidade"></label><select id="anchor-depth" aria-label="Referência na profundidade"><option value="start">Frente</option><option value="center">Centro</option><option value="end">Trás</option></select></div>
+        </div>
+        <p id="rule-description" class="hint">A peça mantém suas medidas e sua posição em relação ao canto inferior esquerdo da frente do módulo.</p>
+        </div>
+          </details>
+          <button id="save-model-behavior" type="button" class="primary full">Salvar comportamento do modelo</button>
+        </div>
+        <div id="library-content"><div class="library-filters"><button class="small-button active" data-library-kind="modules">Módulos</button><button class="small-button" data-library-kind="pieces">Avulsos</button><button class="small-button" data-library-kind="handles">Puxadores</button><button class="small-button" data-library-kind="hardware">Ferragens</button></div><div id="library-modules">
+        <h2 class="library-heading">Módulos base <span>1 módulo</span></h2>
+        <div id="starters" class="library-grid"></div>
+        <h2 class="library-heading library-heading-saved">Meus modelos</h2>
+        <div class="library-save"><strong>Salvar módulo atual</strong><button id="save-library" class="small-button" title="Selecione um módulo para salvar." disabled>Salvar</button></div>
+        <div id="saved-library" class="library-grid"><p class="library-empty">Nenhum modelo salvo.</p></div>
+        <p id="library-path" hidden></p>
+      </div><div id="library-pieces" hidden><p class="hint">Insira uma peça, ajuste suas medidas na Seleção e guarde seus próprios modelos.</p><button id="save-piece-library" class="small-button" disabled>Guardar a peça selecionada</button><h2 class="library-heading">Peças para começar</h2><div id="piece-starters" class="library-grid"></div><h2 class="library-heading">Minhas peças</h2><div id="saved-pieces" class="library-grid"></div></div><div id="library-handles" hidden><h2 class="library-heading">Puxadores</h2><p class="library-empty">Nenhum puxador cadastrado.</p></div><div id="library-hardware" hidden><h2 class="library-heading">Ferragens</h2><p class="library-empty">Nenhuma ferragem cadastrada.</p></div></div></section>
+      <section id="tab-materials" class="tab-panel" hidden>
+        <button id="catalog-picker-back" class="text-button catalog-picker-back" type="button" hidden>← Voltar</button>
+        <div class="catalog-toolbar">
+          <div class="catalog-search-row">
+            <label class="catalog-search"><span class="sr-only">Buscar padrão</span><input id="catalog-search" placeholder="Buscar material..."></label>
+            <button id="pick-model-material" class="catalog-picker-button" type="button" title="Capturar material do SketchUp" aria-label="Capturar material do SketchUp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M19 3l2 2-8.5 8.5-2-2L19 3z"></path>
+                <path d="M10.5 11.5L5 17v2h2l5.5-5.5"></path>
+                <path d="M4 21h5"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="catalog-filter-row">
+            <label class="catalog-brand"><span class="sr-only">Exibir materiais</span><select id="catalog-brand"><option value="used">Usados no projeto</option><option>Duratex</option><option>Guararapes</option><option>Arauco</option><option>Berneck</option><option value="family:surplus">Retalhos</option><option value="family:glass">Vidros</option><option value="family:metal">Metais</option><option value="all">Todos os materiais</option></select></label>
+            <button id="open-catalog-favorites" class="catalog-favorites-button" type="button" title="Ver favoritos" aria-label="Ver favoritos">☆</button>
+          </div>
+        </div>
+        <p id="catalog-pick-status" class="catalog-pick-status" hidden></p>
+        <p id="catalog-picker-hint" class="hint" hidden>Escolha um material compatível com este campo.</p>
+        <div id="catalog-favorites-header" class="catalog-favorites-header" hidden>
+          <button id="close-catalog-favorites" class="text-button" type="button">← Voltar</button>
+        </div>
+        <div id="catalog-grid" class="library-grid material-grid"></div><p id="catalog-empty" class="hint"></p>
+        <details class="construction-details catalog-manager"><summary>Gerenciar catálogo</summary>
+          <p class="hint">Importe pacotes SKM oficiais. A escala física gravada no material é preservada e não acompanha o redimensionamento das peças.</p>
+          <button id="import-materials" class="small-button">Importar pacote SKM oficial</button>
+          <button id="refresh-project-finishes" class="small-button">Atualizar acabamentos de todas as peças Plany</button>
+          <p class="hint">Downloads oficiais dos fabricantes:</p><div id="material-sources" class="search-actions"></div>
+        </details>
+      </section>
+      <section id="tab-production" class="tab-panel" hidden>
+        <div class="central-launch"><div id="central-scope-slot"><fieldset id="production-scope" class="production-scope"><legend>O que considerar</legend><div class="production-scope-options"><label><input type="radio" name="production-scope" value="all" checked>Todo o projeto</label><label><input type="radio" name="production-scope" value="selection">Somente a seleção</label></div></fieldset>
+          </div><button id="read-production" class="primary full">Carregar peças e materiais</button>
+          <div id="production-summary" class="hint" role="status">Nenhuma lista carregada.</div>
+          <div id="production-issues" role="status"></div>
+          <button id="open-central" class="primary full" disabled>Exportar plano de corte <span>↗</span></button>
+          <button id="open-material-list" class="primary full" disabled>Prévia lista de materiais <span>→</span></button>
+          <button id="open-central-saved" class="small-button full">Abrir a Central Plany</button>
+          <section id="central-setup" class="central-setup" aria-live="polite" hidden><strong id="central-setup-title"></strong><p id="central-setup-text"></p><button id="central-setup-action" class="primary full"></button><button id="central-setup-check" class="small-button full" hidden>Já instalei · verificar vínculo</button></section>
+          <p class="hint">Confira a lista antes de enviar. Se alterar o projeto, clique em Carregar peças e materiais novamente.</p></div>
+        <section id="material-list-view" class="material-list-view" hidden>
+          <button id="back-production" class="text-button" type="button">← Voltar ao plano de corte</button>
+          <h2>Lista de materiais</h2>
+          <p id="material-list-scope" class="hint"></p>
+          <div id="material-list-content"></div>
+        </section><div id="legacy-production" hidden=""><div class="section-heading"><div><h1>Plano de corte</h1><p>Escolha os móveis, confira as chapas e veja a distribuição.</p></div></div><nav class="cut-steps" aria-label="Etapas do plano de corte"><button data-cut-step="1" class="active">1 · Peças</button><button data-cut-step="2" disabled>2 · Chapas</button><button data-cut-step="3" disabled>3 · Resultado</button></nav><div id="cut-step-1" class="cut-step"><h2>1. Móveis e peças</h2><div class="construction-row">
+        </div>
+        <p class="hint">Escolha os móveis no SketchUp e clique em Carregar peças e materiais. Recarregue esta lista se alterar o projeto.</p>
+        <details id="cut-piece-details" class="construction-details"><summary>Conferir a lista de peças</summary><div class="piece-scroll"><table id="piece-table"><thead><tr><th>Peça / módulo</th><th>C × L × E (mm)</th><th>Material</th></tr></thead><tbody id="piece-rows"></tbody></table></div>
+        <button id="save-production" class="small-button" disabled>Gravar materiais no modelo</button>
+        </details><button id="cut-next" class="primary full" disabled>Continuar para chapas →</button></div><div id="cut-step-2" class="cut-step" hidden=""><h2>2. Chapas</h2><p class="hint">Confira o formato da chapa de cada material e espessura. Os valores iniciais são editáveis.</p><div id="cut-stock-groups"></div><details class="construction-details"><summary>Ajustes de corte e otimização</summary><p class="hint">Serra: material consumido em cada corte. Refilo: margem retirada de cada borda. O veio acompanha o comprimento da chapa.</p><label class="field">Espessura do corte da serra (mm)<input id="sheet-kerf" inputmode="decimal" value="3,2"></label>
+            <label class="field">Refilo por borda (mm)<input id="sheet-margin" inputmode="decimal" value="10"></label>
+          <label class="field">Esforço da busca<select id="cut-effort"><option value="24">Rápido · 24 tentativas</option><option value="96" selected>Equilibrado · 96 tentativas</option><option value="384">Intensivo · 384 tentativas</option></select></label>
+          <details class="construction-details"><summary>Formato inicial das chapas</summary><label class="field">Comprimento da chapa (mm)<input id="sheet-length" inputmode="decimal" value="2750"></label>
+            <label class="field">Largura da chapa (mm)<input id="sheet-width" inputmode="decimal" value="1850"></label>
+            </details></details><details><summary>Retalhos disponíveis na oficina</summary>
+            <div class="construction-row">
+              <label class="field">Material<input id="offcut-material" type="hidden" value="Branco TX"><button type="button" class="material-choice" data-material-field="offcut-material"><span class="material-swatch"></span><span class="material-name"></span><span class="material-arrow" aria-hidden="true"></span></button></label>
+              <label class="field">Espessura (mm)<input id="offcut-thickness" inputmode="decimal" value="15" list="mdf-options"></label>
+              <label class="field">Comprimento (mm)<input id="offcut-length" inputmode="decimal" placeholder="Ex.: 1200"></label>
+              <label class="field">Largura (mm)<input id="offcut-width" inputmode="decimal" placeholder="Ex.: 600"></label>
+              <label class="field">Quantidade<input id="offcut-quantity" inputmode="numeric" value="1"></label>
+            </div>
+            <button id="add-offcut" class="small-button">Adicionar retalho disponível</button><div id="offcut-list"></div>
+            <p class="hint">O material deve ter o mesmo nome da lista. Veio no comprimento e mesmo refilo das chapas. A busca prioriza menos chapas inteiras, depois menos peças de estoque e sobras maiores. Estes retalhos valem para este plano; o estoque não é baixado automaticamente.</p>
+          </details>
+          <button id="optimize-cut" class="primary full" disabled>Gerar plano de corte →</button>
+        <button class="text-button" data-cut-step="1">← Voltar às peças</button></div><div id="cut-step-3" class="cut-step" hidden=""><h2>3. Resultado</h2><div id="cut-result-metrics" class="cut-metrics" hidden></div><div id="cut-summary"></div>
+        <progress id="cut-progress" max="100" value="0" hidden></progress>
+        <button id="cancel-cut" class="small-button" hidden>Parar e manter o melhor</button><div id="cut-sheets"></div>
+        <details class="construction-details"><summary>Exportar ou melhorar o plano</summary><button id="export-cut" class="small-button" disabled>Salvar plano para imprimir / PDF</button>
+        <button id="improve-cut" class="small-button" disabled>Buscar uma solução melhor</button></details><button class="text-button" data-cut-step="2">← Ajustar chapas</button></div></div></section>
+      <section id="tab-settings" class="tab-panel settings-page" hidden>
+        <button id="settings-return" type="button" class="text-button">← Voltar ao Plany</button>
+        <h1 id="settings-title">Configurações</h1>
+        <p id="settings-scope" class="hint" hidden></p>
+        <div data-settings-page="index" class="settings-navigation">
+          <button type="button" data-settings-open="materials"><span>Materiais e peças</span><span aria-hidden="true">→</span></button>
+          <button type="button" data-settings-open="construction"><span>Construção dos módulos</span><span aria-hidden="true">→</span></button>
+          <button type="button" data-settings-open="interface"><span>Interface</span><span aria-hidden="true">→</span></button>
+          <button type="button" data-settings-open="commands"><span>Modo Comandos</span><span aria-hidden="true">→</span></button>
+        </div>
+        <div data-settings-page="materials" hidden>
+        <section class="settings-block"><h2>MDF</h2>
+          <h3>Espessuras de MDF</h3><p class="hint">Medidas em ordem crescente. Aceita vírgula ou ponto decimal.</p>
+          <div id="settings-thickness-list"></div>
+          <div class="settings-add"><input id="settings-thickness-new" inputmode="decimal" aria-label="Nova espessura de MDF" placeholder="Ex.: 15,5"><span>mm</span><button id="settings-thickness-add" class="small-button" type="button">+ Adicionar</button></div>
+          <p id="settings-thickness-empty" class="hint" hidden>Sem espessuras. Adicione uma antes de inserir novas peças.</p>
+        </section>
+        <section class="settings-block"><h2>Materiais padrão</h2>
+          <label class="field">Estrutura interna<input id="settings-structure-material" type="hidden"><button type="button" class="material-choice" data-material-field="settings-structure-material" data-empty-label="Escolher MDF"><span class="material-swatch"></span><span class="material-name"></span><span class="material-arrow" aria-hidden="true"></span></button></label>
+          <label class="field">Frentes e tamponados<input id="settings-front-material" type="hidden"><button type="button" class="material-choice" data-material-field="settings-front-material" data-empty-label="Escolher MDF"><span class="material-swatch"></span><span class="material-name"></span><span class="material-arrow" aria-hidden="true"></span></button></label>
+          <label class="checkbox-row"><input id="settings-surplus-enabled" type="checkbox"><span>Usar acabamento próprio nas peças ocultas</span></label>
+          <label class="field">Peças ocultas<input id="settings-hidden-material" type="hidden"><button type="button" class="material-choice" data-material-field="settings-hidden-material" data-empty-label="Escolher MDF"><span class="material-swatch"></span><span class="material-name"></span><span class="material-arrow" aria-hidden="true"></span></button></label>
+          <p class="hint">Desligado: novas peças ocultas usam a cor da Estrutura interna.</p>
+        </section>
+        <section class="settings-block"><h2>Chapas</h2><label class="field">Comprimento máximo da chapa (mm)<input id="settings-sheet-length" inputmode="decimal" value="2750"></label><label class="field">Largura máxima da chapa (mm)<input id="settings-sheet-width" inputmode="decimal" value="1850"></label></section>
+        <section class="settings-block"><h2>Limites de peças</h2><label class="checkbox-row"><input id="settings-hinged-width-enabled" type="checkbox" checked><span>Limitar largura da porta de giro</span></label><label class="field">Largura máxima por folha (mm)<input id="settings-hinged-max-width" inputmode="decimal" value="600"></label></section>
+        </div>
+        <div data-settings-page="construction" class="settings-navigation" hidden>
+          <button type="button" data-settings-open="construction-caixaria"><span>Caixaria</span><span aria-hidden="true">→</span></button>
+          <div class="settings-family-pending"><span>Painel</span><small>Sem padrões globais configuráveis.</small></div>
+        </div>
+        <div data-settings-page="construction-caixaria" hidden>
+        <section class="settings-block">
+          <label class="field construction-family-start">Parte superior<select id="settings-top-type"><option value="full">Tampo inteiro</option><option value="rails">Duas réguas deitadas</option></select></label>
+          <label class="field">Encontro superior<select id="settings-top-join"><option value="over">Por cima das laterais</option><option value="between">Entre as laterais</option></select></label>
+          <label class="field construction-family-start">Composição da base<select id="settings-bottom-type"><option value="full">Base inteira</option><option value="rails">Duas réguas deitadas</option></select></label>
+          <label class="field">Encontro da base<select id="settings-base-type"><option value="under">Por baixo das laterais</option><option value="between">Entre as laterais</option></select></label>
+          <label class="field checkbox-row construction-checkbox construction-family-start"><span>Incluir fundo</span><input id="settings-back" type="checkbox"></label>
+          <div id="settings-back-configuration">
+          <label class="field">Composição do fundo<select id="settings-back-panel-type"><option value="full">Fundo inteiro</option><option value="rails">Duas réguas internas</option></select></label>
+          <label class="field" id="settings-back-mount-field">Montagem do fundo<select id="settings-back-type"><option value="applied">Sobreposto por trás</option><option value="inset">Interno, entre as peças</option><option value="groove">Rasgo para embutir</option></select></label>
+          <label class="field" id="settings-back-groove-field" hidden>Profundidade do rasgo (mm)<input id="settings-back-groove-depth" inputmode="decimal" value="5"></label>
+          <label class="field" id="settings-back-setback-field" hidden>Recuo da traseira (mm)<input id="settings-back-setback" inputmode="decimal" value="10"></label>
+          </div>
+        </section>
+        </div>
+        <div data-settings-page="interface" hidden>
+        <section class="settings-block">
+          <label class="field">Tema do painel Plany<select id="settings-theme"><option value="light">Claro</option><option value="dark">Escuro</option></select></label>
+          <label class="field">Casas decimais exibidas<select id="settings-precision"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></label>
+          <p class="hint">A precisão muda apenas a apresentação das medidas.</p>
+        </section>
+        </div>
+        <div data-settings-page="commands" hidden>
+        <section class="settings-block command-settings"><h2>Comportamento</h2>
+          <label class="checkbox-row"><input id="settings-command-suggestions" type="checkbox"><span>Mostrar sugestões enquanto digito</span></label>
+          <label class="checkbox-row" hidden><input id="settings-command-stay-active" type="checkbox"><span>Continuar no Modo Comandos após executar</span></label>
+          <label class="checkbox-row"><input id="settings-command-space-as-enter" type="checkbox"><span>Usar Espaço como Enter no Modo Comandos</span></label>
+          <p class="hint">Ative pelo botão &gt;_ na barra do Plany. Espaço confirma somente quando a opção estiver marcada.</p>
+        </section>
+        <section class="settings-block"><h2>Famílias</h2>
+          <div class="command-family-guide" aria-label="Famílias fixas do Modo Comandos">
+            <span class="command-family create"><strong>C</strong> Criar</span>
+            <span class="command-family search"><strong>B</strong> Buscar</span>
+            <span class="command-family insert"><strong>I</strong> Inserir</span>
+            <span class="command-family action"><strong>A</strong> Ação</span>
+          </div>
+        </section>
+        <div class="settings-navigation"><button type="button" data-settings-open="command-aliases"><span>Configurar apelidos</span><span aria-hidden="true">→</span></button></div>
+        </div>
+        <div data-settings-page="command-aliases" hidden>
+          <p class="hint">Um apelido por comando. O nome original continua funcionando.</p>
+          <div id="settings-command-aliases"></div>
+          <button id="settings-command-reset-aliases" class="small-button" type="button">Restaurar apelidos</button>
+        </div>
+      </section>
+    </main>
+    <div id="paint-scope-dialog" class="paint-scope-overlay" hidden>
+      <div class="paint-scope-card" role="dialog" aria-modal="true" aria-labelledby="paint-scope-title">
+        <h3 id="paint-scope-title">Pintar MDF e fitas</h3>
+        <p id="paint-scope-material"></p>
+        <div class="paint-scope-option">
+          <label for="paint-scope-individual">Só a peça ou fita clicada</label>
+          <button type="button" class="paint-scope-info" aria-label="Informações: só a peça ou fita clicada" aria-describedby="paint-info-individual">i</button>
+          <input id="paint-scope-individual" type="radio" name="paint-scope" value="individual" checked>
+          <span id="paint-info-individual" class="paint-scope-tip" role="tooltip">Altera apenas a peça inteira ou a fita clicada.</span>
+        </div>
+        <div class="paint-scope-option">
+          <label for="paint-scope-group">Grupos de acabamento</label>
+          <button type="button" class="paint-scope-info" aria-label="Informações: grupos de acabamento" aria-describedby="paint-info-group">i</button>
+          <input id="paint-scope-group" type="radio" name="paint-scope" value="group">
+          <span id="paint-info-group" class="paint-scope-tip" role="tooltip">Altera o grupo no módulo: estrutura, partes aparentes ou peças ocultas.</span>
+        </div>
+        <div class="paint-scope-option">
+          <label for="paint-scope-project">Substituir essa cor em todo o projeto</label>
+          <button type="button" class="paint-scope-info" aria-label="Informações: substituir essa cor em todo o projeto" aria-describedby="paint-info-project">i</button>
+          <input id="paint-scope-project" type="radio" name="paint-scope" value="project">
+          <span id="paint-info-project" class="paint-scope-tip" role="tooltip">Troca a cor clicada pela cor escolhida em todo o projeto. As outras cores permanecem como estão.</span>
+        </div>
+        <div class="grain-tools" aria-label="Ferramentas de veio">
+          <h4>Sentido do veio</h4>
+          <div class="grain-tool-row grain-angle-row">
+            <span class="grain-tool-label">Ângulo livre</span>
+            <div class="grain-angle-controls">
+              <label class="grain-angle-input"><input id="grain-angle-value" aria-label="Ângulo do veio em graus" inputmode="decimal" value="45"><span>°</span></label>
+              <button id="grain-angle" type="button" class="grain-tool-button" aria-label="Girar o veio da peça clicada no ângulo informado" aria-pressed="false">Girar</button>
+            </div>
+            <button type="button" class="paint-scope-info" aria-label="Informações: ângulo livre do veio" aria-describedby="grain-tip-angle">i</button>
+            <span id="grain-tip-angle" class="paint-scope-tip" role="tooltip">Ferramenta independente: clique na peça para definir este ângulo. 0° é horizontal e 90° vertical nos eixos da peça. O corte reserva o retângulo ao redor dela.</span>
+          </div>
+          <div class="grain-tool-row">
+            <span class="grain-tool-label">Todo o projeto</span>
+            <button id="grain-align" type="button" class="grain-tool-button" aria-label="Alinhar todos os veios do projeto">Alinhar horizontal</button>
+            <button type="button" class="paint-scope-info" aria-label="Informações: alinhar todos os veios" aria-describedby="grain-tip-align">i</button>
+            <span id="grain-tip-align" class="paint-scope-tip" role="tooltip">Alinha o veio de todos os MDFs com veio. Cada aplicação alterna horizontal e vertical nos eixos das peças, sem depender da câmera.</span>
+          </div>
+        </div>
+        <p id="grain-tool-status" class="hint" role="status" aria-live="polite">Pintura ativa. Clique no modelo para pintar. Esc encerra.</p>
+        <button id="grain-paint" type="button" class="text-button full" hidden>Voltar à pintura</button>
+        <button id="end-material-paint" type="button" class="text-button full">Encerrar pintura</button>
+      </div>
+    </div>
+    <footer hidden>
+      <div id="piece-footer" hidden><button id="piece-footer-action" class="primary" type="button">Concluir</button><div id="piece-footer-status" role="status" aria-live="polite">Pronto.</div></div>
+      <div id="status" role="status" aria-live="polite">Selecione uma caixaria no projeto.</div>
+      <div id="front-footer" hidden><button id="add-front" class="primary full">Inserir porta no módulo</button><button id="cancel-front-edit" class="text-button" type="button">Cancelar edição</button></div>
+      <div id="division-footer" hidden></div>
+      <div id="batch-footer" hidden><button id="apply-batch" type="button" class="primary full">Aplicar ao conjunto</button><button id="remove-batch" type="button" class="text-button danger">Remover inserção</button><button id="cancel-batch" type="button" class="text-button">Voltar</button></div>
+      <div id="cladding-footer" hidden><button id="add-cladding" class="primary full" type="button">Concluir inserção</button><button id="cancel-cladding" class="text-button" type="button">Cancelar inserção</button></div>
+      <div id="trim-footer" hidden><button id="save-trim" class="primary full" type="button">Concluir inserção</button><button id="cancel-trim" class="text-button" type="button">Cancelar inserção</button></div>
+      <div id="accessory-footer" hidden><button id="save-accessory" class="primary full" type="button">Concluir inserção</button><button id="cancel-accessory" class="text-button" type="button">Cancelar inserção</button></div>
+      <div id="module-footer" hidden><button id="open-pieces" class="footer-pieces" type="button">Peças do módulo <span>· <b id="footer-piece-count">0</b></span></button><button id="primary-action" class="primary full">Criar e posicionar <span>↗</span></button><p id="action-hint">Selecione uma caixaria no projeto.</p></div>
+      <div id="settings-footer" hidden><button id="settings-save" type="button" class="primary full">Salvar configurações</button></div>
+    </footer>
+  </div>
+  <script>
+    window.planyInitialized = false;
+    window.addEventListener('error', function () {
+      if (!window.planyInitialized) {
+        document.getElementById('status').textContent = 'O painel não iniciou. Clique em Recarregar Plany.';
+        document.getElementById('module-footer').hidden = true;
+        document.querySelector('footer').hidden = false;
+      }
+    });
+  </script>
+  <script src="panel.js"></script>
+  <script src="../dimensions.js"></script><script src="../glass.js"></script>
+  <script src="model.js"></script>
+  <script src="operations.js"></script>
+  <script src="insertion-session.js"></script>
+  <script src="recipe-changes.js"></script>
+  <script src="../piece-list-xlsx.js"></script>
+  <script src="../piece-export.js"></script>
+  <script src="../material-choice.js"></script>
+  <script src="standards.js"></script><script src="editor-policy.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

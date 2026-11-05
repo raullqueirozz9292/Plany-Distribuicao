@@ -1,0 +1,96 @@
+name: Publicar Plany 0.6.171 - corrigir inserção Giro
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-plany-0.6.171.yml'
+      - 'tools/door-v171/**'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: plany-official-0.6.171-door
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'raullqueirozz9292/Plany-Distribuicao'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Conferir canal oficial e impedir substituicao
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if gh release view v0.6.171 --repo raullqueirozz9292/Plany-Distribuicao >/dev/null 2>&1; then
+            echo "0.6.171 ja existe; nunca sobrescrever"; exit 1
+          fi
+          test "$(gh release view --repo raullqueirozz9292/Plany-Distribuicao --json tagName -q .tagName)" = 'v0.6.170'
+          mkdir -p dist
+          gh release download v0.6.170 --repo raullqueirozz9292/Plany-Distribuicao --pattern 'Plany-0.6.170.rbz' --dir dist
+      - name: Construir pacote com fontes SHA-pinned e conferir integridade
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/door-v171/build.py
+          python3 tools/door-v171/build.py
+          python3 - <<'PY'
+          import json, hashlib, subprocess, zipfile
+          from pathlib import Path
+          meta=json.loads(Path('dist/manifest-0.6.171.json').read_text())
+          archive=Path('dist')/meta['archive']
+          assert meta['version']=='0.6.171' and meta['source_commit']=='551c4bb75d8010142ce1a1ab729d99b62f345608'
+          assert meta['updated_files']==5
+          assert hashlib.sha256(archive.read_bytes()).hexdigest()==meta['sha256']
+          with zipfile.ZipFile(archive) as package:
+            assert package.testzip() is None
+            assert all(name=='plany.rb' or name.startswith('plany/') for name in package.namelist())
+            for name in ('plany.rb','plany/command_mode.rb','plany/front_components.rb',
+                         'plany/hardware.rb','plany/hardware_mesh.rb','plany/library.rb',
+                         'plany/openings.rb','plany/parameters.rb','plany/production.rb',
+                         'plany/runtime.rb','plany/volume.rb'):
+              subprocess.run(['ruby','-c'],input=package.read(name),stdout=subprocess.DEVNULL,check=True)
+            for name in ('plany/ui/app.js','plany/ui/model.js'):
+              subprocess.run(['node','--check'],input=package.read(name),stdout=subprocess.DEVNULL,check=True)
+            assert package.read('plany/native/command_keys.exe').startswith(b'MZ')
+            assert "extension.version = '0.6.171'" in package.read('plany.rb').decode()
+            assert '<span class="version">0.6.171</span>' in package.read('plany/ui/index.html').decode()
+          print("PASS 0.6.171: Ruby/JS syntax, source SHA, version, package integrity")
+          PY
+      - name: Criar release verificada sem alterar antigas
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create v0.6.171 dist/Plany-0.6.171.rbz \
+            --repo raullqueirozz9292/Plany-Distribuicao \
+            --target main --draft \
+            --title 'Plany 0.6.171 — inserção de portas corrigida' \
+            --notes 'Correção da inserção de portas: selecionar Giro após Basculante não cancela a inserção nem perde o vão escolhido. Troca para Correr substitui a ferramenta somente quando necessário e ignora falso cancelamento durante a substituição. Fonte: Plany PR #63, commit 551c4bb75d8010142ce1a1ab729d99b62f345608. Revisão nativa posterior; o pacote 0.6.170 permanece preservado.'
+          python3 - <<'PY'
+          import hashlib, json, subprocess, time
+          from pathlib import Path
+          repo='raullqueirozz9292/Plany-Distribuicao'
+          sha='sha256:'+hashlib.sha256(Path('dist/Plany-0.6.171.rbz').read_bytes()).hexdigest()
+          size=Path('dist/Plany-0.6.171.rbz').stat().st_size
+          rid=None
+          for _ in range(15):
+            releases=json.loads(subprocess.check_output(['gh','api','repos/'+repo+'/releases?per_page=20'],text=True))
+            match=[entry for entry in releases if entry['tag_name']=='v0.6.171']
+            assert len(match)==1,'Expected exactly one 0.6.171 draft'
+            result=match[0]
+            assets=[a for a in result['assets'] if a['name']=='Plany-0.6.171.rbz']
+            if result['draft'] and len(assets)==1 and assets[0].get('size')==size and assets[0].get('digest')==sha:
+              rid=result['id'];break
+            time.sleep(2)
+          assert rid is not None,'RBZ remote digest not confirmed; preserve draft, do not publish'
+          subprocess.run(['gh','api','--method','PATCH','repos/'+repo+'/releases/'+str(rid),'-F','draft=false','-f','make_latest=true'],check=True,stdout=subprocess.DEVNULL)
+          latest=json.loads(subprocess.check_output(['gh','api','repos/'+repo+'/releases/latest'],text=True))
+          assert latest['tag_name']=='v0.6.171' and not latest['draft']
+          official=[a for a in latest['assets'] if a['name']=='Plany-0.6.171.rbz']
+          assert len(official)==1 and official[0]['digest']==sha
+          print('OFFICIAL RELEASE 0.6.171:',latest['html_url'],sha)
+          PY

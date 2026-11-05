@@ -1,0 +1,27 @@
+{
+  "version": "0.6.171",
+  "base_tag": "v0.6.170",
+  "source_commit": "551c4bb75d8010142ce1a1ab729d99b62f345608",
+  "files": {
+    "plany.rb": {
+      "blob_sha": "b1658566ad81c3dfeda4c8299fdd2882e775fb45",
+      "encoding": "utf-8"
+    },
+    "plany/openings.rb": {
+      "blob_sha": "465cec52d0e580e6ab795fce658a077d4a05caf8",
+      "encoding": "utf-8"
+    },
+    "plany/runtime.rb": {
+      "blob_sha": "ef5deb55d6a3d0183d20e28b8dcdeb22466760c5",
+      "encoding": "utf-8"
+    },
+    "plany/ui/app.js": {
+      "blob_sha": "15ac899cb7236e5932eaab66068b0534683cafbb",
+      "encoding": "utf-8"
+    },
+    "plany/ui/index.html": {
+      "blob_sha": "5ef1823c836c7a7aa069df7674d7e7f10a1fcd6e",
+      "encoding": "utf-8"
+    }
+  }
+}
