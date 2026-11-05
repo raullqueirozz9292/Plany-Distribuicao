@@ -1,0 +1,75 @@
+{
+  "version": "0.6.170",
+  "base_tag": "v0.6.169",
+  "source_commit": "31d3e82a83e990adc776cf79e04fc3a2f40a5887",
+  "files": {
+    "plany.rb": {
+      "blob_sha": "ed4028c9bfef8b1a084197240121a4ea94ee3561",
+      "encoding": "utf-8"
+    },
+    "plany/command_mode.rb": {
+      "blob_sha": "a5566049deb1b1b8177398e0be6dc93cf891a9c0",
+      "encoding": "utf-8"
+    },
+    "plany/front_components.rb": {
+      "blob_sha": "028dd78301243978bda9641610bc66606c3c359d",
+      "encoding": "utf-8"
+    },
+    "plany/hardware.rb": {
+      "blob_sha": "97941f971576468695e5a3d408ee0bf6df7944e5",
+      "encoding": "utf-8"
+    },
+    "plany/hardware_mesh.rb": {
+      "blob_sha": "0f9755783621e9ec3d4946b3aa62f5f21ba348c9",
+      "encoding": "utf-8"
+    },
+    "plany/library.rb": {
+      "blob_sha": "d949f8e28ecc4601b9ff193915f9217ed04e8db2",
+      "encoding": "utf-8"
+    },
+    "plany/native/command_keys.cs": {
+      "blob_sha": "ab5a5e9b9771c9c692e1fd598aee927ff6c7d4f5",
+      "encoding": "utf-8"
+    },
+    "plany/native/command_keys.exe": {
+      "blob_sha": "63574bf602a4b698ae41240c308c10df3b3902ca",
+      "encoding": "base64"
+    },
+    "plany/openings.rb": {
+      "blob_sha": "b8a403229d2633f5c96a9e999a50b4fa2f69600a",
+      "encoding": "utf-8"
+    },
+    "plany/parameters.rb": {
+      "blob_sha": "1e5a58108be6bead5e9f7bac22b0a601d2631043",
+      "encoding": "utf-8"
+    },
+    "plany/production.rb": {
+      "blob_sha": "95631fbd69e9834e35a65e9c511aeff05445eaaa",
+      "encoding": "utf-8"
+    },
+    "plany/runtime.rb": {
+      "blob_sha": "25af01df9f220b0864ba6aa546e447df649be4ff",
+      "encoding": "utf-8"
+    },
+    "plany/ui/app.js": {
+      "blob_sha": "7c8281e4a16d71f75502afa3112bca70d7ae94c1",
+      "encoding": "utf-8"
+    },
+    "plany/ui/index.html": {
+      "blob_sha": "eb5f863d662e57847606467e916704283557c6e0",
+      "encoding": "utf-8"
+    },
+    "plany/ui/model.js": {
+      "blob_sha": "f2233fae5bf65115aaa2b536fcb4fc9a58178642",
+      "encoding": "utf-8"
+    },
+    "plany/ui/styles.css": {
+      "blob_sha": "f22f05a85338124647a3df9a131f867f8700bb5e",
+      "encoding": "utf-8"
+    },
+    "plany/volume.rb": {
+      "blob_sha": "4abf1e247a6866305c1e15e415be17a0aa7bccf7",
+      "encoding": "utf-8"
+    }
+  }
+}
