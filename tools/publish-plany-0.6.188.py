@@ -63,7 +63,7 @@ def reconstruct(manifest,out):
         assert blob['encoding']=='base64' and blob['size']==part['size']
         plain=base64.b64decode(blob['content']).decode('ascii')
         assert len(plain)==part['size'] and sha(plain.encode())==part['utf8_sha256']
-        gitsha=hashlib.sha1(('blob '+str(len(plain))+'\\0').encode()+plain.encode()).hexdigest()
+        gitsha=hashlib.sha1(('blob '+str(len(plain))+'\0').encode()+plain.encode()).hexdigest()
         assert gitsha==part['sha'], 'Git blob identity changed'
         encoded.append(plain)
     raw=base64.b64decode(''.join(encoded),validate=True)
