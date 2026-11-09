@@ -87,19 +87,27 @@ def build_full(update,donor,destination):
                 assert isinstance(digest,str) and re.fullmatch(r'[a-f0-9]{64}',digest)
                 if name in expected:assert expected[name]==digest
                 expected[name]=digest
-        assert len(expected)==349, 'Expected 349 unique verified render assets'
-        assert all(k not in candidate.namelist() for k in expected), 'Full render in update package'
+        # There are 351 distinct catalog render references. Two mandatory
+        # seamless UI images are already included in the update RBZ, leaving
+        # exactly 349 donor render files to append (821 = 472 + 349).
+        assert len(expected)==351, 'Expected 351 verified catalog render references'
+        embedded=set(expected).intersection(candidate.namelist())
+        assert embedded=={'plany/ui/cinza-sagrado-cristallo-seamless.png','plany/ui/branco-tx-seamless.png'}, 'Unexpected update-embedded render files'
+        for name in embedded:
+            assert sha(candidate.read(name))==expected[name], 'Update-embedded render digest mismatch: '+name
+        missing={name:digest for name,digest in expected.items() if name not in embedded}
+        assert len(missing)==349, 'Expected 349 donor-owned renders'
         old_names=set(old.namelist())
         with zipfile.ZipFile(destination,'w',zipfile.ZIP_DEFLATED,compresslevel=6,allowZip64=True) as full:
             for entry in candidate.infolist():
                 full.writestr(entry,candidate.read(entry.filename))
-            for name,digest in sorted(expected.items()):
+            for name,digest in sorted(missing.items()):
                 assert name in old_names,'Render missing in official v0.6.45: '+name
                 image=old.read(name)
                 assert sha(image)==digest, 'Stale render SHA-256 in donor: '+name
                 full.writestr(name,image)
     verify_zip(destination,True)
-    print('PASS complete 188: 349 unique render assets / 351 catalog references, SHA',sha(destination.read_bytes()),flush=True)
+    print('PASS complete 188: 349 appended and 2 already embedded = 351 verified images, SHA',sha(destination.read_bytes()),flush=True)
     return len(expected)
 
 def main():
