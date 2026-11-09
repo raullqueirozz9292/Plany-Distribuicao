@@ -1,0 +1,28 @@
+name: Publicar Plany 0.6.188 oficial - SketchUp 2024
+on:
+  push:
+    branches: [publish/oficial-0.6.188-20261109]
+    paths:
+      - '.github/workflows/publish-plany-0.6.188.yml'
+      - 'tools/0.6.188-handoff.json'
+      - 'tools/publish-plany-0.6.188.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: plany-official-0.6.188-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'raullqueirozz9292/Plany-Distribuicao' && github.ref == 'refs/heads/publish/oficial-0.6.188-20261109'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publicar pacote oficial 188 e primeiro instalador 2024, sem testes nativos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/publish-plany-0.6.188.py
+          python3 tools/publish-plany-0.6.188.py
