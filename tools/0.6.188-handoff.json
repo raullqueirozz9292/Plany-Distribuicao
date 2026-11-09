@@ -1,0 +1,150 @@
+{
+  "tag": "review-official-0.6.188-3c2a9aaf8574",
+  "origin_commit": "3c2a9aaf857473d1f4ba4bfefe714d1dbf804afc",
+  "archive": "Plany-0.6.188.rbz",
+  "update_sha256": "55da231604e4f7eae54a0cac7465e2f0d28b4c36531e282e1f8a240c8a718971",
+  "size": 3185597,
+  "text_encoding": "ascii-base64",
+  "segment_size": 196608,
+  "segments": [
+    {
+      "i": 0,
+      "sha": "367e35686df6a33fab37fcda52448b61e1b31b68",
+      "size": 196608,
+      "utf8_sha256": "e8bc682f7c705b861a22ba03323f61431c1c6d1ef431c9e25e7678e7c96b8bcb"
+    },
+    {
+      "i": 1,
+      "sha": "34c7abf4880a6fecb9ab8d7fa666da8add74565b",
+      "size": 196608,
+      "utf8_sha256": "dbc970b9d2a19270113c898196327cc6ebd23378ac168fe1d084d61f4edcd62c"
+    },
+    {
+      "i": 2,
+      "sha": "cc3b4659e79d4263ecf53a3226bc947aaba090fb",
+      "size": 196608,
+      "utf8_sha256": "24d95fe45cec0001063f6953a490b82f9739d80dfc8d4761fb716e4a900fb2a4"
+    },
+    {
+      "i": 3,
+      "sha": "ab113def17036256f1118b2ba0050521fc13fe29",
+      "size": 196608,
+      "utf8_sha256": "1f2a15fb9bb9d0b4797aeef5869757479ea7552af601e3d8a5c1059b7e7d0892"
+    },
+    {
+      "i": 4,
+      "sha": "e163a6d694b2054462779e81fb665e25c648396d",
+      "size": 196608,
+      "utf8_sha256": "b40d12ede25f4b5f95e0321106c4791698cacaa38316420a22efe9b724447cff"
+    },
+    {
+      "i": 5,
+      "sha": "a7f93ce8f418e6beba4ec99b25958d2ba22392de",
+      "size": 196608,
+      "utf8_sha256": "3ab2515156f264b404a03705703779f6eb3a109166871fd30552057c9c3fb977"
+    },
+    {
+      "i": 6,
+      "sha": "93502896eeecb21cd8d609de8ec0556720055b5d",
+      "size": 196608,
+      "utf8_sha256": "31b644faabaef238462516d11c00509f39358048b485671ad99250faa523f262"
+    },
+    {
+      "i": 7,
+      "sha": "3238666028d7a49de00900be0db4d346f5e7f47b",
+      "size": 196608,
+      "utf8_sha256": "c1863d414011e8b7e8183889f5cd3d6374977709a20275265db7ac5d6208d750"
+    },
+    {
+      "i": 8,
+      "sha": "4efc490e8338ada71e895d1ff2b0b9b46ce22e0f",
+      "size": 196608,
+      "utf8_sha256": "171ebe19491b45f6162251a602f0156c319ccd7fba0fb4d0349bd4868fb74c70"
+    },
+    {
+      "i": 9,
+      "sha": "4c27ca0fa8d70408bb290ae80ca2e07544ad67cf",
+      "size": 196608,
+      "utf8_sha256": "33f8007fd038bc44891073a96cb8ef20d47eca35c3474a058946e05d63fbfc07"
+    },
+    {
+      "i": 10,
+      "sha": "c36d6672635d9fededd068f6e06a7c5a0f9d7b5b",
+      "size": 196608,
+      "utf8_sha256": "377f93bd553576c0987c1f5abf30a9a501ddf70ba0a9e9c232b1223aa782c718"
+    },
+    {
+      "i": 11,
+      "sha": "ee3d690fe7315d7f6b453bcd0860aa47ed0aac18",
+      "size": 196608,
+      "utf8_sha256": "8b97a4d0d96070bbb147356285e501a2dfe7c89208deccb6ad48849bb42173a8"
+    },
+    {
+      "i": 12,
+      "sha": "7dd4ba7a69c37f252dd550d278ca2c4eb211db9e",
+      "size": 196608,
+      "utf8_sha256": "241094d37812af2fa5a743a0f798878a675105d4994b4fb4bde0e98b76437f43"
+    },
+    {
+      "i": 13,
+      "sha": "ec67e77017667b69498351a35f2db428db552f54",
+      "size": 196608,
+      "utf8_sha256": "2487f6436e011fe3850124646878ca960926815144153ec4e0b3d5881acfb23e"
+    },
+    {
+      "i": 14,
+      "sha": "6fb31629c9ae2432af7ea04c01926234dcd0c8ee",
+      "size": 196608,
+      "utf8_sha256": "20e0e20b0ceb93c166cb122fb6ee8e249ab717694bb0e629434c09f2893e4522"
+    },
+    {
+      "i": 15,
+      "sha": "541eafad26306a008aa615149e9ac85fa3f6934a",
+      "size": 196608,
+      "utf8_sha256": "a1f5ddf0ae755f8ce3893254d35e0bc64eaad963643a5cd778fc4a4791d11f03"
+    },
+    {
+      "i": 16,
+      "sha": "176bdedbe884ec8fd669f5ff1da50c4b750f73dd",
+      "size": 196608,
+      "utf8_sha256": "0a1f2a045f63e4beee95480e5879daa3783c200ab8de8e5ed263f89c91db67c7"
+    },
+    {
+      "i": 17,
+      "sha": "98a61a3865513ce3b25274931aa5fb1a55e7b3e6",
+      "size": 196608,
+      "utf8_sha256": "5b6679b980f32ed670cfeddc8540ad5ef11b1d973b8d4726c53dba756675dee7"
+    },
+    {
+      "i": 18,
+      "sha": "0ade1b092482e7d2ebb0a764aa1d5d538aaeb883",
+      "size": 196608,
+      "utf8_sha256": "58727d8e46e5178e3aac429b77a672c19569a046a2e012ae0a70e8e8bbd4ab0d"
+    },
+    {
+      "i": 19,
+      "sha": "4c182a2c6b80948bf2123073b0ab00750216c9d4",
+      "size": 196608,
+      "utf8_sha256": "4c2cf53fe25f34f314e8c54b4a0e9406025359be970f7488ea341678e42fcb3f"
+    },
+    {
+      "i": 20,
+      "sha": "c716b83c4534c27394c0d703125416dc14da5653",
+      "size": 196608,
+      "utf8_sha256": "5a3ed1127764204e3f0fefd1d0303c086a266bf65c316f1eb8c334a9e67fe54f"
+    },
+    {
+      "i": 21,
+      "sha": "f0c915c23dbf07d62482f2ead678f4f14fc2689b",
+      "size": 118696,
+      "utf8_sha256": "4fb0555683bb1f7ea84bab62f8fcc328f4298ba11cb82d43ffe9dda39940e606"
+    }
+  ],
+  "official_repository": "raullqueirozz9292/Plany-Distribuicao",
+  "supported_sketchup": [
+    2024
+  ],
+  "previous_official": "v0.6.181",
+  "previous_full_donor": "v0.6.45",
+  "user_authorized_early_publication": true
+}
