@@ -1,0 +1,157 @@
+name: Publicar Plany 0.6.188 - oficial SketchUp 2024
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-plany-0.6.188.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: plany-oficial-0.6.188
+  cancel-in-progress: false
+jobs:
+  publicar:
+    if: github.repository == 'raullqueirozz9292/Plany-Distribuicao' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Verificar invariantes da release, jamais substituir anteriores
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh release view --repo raullqueirozz9292/Plany-Distribuicao --json tagName --jq '.tagName')" = "v0.6.181"
+          if gh release view v0.6.188 --repo raullqueirozz9292/Plany-Distribuicao >/dev/null 2>&1; then
+            echo 'v0.6.188 already exists. Refusing to overwrite a public or draft release.' >&2; exit 1
+          fi
+      - uses: actions/checkout@v4
+        with:
+          repository: raullqueirozz9292/Plany
+          ref: 3c2a9aaf857473d1f4ba4bfefe714d1dbf804afc
+          persist-credentials: false
+          path: source
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fonte exata, canal oficial, modelo 2024 e prechecks estaticos
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd source
+          test "$(git rev-parse HEAD)" = "3c2a9aaf857473d1f4ba4bfefe714d1dbf804afc"
+          test ! -f src/plany/distribution.json
+          grep -q "extension.version = '0.6.188'" src/plany.rb
+          grep -q '<span class="version">0.6.188</span>' src/plany/ui/index.html
+          python3 -m py_compile tools/package.py
+          node --check src/plany/central/engine.js
+          node --check src/plany/central/app.js
+          node --check src/plany/ui/app.js
+          node --check src/plany/ui/model.js
+          node tests/central-optimization.test.cjs
+          node tests/central-strategies.test.cjs
+          node tests/central-compaction.test.cjs
+          node tests/grain-cutting.test.cjs
+      - name: Produzir dois RBZ oficiais em diretorios descartaveis independentes
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd source
+          python3 tools/package.py --output-dir ../release/update --manifest-dir ../release/update-manifest
+          python3 tools/package.py --complete --output-dir ../release/complete --manifest-dir ../release/complete-manifest
+          cp ../release/complete/Plany-0.6.188.rbz ../release/Plany-0.6.188-complete.rbz
+          cp ../release/update/Plany-0.6.188.rbz ../release/Plany-0.6.188.rbz
+      - name: Bloquear se pacote quebrado, piloto, arquivo ausente ou textura adulterada
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,hashlib,zipfile
+          from pathlib import Path
+          root=Path('release')
+          sha='3c2a9aaf857473d1f4ba4bfefe714d1dbf804afc'
+          for kind,path,manifest_path in [
+              ('update',root/'Plany-0.6.188.rbz',root/'update-manifest/manifest.json'),
+              ('complete',root/'Plany-0.6.188-complete.rbz',root/'complete-manifest/manifest.json')
+          ]:
+              manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+              actual=hashlib.sha256(path.read_bytes()).hexdigest()
+              assert manifest['source_commit']==sha and manifest['version']=='0.6.188'
+              assert manifest['distribution_kind']==kind and manifest['sha256']==actual
+              assert 'distribution' not in manifest and 'candidate' not in manifest
+              with zipfile.ZipFile(path) as archive:
+                  names=archive.namelist()
+                  assert archive.testzip() is None and len(names)==len(set(names))
+                  assert len(names)==len(manifest['files']) and set(names)==set(manifest['files'])
+                  assert 'plany/distribution.json' not in names and 'plany/candidate.json' not in names
+                  assert "extension.version = '0.6.188'" in archive.read('plany.rb').decode('utf-8')
+                  assert '<span class="version">0.6.188</span>' in archive.read('plany/ui/index.html').decode('utf-8')
+                  for filename in ('plany/central/engine.js','plany/release_update.ps1','plany/trial_access.rb'):
+                      assert filename in names
+                  if kind=='complete':
+                      renders=[]
+                      for brand in ('arauco','berneck','duratex','guararapes'):
+                          catalog=json.loads(archive.read('plany/catalog/'+brand+'/manifest.json'))
+                          for e in catalog['entries']:
+                              if e.get('render_texture'): renders.append('plany/'+e['render_texture'])
+                      assert len(renders)==351 and set(renders).issubset(names)
+              print(kind,path.stat().st_size,actual,len(names))
+          PY
+      - name: Criar rascunho do canal oficial e verificar hashes remotos antes de expor
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          repo='raullqueirozz9292/Plany-Distribuicao'
+          test "$(gh release view --repo "$repo" --json tagName --jq '.tagName')" = 'v0.6.181'
+          if gh release view v0.6.188 --repo "$repo" >/dev/null 2>&1; then
+             echo 'Duplicate tag detected; release must not be overwritten' >&2; exit 1
+          fi
+          cat > release-notes.txt <<'NOTES'
+          Plany 0.6.188 — atualização cumulativa oficial para **SketchUp 2024**.
+          
+          Correções cumulativas posteriores à versão 0.6.181: ferragens, dobradiças, divisórias e arredondamento de 0,1 mm, confirmação com Enter, mensagens de autenticação e recuperação da atualização quando o login estiver indisponível, organização de formulários e apresentação da Central.
+          
+          A versão é disponibilizada a pedido do responsável **antes de homologação dentro do SketchUp real**. A bateria automatizada de Windows, interface (240/240 cenários), integridade, planos de corte e rollback em ambientes descartáveis foi aprovada, mas não representa ensaio nativo final. Relate eventuais problemas antes de produzir peças ou comprar MDF com base no plano.
+          
+          Para instalações existentes com acesso funcionando, use Recarregar Plany. Se a versão 0.6.181 estiver presa no login, o Recarregar antigo pode não atualizar: instale o **Plany-0.6.188-complete.rbz** pelo Gerenciador de Extensões do SketchUp 2024 e reinicie o programa. O acesso continua exigindo código válido e conexão.
+          
+          **Downloads:** Plany-0.6.188.rbz (atualização para instalações com recursos existentes); Plany-0.6.188-complete.rbz (instalação completa/recuperação, incluindo 351 texturas).
+          
+          Fonte: raullqueirozz9292/Plany, commit 3c2a9aaf857473d1f4ba4bfefe714d1dbf804afc, PR #83. O suporte desta publicação destina-se ao SketchUp 2024; SketchUp 2021 não é alvo de homologação ou suporte. Releases anteriores e dados pessoais não são alterados por esta publicação.
+          NOTES
+          gh release create v0.6.188 release/Plany-0.6.188.rbz release/Plany-0.6.188-complete.rbz \
+            --repo "$repo" --target main --draft \
+            --title 'Plany 0.6.188 — SketchUp 2024 | correções cumulativas' --notes-file release-notes.txt
+          python3 - <<'PY'
+          import json,hashlib,subprocess,time
+          from pathlib import Path
+          repo='raullqueirozz9292/Plany-Distribuicao'
+          tag='v0.6.188'
+          expected={p.name:('sha256:'+hashlib.sha256(p.read_bytes()).hexdigest(),p.stat().st_size)
+             for p in [Path('release/Plany-0.6.188.rbz'),Path('release/Plany-0.6.188-complete.rbz')]}
+          release=None
+          for i in range(24):
+              entries=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases?per_page=40'],text=True))
+              matches=[x for x in entries if x['tag_name']==tag]
+              assert len(matches)==1, 'Release draft must be unique and immutable'
+              current=matches[0]
+              assets={a['name']:(a.get('digest'),a.get('size')) for a in current['assets']}
+              if current['draft'] and all(assets.get(name)==info for name,info in expected.items()):
+                  release=current;break
+              time.sleep(2)
+          assert release is not None,'Remote archive digest not validated. Draft preserved, publication aborted'
+          current_latest=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases/latest'],text=True))
+          assert current_latest['tag_name']=='v0.6.181','Official latest changed unexpectedly'
+          subprocess.run(['gh','api','--method','PATCH',f'repos/{repo}/releases/{release["id"]}',
+               '-F','draft=false','-f','prerelease=false','-f','make_latest=true'],check=True,stdout=subprocess.DEVNULL)
+          latest=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases/latest'],text=True))
+          assert latest['tag_name']==tag and not latest['draft']
+          remote={a['name']:(a.get('digest'),a.get('size')) for a in latest['assets']}
+          assert all(remote.get(name)==info for name,info in expected.items()),'Public SHA mismatch'
+          print('OFFICIAL_PUBLICATION_SUCCESS',latest['html_url'],expected)
+          PY
