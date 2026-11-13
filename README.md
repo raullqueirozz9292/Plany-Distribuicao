@@ -1,19 +1,27 @@
 # Plany
 
-Canal oficial de instalação e atualização do Plany para **SketchUp 2024**. A partir da versão 0.6.188, o SketchUp 2021 não faz parte do escopo de suporte e homologação.
+Canal oficial de instalação e atualização do Plany para **SketchUp 2024**.
 
-## Instalação
+**Versão oficial atual: [0.6.211](https://github.com/raullqueirozz9292/Plany-Distribuicao/releases/tag/v0.6.211)** — acumulado do Piloto 32 / 0.6.210 disponibilizado no canal oficial.
 
-1. [Baixe o RBZ oficial mais recente](https://github.com/raullqueirozz9292/Plany-Distribuicao/releases/latest).
-2. No SketchUp, abra **Janela → Gerenciador de extensões → Instalar extensão** e selecione o arquivo `.rbz`.
-3. Feche e reabra o SketchUp 2024 e informe o código de teste de seis dígitos recebido do responsável.
+## Quem já usa o Plany oficial
 
-Não é preciso criar conta no GitHub nem informar um token. O Plany confirma o código pela internet a cada abertura do SketchUp e baixa futuras versões oficiais por este canal. O mesmo RBZ pode permanecer instalado.
+No SketchUp 2024, selecione **Extensões → Recarregar Plany**. Aguarde o término e confira **0.6.211** no painel. O atualizador foi validado diretamente da 0.6.191 para esta versão, com ativação, reversão e nova tentativa.
 
-O acesso atual é de teste e pode ser encerrado pelo responsável.
+O arquivo `Plany-0.6.211.rbz` é o pacote leve de atualização. Não exige reinstalar as texturas de uma instalação completa válida.
 
-## Atualização da versão 0.6.181
+## Primeira instalação ou recuperação
 
-Para quem já utiliza o Plany com autenticação funcionando, abra o SketchUp 2024 e selecione **Recarregar Plany**. Se o login da 0.6.181 estiver indisponível, o atualizador dessa versão também poderá ficar bloqueado; nesse caso, obtenha o pacote **Plany-0.6.188-complete.rbz** na [versão oficial](https://github.com/raullqueirozz9292/Plany-Distribuicao/releases/tag/v0.6.188), instale pelo Gerenciador de Extensões e reinicie o SketchUp. Não exclua a Biblioteca ou os arquivos de projeto. A instalação não substitui a necessidade de código válido e conexão.
+1. [Baixe Plany-0.6.211-completo.rbz](https://github.com/raullqueirozz9292/Plany-Distribuicao/releases/download/v0.6.211/Plany-0.6.211-completo.rbz).
+2. No SketchUp 2024, abra **Janela → Gerenciador de extensões → Instalar extensão** e selecione o `.rbz`.
+3. Feche e reabra o SketchUp e informe o código de teste válido recebido do responsável.
 
-**Aviso da 0.6.188:** publicação antecipada por decisão do responsável; validação automatizada aprovada, homologação física final do SketchUp 2024 será feita posteriormente. Recomenda-se conferir medidas e quantidades antes de enviar o projeto para produção.
+O instalador completo inclui as 351 texturas verificadas. Não exclua a Biblioteca, materiais ou arquivos de projeto. Se uma versão antiga estiver com login/atualizador indisponível, use esse instalador completo para recuperar a instalação.
+
+Não é necessário criar conta no GitHub nem informar token. A validação de acesso exige código válido e internet; o acesso de teste pode ser encerrado pelo responsável.
+
+## Canais e suporte
+
+O canal oficial e o piloto têm atualizadores, caches e dados separados. Recarregar no piloto não muda automaticamente para o oficial nem transfere a Biblioteca entre canais. A publicação oficial não modifica a instalação pessoal do autor.
+
+A partir da 0.6.188, o SketchUp 2021 não faz parte do escopo de suporte e homologação. Confira medidas e quantidades antes de enviar projetos para produção. Os hashes dos dois pacotes e os limites conhecidos estão na [release oficial](https://github.com/raullqueirozz9292/Plany-Distribuicao/releases/tag/v0.6.211).
